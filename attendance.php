@@ -53,7 +53,9 @@ require_once'db.php';
      ?>
      <?php 
     if (isset($_GET['timeinvalid'])=="invalid") {
-    echo '<script>swal("ERROR !", "Invalid Employee ID", "warning")</script>';
+ echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class=' btn-close float-end'></a>Invalid Employee ID</div>";
+	    
+    // echo '<script>swal("ERROR !", "Invalid Employee ID", "warning")</script>';
 }
 
 
@@ -61,7 +63,8 @@ require_once'db.php';
      ?>
        <?php 
     if (isset($_GET['msgempty_in'])=="empty_in") {
-    echo '<script>swal("ERROR !", "Please Enter Employee ID", "warning")</script>';
+	    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class=' btn-close float-end'></a>Please Enter Employee ID</div>";
+    // echo '<script>swal("ERROR !", "Please Enter Employee ID", "warning")</script>';
 }
 
 
@@ -207,6 +210,7 @@ require_once'db.php';
                                         		}
                                         }else{
                                         	 header("location:attendance.php?timeinvalid=invalid");
+							
                                         	         
 
                                         }

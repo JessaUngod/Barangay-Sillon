@@ -20,56 +20,7 @@ require_once'db.php';
 
 <body class="overflow-hidden">
 	
-	<?php 
-    if (isset($_GET['msgtimein'])=="time_in") {
-    echo '<script>swal("ERROR !", "You Must Time in First", "warning")</script>';
-}
 
-
-
-     ?>
-	<?php 
-    if (isset($_GET['msgtime_out'])=="time_out") {
-    echo '<script>swal("TIME OUT!", "Employee Attendance", "success")</script>';
-}
-
-
-     ?>
-	<?php 
-    if (isset($_GET['donetime_in'])=="donetime_in") {
-    echo '<script>swal("ERROR !", "The Employee ID is already Time in", "warning")</script>';
-}
-
-
-
-     ?>
-	<?php 
-    if (isset($_GET['msginsert'])=="inserted") {
-    echo '<script>swal("TIME IN!", "Employee Attendance", "success")</script>';
-}
-
-
-
-     ?>
-     <?php 
-    if (isset($_GET['timeinvalid'])=="invalid") {
- echo "<a href='' class=' btn-close float-end'><div class='alert alert-danger py-2 px-2 text-center'></div></a>Invalid Employee ID";
-	    
-    // echo '<script>swal("ERROR !", "Invalid Employee ID", "warning")</script>';
-}
-
-
-
-     ?>
-       <?php 
-    if (isset($_GET['msgempty_in'])=="empty_in") {
-	    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class=' btn-close float-end'></a>Please Enter Employee ID</div>";
-    // echo '<script>swal("ERROR !", "Please Enter Employee ID", "warning")</script>';
-}
-
-
-
-     ?>
 	<nav class="navbar navbar-expand-lg  navbar-dark " style="background-color: #000;">
 		<div class="container">
 			
@@ -322,6 +273,60 @@ require_once'db.php';
     			
 
              <div class="col-md-12">
+		     	<?php 
+    if (isset($_GET['msgtimein'])=="time_in") {
+	     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You Must Time in First</div>";
+    // echo '<script>swal("ERROR !", "You Must Time in First", "warning")</script>';
+}
+
+
+
+     ?>
+	<?php 
+    if (isset($_GET['msgtime_out'])=="time_out") {
+	     echo "<div class='alert alert-success py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>TIME OUT!</div>";
+    // echo '<script>swal("TIME OUT!", "Employee Attendance", "success")</script>';
+}
+
+
+     ?>
+	<?php 
+    if (isset($_GET['donetime_in'])=="donetime_in") {
+	     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>The Employee ID is already Time in</div>";
+    // echo '<script>swal("ERROR !", "The Employee ID is already Time in", "warning")</script>';
+}
+
+
+
+     ?>
+	<?php 
+    if (isset($_GET['msginsert'])=="inserted") {
+	     echo "<div class='alert alert-success py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>TIME IN!</div>";
+    // echo '<script>swal("TIME IN!", "Employee Attendance", "success")</script>';
+}
+
+
+
+     ?>
+     <?php 
+    if (isset($_GET['timeinvalid'])=="invalid") {
+ echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Invalid Employee ID</div>";
+	    
+    // echo '<script>swal("ERROR !", "Invalid Employee ID", "warning")</script>';
+}
+
+
+
+     ?>
+       <?php 
+    if (isset($_GET['msgempty_in'])=="empty_in") {
+	    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class=' btn-close float-end'></a>Please Enter Employee ID</div>";
+    // echo '<script>swal("ERROR !", "Please Enter Employee ID", "warning")</script>';
+}
+
+
+
+     ?>
 	<div class="row">
 		<div class="col-md-4"></div><div class="col-md-4"><strong class="fs-6">Employee ID</strong></div> <div class="col-md-4"></div>
                       <div class="col-md-1"></div><div class="col-md-10"><input  type="text" name="inputid" placeholder="Enter Employee ID" class="form-control" style="background: #fff; border-radius: 7px;"></div><div class="col-md-1"></div>

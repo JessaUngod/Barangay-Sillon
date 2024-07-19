@@ -284,7 +284,7 @@ require_once'db.php';
      ?>
 	<?php 
     if (isset($_GET['msgtime_out'])=="time_out") {
-	     echo "<div class='alert alert-success py-2 px-2 fw-bold text-center text-light'><a href='attendance.php' class='btn-close float-end'></a>TIME OUT!</div>";
+	     echo "<div class='alert alert-success py-2 px-2 fw-bold text-center text-dark'><a href='attendance.php' class='btn-close float-end'></a>TIME OUT!</div>";
     // echo '<script>swal("TIME OUT!", "Employee Attendance", "success")</script>';
 }
 
@@ -301,7 +301,7 @@ require_once'db.php';
      ?>
 	<?php 
     if (isset($_GET['msginsert'])=="inserted") {
-	     echo "<div class='alert alert-success py-2 px-2 text-center text-light'><a href='attendance.php' class='btn-close float-end'></a>TIME IN!</div>";
+	     echo "<div class='alert alert-success py-2 px-2 text-center text-dark'><a href='attendance.php' class='btn-close float-end'></a>TIME IN!</div>";
     // echo '<script>swal("TIME IN!", "Employee Attendance", "success")</script>';
 }
 

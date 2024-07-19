@@ -301,7 +301,7 @@ require_once'db.php';
      ?>
 	<?php 
     if (isset($_GET['msginsert'])=="inserted") {
-	     echo "<div class='alert alert-success py-2 px-2 text-center text-dark'><a href='attendance.php' class='btn-close float-end'></a>TIME IN!</div>";
+	     echo "<div class='fw-bold alert alert-success py-2 px-2 text-center text-dark'><a href='attendance.php' class='btn-close float-end'></a>TIME IN!</div>";
     // echo '<script>swal("TIME IN!", "Employee Attendance", "success")</script>';
 }
 

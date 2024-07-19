@@ -275,7 +275,7 @@ require_once'db.php';
              <div class="col-md-12">
 		     	<?php 
     if (isset($_GET['msgtimein'])=="time_in") {
-	     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You Must Time in First</div>";
+	     echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a href='attendance.php' class='btn-close  float-end'></a>You Must Time in First</div>";
     // echo '<script>swal("ERROR !", "You Must Time in First", "warning")</script>';
 }
 
@@ -284,7 +284,7 @@ require_once'db.php';
      ?>
 	<?php 
     if (isset($_GET['msgtime_out'])=="time_out") {
-	     echo "<div class='alert alert-success py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>TIME OUT!</div>";
+	     echo "<div class='alert alert-success py-2 px-2 fw-bold text-center text-light'><a href='attendance.php' class='btn-close float-end'></a>TIME OUT!</div>";
     // echo '<script>swal("TIME OUT!", "Employee Attendance", "success")</script>';
 }
 
@@ -292,7 +292,7 @@ require_once'db.php';
      ?>
 	<?php 
     if (isset($_GET['donetime_in'])=="donetime_in") {
-	     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>The Employee ID is already Time in</div>";
+	     echo "<div class='alert alert-danger fw-bold py-2 px-2 text-center'><a href='attendance.php' class='btn-close float-end'></a>The Employee ID is already Time in</div>";
     // echo '<script>swal("ERROR !", "The Employee ID is already Time in", "warning")</script>';
 }
 
@@ -301,7 +301,7 @@ require_once'db.php';
      ?>
 	<?php 
     if (isset($_GET['msginsert'])=="inserted") {
-	     echo "<div class='alert alert-success py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>TIME IN!</div>";
+	     echo "<div class='alert alert-success py-2 px-2 text-center text-light'><a href='attendance.php' class='btn-close float-end'></a>TIME IN!</div>";
     // echo '<script>swal("TIME IN!", "Employee Attendance", "success")</script>';
 }
 
@@ -310,7 +310,7 @@ require_once'db.php';
      ?>
      <?php 
     if (isset($_GET['timeinvalid'])=="invalid") {
- echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Invalid Employee ID</div>";
+ echo "<div class='alert alert-danger fw-bold py-2 px-2 text-center'><a href='attendance.php' class='btn-close float-end'></a>Invalid Employee ID</div>";
 	    
     // echo '<script>swal("ERROR !", "Invalid Employee ID", "warning")</script>';
 }
@@ -320,7 +320,7 @@ require_once'db.php';
      ?>
        <?php 
     if (isset($_GET['msgempty_in'])=="empty_in") {
-	    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class=' btn-close float-end'></a>Please Enter Employee ID</div>";
+	    echo "<div class='alert alert-danger fw-bold py-2 px-2 text-center'><a href='attendance.php' class=' btn-close float-end'></a>Please Enter Employee ID</div>";
     // echo '<script>swal("ERROR !", "Please Enter Employee ID", "warning")</script>';
 }
 

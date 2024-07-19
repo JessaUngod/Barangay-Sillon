@@ -1,0 +1,111 @@
+body{
+	background-position: center center;
+	background-attachment: fixed;
+
+}
+.title{
+	margin: 0;
+	width: 100%;
+	max-width: 40rem;
+	font-size: 4rem;
+	text-align: center;
+}
+.card .card-header{
+	padding: 0 0;
+
+}
+.card{
+	color: white;
+	height: 100%;
+	width: 100%;
+	max-width: 500px;
+		padding: .5rem 1rem;
+	border-radius: 1rem;
+	border: 2px solid transparent;
+	backdrop-filter: blur;
+	box-shadow: 1.3rem 1.3rem 1.3rem rgba(0, 0, 0, 0.5);
+
+	border-top-color: rgba(225, 225, 225, 0.5);
+	border-left-color: rgba(225, 225, 225, 0.5) ;
+	border-bottom-color: rgba(225, 225, 225, 0.1) ;
+	border-right-color: rgba(225, 225, 225, 0.1);
+}
+.cb1{
+
+    color: #000;
+     background: linear-gradient(to right bottom, rgba(225, 225, 225, 0.5), rgba(225, 225, 225, 0.3))
+}
+
+}
+#navbar li a::after{
+	content: "";
+	position: absolute;
+	width: 100%;
+	
+	bottom: 0;
+	left: 0;
+	background: #fff;
+	transition: transform .3s;
+	transform: scale(0);
+	transform-origin: right;
+}
+
+#navbar li a:hover::after{
+	transform: scaleX(1);
+	transform-origin: left;
+
+	
+}
+#navbar li a:hover{
+	color: orange;
+	font-weight: bold;
+	font-size: 1.5em;
+	
+}
+#navbar li a.active{
+	transform: scaleX(1);
+	font-weight: bold;
+	font-size: 1.9em;
+}
+
+/*#navbar li a.nav-link .active::after{
+	transform: scaleX(1);
+	color: red;
+}*/
+
+	/*	#about .modal-header img{
+			width: 80%; 
+			height: 80%;
+			 border-radius: 50%;
+			 margin-left: 29%;
+
+		
+	
+}*/
+@media(max-width: 991px){
+
+	.sidebar{
+/*		background: rgba(225, 225, 225, .10);*/
+		backdrop-filter: blur(10px);
+		background: #000;
+
+	}
+	.sidebar .btn{
+		margin-top: 10px;
+		margin-left: 40px;
+		color: #fff;
+		
+		font-size: 1em;
+		border: #000;
+		
+		height: 50px;
+		background: none;
+
+
+		
+	justify-content: center;
+		text-align: center;
+	}
+	
+
+}

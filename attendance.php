@@ -333,12 +333,12 @@ require_once'db.php';
                       <div class="col-md-1"></div>
                       <div class="col-md-5">
                       	 <div class="text-center py-3">
-    			<button onclick="Find()"  type="submit" name="timein" class="btn text-light" style="width: 100%; background: blue; border-radius: 7px;"><i class="fas fa-sign-in-alt me-1" ></i><strong>Time In</strong></button>
+    			<button  type="submit" name="timein" class="btn text-light" style="width: 100%; background: blue; border-radius: 7px;"><i class="fas fa-sign-in-alt me-1" ></i><strong>Time In</strong></button>
     		</div>
                       </div>  
                       <div class="col-md-5">
                       	 <div class="text-center py-3">
-    			<button onclick="Find()" type="submit" name="timeout" class="btn text-light btn-success" style="width: 100%; border-radius: 7px;"><i class="fas fa-sign-out-alt me-1" ></i><strong>Time Out</strong></button>
+    			<button type="submit" name="timeout" class="btn text-light btn-success" style="width: 100%; border-radius: 7px;"><i class="fas fa-sign-out-alt me-1" ></i><strong>Time Out</strong></button>
     		</div>
                       </div>
                       <div class="col-md-1"></div>
@@ -347,12 +347,7 @@ require_once'db.php';
 	</div>
 	
 </div>
-				 <script>
-                                        function Find() {
-                                           window.location = "attendance.php";
-                                           
-                                        }
-                                    </script>
+				 
 
                        
                          	

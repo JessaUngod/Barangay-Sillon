@@ -53,7 +53,7 @@ require_once'db.php';
      ?>
      <?php 
     if (isset($_GET['timeinvalid'])=="invalid") {
- echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class=' btn-close float-end'></a>Invalid Employee ID</div>";
+ echo "<a href='' class=' btn-close float-end'><div class='alert alert-danger py-2 px-2 text-center'></div></a>Invalid Employee ID";
 	    
     // echo '<script>swal("ERROR !", "Invalid Employee ID", "warning")</script>';
 }

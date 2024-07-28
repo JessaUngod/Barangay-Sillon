@@ -134,14 +134,7 @@ require_once'../db.php';
                                                 <td class="border border-2 border-dark">&nbsp;&nbsp;End Date : <?php echo date("F d, Y",strtotime($rows2day['days'])); ?></td>
                                                 
                                             </tr>
-                                            <tr>
-                                                <td class="border border-2 border-dark"></td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td class="border border-2 border-dark"></td>
-                                                
-                                            </tr>
+                                           
                                             <tr>
                                                 <td class="border border-2 border-dark">&nbsp;&nbsp;Total Days : <?php  $sql22 = "SELECT * FROM `countofdays`";
 

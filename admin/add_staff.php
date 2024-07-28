@@ -258,6 +258,11 @@ require_once'../db.php';
                                            var Age = today.getTime() - DOB.getTime();
                                            Age = Math.floor(Age / (1000 * 60 * 60 * 24 * 365.25));
                                            document.getElementById("age").value = Age;
+                                         if(Age <=18){
+                                          <?php
+                                          echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Contact no. invalid<a  href='' class='btn-close float-end'></a></small>";
+                                          ?>
+                                         }
                                         }
                                     </script>
                                     <div class="col-md-3">

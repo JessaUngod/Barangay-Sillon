@@ -32,7 +32,7 @@ require_once("../db.php");
 
 						<div class="col-md-6 py-5 px-3 bg-light">
 							<center>
-								<p class="fw-bold" style=" color: #09111d; font-size:30px;"><strong>Welcome Sta</strong></p>
+								<p class="fw-bold" style=" color: #09111d; font-size:30px;"><strong>Welcome Staff</strong></p>
 								<p style="font-size:12px; color: #09111d;">Workers of Brgy.Sillon proves as the role models within the community.</p>
 							</center>
 							<div class="col-md-12">

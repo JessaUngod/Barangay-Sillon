@@ -202,9 +202,9 @@ require_once'../db.php';
                                          if ($len1 == 11){
                                            if ($len > 7) {
                                                if($pass == $cpass){
-                                           
-
-                                $query = "UPDATE `staff` SET `fname`='$fname',`mname`='$mid',`lname`='$lname',`dob`='$dob',`age`='$age',`gender`='$gen',`c_number`='$cnum',`uname`='$email',`pass`='$pass' WHERE id = '$staffid'";
+                                                if($age >=18){
+                                        
+                                           $query = "UPDATE `staff` SET `fname`='$fname',`mname`='$mid',`lname`='$lname',`dob`='$dob',`age`='$age',`gender`='$gen',`c_number`='$cnum',`uname`='$email',`pass`='$pass' WHERE id = '$staffid'";
 
                                             mysqli_query($con, $query);
                                                   ?>
@@ -212,6 +212,15 @@ require_once'../db.php';
                                          window.location = "./staff.php?mgstaff=staffupdated";
                                        </script>
         <?php   
+                                         }else{
+                                                
+
+                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Invalid Age<a  href='' class='btn-close float-end'></a></small>";
+                                          
+                                         }
+                                           
+
+                              
 
                                         }else{
                                             echo "<small class ='form-control bg-danger  text-center' style ='color:#fff;'>Password does not match!<a href='' class='btn-close float-end'></a></small>";
@@ -228,7 +237,9 @@ require_once'../db.php';
                                          if ($len1 == 11){
                                            if ($len > 7) {
                                                 if($pass == $cpass){
-                                            move_uploaded_file($_FILES['profile']['tmp_name'], '../uploads/'.$_FILES['profile']['name']);
+                                                   if($age >=18){
+                                        
+                                         move_uploaded_file($_FILES['profile']['tmp_name'], '../uploads/'.$_FILES['profile']['name']);
 
                                 $query = "UPDATE `staff` SET `fname`='$fname',`mname`='$mid',`lname`='$lname',`dob`='$dob',`age`='$age',`gender`='$gen',`c_number`='$cnum',`uname`='$email',`pass`='$pass',`img`='$profile' WHERE id = '$staffid'";
 
@@ -238,6 +249,13 @@ require_once'../db.php';
                                          window.location = "./staff.php?mgstaff=staffupdated";
                                        </script>
         <?php   
+                                         }else{
+                                                
+
+                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Invalid Age<a  href='' class='btn-close float-end'></a></small>";
+                                          
+                                         }
+                                           
 
                                         }else{
                                             echo "<small class ='form-control bg-danger  text-center' style ='color:#fff;'>Password does not match!<a href='' class='btn-close float-end'></a></small>";

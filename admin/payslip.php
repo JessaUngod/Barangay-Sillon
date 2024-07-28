@@ -180,14 +180,7 @@ require_once'../db.php';
                                                     $resd = mysqli_num_rows($oks22s); }?><?php echo $resd;?></td>
                                                 
                                             </tr>
-                                            <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C:A</td>
-                                                
-                                            </tr>
-                                            <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Bunos: Goverment</td>
-                                                
-                                            </tr>
+                                          
                                             <tr>
                                                 <td class="border border-2 border-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total Deductions : <?php $totaldeduc =0; $absentdeduc =0;$latededuc =0;
                                                 $absentdeduc = $absent * 100;

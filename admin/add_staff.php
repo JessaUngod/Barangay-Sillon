@@ -261,7 +261,7 @@ require_once'../db.php';
                                          if(Age <=18){
                                          
                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Contact no. invalid<a  href='' class='btn-close float-end'></a></small>";
-                                          >
+                                          
                                          }
                                         }
                                     </script>

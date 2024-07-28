@@ -168,6 +168,7 @@ require_once'../db.php';
                  
                                       
                                         if($profile == null){
+                                          if($age >=18){
                                              $resulta = mysqli_query($con, "SELECT * FROM pos_and_amount WHERE posistion = '$posis'");
                                          $rowsil = mysqli_fetch_assoc($resulta);
                                          $perday = $rowsil['amount'];
@@ -182,9 +183,18 @@ require_once'../db.php';
                                            window.location = "./employee.php?msgupdate=updated";
                                        </script>
                                        <?php
+                                      
+                                         }else{
+                                                
+
+                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Invalid Age<a  href='' class='btn-close float-end'></a></small>";
+                                          
+                                         }
+                                       
                                         
                                     }else{
-                            $resulta = mysqli_query($con, "SELECT * FROM pos_and_amount WHERE posistion = '$posis'");
+                                            if($age >=18){
+                                          $resulta = mysqli_query($con, "SELECT * FROM pos_and_amount WHERE posistion = '$posis'");
                                          $rowsil = mysqli_fetch_assoc($resulta);
                                          $perday = $rowsil['amount'];
 
@@ -199,6 +209,13 @@ require_once'../db.php';
                                        </script>
                                        <?php
 
+                                         }else{
+                                                
+
+                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Invalid Age<a  href='' class='btn-close float-end'></a></small>";
+                                          
+                                         }
+                           
                                         
                                     }
                                 }

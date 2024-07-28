@@ -135,11 +135,11 @@ require_once'../db.php';
                                                 
                                             </tr>
                                             <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Absent : 100</td>
+                                                <td class="border border-2 border-dark"></td>
                                                 
                                             </tr>
                                             <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Late : 50</td>
+                                                <td class="border border-2 border-dark"></td>
                                                 
                                             </tr>
                                             <tr>

@@ -21,7 +21,7 @@ require_once'db.php';
 <body class="overflow-hidden">
 	
 
-	<nav class="navbar navbar-expand-lg  navbar-dark " style="background-color: #004;">
+	<nav class="navbar navbar-expand-lg  navbar-dark " style="background-color: #000;">
 		<div class="container">
 			
 			<h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%;"><strong> Barangay Sillon Employee Attendance</strong></h1>

@@ -25,7 +25,7 @@ require_once("../db.php");
 							
 
 					<div class="row">
-						<div class="col-md-6" style=" background: url(../assets/img/sillon.jpg); background-size: cover; background-repeat: no-repeat	; background-position: center; height: 500px; width: 500px; margin-left: 300px;">
+						<div class="col-md-6" style=" background: url(../assets/img/sillon.jpg); background-size: cover; background-repeat: no-repeat	; background-position: center; height: 500px; width: 500px; margin-left: 200px;">
 							
 						</div>
 

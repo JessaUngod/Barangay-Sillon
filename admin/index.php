@@ -79,7 +79,7 @@ require_once("../db.php");
 								<label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
 								<input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
 								<label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
-								<input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off"><i class="fa fa-eye-slash" style="top: 53%; right: 11%; color: lightgray;"  onclick="myfunction()" id="iconic"></i>
+								<input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off"><i class="fa fa-eye-slash" style="position: absolute; top: 53%; right: 11%; color: lightgray;"  onclick="myfunction()" id="iconic"></i>
 								
 								<div class="col-md-12">
 									<div class="row">

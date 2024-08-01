@@ -244,15 +244,13 @@ error_reporting(0);
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
                                          <?php
- if(!empty($_SESSION['idstaff'])){
+
 date_default_timezone_set("Asia/manila");
          $time = date('2024-07-29');
-$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
- $oks22s = mysqli_query($con, $sql22);
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
+ $oks22s = mysqli_query($con, $sql22ss);
+ $resta = mysqli_num_rows($oks22s);
 
-
-                                                    $resta = mysqli_num_rows($oks22s);
- }
 ?>
                                          <?php  $sql22 = "SELECT * FROM `countofdays`";
 
@@ -276,13 +274,13 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
                                                   <?php 
                                                   $absent = 0;
                                                   $totals =0;
-$nowna =0;
+
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
-$nowna = $absent-$resta;
+
 ?>
                                                
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $nowna; ?> </strong> </div>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $nowna =0; $nowna = $absent-1; echo $nowna; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>

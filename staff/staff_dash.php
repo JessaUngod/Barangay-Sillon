@@ -249,7 +249,7 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
  $oks22s = mysqli_query($con, $sql22);
 
 
-                                                    $res = mysqli_num_rows($oks22);
+                                                    $res = mysqli_num_rows($oks22s);
 ?>
                                          <?php  $sql22 = "SELECT * FROM `countofdays`";
 

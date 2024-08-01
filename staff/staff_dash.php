@@ -203,7 +203,7 @@ if(!empty($_SESSION['idstaff'])){
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a >Time In</a> </strong> </div>
+                                                <strong><a >Present</a> </strong> </div>
                                               <?php
 error_reporting(0);
 

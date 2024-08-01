@@ -242,6 +242,11 @@ error_reporting(0);
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
+                                         <?php  $sql22 = "SELECT * FROM `countofdays`";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res = mysqli_num_rows($oks22); ?>
                                <?php 
                                                  
                                                  

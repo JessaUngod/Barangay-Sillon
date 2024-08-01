@@ -246,7 +246,7 @@ error_reporting(0);
                                          <?php
  if(!empty($_SESSION['idstaff'])){
 date_default_timezone_set("Asia/manila");
-         $time = date('Y-m-d');
+         $time = date('2024-07-29');
 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
  $oks22s = mysqli_query($con, $sql22);
 

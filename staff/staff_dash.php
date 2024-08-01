@@ -83,7 +83,7 @@ require_once'../db.php';
 
         if(!empty($_SESSION['idstaff'])){
            $id = $_SESSION['idstaff'];
-           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = $id");
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id;");
            $row = mysqli_fetch_assoc($result);
          $names= $row['fname'];
          $mid= $row['mname'];
@@ -96,7 +96,7 @@ require_once'../db.php';
 
 ?> 
 <?php
-$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = $names AND mname = $mid AND lname = $laslas");
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
            $rows = mysqli_fetch_assoc($resulta);
            $idem = $rows['emp_id'];
 ?>
@@ -183,7 +183,7 @@ if(!empty($_SESSION['idstaff'])){
                                                 <strong><a >Staff Name</a> </strong> </div>
                                                
                                                
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['fname']; ?>  <?php echo $row['lname']; ?></strong> </div>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $names; ?>  <?php echo $laslas; ?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -210,7 +210,7 @@ error_reporting(0);
 
                                                
 
-                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = $idem";
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem'";
 
                                                     $oks22 = mysqli_query($con, $sql22);
 
@@ -306,7 +306,7 @@ $total =0;
 error_reporting(0);
    
 
-                      $sql22 = "SELECT * FROM `attendance` WHERE emp_id= $idem";
+                      $sql22 = "SELECT * FROM `attendance` WHERE emp_id= '$idem'";
 
                          $oks22 = mysqli_query($con, $sql22);
 

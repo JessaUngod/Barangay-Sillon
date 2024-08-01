@@ -245,7 +245,7 @@ error_reporting(0);
                                                 <strong><a>Total Absent</a> </strong> </div>
                                          <?php  date_default_timezone_set("Asia/manila");
          $time = date('M d Y');
-$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_id = '$time'";
+$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
  $oks22s = mysqli_query($con, $sql22);
 
 
@@ -372,7 +372,7 @@ error_reporting(0);
                       ?>,
                     <?php  date_default_timezone_set("Asia/manila");
          $time = date('M d Y');
-$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_id = '$time'";
+$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
  $oks22s = mysqli_query($con, $sql22);
 
 

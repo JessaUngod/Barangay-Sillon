@@ -175,7 +175,7 @@ if(!empty($_SESSION['idstaff'])){
                                                 <strong><a >Staff Name</a> </strong> </div>
                                                
                                                
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['fname']; ?></strong> </div>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['fname']; ?>  <?php echo $row['lname']; ?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>

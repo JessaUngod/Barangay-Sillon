@@ -204,7 +204,7 @@ error_reporting(0);
                                                
                                                 $datein = date('y-m-d');
 
-                                                 $sql22 = "SELECT * FROM `attendance` WHERE id = $id";
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = $id";
 
                                                     $oks22 = mysqli_query($con, $sql22);
 
@@ -303,7 +303,7 @@ error_reporting(0);
                     
                      $datein = date('y-m-d');
 
-                      $sql22 = "SELECT * FROM `attendance` WHERE $id";
+                      $sql22 = "SELECT * FROM `attendance` WHERE emp_id= $id";
 
                          $oks22 = mysqli_query($con, $sql22);
 

@@ -164,7 +164,7 @@ if(!empty($_SESSION['idstaff'])){
 
 
       
-                          <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                          <div class="col-xl-4 col-md-6 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -173,26 +173,9 @@ if(!empty($_SESSION['idstaff'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Staff</a> </strong> </div>
-                                                 <?php error_reporting(0);
-
-$sql22 = "SELECT * FROM `staff` WHERE id = $id";
-
-   $oks22 = mysqli_query($con, $sql22);
-
-   $res22 = mysqli_num_rows($oks22);
-
-
-  
-
-   
- 
-
-
-
-
-?>
                                                
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
+                                               
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $row['fname']; ?>></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -203,45 +186,8 @@ $sql22 = "SELECT * FROM `staff` WHERE id = $id";
                                 </div>
                             </div>
                         </div>
-                          <div class="col-md-3 mb-4" style="color: #000;">
-                            <div class="card  shadow h-60 py-1">
-                                
-                                <div class="card-body">
-                                  
-
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a>Total Employee</a> </strong> </div>
-                                               <?php error_reporting(0);
-
-$sql22 = "SELECT * FROM `employee_info`";
-
-   $oks22 = mysqli_query($con, $sql22);
-
-   $res22 = mysqli_num_rows($oks22);
-
-  
-
-   
- 
-
-
-
-
-?>
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?> </strong> </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-users fa-2x text-gray-300"></i>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3  mb-4" style="color: #000;">
+                    
+                        <div class="col-md-4  mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -277,7 +223,7 @@ $sql22 = "SELECT * FROM `employee_info`";
                             </div>
                         </div>
                
-                  <div class=" col-md-3 mb-4" style="color: #000;">
+                  <div class=" col-md-4 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -340,42 +286,7 @@ $sql22 = "SELECT * FROM `employee_info`";
          name: 'Count',
          data: [
             
-<?php error_reporting(0);
 
-$sql22 = "SELECT * FROM `staff`";
-
-$oks22 = mysqli_query($con, $sql22);
-
-$res22 = mysqli_num_rows($oks22);
-echo $res22;
-
-
-
-
-
-
-
-
-
-?>,
-<?php error_reporting(0);
-
-$sql22 = "SELECT * FROM `employee_info`";
-
-$oks22 = mysqli_query($con, $sql22);
-
-$res22 = mysqli_num_rows($oks22);
-echo $res22;
-
-
-
-
-
-
-
-
-
-?>,
 <?php error_reporting(0);
                      date_default_timezone_set("Asia/manila");  
                     
@@ -399,7 +310,7 @@ echo $res22;
                ]
      }],
      xaxis: {
-         categories: ['Staff','Total Empoyee', 'Total Time In', 'Total Absent']
+         categories: ['Total Time In', 'Total Absent']
      }
  }
  var chart = new ApexCharts(document.querySelector("#chart"), options);

@@ -196,7 +196,10 @@ if(!empty($_SESSION['idstaff'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Time In</a> </strong> </div>
-                                              <?php error_reporting(0);
+                                              <?php
+if(!empty($_SESSION['idstaff'])){
+  $id = $_SESSION['idstaff'];
+error_reporting(0);
                                                 date_default_timezone_set("Asia/manila");  
                                                
                                                 $datein = date('y-m-d');
@@ -207,7 +210,7 @@ if(!empty($_SESSION['idstaff'])){
 
                                                     $res226 = mysqli_num_rows($oks22);
                                                    
-
+}
 
 
                                                  ?>
@@ -233,8 +236,13 @@ if(!empty($_SESSION['idstaff'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
-                                         <?php $total =0;
+                                         <?php 
+if(!empty($_SESSION['idstaff'])){
+  $id = $_SESSION['idstaff'];
+$total =0;
                                             $total = $res22 - $res226;
+}
+ 
                                              ?> 
                                                
                                             <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $total; ?> </strong> </div>
@@ -287,19 +295,22 @@ if(!empty($_SESSION['idstaff'])){
          data: [
             
 
-<?php error_reporting(0);
+<?php
+if(!empty($_SESSION['idstaff'])){
+  $id = $_SESSION['idstaff'];
+error_reporting(0);
                      date_default_timezone_set("Asia/manila");  
                     
                      $datein = date('y-m-d');
 
-                      $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+                      $sql22 = "SELECT * FROM `attendance` WHERE $id";
 
                          $oks22 = mysqli_query($con, $sql22);
 
                          $res226 = mysqli_num_rows($oks22);
                          echo $res226;
 
-
+}
 
                       ?>,
                       <?php $total =0;

@@ -278,6 +278,32 @@ error_reporting(0);
                                 </div>
                             </div>
                         </div>
+  <div class="col-md-2  mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a >Time In</a> </strong> </div>
+                                              <?php   
+               $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";
+
+                                                    $oks22s = mysqli_query($con, $sql22s);
+
+                                                    $resd = mysqli_num_rows($oks22s); ?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo  $resd; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
   </div>
 
 <div class="row">
@@ -357,7 +383,13 @@ error_reporting(0);
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
 echo $absent;
-?>
+?>,
+          <?php   
+               $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";
+
+                                                    $oks22s = mysqli_query($con, $sql22s);
+
+                                                    $resd = mysqli_num_rows($oks22s); ?>
               
                ]
      }],

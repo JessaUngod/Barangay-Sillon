@@ -374,7 +374,7 @@ error_reporting(0);
                       ?>,
                     <?php  date_default_timezone_set("Asia/manila");
         $timem = date('y-m-d');
-$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
+$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$timem'";
  $oks22s = mysqli_query($con, $sql22);
 
 

@@ -197,12 +197,11 @@ if(!empty($_SESSION['idstaff'])){
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Time In</a> </strong> </div>
                                               <?php
+error_reporting(0);
 if(!empty($_SESSION['idstaff'])){
   $id = $_SESSION['idstaff'];
-error_reporting(0);
-                                                date_default_timezone_set("Asia/manila");  
+
                                                
-                                                $datein = date('y-m-d');
 
                                                  $sql22 = "SELECT * FROM `attendance` WHERE emp_id = $id";
 

@@ -248,7 +248,7 @@ if(!empty($_SESSION['idadmins'])){
                                 </div>
                             </div>
                         </div>
-                </div>
+               
                   <div class=" col-md-2 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
@@ -271,6 +271,7 @@ if(!empty($_SESSION['idadmins'])){
                                 </div>
                             </div>
                         </div>
+  </div>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">

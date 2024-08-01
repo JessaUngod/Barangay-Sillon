@@ -286,7 +286,7 @@ error_reporting(0);
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a >Time In</a> </strong> </div>
+                                                <strong><a > Total Late</a> </strong> </div>
                                               <?php   
                $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";
 
@@ -389,7 +389,9 @@ echo $absent;
 
                                                     $oks22s = mysqli_query($con, $sql22s);
 
-                                                    $resd = mysqli_num_rows($oks22s); ?>
+                                                    $resd = mysqli_num_rows($oks22s);
+echo $resd;
+?>
               
                ]
      }],

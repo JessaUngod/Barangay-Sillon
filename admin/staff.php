@@ -216,8 +216,9 @@ require_once'../db.php';
 
 
                                                 <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a></td>
-                                            <td><?php echo $row1['lname']; ?></td>
+                                            
                                             <td><?php echo $row1['mname']; ?></td>
+                                             <td><?php echo $row1['lname']; ?></td>
                                             <td><?php echo $row1['age']; ?></td>
                                             <td><?php echo $row1['gender']; ?></td>
                                             <td><?php echo $row1['c_number']; ?></td>

@@ -330,10 +330,35 @@ require_once'../db.php';
                                         
                                     </div>
                                     <div class="col-md-6">
-                                        <label>Contact no.</label>
-                                        <input class="form-control mb-1" type="number" name="cnum" placeholder="Enter Contact no." style="font-size :15px;"required value="<?php echo $rower['c_number']; ?>">
-                                    </div>
-                                      
+    <label for="contactNo">Contact no.</label>
+    <input 
+        id="contactNo"
+        class="form-control mb-1"
+        type="text" 
+        name="cnum" 
+        placeholder="Enter Contact no." 
+        style="font-size: 15px;" 
+        maxlength="11" 
+        required
+    >
+    <div id="error-message" style="color: red;"></div>
+</div>
+
+                                      document.getElementById('contactNo').addEventListener('input', function(event) {
+    const input = event.target;
+    const value = input.value;
+    
+  
+    const cleanedValue = value.replace(/\D/g, '');
+    
+    
+    if (cleanedValue.length > 11) {
+        input.value = cleanedValue.slice(0, 11);
+    } else {
+        input.value = cleanedValue;
+    }
+});
+
                                 
                                     
                                     <div class="col-md-6">

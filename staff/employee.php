@@ -211,10 +211,10 @@ require_once'../db.php';
                                                     
                                                 </td>
                                               <td>
-<a  class="ms-2" data-toggle ="modal" data-target ="#deleteq-<?php echo $row1['emp_id']; ?>"><i class="fa fa-trash text-danger fs-6"></i></a>
+<a   data-toggle ="modal" data-target ="#deleteq-<?php echo $row1['emp_id']; ?>"><i class="fa fa-trash text-danger fs-6"></i></a>
 
 
-                                                <a class="ms-2" href="update_emp.php?employee_id=<?php echo $row1['emp_id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a>
+                                                <a href="update_emp.php?employee_id=<?php echo $row1['emp_id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a>
                                                     
                                                 </td>
                                         </tr>

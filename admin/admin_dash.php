@@ -171,8 +171,25 @@ if(!empty($_SESSION['idadmins'])){
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Admin</a> </strong> </div>
                                                
-                                               
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
+                                               <?php error_reporting(0);
+
+$sql22 = "SELECT * FROM `admin`";
+
+   $oks22 = mysqli_query($con, $sql22);
+
+   $res22 = mysqli_num_rows($oks22);
+  
+
+  
+
+   
+ 
+
+
+
+
+?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -192,9 +209,26 @@ if(!empty($_SESSION['idadmins'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Staff</a> </strong> </div>
-                                                
+                                                 <?php error_reporting(0);
+
+$sql22 = "SELECT * FROM `staff`";
+
+   $oks22 = mysqli_query($con, $sql22);
+
+   $res22 = mysqli_num_rows($oks22);
+
+
+  
+
+   
+ 
+
+
+
+
+?>
                                                
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -215,8 +249,24 @@ if(!empty($_SESSION['idadmins'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Employee</a> </strong> </div>
-                                               
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong> </div>
+                                               <?php error_reporting(0);
+
+$sql22 = "SELECT * FROM `employee_info`";
+
+   $oks22 = mysqli_query($con, $sql22);
+
+   $res22 = mysqli_num_rows($oks22);
+
+  
+
+   
+ 
+
+
+
+
+?>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -236,8 +286,22 @@ if(!empty($_SESSION['idadmins'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Time In</a> </strong> </div>
-                                              
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
+                                              <?php error_reporting(0);
+                                                date_default_timezone_set("Asia/manila");  
+                                               
+                                                $datein = date('y-m-d');
+
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res226 = mysqli_num_rows($oks22);
+                                                   
+
+
+
+                                                 ?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res226; ?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -259,8 +323,11 @@ if(!empty($_SESSION['idadmins'])){
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
+                                         <?php $total =0;
+                                            $total = $res22 - $res226;
+                                             ?> 
                                                
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong> </div>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $total; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -302,7 +369,7 @@ if(!empty($_SESSION['idadmins'])){
                             <script type="text/javascript">
                                  var options = {
                                 chart: {
-                                    type: 'donut'
+                                    type: 'bar'
                                 },
                                 series:[{
                                     name: 'Count',

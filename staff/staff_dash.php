@@ -247,7 +247,7 @@ error_reporting(0);
 
 date_default_timezone_set("Asia/manila");
          // $timem = date('Y-m-d');
-         $timem = 2024-06-01;
+         $timem = 2024-08-01;
 $sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem'";
  $oks22s = mysqli_query($con, $sql22ss);
  $resta = mysqli_num_rows($oks22s);

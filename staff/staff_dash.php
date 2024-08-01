@@ -411,7 +411,12 @@ $nowna =0;
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
 $nowna = $absent-$resta;
-echo $nowna;
+ if ($nowna > 0){
+ echo $nowna;
+ 
+                                            }else{
+ echo 0;
+                                            }
 ?>,
           <?php   
                $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";

@@ -216,7 +216,7 @@ if(!empty($_SESSION['idadmins'])){
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a href="products.php">Products</a> </strong> </div>
                                                
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $res222; ?></strong> </div>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-tools fa-2x text-gray-300"></i>

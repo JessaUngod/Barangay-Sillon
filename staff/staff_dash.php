@@ -243,6 +243,14 @@ error_reporting(0);
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
+                                         <?php  date_default_timezone_set("Asia/manila");
+         $time = date('M d Y');
+$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_id = '$time'";
+ $oks22s = mysqli_query($con, $sql22);
+
+
+                                                    $res = mysqli_num_rows($oks22);
+?>
                                          <?php  $sql22 = "SELECT * FROM `countofdays`";
 
                                                     $oks22 = mysqli_query($con, $sql22);
@@ -266,7 +274,9 @@ error_reporting(0);
                                                   $absent = 0;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent=$res-$totals;?>
+                                                  $absent=$res-$totals;
+$absent=-$oks22s;
+?>
                                                
                                             <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $absent; ?> </strong> </div>
                                         </div>

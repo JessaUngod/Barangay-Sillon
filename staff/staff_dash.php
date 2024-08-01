@@ -332,10 +332,30 @@ error_reporting(0);
 
 
                       ?>,
-                      <?php $total =0;
-                 $total = $res22 - $res226;
-                 echo $total; ?>                                      
-             
+                    <?php  $sql22 = "SELECT * FROM `countofdays`";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res = mysqli_num_rows($oks22); ?>
+                               <?php 
+                                                 
+                                                 
+                         $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.time_out=''AND attendance.emp_id = '$idem'";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res226 = mysqli_num_rows($oks22);
+                                                  ?>
+                                                      <?php $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.emp_id = '$idem'";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res2261 = mysqli_num_rows($oks22); ?>
+                                                  <?php 
+                                                  $absent = 0;
+                                                  $totals =0;
+                                                  $totals= $res2261-$res226;
+                                                  $absent=$res-$totals;?>
               
                ]
      }],

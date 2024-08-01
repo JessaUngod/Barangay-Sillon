@@ -243,11 +243,10 @@ error_reporting(0);
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
                                          <?php 
-if(!empty($_SESSION['idstaff'])){
-  $id = $_SESSION['idstaff'];
+
 $total =0;
                                             $total = $res22 - $res226;
-}
+
  
                                              ?> 
                                                

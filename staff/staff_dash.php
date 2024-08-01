@@ -242,15 +242,27 @@ error_reporting(0);
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
-                                         <?php 
+                               <?php 
+                                                 
+                                                 
+                         $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.time_out=''AND attendance.emp_id = '$idem'";
 
-$total =0;
-                                            $total = $res22 - $res226;
+                                                    $oks22 = mysqli_query($con, $sql22);
 
- 
-                                             ?> 
+                                                    $res226 = mysqli_num_rows($oks22);
+                                                  ?>
+                                                      <?php $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.emp_id = '$idem'";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res2261 = mysqli_num_rows($oks22); ?>
+                                                  <?php 
+                                                  $absent = 0;
+                                                  $totals =0;
+                                                  $totals= $res2261-$res226;
+                                                  $absent=$res-$totals;?>
                                                
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $total; ?> </strong> </div>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $absent; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>

@@ -288,7 +288,7 @@ require_once'../db.php';
                         </select> 
                                         
                                     </div>
-                                    <div class="col-md-6">
+       <div class="col-md-6">
     <label for="contactNo">Contact no.</label>
     <input 
         id="contactNo"
@@ -297,25 +297,28 @@ require_once'../db.php';
         name="cnum" 
         placeholder="Enter Contact no." 
         style="font-size: 15px;" 
-        pattern="\d{11}" 
-        title="Contact number must be exactly 11 digits." 
+        maxlength="11" 
         required
     >
     <div id="error-message" style="color: red;"></div>
 </div>
+
                                          <script>
-                                          document.querySelector('form').addEventListener('submit', function(event) {
-    const contactNoInput = document.getElementById('contactNo');
-    const errorMessage = document.getElementById('error-message');
-    const contactNo = contactNoInput.value;
+                        document.getElementById('contactNo').addEventListener('input', function(event) {
+    const input = event.target;
+    const value = input.value;
     
-    if (!/^\d{11}$/.test(contactNo)) {
-        errorMessage.textContent = 'Contact number must be exactly 11 digits long.';
-        event.preventDefault(); // Prevent form submission
+
+    const cleanedValue = value.replace(/\D/g, '');
+    
+   
+    if (cleanedValue.length > 11) {
+        input.value = cleanedValue.slice(0, 11);
     } else {
-        errorMessage.textContent = ''; // Clear error message
+        input.value = cleanedValue;
     }
 });
+
                                          </script>
                                     
                                       

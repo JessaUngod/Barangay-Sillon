@@ -196,7 +196,7 @@ require_once'../db.php';
                                             <th class="fw-bold bg-primary" >Contact no.</th>
                                             <th class="fw-bold bg-primary" >Username</th>
                                             <th class="fw-bold bg-primary" >Profile Picture</th>         
-                                                                                  
+                                                                                  <th class="fw-bold bg-primary" >Action</th>  
 
                                         </tr>
                                     </thead>

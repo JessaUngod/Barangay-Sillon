@@ -96,7 +96,7 @@ require_once'../db.php';
 
 ?> 
 <?php
-$resulta = mysqli_query($con, "SELECT * FROM employee_info WHERE fname = $names AND mname = $mid AND lname = $laslas");
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = $names AND mname = $mid AND lname = $laslas");
            $rows = mysqli_fetch_assoc($resulta);
            $idem = $rows['emp_id'];
 ?>

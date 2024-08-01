@@ -96,8 +96,8 @@ require_once'../db.php';
 
 ?> 
 <?php
-$result = mysqli_query($con, "SELECT * FROM emplyoyee_info WHERE fname = $names AND mname = $mid AND lname = $laslas");
-           $rows = mysqli_fetch_assoc($result);
+$resulta = mysqli_query($con, "SELECT * FROM employee_info WHERE fname = $names AND mname = $mid AND lname = $laslas");
+           $rows = mysqli_fetch_assoc($resulta);
            $idem = $rows['emp_id'];
 ?>
 <?php 
@@ -133,7 +133,7 @@ if(!empty($_SESSION['idstaff'])){
                                    
                                </span>
                                 <span class="mr-2 d-lg-inline  small fw-bold"  style="color: #000;">
-                                    <?php echo $row['fname']; ?>                                
+                                    <?php echo $names; ?>                                
                                          </span>
                                 
                             </a>

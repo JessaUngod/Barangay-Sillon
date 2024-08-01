@@ -244,7 +244,7 @@ error_reporting(0);
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a>Total Absent</a> </strong> </div>
                                          <?php  date_default_timezone_set("Asia/manila");
-         $time = date('M d Y');
+         $time = date('Y m d');
 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time'";
  $oks22s = mysqli_query($con, $sql22);
 

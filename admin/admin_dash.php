@@ -227,7 +227,7 @@ if(!empty($_SESSION['idadmins'])){
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                        <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -249,7 +249,28 @@ if(!empty($_SESSION['idadmins'])){
                             </div>
                         </div>
                 </div>
-                
+                  <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+                                  
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a>Total Absent</a> </strong> </div>
+                                               
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8">

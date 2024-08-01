@@ -307,7 +307,7 @@ require_once'../db.php';
                                     
 
                                     <div class=" modal-footer mt-3 w-100">
-                                        <button onmousemove="FindAge()" class="btn bg-primary ms-auto text-light" name="update" type="submit"> <label>Submit</label></button>
+                                        <button onmousemove="FindAge()" class="btn bg-success ms-auto text-light" name="update" type="submit"> <label>Update</label></button>
                                     </div>
                                         </div>
                                     </form>

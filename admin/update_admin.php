@@ -298,7 +298,7 @@ require_once'../db.php';
                                     </div>
                                        <div class="col-md-6">
                                         <label>Re - Password</label>
-                                        <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re - Password" style="font-size :15px;" required><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 4%; color: lightgray;"  onclick="myfunction2()" id="icon"></i>
+                                        <input class="form-control mb-1" type="password" id="rpass" value="<?php echo $rower['pass']; ?>" name="cpass" placeholder="Enter Re - Password" style="font-size :15px;" required><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 4%; color: lightgray;"  onclick="myfunction2()" id="icon"></i>
                                     </div>
                                         <center> <div class="col-md-8" >
                                         <label>Product Image</label>
@@ -308,7 +308,7 @@ require_once'../db.php';
                                     
 
                                     <div class=" modal-footer mt-3 w-100">
-                                        <button class="btn bg-primary ms-auto text-light" name="update" type="submit"> <label>Submit</label></button>
+                                        <button class="btn bg-success ms-auto text-light" name="update" type="submit"> <label>Update</label></button>
                                     </div>
                                         </div>
                                     </form>

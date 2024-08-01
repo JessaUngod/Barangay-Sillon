@@ -240,7 +240,7 @@ if(!empty($_SESSION['idadmins'])){
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-box fa-2x text-gray-300"></i>
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
                                         </div>
 
                                     </div>

@@ -273,12 +273,13 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_id = '$time
                                                   <?php 
                                                   $absent = 0;
                                                   $totals =0;
+$nowna =0;
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
-$absent=-$oks22s;
+$nowna = $absent-$oks22s;
 ?>
                                                
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $absent; ?> </strong> </div>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $nowna; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -369,7 +370,15 @@ error_reporting(0);
 
 
                       ?>,
-                    <?php  $sql22 = "SELECT * FROM `countofdays`";
+                    <?php  date_default_timezone_set("Asia/manila");
+         $time = date('M d Y');
+$sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_id = '$time'";
+ $oks22s = mysqli_query($con, $sql22);
+
+
+                                                    $res = mysqli_num_rows($oks22);
+?>
+                                         <?php  $sql22 = "SELECT * FROM `countofdays`";
 
                                                     $oks22 = mysqli_query($con, $sql22);
 
@@ -391,9 +400,11 @@ error_reporting(0);
                                                   <?php 
                                                   $absent = 0;
                                                   $totals =0;
+$nowna =0;
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
-echo $absent;
+$nowna = $absent-$oks22s;
+echo $nowna;
 ?>,
           <?php   
                $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";

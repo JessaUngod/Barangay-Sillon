@@ -85,6 +85,9 @@ require_once'../db.php';
            $id = $_SESSION['idstaff'];
            $result = mysqli_query($con, "SELECT * FROM staff WHERE id = $id");
            $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
          }else{
            header("Location: ./index.php");
          }
@@ -92,6 +95,11 @@ require_once'../db.php';
 
 
 ?> 
+<?php
+$result = mysqli_query($con, "SELECT * FROM emplyoyee_info WHERE fname = "$names" AND mname = "$mid" AND lname = "$laslas"");
+           $rows = mysqli_fetch_assoc($result);
+           $idem = $rows['emp_id'];
+?>
 <?php 
 
 if(!empty($_SESSION['idstaff'])){
@@ -198,18 +206,17 @@ if(!empty($_SESSION['idstaff'])){
                                                 <strong><a >Time In</a> </strong> </div>
                                               <?php
 error_reporting(0);
-if(!empty($_SESSION['idstaff'])){
-  $id = $_SESSION['idstaff'];
+
 
                                                
 
-                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = $id";
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = $idem";
 
                                                     $oks22 = mysqli_query($con, $sql22);
 
                                                     $res226 = mysqli_num_rows($oks22);
                                                    
-}
+
 
 
                                                  ?>
@@ -295,21 +302,18 @@ $total =0;
             
 
 <?php
-if(!empty($_SESSION['idstaff'])){
-  $id = $_SESSION['idstaff'];
-error_reporting(0);
-                     date_default_timezone_set("Asia/manila");  
-                    
-                     $datein = date('y-m-d');
 
-                      $sql22 = "SELECT * FROM `attendance` WHERE emp_id= $id";
+error_reporting(0);
+   
+
+                      $sql22 = "SELECT * FROM `attendance` WHERE emp_id= $idem";
 
                          $oks22 = mysqli_query($con, $sql22);
 
                          $res226 = mysqli_num_rows($oks22);
                          echo $res226;
 
-}
+
 
                       ?>,
                       <?php $total =0;

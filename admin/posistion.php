@@ -240,7 +240,7 @@ require_once'../db.php';
                                  
                                     </div>
                                       <center><div class="mt-3">
-                                        <button class="btn bg-primary text-light" name="submits" >Submit</button>
+                                        <button class="btn bg-success text-light" name="submits" >Update</button>
                                     </div> </center> 
                                     </form>
              

@@ -290,7 +290,7 @@ require_once'../db.php';
                                     </div>
                                     <div class="col-md-6">
                                         <label>Contact no.</label>
-                                        <input class="form-control mb-1" type="number" name="cnum" placeholder="Enter Contact no." style="font-size :15px;"required>
+                                        <input min = "11" max ="11" class="form-control mb-1" type="number" name="cnum" placeholder="Enter Contact no." style="font-size :15px;"required>
                                     </div>
                                     
                                       

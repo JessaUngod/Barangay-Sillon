@@ -355,7 +355,9 @@ error_reporting(0);
                                                   $absent = 0;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent=$res-$totals;?>
+                                                  $absent=$res-$totals;
+echo $absent;
+?>
               
                ]
      }],

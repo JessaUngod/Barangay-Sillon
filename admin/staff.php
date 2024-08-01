@@ -231,6 +231,10 @@ require_once'../db.php';
                                                     
                                                 </td>
                                             
+                                            <td><i class="fa fa-trash text-danger fs-6"></i></a>
+
+
+                                                <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a></td>
                                         </tr>
 
                                          <div class="modal fade " id="deleteq-<?php echo $row1['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"

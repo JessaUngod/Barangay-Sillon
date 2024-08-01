@@ -172,7 +172,7 @@ if(!empty($_SESSION['idstaff'])){
 
 
       
-                          <div class="col-xl-4 col-md-6 mb-4" style="color: #000;">
+                          <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -195,7 +195,7 @@ if(!empty($_SESSION['idstaff'])){
                             </div>
                         </div>
                     
-                        <div class="col-md-4  mb-4" style="color: #000;">
+                        <div class="col-md-3  mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -232,7 +232,7 @@ error_reporting(0);
                             </div>
                         </div>
                
-                  <div class=" col-md-4 mb-4" style="color: #000;">
+                  <div class=" col-md-3 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -278,7 +278,7 @@ error_reporting(0);
                                 </div>
                             </div>
                         </div>
-  <div class="col-md-2  mb-4" style="color: #000;">
+  <div class="col-md-3  mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 
                                 <div class="card-body">
@@ -394,7 +394,7 @@ echo $absent;
                ]
      }],
      xaxis: {
-         categories: ['Total Time In', 'Total Absent']
+         categories: ['Total Time In', 'Total Absent', 'Total Late']
      }
  }
  var chart = new ApexCharts(document.querySelector("#chart"), options);

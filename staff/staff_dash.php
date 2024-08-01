@@ -175,7 +175,7 @@ if(!empty($_SESSION['idstaff'])){
                                                 <strong><a >Staff</a> </strong> </div>
                                                  <?php error_reporting(0);
 
-$sql22 = "SELECT * FROM `staff`";
+$sql22 = "SELECT * FROM `staff` WHERE id = $id";
 
    $oks22 = mysqli_query($con, $sql22);
 
@@ -255,7 +255,7 @@ $sql22 = "SELECT * FROM `employee_info`";
                                                
                                                 $datein = date('y-m-d');
 
-                                                 $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE id = $id";
 
                                                     $oks22 = mysqli_query($con, $sql22);
 

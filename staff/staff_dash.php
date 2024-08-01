@@ -83,7 +83,7 @@ require_once'../db.php';
 
         if(!empty($_SESSION['idstaff'])){
            $id = $_SESSION['idstaff'];
-           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id;");
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
            $row = mysqli_fetch_assoc($result);
          $names= $row['fname'];
          $mid= $row['mname'];

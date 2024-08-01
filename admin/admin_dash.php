@@ -157,7 +157,98 @@ if(!empty($_SESSION['idadmins'])){
    <div class="container-fluid">
 
                            <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Dashboard</strong></h1>
+<div class="row">
+                 
 
+
+                           <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                          
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a href="admin_r.php">Admin</a> </strong> </div>
+                                               
+                                               
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a href="staff.php">Staff</a> </strong> </div>
+                                                
+                                               
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+                                  
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a href="products.php">Products</a> </strong> </div>
+                                               
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <?php echo $res222; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-tools fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a href="out_stocks.php">Low Stocks</a> </strong> </div>
+                                              
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-box fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                </div>
                 
                 <div class="row">
                     <div class="col-md-2"></div>

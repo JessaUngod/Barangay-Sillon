@@ -309,7 +309,7 @@ require_once'../db.php';
                                         <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re - Password" style="font-size :15px;" required><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 4%; color: lightgray;"  onclick="myfunction2()" id="icon"></i>
                                     </div>
                                         <center> <div class="col-md-8" >
-                                        <label>Product Image</label>
+                                        <label>Profile Image</label>
                                         <input class="form-control mb-1" type="file" name="profile" placeholder="Enter Student name" style="font-size :15px;" required>
                                     </div></center>                         
                                    

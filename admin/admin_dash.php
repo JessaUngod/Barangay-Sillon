@@ -302,7 +302,7 @@ if(!empty($_SESSION['idadmins'])){
                             <script type="text/javascript">
                                  var options = {
                                 chart: {
-                                    type: 'pie'
+                                    type: 'area'
                                 },
                                 series:[{
                                     name: 'Count',

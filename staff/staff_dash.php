@@ -249,7 +249,7 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
  $oks22s = mysqli_query($con, $sql22);
 
 
-                                                    $res = mysqli_num_rows($oks22s);
+                                                    $resta = mysqli_num_rows($oks22s);
 ?>
                                          <?php  $sql22 = "SELECT * FROM `countofdays`";
 
@@ -276,7 +276,7 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
 $nowna =0;
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
-$nowna = $absent-$oks22s;
+$nowna = $absent-$resta;
 ?>
                                                
                                             <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $nowna; ?> </strong> </div>
@@ -376,7 +376,7 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
  $oks22s = mysqli_query($con, $sql22);
 
 
-                                                    $res = mysqli_num_rows($oks22);
+                                                    $resta = mysqli_num_rows($oks22s);
 ?>
                                          <?php  $sql22 = "SELECT * FROM `countofdays`";
 
@@ -403,7 +403,7 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
 $nowna =0;
                                                   $totals= $res2261-$res226;
                                                   $absent=$res-$totals;
-$nowna = $absent-$oks22s;
+$nowna = $absent-$resta;
 echo $nowna;
 ?>,
           <?php   

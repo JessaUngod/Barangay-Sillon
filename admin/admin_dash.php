@@ -169,7 +169,7 @@ if(!empty($_SESSION['idadmins'])){
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a href="admin_r.php">Admin</a> </strong> </div>
+                                                <strong><a >Admin</a> </strong> </div>
                                                
                                                
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
@@ -191,7 +191,7 @@ if(!empty($_SESSION['idadmins'])){
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a href="staff.php">Staff</a> </strong> </div>
+                                                <strong><a >Staff</a> </strong> </div>
                                                 
                                                
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
@@ -235,7 +235,7 @@ if(!empty($_SESSION['idadmins'])){
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a href="out_stocks.php">Total Time In</a> </strong> </div>
+                                                <strong><a >Total Time In</a> </strong> </div>
                                               
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong> </div>
                                         </div>

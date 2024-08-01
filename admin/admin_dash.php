@@ -159,6 +159,8 @@ if(!empty($_SESSION['idadmins'])){
                            <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Dashboard</strong></h1>
 
                 <div class = "row">
+                  <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
                  <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
@@ -193,6 +195,8 @@ $sql22 = "SELECT * FROM `admin`";
                             </div>
                         </div>
                 </div>
+ <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
  <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
@@ -228,6 +232,8 @@ $sql22 = "SELECT * FROM `staff`";
                             </div>
                         </div>
                 </div>
+ <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
  <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
@@ -263,6 +269,8 @@ $sql22 = "SELECT * FROM `employee_info`";
                             </div>
                         </div>
                 </div>
+ <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
  <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
@@ -294,6 +302,8 @@ $sql22 = "SELECT * FROM `employee_info`";
                             </div>
                         </div>
                 </div>
+ <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
   <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">

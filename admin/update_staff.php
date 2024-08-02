@@ -344,7 +344,7 @@ require_once'../db.php';
     <div id="error-message" style="color: red;"></div>
 </div>
 
-                                      document.getElementById('contactNo').addEventListener('input', function(event) {
+                  <script>                    document.getElementById('contactNo').addEventListener('input', function(event) {
     const input = event.target;
     const value = input.value;
     
@@ -357,7 +357,7 @@ require_once'../db.php';
     } else {
         input.value = cleanedValue;
     }
-});
+});</script>
 
                                 
                                     

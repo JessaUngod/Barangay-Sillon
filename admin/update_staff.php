@@ -339,6 +339,7 @@ require_once'../db.php';
         placeholder="Enter Contact no." 
         style="font-size: 15px;" 
         maxlength="11" 
+     value ="<?php echo $rower['c_no']; ?>"
         required
     >
     <div id="error-message" style="color: red;"></div>

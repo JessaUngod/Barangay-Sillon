@@ -368,7 +368,7 @@ $sanaoll2 = 0;
 
 $sanaoll = $absent-$resta;
 
-echo $sanaoll.$absent; ?> </strong> </div>
+echo $sanaoll.$absent.$resta; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>

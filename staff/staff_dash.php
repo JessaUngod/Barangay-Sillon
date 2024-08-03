@@ -365,9 +365,10 @@ $days = $interval->days;
 <?php 
 $sanaoll = 0;
 $sanaoll2 = 0;
-$sanaoll2 = $resta - $res226r;
+
 $sanaoll = $absent-$resta;
-echo $sanaoll.$sanaoll2; ?> </strong> </div>
+$sanaoll2; = $sanaoll- $res226r;
+echo $sanaoll2 ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>

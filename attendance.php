@@ -98,12 +98,6 @@ require_once'db.php';
                                        <?php
                                         		}else{
 								if($pm >= '17:00:00'){
-										?>
-                                       <script>
-                                           window.location = "attendance.php?msgerror=invalid";
-                                       </script>
-                                       <?php
-								}else{
 									if ($late >= '08:00:00') {
                                         				 $insert_sql = "INSERT INTO `attendance`(`emp_id`,`time_in`,`hour_in`,`status`) VALUES ('$idemp','$timeds','$orastime','Late Time In')";
                 	$totaldays=mysqli_query($con, $insert_sql);
@@ -163,6 +157,13 @@ require_once'db.php';
                 		
                 	}
                                         			}
+							
+								}else{
+											?>
+                                       <script>
+                                           window.location = "attendance.php?msgerror=invalids";
+                                       </script>
+                                       <?php	
 								}
                                         			
                                         			
@@ -284,7 +285,7 @@ require_once'db.php';
 
              <div class="col-md-12">
 		        	<?php 
-    if (isset($_GET['msgerror'])=="invalid") {
+    if (isset($_GET['msgerror'])=="invalids") {
 	     echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a href='attendance.php' class='btn-close  float-end'></a>Invalid Time In</div>";
     // echo '<script>swal("ERROR !", "You Must Time in First", "warning")</script>';
 }

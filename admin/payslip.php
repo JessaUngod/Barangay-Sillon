@@ -172,7 +172,7 @@ $days = $interval->days;
                                                   $absent = 0;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent=$res-$totals; echo $absent;?></td>
+                                                  $absent=$days-$totals; echo $absent;?></td>
                                                 
                                             </tr>
                                             <tr>

@@ -215,7 +215,7 @@ error_reporting(0);
 
                                                     $oks22 = mysqli_query($con, $sql22);
 
-                                                    $res226 = mysqli_num_rows($oks22);
+                                                    $res226gg = mysqli_num_rows($oks22);
                                                    
 
 
@@ -226,7 +226,7 @@ error_reporting(0);
 date_default_timezone_set("Asia/manila");
          $timem = date('y-m-d');
          // $timem = '2024-08-01';
-$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem' AND time_out=''";
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem";
  $oks22s = mysqli_query($con, $sql22ss);
  $resta = mysqli_num_rows($oks22s);
 
@@ -279,7 +279,7 @@ $days = $interval->days;
                                                                           $absent= $days+1-$totals; ?>
 
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $sanaoll = 0; $yay=0;
-$sanaoll = $absent-$resta;  $yay=$res226r-$sanaoll; echo $yay.$sanaoll;?></strong> </div>
+$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll; echo $yay.$sanaoll;?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clock fa-2x text-gray-300"></i>

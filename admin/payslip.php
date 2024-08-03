@@ -173,9 +173,9 @@ $days = $interval->days;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
                                                   $absent= if($days == 0){
-    1;
+   echo 1;
   }else{
-    $days;
+   echo $days;
   }-$totals; echo $absent;?></td>
                                                 
                                             </tr>

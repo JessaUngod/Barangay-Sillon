@@ -390,7 +390,31 @@ $sanaoll2 = 0;
 
 $sanaoll = $absent-$restad;
 
-echo $sanaoll; ?> </strong> </div>
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+?>
+          
+
+<?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $sanaoll;
+           }else{
+            echo 0;
+           }?>
+
+  </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -537,8 +561,30 @@ $days = $interval->days;
                                                                           $absent = 0;
                                                                           $totals =0;
                                                                           $totals= $res2261-$res226r;
-                                                                          $absent= $days+1-$totals; $sanaoll = 0; $yay=0;
-$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll; echo $yay;?>,
+                                                                          $absent= $days+1-$totals;?><?php $sanaoll = 0; $yay=0;
+$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll;
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+          
+
+?><?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $yay;
+           }else{
+            echo 0;
+           }?>,
         <?php
 
 date_default_timezone_set("Asia/manila");
@@ -594,12 +640,35 @@ $days = $interval->days;
                                                                           $absent = 0;
                                                                           $totals =0;
                                                                           $totals= $res2261-$res226r;
-                                                                          $absent= $days+1-$totals; $sanaoll = 0;
+                                                                          $absent= $days+1-$totals;  ?><?php 
+$sanaoll = 0;
 $sanaoll2 = 0;
 
 $sanaoll = $absent-$restad;
 
-echo $sanaoll; ?>,
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+?>
+          
+
+<?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $sanaoll;
+           }else{
+            echo 0;
+           }?>,
           <?php   
                $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";
 

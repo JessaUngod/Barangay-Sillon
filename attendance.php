@@ -82,6 +82,7 @@ require_once'db.php';
           
           $late = date('H:i:s');
           $orastime = date('H:i:s');
+			$5pm = date('H:i:s');
 
                 	 $onlyone = "SELECT * FROM employee_info WHERE emp_id ='$idemp'";
                                       $result = mysqli_query($con, $onlyone);
@@ -96,7 +97,10 @@ require_once'db.php';
                                        </script>
                                        <?php
                                         		}else{
-                                        			if ($late >= '08:00:00') {
+								if($5pm >= '17:00:00'){
+									echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a class='btn-close  float-end'></a>Invalid Time In</div>";
+								}else{
+									if ($late >= '08:00:00') {
                                         				 $insert_sql = "INSERT INTO `attendance`(`emp_id`,`time_in`,`hour_in`,`status`) VALUES ('$idemp','$timeds','$orastime','Late Time In')";
                 	$totaldays=mysqli_query($con, $insert_sql);
                 	if ($totaldays) {
@@ -155,6 +159,8 @@ require_once'db.php';
                 		
                 	}
                                         			}
+								}
+                                        			
                                         			
                                      
                 	 

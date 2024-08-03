@@ -79,7 +79,7 @@ require_once'db.php';
            date_default_timezone_set("Asia/manila"); 
           $time = date('y-m-d');
           $timeds = date('y-m-d');
-          
+    
           $late = date('H:i:s');
           $orastime = date('H:i:s');
 			$pm = date('H:i:s');
@@ -189,6 +189,9 @@ require_once'db.php';
                 }
 
                  ?>
+
+	
+
                  <?php
 	   		 
                 if (isset($_POST['timeout'])) {
@@ -196,6 +199,7 @@ require_once'db.php';
            date_default_timezone_set("Asia/manila"); 
           $time = date('F d, Y h:i A');
           $datein = date('y-m-d');
+			
 
 
                 	 $onlyone = "SELECT * FROM employee_info WHERE emp_id ='$idemp'";
@@ -206,13 +210,38 @@ require_once'db.php';
                                        $onlyones = "SELECT * FROM attendance WHERE emp_id ='$idemp' AND time_in ='$datein'";
                                       $results = mysqli_query($con, $onlyones);
                                         	if(mysqli_num_rows($results) > 0){
-                                        		  $insert_sql = "UPDATE `attendance` SET `time_out`='$time' WHERE emp_id ='$idemp' AND time_in ='$datein'";
+							 $onlyones = "SELECT * FROM attendance WHERE emp_id ='$idemp' AND time_in ='$datein'";
+                                      $results1 = mysqli_query($con, $onlyones);
+							$row = mysqli_fetch_assoc($results1);
+							$timeinsya =['hour_in'];
+							
+			  date_default_timezone_set("Asia/manila"); 
+			$nownaka = date('H:i:s');	
+$date1 = new DateTime($timeinsya);
+$date2 = new DateTime($nownaka);
+
+$interval = $date1->diff($date2);
+
+
+$hours = $interval->days * 24 + $interval->h;
+$hours += $interval->i / 60;
+ 
+	 if($hours <= 1){
+	 		  $insert_sql = "UPDATE `attendance` SET `time_out`='$time' WHERE emp_id ='$idemp' AND time_in ='$datein'";
                 	        mysqli_query($con, $insert_sql);
                 	             ?>
                                        <script>
                                            window.location = "attendance.php?msgtime_out=time_out";
                                        </script>
                                        <?php
+	 }else{
+				?>
+                                       <script>
+                                           window.location = "attendance.php?msgerrortimeout=invalid_timeout";
+                                       </script>
+                                       <?php			
+	 }
+                                        
                                         	}else{
                                         		?>
                                        <script>
@@ -284,6 +313,15 @@ require_once'db.php';
     			
 
              <div class="col-md-12">
+				        	<?php 
+    if (isset($_GET['msgerrortimeout'])=="invalid_timeout") {
+	     echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a href='attendance.php' class='btn-close  float-end'></a>Invalid Time In</div>";
+    // echo '<script>swal("ERROR !", "You Must Time in First", "warning")</script>';
+}
+
+
+
+     ?>
 		        	<?php 
     if (isset($_GET['msgerror'])=="invalids") {
 	     echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a href='attendance.php' class='btn-close  float-end'></a>Invalid Time In</div>";

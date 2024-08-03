@@ -124,23 +124,29 @@ require_once'../db.php';
                                                  $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idid' ORDER BY `time_in` ASC";
          $res2 = mysqli_query($con,$sql2);
          $rows2d = mysqli_fetch_assoc($res2); 
+                                                 $started = $rows2d['time_in'];
      }?><?php if (isset($_GET['employeepay_id'])) {
                 $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
          $res2 = mysqli_query($con,$sql2);
-         $rows2day = mysqli_fetch_assoc($res2); }?><?php echo date("F d, Y",strtotime($rows2d['time_in'])); ?></td>
+         $rows2day = mysqli_fetch_assoc($res2);
+                                              $endays = $rows2day['days'];  }?><?php echo date("F d, Y",strtotime($started)); ?></td>
                                                 
                                             </tr>
                                             <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;End Date : <?php echo date("F d, Y",strtotime($rows2day['days'])); ?></td>
+                                                <td class="border border-2 border-dark">&nbsp;&nbsp;End Date : <?php echo date("F d, Y",strtotime($endays)); ?></td>
                                                 
                                             </tr>
                                            
                                             <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Total Days : <?php  $sql22 = "SELECT * FROM `countofdays`";
+                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Total Days : <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
 
-                                                    $oks22 = mysqli_query($con, $sql22);
+$interval = $date1->diff($date2);
 
-                                                    $res = mysqli_num_rows($oks22); ?><?php echo $res;?></td>
+
+$days = $interval->days; 
+
+  ?><?php echo $days; ?></td>
                                                 
                                             </tr>
                                             <tr>

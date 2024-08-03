@@ -172,11 +172,11 @@ $days = $interval->days;
                                                   $absent = 0;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent=<?php if($days == 0){
+                                                  $absent= if($days == 0){
     1;
   }else{
     $days;
-  }  ?>-$totals; echo $absent;?></td>
+  }-$totals; echo $absent;?></td>
                                                 
                                             </tr>
                                             <tr>

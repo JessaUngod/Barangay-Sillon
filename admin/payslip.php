@@ -127,7 +127,7 @@ require_once'../db.php';
      }?><?php if (isset($_GET['employeepay_id'])) {
                 $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
          $res2 = mysqli_query($con,$sql2);
-         $rows2day = mysqli_fetch_assoc($res2); }?><?php echo date("F d, Y",strtotime($rows2d['days'])); ?></td>
+         $rows2day = mysqli_fetch_assoc($res2); }?><?php echo date("F d, Y",strtotime($rows2d['time_in'])); ?></td>
                                                 
                                             </tr>
                                             <tr>

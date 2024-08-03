@@ -368,7 +368,7 @@ $sanaoll2 = 0;
 
 $sanaoll = $absent-$resta;
 
-echo $sanaoll; ?> </strong> </div>
+echo $sanaoll.$absent; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>
@@ -518,7 +518,7 @@ echo $resd;
                ]
      }],
      xaxis: {
-         categories: ['Total Time In', 'Total Absent', 'Total Late']
+         categories: ['Total Present', 'Total Absent', 'Total Late']
      }
  }
  var chart = new ApexCharts(document.querySelector("#chart"), options);

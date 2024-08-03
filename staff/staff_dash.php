@@ -251,9 +251,10 @@ date_default_timezone_set("Asia/manila");
 $sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem'";
  $oks22s = mysqli_query($con, $sql22ss);
  $resta = mysqli_num_rows($oks22s);
+$starter = $resta['time_in'];
 
 ?>
-                                         <?php $date1 = new DateTime($started);
+                                         <?php $date1 = new DateTime($starter);
 $date2 = new DateTime($endays);
 
 $interval = $date1->diff($date2);

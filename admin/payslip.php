@@ -121,7 +121,7 @@ require_once'../db.php';
                                                 if (isset($_GET['employeepay_id'])) {
                
 
-                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idid' ORDER BY `days` ASC";
+                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idid' ORDER BY `time_in` ASC";
          $res2 = mysqli_query($con,$sql2);
          $rows2d = mysqli_fetch_assoc($res2); 
      }?><?php if (isset($_GET['employeepay_id'])) {

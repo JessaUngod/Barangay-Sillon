@@ -280,11 +280,18 @@ $days = $interval->days;
                                                   $totals =0;
 
                                                   $totals= $res2261-$res226;
-                                                  $absent=$days+1-$totals;
+if ($totals == 0){
+ $minusi = 0;
+}else{
+ $minusi = $totals;
+}
+                                                  $absent=$days+1-$minusi;
 
 ?>
                                                
-                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $nowna =0; $nowna = $absent-$resta; if ($nowna > 0){
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<?php 
+$nowna =0; $nowna = $absent-$resta; if ($nowna > 0){
  echo $nowna;
  
                                             }else{

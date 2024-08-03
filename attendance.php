@@ -199,6 +199,8 @@ require_once'db.php';
            date_default_timezone_set("Asia/manila"); 
           $time = date('F d, Y h:i A');
           $datein = date('y-m-d');
+			 
+			$nownaka = date('H:i:s');
 			
 
 
@@ -212,11 +214,10 @@ require_once'db.php';
                                         	if(mysqli_num_rows($results) > 0){
 							 $onlyones = "SELECT * FROM attendance WHERE emp_id ='$idemp' AND time_in ='$datein'";
                                       $results1 = mysqli_query($con, $onlyones);
-							$row = mysqli_fetch_assoc($results1);
-							$timeinsya =['hour_in'];
+							$rowt = mysqli_fetch_assoc($results1);
+							$timeinsya =$rowt['hour_in'];
 							
-			  date_default_timezone_set("Asia/manila"); 
-			$nownaka = date('H:i:s');	
+			 	
 $date1 = new DateTime($timeinsya);
 $date2 = new DateTime($nownaka);
 

@@ -305,7 +305,9 @@ $days = $interval->days;
                       
                                             <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <?php 
-echo $absent- $resta;
+$sanaoll = 0;
+$sanaoll = $absent-$resta
+echo $sanaoll ;
 // $nowna =0; $nowna = $absent-$resta; if ($nowna > 0){
 //  echo $nowna;
  

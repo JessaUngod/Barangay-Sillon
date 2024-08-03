@@ -227,7 +227,7 @@ $interval = $date1->diff($date2);
 $hours = $interval->days * 24 + $interval->h;
 $hours += $interval->i / 60;
  
-	 if($hours >= 0){
+	 if($hours >= 1){
 	 		  $insert_sql = "UPDATE `attendance` SET `time_out`='$time' WHERE emp_id ='$idemp' AND time_in ='$datein'";
                 	        mysqli_query($con, $insert_sql);
                 	             ?>

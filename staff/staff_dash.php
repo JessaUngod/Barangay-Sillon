@@ -281,7 +281,7 @@ $days = $interval->days;
 
                                                   $totals= $res2261-$res226;
 if ($totals == 0){
- $minusi = 0;
+ $minusi = $days+1;
 }else{
  $minusi = $totals;
 }

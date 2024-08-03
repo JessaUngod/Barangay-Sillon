@@ -290,18 +290,18 @@ $sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll;
          $laslas= $row['lname'];
         
 
-
-
-
-error_reporting(0);
 $resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
-            if(mysqli_num_rows($resulta) > 0){
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+          
+
+?><?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
             echo $yay;
            }else{
             echo 0;
-           }
-
-?></strong> </div>
+           }?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clock fa-2x text-gray-300"></i>

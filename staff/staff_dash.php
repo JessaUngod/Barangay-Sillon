@@ -367,8 +367,8 @@ $sanaoll = 0;
 $sanaoll2 = 0;
 
 $sanaoll = $absent-$resta;
-$sanaoll2; = $sanaoll- $res226r;
-echo $sanaoll2 ?> </strong> </div>
+$sanaoll2 = $sanaoll- $res226r;
+echo $sanaoll2; ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>

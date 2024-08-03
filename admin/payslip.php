@@ -171,6 +171,8 @@ $days = $interval->days;
                                                   <?php 
 if($days == 0){
    $okoka = 1;
+  }else{
+ $okoka = $days;
   }
                                                   $absent = 0;
                                                   $totals =0;

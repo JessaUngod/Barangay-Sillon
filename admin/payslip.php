@@ -146,11 +146,9 @@ $interval = $date1->diff($date2);
 
 $days = $interval->days; 
 
-  ?><?php if($days == 0){
-    echo 1;
-  }else{
-   echo $days;
-  }  ?></td>
+  ?><?php
+   echo $days+1;
+   ?></td>
                                                 
                                             </tr>
                                             <tr>
@@ -169,15 +167,11 @@ $days = $interval->days;
 
                                                     $res2261 = mysqli_num_rows($oks22); ?>
                                                   <?php 
-if($days == 0){
-   $okoka = 1;
-  }else{
- $okoka = $days;
-  }
+
                                                   $absent = 0;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent= $okoka-$totals; echo $absent;?></td>
+                                                  $absent= $days+1-$totals; echo $absent;?></td>
                                                 
                                             </tr>
                                             <tr>

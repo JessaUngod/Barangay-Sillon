@@ -146,7 +146,11 @@ $interval = $date1->diff($date2);
 
 $days = $interval->days; 
 
-  ?><?php echo $days; ?></td>
+  ?><?php if($days == 0){
+    echo 0;
+  }else{
+   echo $days;
+  }  ?></td>
                                                 
                                             </tr>
                                             <tr>

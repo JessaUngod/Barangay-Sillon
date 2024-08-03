@@ -97,7 +97,7 @@ require_once'db.php';
                                        </script>
                                        <?php
                                         		}else{
-								if($pm >= '17:00:00'){
+								if($pm <= '17:00:00'){
 									if ($late >= '08:00:00') {
                                         				 $insert_sql = "INSERT INTO `attendance`(`emp_id`,`time_in`,`hour_in`,`status`) VALUES ('$idemp','$timeds','$orastime','Late Time In')";
                 	$totaldays=mysqli_query($con, $insert_sql);
@@ -316,7 +316,7 @@ $hours += $interval->i / 60;
              <div class="col-md-12">
 				        	<?php 
     if (isset($_GET['msgerrortimeout'])=="invalid_timeout") {
-	     echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a href='attendance.php' class='btn-close  float-end'></a>Invalid Time In</div>";
+	     echo "<div class='fw-bold alert alert-danger py-2 px-2 text-center'><a href='attendance.php' class='btn-close  float-end'></a>Too early to Time Out</div>";
     // echo '<script>swal("ERROR !", "You Must Time in First", "warning")</script>';
 }
 

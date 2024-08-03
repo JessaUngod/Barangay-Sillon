@@ -253,11 +253,14 @@ $sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$time
  $resta = mysqli_num_rows($oks22s);
 
 ?>
-                                         <?php  $sql22 = "SELECT * FROM `countofdays`";
+                                         <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
 
-                                                    $oks22 = mysqli_query($con, $sql22);
+$interval = $date1->diff($date2);
 
-                                                    $res = mysqli_num_rows($oks22); ?>
+
+$days = $interval->days; 
+?>
                                <?php 
                                                  
                                                  
@@ -277,7 +280,7 @@ $sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$time
                                                   $totals =0;
 
                                                   $totals= $res2261-$res226;
-                                                  $absent=$res-$totals;
+                                                  $absent=$days+1-$totals;
 
 ?>
                                                

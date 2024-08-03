@@ -307,7 +307,7 @@ $days = $interval->days;
 <?php 
 $sanaoll = 0;
 $sanaoll = $absent-$resta;
-echo $sanaoll;
+echo $sanaoll.$resta;
 // $nowna =0; $nowna = $absent-$resta; if ($nowna > 0){
 //  echo $nowna;
  

@@ -226,7 +226,7 @@ error_reporting(0);
 date_default_timezone_set("Asia/manila");
          $timem = date('y-m-d');
          // $timem = '2024-08-01';
-$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem'";
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem' AND time_out=''";
  $oks22s = mysqli_query($con, $sql22ss);
  $resta = mysqli_num_rows($oks22s);
 

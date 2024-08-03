@@ -279,7 +279,29 @@ $days = $interval->days;
                                                                           $absent= $days+1-$totals; ?>
 
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $sanaoll = 0; $yay=0;
-$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll; echo $yay;?></strong> </div>
+$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll;
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+
+
+
+error_reporting(0);
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+            if(mysqli_num_rows($resulta) > 0){
+            echo $yay;
+           }else{
+            echo 0;
+           }
+
+?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clock fa-2x text-gray-300"></i>

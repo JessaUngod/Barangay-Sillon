@@ -335,12 +335,12 @@ if ($totals == 0){
                                             <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <?php 
 echo $absent;
-$nowna =0; $nowna = $absent-$resta; if ($nowna > 0){
- echo $nowna;
+// $nowna =0; $nowna = $absent-$resta; if ($nowna > 0){
+//  echo $nowna;
  
-                                            }else{
- echo 0;
-                                            }  ?> </strong> </div>
+//                                             }else{
+//  echo 0;
+//                                             }  ?> </strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-users fa-2x text-gray-300"></i>

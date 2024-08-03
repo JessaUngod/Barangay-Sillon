@@ -279,7 +279,7 @@ $days = $interval->days;
                                                                           $absent= $days+1-$totals; ?>
 
                                             <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $sanaoll = 0; $yay=0;
-$sanaoll = $absent-$resta;  $yay=$res226r-$sanaoll; echo $yay.sanaol;?></strong> </div>
+$sanaoll = $absent-$resta;  $yay=$res226r-$sanaoll; echo $yay.sanaoll;?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clock fa-2x text-gray-300"></i>

@@ -419,7 +419,13 @@ $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in = '$time
                                                   $totals =0;
 $nowna =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent=$res-$totals;
+if ($totals == 0){
+ $minusi = $days+1;
+}else{
+ $minusi = $totals;
+}
+                                                  $absent=$days+1-$minusi;
+                                               
 $nowna = $absent-$resta;
  if ($nowna > 0){
  echo $nowna;

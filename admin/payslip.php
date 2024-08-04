@@ -256,7 +256,7 @@ $days = $interval->days;
                                 <div class="col-md-4"> <strong class="fw-bold" style="color: #000; font-size:18px;">OFFICIAL PAYSLIP</strong></div>
                                 <div class="col-md-4"></div>
                                 <div class="col-md-3 "  style="color: #000; "><strong class="mt-5">Date</strong>
-                                <input class="text-center fw-bold " style="border-top: none; border-left: none; border-right: none; max-width: 120px;" value="<?php echo date('F d, Y') ?>" readonly></div> 
+                                <input class="text-center fw-bold " style="border-top: none; border-left: none; border-right: none; max-width: 130px;" value="<?php echo date('F d, Y') ?>" readonly></div> 
                                  <script>
                             function updateTime(){
                                 var time = new Date();

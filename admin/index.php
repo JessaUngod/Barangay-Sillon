@@ -37,10 +37,11 @@ require_once("../db.php");
                                             $password = $_POST['password'];
                                             $query = "SELECT * FROM admin WHERE uname = '$user' AND pass ='$password'";
                                             $result = mysqli_query($con, $query);
-                                            $row = mysqli_fetch_array($result);
+                                            
 
                                             if(!empty($user) && !empty($password)){
                                                 if(mysqli_num_rows($result)>0){
+                                                    $row = mysqli_fetch_array($result);
                                                     $_SESSION['idadmins'] = $row['id'];
                                                     header("location:./admin_dash.php?msg=login");
                                                 } else {

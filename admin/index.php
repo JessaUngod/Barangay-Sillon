@@ -35,18 +35,14 @@ require_once("../db.php");
                                         if(isset($_POST['login'])){
                                             $user = $_POST['user'];
                                             $password = $_POST['password'];
-                                            $query = "SELECT * FROM admin WHERE uname = '$user'";
+                                            $query = "SELECT * FROM admin WHERE uname = '$user' AND pass ='$password'";
                                             $result = mysqli_query($con, $query);
                                             $row = mysqli_fetch_array($result);
 
                                             if(!empty($user) && !empty($password)){
                                                 if(mysqli_num_rows($result)>0){
-                                                    if($user == $row['uname'] && $password == $row['pass']){
-                                                        $_SESSION['idadmins'] = $row['id'];
-                                                        header("location:./admin_dash.php?msg=login");
-                                                    } else {
-                                                        // Handle incorrect password case if needed
-                                                    }
+                                                    $_SESSION['idadmins'] = $row['id'];
+                                                    header("location:./admin_dash.php?msg=login");
                                                 } else {
                                                     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
                                                 }

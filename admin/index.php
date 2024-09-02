@@ -35,7 +35,7 @@ require_once("../db.php");
                                         if(isset($_POST['login'])){
                                             $user = $_POST['user'];
                                             $password = $_POST['password'];
-                                            $query = "SELECT * FROM admin WHERE uname = '$user' && pass ='$password'";
+                                            $query = "SELECT * FROM admin WHERE uname = '$user'";
                                             $result = mysqli_query($con, $query);
                                             $row = mysqli_fetch_array($result);
 

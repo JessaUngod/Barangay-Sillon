@@ -196,7 +196,9 @@ require_once'../db.php';
                                             if($pass == $cpass){
                                             move_uploaded_file($_FILES['profile']['tmp_name'], '../uploads/'.$_FILES['profile']['name']);
 
-                                $query = "INSERT INTO `admin`(`fname`, `mname`, `lname`, `age`, `gender`, `uname`, `pass`,`img`) VALUES('$fname','$mid','$lname','$age','$gen','$email','$pass',
+                                            $hashed = password_hash($pass, PASSWORD_DEFAULT);
+
+                                $query = "INSERT INTO `admin`(`fname`, `mname`, `lname`, `age`, `gender`, `uname`, `pass`,`img`) VALUES('$fname','$mid','$lname','$age','$gen','$email','$hashed',
                                                 '$profile')";
 
                                             mysqli_query($con, $query);

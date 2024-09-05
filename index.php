@@ -16,7 +16,7 @@
 	<nav class="navbar navbar-expand-lg  navbar-dark " style="background-color: #000;">
 		<div class="container">
 			
-			<h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%;"><strong> Barangay Sillon Employee Attendance</strong></h1>
+			<h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%;"><strong> Barangay Sillon  <span class="d-lg-initial d-none">Employee Attendance</span></strong></h1>
 			<button class="navbar-toggler shadow-none border-0" type="button" data-mdb-toggle="offcanvas" data-mdb-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"> 
 				<i class="fas fa-bars"></i>
 				
@@ -57,6 +57,8 @@
 			</ul>
 
 			<a href="attendance.php" class="btn btn-light py-3 fw-bold" style="max-height: 47px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Attendance</strong></a>
+			<a href="staff/index.php" class="btn btn-light py-3 fw-bold d-lg-none d-block" style="max-height: 47px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Login</strong></a>
+			<a href="admin/index.php" class="btn btn-light py-3 fw-bold d-lg-none d-block" style="max-height: 47px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Admin Login</strong></a>
 			
 					
 
@@ -71,7 +73,7 @@
 
 	</nav>
 
-	<main class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 60px);
+	<main class="d-flex justify-content-center align-items-center" style="height: 100vh;
 	background: linear-gradient( rgba(0,0,0,0.3), rgba(0,0,0,0.3)),url(./assets/img/brgy.hall1.jpg); background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;">

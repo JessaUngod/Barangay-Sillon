@@ -110,10 +110,7 @@ require_once 'db.php';
 
                             ?>
                                             <script>
-                                                window.location = "attendance.php?msginsert=inserted";
-                                                setTimeout(() => {
-                                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
-                                                }, 3000);
+                                               window.location.href = "proof.php?emp_id=<?= $idemp ?>";
                                             </script>
                                         <?php
 
@@ -123,10 +120,7 @@ require_once 'db.php';
                                             mysqli_query($con, $insert_sql);
                                         ?>
                                             <script>
-                                                window.location = "attendance.php?msginsert=inserted";
-                                                setTimeout(() => {
-                                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
-                                                }, 3000);
+                                                window.location.href = "proof.php?emp_id=<?= $idemp ?>";
                                             </script>
                                         <?php
                                         }
@@ -140,8 +134,8 @@ require_once 'db.php';
                                         if (mysqli_num_rows($result) > 0) {
 
                                         ?>
-                                            <script>
-                                                window.location = "attendance.php?msginsert=inserted";
+                                             <script>
+                                                window.location.href = "proof.php?emp_id=<?= $idemp ?>";
                                             </script>
                                         <?php
 
@@ -151,10 +145,7 @@ require_once 'db.php';
                                             mysqli_query($con, $insert_sql);
                                         ?>
                                             <script>
-                                                window.location = "attendance.php?msginsert=inserted";
-                                                setTimeout(() => {
-                                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
-                                                }, 3000);
+                                                window.location.href = "proof.php?emp_id=<?= $idemp ?>";
                                             </script>
                                 <?php
                                         }
@@ -228,10 +219,7 @@ require_once 'db.php';
                                 mysqli_query($con, $insert_sql);
             ?>
                                 <script>
-                                    window.location = "attendance.php?msgtime_out=time_out";
-                                    setTimeout(() => {
-                                        window.location.href = "proof.php?emp_id=<?= $idemp ?>";
-                                    }, 3000);
+                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
                                 </script>
                             <?php
                             } else {

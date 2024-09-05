@@ -95,6 +95,7 @@ require_once 'db.php';
             ?>
                             <script>
                                 window.location = "attendance.php?donetime_in=donetime_in";
+                               
                             </script>
                             <?php
                         } else {
@@ -110,6 +111,9 @@ require_once 'db.php';
                             ?>
                                             <script>
                                                 window.location = "attendance.php?msginsert=inserted";
+                                                setTimeout(() => {
+                                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
+                                                }, 3000);
                                             </script>
                                         <?php
 
@@ -120,6 +124,9 @@ require_once 'db.php';
                                         ?>
                                             <script>
                                                 window.location = "attendance.php?msginsert=inserted";
+                                                setTimeout(() => {
+                                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
+                                                }, 3000);
                                             </script>
                                         <?php
                                         }
@@ -145,6 +152,9 @@ require_once 'db.php';
                                         ?>
                                             <script>
                                                 window.location = "attendance.php?msginsert=inserted";
+                                                setTimeout(() => {
+                                                    window.location.href = "proof.php?emp_id=<?= $idemp ?>";
+                                                }, 3000);
                                             </script>
                                 <?php
                                         }
@@ -219,6 +229,9 @@ require_once 'db.php';
             ?>
                                 <script>
                                     window.location = "attendance.php?msgtime_out=time_out";
+                                    setTimeout(() => {
+                                        window.location.href = "proof.php?emp_id=<?= $idemp ?>";
+                                    }, 3000);
                                 </script>
                             <?php
                             } else {

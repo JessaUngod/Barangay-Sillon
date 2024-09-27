@@ -187,6 +187,11 @@ require_once 'db.php';
 
                 $nownaka = date('H:i:s');
 
+                $dateTimeIn ="2014-05-28 02:00:00";
+                $dateTimeToday = date("Y-m-d h:i:s");
+                $timestamp1 = strtotime($dateTimeIn);
+                $timestamp2 = strtotime($dateTimeToday);
+                $hour = abs($timestamp2 - $timestamp1)/(60*60);
 
 
                 $onlyone = "SELECT * FROM employee_info WHERE emp_id ='$idemp'";

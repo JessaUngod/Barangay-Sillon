@@ -101,7 +101,7 @@ require_once 'db.php';
                             </script>
                             <?php
                         } else {
-                            if ($pm <= '17:00:00') {
+                           // if ($pm <= '17:00:00') {
                                 if ($late >= '08:00:00') {
                                     $insert_sql = "INSERT INTO `attendance`(`emp_id`,`time_in`,`hour_in`,`status`) VALUES ('$idemp','$timeds','$orastime','Late Time In')";
                                     $totaldays = mysqli_query($con, $insert_sql);
@@ -153,13 +153,13 @@ require_once 'db.php';
                                         }
                                     }
                                 }
-                            } else {
+                            //} else {
                                 ?>
-                                <script>
+                               <!--- <script>
                                     window.location = "attendance.php?msgerror=invalids";
-                                </script>
+                                </script>--->
                     <?php
-                            }
+			   // }
                         }
                     } else {
                         header("location:attendance.php?timeinvalid=invalid");

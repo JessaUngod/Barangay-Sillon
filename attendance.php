@@ -187,9 +187,6 @@ require_once 'db.php';
 
                 $nownaka = date('H:i:s');
 
-                
-
-
                 $onlyone = "SELECT * FROM employee_info WHERE emp_id ='$idemp'";
                 $result = mysqli_query($con, $onlyone);
 

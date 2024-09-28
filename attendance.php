@@ -187,15 +187,13 @@ require_once 'db.php';
 
                 $nownaka = date('H:i:s');
 
-                $dateTimeIn ="2014-05-28 02:00:00";
-                $dateTimeToday = date("Y-m-d h:i:s");
-                $timestamp1 = strtotime($dateTimeIn);
-                $timestamp2 = strtotime($dateTimeToday);
-                $hour = abs($timestamp2 - $timestamp1)/(60*60);
+                
 
 
                 $onlyone = "SELECT * FROM employee_info WHERE emp_id ='$idemp'";
                 $result = mysqli_query($con, $onlyone);
+
+		
                 if (!empty($idemp)) {
                     if (mysqli_num_rows($result) > 0) {
 
@@ -221,7 +219,15 @@ require_once 'db.php';
                             $hours = $interval->days * 24 + $interval->h;
                             $hours += $interval->i / 60;
 
-                            if ($curr_time >= $valid_out_time && $curr_time_period == $valid_period) {
+			    $dateTimeIn = date("Y-m-d h:i:s", strtotime($timeinsya));
+                            $dateTimeToday = date("Y-m-d h:i:s");
+                            $timestamp1 = strtotime($dateTimeIn);
+                            $timestamp2 = strtotime($dateTimeToday);
+                            $hourNow = abs($timestamp2 - $timestamp1)/(60*60);
+		            $isTimeOutValid = $hourNow >= 8 ? true : false;
+			
+
+                            if ($curr_time >= $valid_out_time && $curr_time_period == $valid_period && $isTimeOutValid) {
                                 $insert_sql = "UPDATE `attendance` SET `time_out`='$time' WHERE emp_id ='$idemp' AND time_in ='$datein'";
                                 mysqli_query($con, $insert_sql);
             ?>
@@ -255,6 +261,7 @@ require_once 'db.php';
             <?php
                 }
             }
+	    
 
             ?>
             <div class="row mx-lg-0 mx-auto">

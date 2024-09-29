@@ -216,7 +216,7 @@ require_once 'db.php';
                             $hours = $interval->days * 24 + $interval->h;
                             $hours += $interval->i / 60;
 
-			    $dateTimeIn = date("Y-m-d h:i:s", strtotime($timeinsya));
+			    $dateTimeIn = date("Y-m-d"). ' ' . date('h:i:s', strtotime($timeinsya));
                             $dateTimeToday = date("Y-m-d h:i:s");
                             $timestamp1 = strtotime($dateTimeIn);
                             $timestamp2 = strtotime($dateTimeToday);

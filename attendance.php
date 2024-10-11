@@ -93,14 +93,14 @@ require_once 'db.php';
                     if (mysqli_num_rows($result) > 0) {
                         $onlyone = "SELECT * FROM `attendance` WHERE emp_id ='$idemp' AND time_in='$time'";
                         $result = mysqli_query($con, $onlyone);
-                        if (mysqli_num_rows($result) > 0) {
+                        // if (mysqli_num_rows($result) > 0) {
             ?>
                             <script>
                                 window.location = "attendance.php?donetime_in=donetime_in";
                                
                             </script>
                             <?php
-                        } else {
+                        // } else {
                            // if ($pm <= '17:00:00') {
                                 if ($late >= '08:00:00') {
                                     $insert_sql = "INSERT INTO `attendance`(`emp_id`,`time_in`,`hour_in`,`status`) VALUES ('$idemp','$timeds','$orastime','Late Time In')";
@@ -160,7 +160,7 @@ require_once 'db.php';
                                 </script>--->
                     <?php
 			   // }
-                        }
+                        // }
                     } else {
                         header("location:attendance.php?timeinvalid=invalid");
                     }

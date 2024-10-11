@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $image = base64_decode($imageData);
 
     // Create a unique filename for the image
-    $filename = 'attendance_proof/' . uniqid() . '.png';
+    $filename = uniqid() . '.png';
 
     // Ensure the uploads directory exist
     if (!is_dir('uploads')) {

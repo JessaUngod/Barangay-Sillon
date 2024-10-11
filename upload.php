@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Create a unique filename for the image
     $filename = 'attendance_proof/' . uniqid() . '.png';
 
-    // Ensure the uploads directory exists
+    // Ensure the uploads directory exist
     if (!is_dir('uploads')) {
         mkdir('uploads', 0777, true);
     }

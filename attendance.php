@@ -90,15 +90,15 @@ require_once 'db.php';
                 $onlyone = "SELECT * FROM employee_info WHERE emp_id ='$idemp'";
                 $result = mysqli_query($con, $onlyone);
                 if (!empty($idemp)) {
-                    // if (mysqli_num_rows($result) > 0) {
-                    //     $onlyone = "SELECT * FROM `attendance` WHERE emp_id ='$idemp' AND time_in='$time'";
-                    //     $result = mysqli_query($con, $onlyone);
-                    //     if (mysqli_num_rows($result) > 0) {
+                    if (mysqli_num_rows($result) > 0) {
+                        $onlyone = "SELECT * FROM `attendance` WHERE emp_id ='$idemp' AND time_in='$time'";
+                        $result = mysqli_query($con, $onlyone);
+                        // if (mysqli_num_rows($result) > 0) {
             ?>
-                            <!-- <script>
+                            <script>
                                 window.location = "attendance.php?donetime_in=donetime_in";
                                
-                            </script> -->
+                            </script>
                             <?php
                         // } else {
                            // if ($pm <= '17:00:00') {

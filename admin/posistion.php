@@ -384,25 +384,22 @@ require_once'../db.php';
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
- <script>
-    let table = new DataTable('#myTable', {
-    // options
-});
-
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-
-
+ <script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.js"></script>
+<script src="../assets/js/mdb.js"></script>
+<script>
+    // Sidebar toggle functionality
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active');  // Add active class to sidebar
+        $('.content').addClass('shift');    // Shift content to the right
     });
 
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active');  // Remove active class to close sidebar
+        $('.content').removeClass('shift');    // Reset content positioning
     });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
-    });
-   </script> 
+</script>
+
 
 
 </body>

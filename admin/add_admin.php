@@ -407,25 +407,23 @@ s
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
- <script>
-    let table = new DataTable('#myTable', {
-    // options
-});
+<script src="../assets/js/jquery.min.js"></script>
+<!-- <script src="../assets/js/bootstrap.bundle.js"></script> -->
+<!-- <script src="../assets/js/mdb.js"></script> -->
 
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-
-
+     <!--SIDEBAR TOGGLE FUNCTIONALITY -->
+     
+<script>
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active'); 
+        $('.content').addClass('shift');    
     });
 
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active'); 
+        $('.content').removeClass('shift');    
     });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
-    });
-   </script> 
+</script>
 
 
 </body>

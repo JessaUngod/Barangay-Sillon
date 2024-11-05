@@ -35,51 +35,42 @@ require_once'../db.php';
 
 
   <div class="main-container-fluid d-flex">
-       <div class="sidebar" id="side_nav">
-            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon </strong></h1>
-
-                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
-            </div>
-
-   
-
-
-           <ul class="list-unstyled px-3">
-                <li class="active"><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li class=""><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-                <li class=""><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
-                <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
-                <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
-
-                <li class=""><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
-             
-
-            </ul>
-            <hr class="h-color mx-2">
-
-         
+    <!-- Sidebar -->
+    <div class="sidebar" id="side_nav">
+        <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
+            <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
+            <strong style="color: #fff;">Barangay Sillon </strong></h1>
+            <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
 
+        <ul class="list-unstyled px-3">
+            <li><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
+            <li class="active"><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
+            <li><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
+            <li><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
+            <li><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
+            <li><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
+            <li><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
+        </ul>
+        <hr class="h-color mx-2">
+    </div>
 
-        <div class="content">
-
-
-        <!-- <div class="content"> -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            
-                <div class="container-fluid">
-                    <div class="d-flex justify-content-between d-md-none d-block">
-                        <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
-                       <strong style="font-size:22px;"><strong style="font-size: 28px;">a</strong>dmin</strong></a>
-                        
-
-                    </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-
-            </button>
+    <!-- Content Area -->
+    <div class="content" style="flex-grow: 1;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between d-md-none d-block">
+                    <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;">
+                        <i class="fas fa-bars" style="width: 30px; color: #fff;"></i>
+                    </button>
+                    <strong style="font-size:22px;">Admin</strong>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
         
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                                    <?php 
@@ -514,21 +505,21 @@ $sql22 = "SELECT * FROM `employee_info`";
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
+<script src="../assets/js/jquery.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.js"></script>
+<script src="../assets/js/mdb.js"></script>
 <script>
-        // When the close button (hamburger) is clicked, toggle the sidebar
-        document.querySelector('.close-btn').addEventListener('click', function() {
-            document.getElementById('side_nav').classList.toggle('active');
-        });
+    // Sidebar toggle functionality
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active'); 
+        $('.content').addClass('shift');   
+    });
 
-        // Optional: If you want to close the sidebar when a link is clicked
-        document.querySelectorAll(".sidebar-menu li").forEach(function(item) {
-            item.addEventListener('click', function() {
-                document.querySelector(".sidebar-menu li.active")?.classList.remove('active');
-                item.classList.add('active');
-                document.getElementById('side_nav').classList.remove('active'); // Close the sidebar when a link is clicked
-            });
-        });
-    </script>
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active');  
+        $('.content').removeClass('shift');    
+    });
+</script>
 
 
 

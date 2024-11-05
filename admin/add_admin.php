@@ -71,7 +71,7 @@ require_once'../db.php';
                         <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
                        <strong style="font-size:22px;"><strong style="font-size: 28px;">a</strong>dmin</strong></a>
                         
-
+s
                     </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -115,7 +115,7 @@ require_once'../db.php';
                                  
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 fw-bold" style="color: #000;"></i>
-                                    <strong class="fw-bold">Logout</strong>
+                                    <strong class="fw-bold">Logouts/strong>
                                 </a>
                                <div class="dropdown-divider"></div>
                             </div>

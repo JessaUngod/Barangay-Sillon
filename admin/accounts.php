@@ -200,10 +200,12 @@ require_once'../db.php';
 <script src="../vendor/datatables/dataTable.js"></script>
 
 <script src="../assets/js/jquery.min.js"></script>
-<script src="../assets/js/bootstrap.bundle.js"></script>
-<script src="../assets/js/mdb.js"></script>
+<!-- <script src="../assets/js/bootstrap.bundle.js"></script> -->
+<!-- <script src="../assets/js/mdb.js"></script> -->
+
+     <!--SIDEBAR TOGGLE FUNCTIONALITY -->
+     
 <script>
-    // Sidebar toggle functionality
     $('.open-btn').on('click', function() {
         $('#side_nav').addClass('active'); 
         $('.content').addClass('shift');    

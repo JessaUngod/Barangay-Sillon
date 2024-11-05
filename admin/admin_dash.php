@@ -35,25 +35,56 @@ require_once'../db.php';
 
 
     <div class="main-container-fluid d-flex">
-       <div class="sidebar" id="side_nav">
-            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon </strong></h1>
+        <!-- Sidebar -->
+        <div class="sidebar" id="side_nav">
+            <!-- Sidebar Header -->
+            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between align-items-center">
+                <h1 class="fs-5 mb-0">
+                    <img src="../assets/img/sillon.jpg" alt="Barangay Sillon" style="width: 61px; height: 61px; border-radius: 50%;">
+                    <strong class="text-white ms-2">Barangay Sillon</strong>
+                </h1>
 
-                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
+                <!-- Sidebar toggle button for mobile -->
+                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white" aria-label="Toggle sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
 
-   
-
-
-           <ul class="list-unstyled px-3">
-                <li class="active"><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li class=""><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-                <li class=""><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
-                <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
-                <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
-
-                <li class=""><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-users"></i> Employees
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-pencil"></i> Payroll
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-book-open"></i> Reports
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-bar-chart"></i> Positions
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-user"></i> Accounts
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block">
+                        <i class="fas fa-clock"></i> Login / Logout
              
 
             </ul>
@@ -514,28 +545,21 @@ $sql22 = "SELECT * FROM `employee_info`";
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
- <script>
-    // Initialize DataTable
-    let table = new DataTable('#myTable', {
-        // DataTable options here
-    });
+<script>
+        // When the close button (hamburger) is clicked, toggle the sidebar
+        document.querySelector('.close-btn').addEventListener('click', function() {
+            document.getElementById('side_nav').classList.toggle('active');
+        });
 
-    // Handle sidebar menu item click
-    $(".sidebar-menu li").on('click', function() {
-        $(".sidebar-menu li.active").removeClass('active');
-        $(this).addClass('active');
-    });
-
-    // Open sidebar on button click
-    $('.open-btn').on('click', function() {
-        $('#side_nav').addClass('active');
-    });
-
-    // Close sidebar on button click
-    $('.close-btn').on('click', function() {
-        $('#side_nav').removeClass('active');
-    });
-</script>
+        // Optional: If you want to close the sidebar when a link is clicked
+        document.querySelectorAll(".sidebar-menu li").forEach(function(item) {
+            item.addEventListener('click', function() {
+                document.querySelector(".sidebar-menu li.active")?.classList.remove('active');
+                item.classList.add('active');
+                document.getElementById('side_nav').classList.remove('active'); // Close the sidebar when a link is clicked
+            });
+        });
+    </script>
 
 
 

@@ -21,87 +21,6 @@ require_once'../db.php';
      <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
      <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
      <script type="text/javascript" src="../assets/js/apexchart.js"></script>
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-  <style>
-        /* Sidebar Styling */
-        .sidebar {
-            width: 250px;
-            position: fixed;
-            top: 0;
-            left: -250px; /* Sidebar hidden initially */
-            height: 100%;
-            background-color: #333;
-            color: white;
-            transition: 0.3s;
-        }
-
-        /* Sidebar active (visible) */
-        .sidebar.active {
-            left: 0; /* When active, move sidebar into view */
-        }
-
-        .sidebar ul {
-            list-style-type: none;
-            padding-left: 0;
-        }
-
-        .sidebar ul li {
-            padding: 15px;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            display: block;
-        }
-
-        .sidebar ul li:hover {
-            background-color: #444;
-        }
-
-        .sidebar ul li.active {
-            background-color: #555;
-        }
-
-        /* Navbar styling */
-        .navbar-toggler {
-            background-color: #000;
-        }
-
-        /* Mobile View Styling */
-        @media (max-width: 768px) {
-            .content {
-                margin-left: 0;
-            }
-
-            /* When sidebar is active, shift content */
-            .sidebar.active + .content {
-                margin-left: 250px;
-            }
-
-            .navbar-toggler {
-                display: block;
-            }
-
-            .close-btn {
-                display: block;
-                background-color: #000;
-                color: white;
-                border: none;
-                font-size: 24px;
-                cursor: pointer;
-            }
-
-            .d-md-none {
-                display: block;
-            }
-
-            .d-md-block {
-                display: none;
-            }
-        }
-    </style>
 
 </head>
 <body>
@@ -115,45 +34,46 @@ require_once'../db.php';
      ?>
 
 
-div class="sidebar" id="side_nav">
-        <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-            <h1 class="fs-5">
-                <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
-                <strong style="color: #fff;">Barangay Sillon</strong>
-            </h1>
+  <div class="main-container-fluid d-flex">
+       <div class="sidebar" id="side_nav">
+            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
+                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon </strong></h1>
 
-            <!-- Hamburger button to toggle sidebar -->
-            <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white" id="sidebarToggle">
-                <i class="fas fa-bars"></i>
-            </button>
+                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
+            </div>
+
+   
+
+
+           <ul class="list-unstyled px-3">
+                <li class="active"><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
+                <li class=""><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
+                <li class=""><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
+                <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
+                <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
+
+                <li class=""><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
+                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
+             
+
+            </ul>
+            <hr class="h-color mx-2">
+
+         
         </div>
 
-        <ul class="list-unstyled px-3">
-            <li class="active"><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-            <li><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-            <li><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
-            <li><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
-            <li><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
-            <li><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-            <li><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
-        </ul>
-        <hr class="h-color mx-2">
-    </div>
 
-    <!-- Content Area -->
-    <div class="content" style="padding: 20px; flex-grow: 1;">
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-            <div class="container-fluid">
-                <!-- Mobile view navbar toggle button -->
-                <div class="d-flex justify-content-between d-md-none d-block">
-                    <button class="btn px-1 py-0 open-btn me-2" id="navbarToggle" style="background-color: #000;">
-                        <i class="fas fa-bars" style="width: 30px; color: #fff;"></i>
-                    </button>
-                    <a href="#" class="text-decoration-none">
-                        <strong style="font-size: 28px;">Admin</strong>
-                    </a>
-                </div>
+        <div class="content">
 
+
+        <!-- <div class="content"> -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            
+                <div class="container-fluid">
+                    <div class="d-flex justify-content-between d-md-none d-block">
+                        <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
+                       <strong style="font-size:22px;"><strong style="font-size: 28px;">a</strong>dmin</strong></a>
+                        
 
                     </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">

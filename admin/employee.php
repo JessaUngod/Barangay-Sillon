@@ -15,8 +15,8 @@ require_once '../db.php';
     <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <style>
-        /* Include the sidebar and content CSS here */
-        /* Add the CSS code from step 1 here */
+        
+        
     </style>
 </head>
 <body>
@@ -184,13 +184,13 @@ if (isset($_GET['msg']) && $_GET['msg'] == "login") {
 <script>
     // Sidebar toggle functionality
     $('.open-btn').on('click', function() {
-        $('#side_nav').addClass('active');  // Add active class to sidebar
-        $('.content').addClass('shift');    // Shift content to the right
+        $('#side_nav').addClass('active');  
+        $('.content').addClass('shift');    
     });
 
     $('.close-btn').on('click', function() {
-        $('#side_nav').removeClass('active');  // Remove active class to close sidebar
-        $('.content').removeClass('shift');    // Reset content positioning
+        $('#side_nav').removeClass('active');  
+        $('.content').removeClass('shift');    
     });
 </script>
 

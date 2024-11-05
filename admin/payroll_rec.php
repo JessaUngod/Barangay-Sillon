@@ -420,11 +420,12 @@ if(!empty($_SESSION['idadmins'])){
 <script src="../assets/js/mdb.js"></script>
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
- <script src="../assets/js/jquery.min.js"></script>
+<!--  <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.bundle.js"></script>
-<script src="../assets/js/mdb.js"></script>
+<script src="../assets/js/mdb.js"></script> -->
+  <!--SIDEBAR FUNCTIONALITY -->                      
 <script>
-    // Sidebar toggle functionality
+   
     $('.open-btn').on('click', function() {
         $('#side_nav').addClass('active');  
         $('.content').addClass('shift');    
@@ -435,6 +436,5 @@ if(!empty($_SESSION['idadmins'])){
         $('.content').removeClass('shift');  
     });
 </script>
-
 </body>
 </html>

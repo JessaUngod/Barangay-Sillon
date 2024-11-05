@@ -35,7 +35,7 @@ require_once'../db.php';
 
 
     <div class="main-container-fluid d-flex">
-        <div class="sidebar" id="side_nav">
+       <div class="sidebar" id="side_nav">
             <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
                 <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon </strong></h1>
 
@@ -515,24 +515,28 @@ $sql22 = "SELECT * FROM `employee_info`";
 <script src="../vendor/datatables/dataTable.js"></script>
 
  <script>
+    // Initialize DataTable
     let table = new DataTable('#myTable', {
-    // options
-});
+        // DataTable options here
+    });
 
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
+    // Handle sidebar menu item click
+    $(".sidebar-menu li").on('click', function() {
+        $(".sidebar-menu li.active").removeClass('active');
         $(this).addClass('active');
-
-
     });
 
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
+    // Open sidebar on button click
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active');
     });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
+
+    // Close sidebar on button click
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active');
     });
-   </script> 
+</script>
+
 
 
 </body>

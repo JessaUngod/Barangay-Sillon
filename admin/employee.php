@@ -14,6 +14,10 @@ require_once '../db.php';
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
     <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
+    <style>
+        /* Include the sidebar and content CSS here */
+        /* Add the CSS code from step 1 here */
+    </style>
 </head>
 <body>
 
@@ -121,27 +125,28 @@ if (isset($_GET['msg']) && $_GET['msg'] == "login") {
                                         <th class="fw-bold bg-primary">Gender</th>
                                         <th class="fw-bold bg-primary">Position</th>
                                         <th class="fw-bold bg-primary">Rate per Day</th>
-                                        <th class="fw-bold bg-primary">Profile Picture</th>         
+                                        <th class="fw-bold bg-primary">Profile Picture</th> 
                                     </tr>
                                 </thead>
                                 <tbody style="color: #000;">
                                     <?php 
                                     $qry = "SELECT * FROM employee_info";
                                     $qry_run = mysqli_query($con, $qry);
-                                    while($row1 = mysqli_fetch_array($qry_run)) {
+
+                                    while($row1 = mysqli_fetch_array($qry_run)){
                                     ?>
                                     <tr>
-                                        <td><?php echo $row1['emp_id'];?></td>
+                                        <td><?php echo $row1['emp_id']; ?></td>
                                         <td><?php echo $row1['fname']; ?></td>
                                         <td><?php echo $row1['mname']; ?></td>
                                         <td><?php echo $row1['lname']; ?></td>
-                                        <td><?php echo date("F d, Y", strtotime($row1['dob']));?></td>
+                                        <td><?php echo date("F d, Y", strtotime($row1['dob'])); ?></td>
                                         <td><?php echo $row1['age']; ?></td>
                                         <td><?php echo $row1['gender']; ?></td>
                                         <td><?php echo $row1['posistion']; ?></td>
                                         <td class="text-center"><?php echo $row1['money']; ?></td>
                                         <td>
-                                            <center><img height="70" width="70" style="border-radius: 50px;" src="../uploads/<?php echo $row1['img']; ?>"></center>
+                                            <center><img height="70" width="70" style="border-radius: 50px;" src="../uploads/<?php echo $row1['img']; ?>"> </center>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -176,23 +181,16 @@ if (isset($_GET['msg']) && $_GET['msg'] == "login") {
 <script src="../assets/js/jquery.min.js"></script>
 <script src="../assets/js/bootstrap.bundle.js"></script>
 <script src="../assets/js/mdb.js"></script>
-
 <script>
-    // Initialize DataTable
-    let table = new DataTable('#myTable');
-
     // Sidebar toggle functionality
-    $(".sidebar ul li").on('click', function() {
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-    });
-
     $('.open-btn').on('click', function() {
         $('#side_nav').addClass('active');  // Add active class to sidebar
+        $('.content').addClass('shift');    // Shift content to the right
     });
 
     $('.close-btn').on('click', function() {
         $('#side_nav').removeClass('active');  // Remove active class to close sidebar
+        $('.content').removeClass('shift');    // Reset content positioning
     });
 </script>
 

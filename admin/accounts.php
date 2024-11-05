@@ -199,7 +199,7 @@ require_once'../db.php';
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
-<script src="../assets/js/jquery.min.js"></script>
+<!-- <script src="../assets/js/jquery.min.js"></script> -->
 <!-- <script src="../assets/js/bootstrap.bundle.js"></script> -->
 <!-- <script src="../assets/js/mdb.js"></script> -->
 

@@ -45,24 +45,34 @@
 
         // Check if the browser supports getUserMedia
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-                .then(function(stream) {
-                    video.srcObject = stream;
-                })
-                .catch(function(error) {
-                    console.error("Error accessing camera: ", error);
-                    alert("Error accessing camera: " + error.message);
-                });
+            navigator.mediaDevices.getUserMedia({ 
+                video: {
+                    facingMode: "environment" // optional: use the back camera on mobile devices
+                }
+            })
+            .then(function(stream) {
+                video.srcObject = stream;
+            })
+            .catch(function(error) {
+                console.error("Error accessing camera: ", error);
+                alert("Error accessing camera: " + error.message);
+                document.getElementById('status').textContent = "Unable to access camera: " + error.message;
+            });
         } else {
             alert("Your browser does not support camera access.");
+            document.getElementById('status').textContent = "Your browser does not support camera access.";
         }
 
         // Capture photo when the button is clicked
         captureButton.addEventListener('click', function() {
-            canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-            const dataURL = canvas.toDataURL('image/png');
-            photo.src = dataURL;
-            document.getElementById('imageData').value = dataURL;
+            if (video.srcObject) {
+                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                const dataURL = canvas.toDataURL('image/png');
+                photo.src = dataURL;
+                document.getElementById('imageData').value = dataURL;
+            } else {
+                alert("Camera is not accessible.");
+            }
         });
     </script>
 </body>

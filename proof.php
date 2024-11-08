@@ -67,12 +67,22 @@
             .then(function(stream) {
                 // On success, attach the video stream to the video element
                 video.srcObject = stream;
+                document.getElementById('status').textContent = 'Camera is ready.';
             })
             .catch(function(error) {
                 // Handle any errors related to camera access
                 console.error("Error accessing camera: ", error);
                 alert("Error accessing camera: " + error.message);
                 document.getElementById('status').textContent = "Unable to access camera: " + error.message;
+
+                // Add additional checks for specific error codes
+                if (error.name === "NotAllowedError") {
+                    document.getElementById('status').textContent = "Camera permission denied.";
+                } else if (error.name === "NotFoundError") {
+                    document.getElementById('status').textContent = "No camera found.";
+                } else {
+                    document.getElementById('status').textContent = "An unknown error occurred with the camera.";
+                }
             });
         } else {
             alert("Your browser does not support camera access.");

@@ -3,16 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GeoCam</title>
+    <title>GeoCam Application</title>
+    <style>
+        /* Styling for video element */
+        #video {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
     <h1>GeoCam Application</h1>
     <p id="status">Getting your location...</p>
-    <video id="video" width="320" height="240" autoplay></video>
-    <button id="capture">Capture Photo</button>
-    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
-    <img id="photo" src="" alt="Captured Image">
     
+    <!-- Video element to display the camera feed -->
+    <video id="video" width="320" height="240" autoplay></video>
+
+    <!-- Button to capture photo -->
+    <button id="capture">Capture Photo</button>
+
+    <!-- Canvas to temporarily store the captured photo -->
+    <canvas id="canvas" width="320" height="240" style="display:none;"></canvas>
+
+    <!-- Image element to display the captured photo -->
+    <img id="photo" src="" alt="Captured Image">
+
+    <!-- Form to upload data -->
     <form id="geoCamForm" action="upload.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="latitude" id="latitude">
         <input type="hidden" name="longitude" id="longitude">
@@ -22,38 +38,38 @@
     </form>
 
     <script>
-        // Check if the browser supports geolocation
+        // Check if geolocation is supported and handle it
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function(position) {
-                // Display the geolocation and save it in hidden fields
                 document.getElementById('status').textContent = `Latitude: ${position.coords.latitude}, Longitude: ${position.coords.longitude}`;
                 document.getElementById('latitude').value = position.coords.latitude;
                 document.getElementById('longitude').value = position.coords.longitude;
             }, function(error) {
-                // Handle geolocation errors
                 document.getElementById('status').textContent = 'Error getting geolocation: ' + error.message;
             });
         } else {
             document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
         }
 
-        // Access the user's camera using getUserMedia
+        // Function to handle camera access
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const photo = document.getElementById('photo');
         const captureButton = document.getElementById('capture');
 
-        // Check if the browser supports getUserMedia
+        // Check for camera permissions and access
         if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ 
+            navigator.mediaDevices.getUserMedia({
                 video: {
-                    facingMode: "environment" // optional: use the back camera on mobile devices
+                    facingMode: "environment" // Try to use back camera (for mobile devices)
                 }
             })
             .then(function(stream) {
+                // On success, attach the video stream to the video element
                 video.srcObject = stream;
             })
             .catch(function(error) {
+                // Handle any errors related to camera access
                 console.error("Error accessing camera: ", error);
                 alert("Error accessing camera: " + error.message);
                 document.getElementById('status').textContent = "Unable to access camera: " + error.message;
@@ -66,9 +82,15 @@
         // Capture photo when the button is clicked
         captureButton.addEventListener('click', function() {
             if (video.srcObject) {
+                // Draw the current frame from the video to the canvas
                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                // Convert the canvas to a Data URL (image format)
                 const dataURL = canvas.toDataURL('image/png');
+                
+                // Display the captured image
                 photo.src = dataURL;
+
+                // Store the image data in a hidden input field for form submission
                 document.getElementById('imageData').value = dataURL;
             } else {
                 alert("Camera is not accessible.");

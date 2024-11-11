@@ -121,26 +121,34 @@ require_once'../db.php';
                                                 if (isset($_GET['employeepay_id'])) {
                
 
-                                                 $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` ASC";
+                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idid' ORDER BY `time_in` ASC";
          $res2 = mysqli_query($con,$sql2);
          $rows2d = mysqli_fetch_assoc($res2); 
+                                                 $started = $rows2d['time_in'];
      }?><?php if (isset($_GET['employeepay_id'])) {
                 $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
          $res2 = mysqli_query($con,$sql2);
-         $rows2day = mysqli_fetch_assoc($res2); }?><?php echo date("F d, Y",strtotime($rows2d['days'])); ?></td>
+         $rows2day = mysqli_fetch_assoc($res2);
+                                              $endays = $rows2day['days'];  }?><?php echo date("F d, Y",strtotime($started)); ?></td>
                                                 
                                             </tr>
                                             <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;End Date : <?php echo date("F d, Y",strtotime($rows2day['days'])); ?></td>
+                                                <td class="border border-2 border-dark">&nbsp;&nbsp;End Date : <?php echo date("F d, Y",strtotime($endays)); ?></td>
                                                 
                                             </tr>
                                            
                                             <tr>
-                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Total Days : <?php  $sql22 = "SELECT * FROM `countofdays`";
+                                                <td class="border border-2 border-dark">&nbsp;&nbsp;Total Days : <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
 
-                                                    $oks22 = mysqli_query($con, $sql22);
+$interval = $date1->diff($date2);
 
-                                                    $res = mysqli_num_rows($oks22); ?><?php echo $res;?></td>
+
+$days = $interval->days; 
+
+  ?><?php
+   echo $days+1;
+   ?></td>
                                                 
                                             </tr>
                                             <tr>
@@ -159,10 +167,11 @@ require_once'../db.php';
 
                                                     $res2261 = mysqli_num_rows($oks22); ?>
                                                   <?php 
+
                                                   $absent = 0;
                                                   $totals =0;
                                                   $totals= $res2261-$res226;
-                                                  $absent=$res-$totals; echo $absent;?></td>
+                                                  $absent= $days+1-$totals; echo $absent;?></td>
                                                 
                                             </tr>
                                             <tr>
@@ -247,7 +256,7 @@ require_once'../db.php';
                                 <div class="col-md-4"> <strong class="fw-bold" style="color: #000; font-size:18px;">OFFICIAL PAYSLIP</strong></div>
                                 <div class="col-md-4"></div>
                                 <div class="col-md-3 "  style="color: #000; "><strong class="mt-5">Date</strong>
-                                <input class="text-center fw-bold " style="border-top: none; border-left: none; border-right: none; max-width: 120px;" value="<?php echo date('F d, Y') ?>" readonly></div> 
+                                <input class="text-center fw-bold " style="border-top: none; border-left: none; border-right: none; max-width: 130px;" value="<?php echo date('F d, Y') ?>" readonly></div> 
                                  <script>
                             function updateTime(){
                                 var time = new Date();

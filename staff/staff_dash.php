@@ -83,8 +83,11 @@ require_once'../db.php';
 
         if(!empty($_SESSION['idstaff'])){
            $id = $_SESSION['idstaff'];
-           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = $id");
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
            $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
          }else{
            header("Location: ./index.php");
          }
@@ -92,6 +95,12 @@ require_once'../db.php';
 
 
 ?> 
+<?php
+error_reporting(0);
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+           $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+?>
 <?php 
 
 if(!empty($_SESSION['idstaff'])){
@@ -125,7 +134,7 @@ if(!empty($_SESSION['idstaff'])){
                                    
                                </span>
                                 <span class="mr-2 d-lg-inline  small fw-bold"  style="color: #000;">
-                                    <?php echo $row['fname']; ?>                                
+                                    <?php echo $names; ?>                                
                                          </span>
                                 
                             </a>
@@ -159,7 +168,290 @@ if(!empty($_SESSION['idstaff'])){
 
 <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Dashboard</strong></h1>
 
+<div class="row">
+                 
 
+
+      
+                          <div class="col-xl-3 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a >Staff Name</a> </strong> </div>
+                                               
+                                               
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $names; ?>  <?php echo $laslas; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="col-md-3  mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a >Present</a> </strong> </div>
+                                              <?php
+error_reporting(0);
+
+
+                                               
+
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem'";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res226gg = mysqli_num_rows($oks22);
+                                                   
+
+
+
+                                                 ?>
+                              <?php
+
+date_default_timezone_set("Asia/manila");
+         $timem = date('y-m-d');
+         // $timem = '2024-08-01';
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem' AND time_out=''";
+ $oks22s = mysqli_query($con, $sql22ss);
+ $resta = mysqli_num_rows($oks22s);
+
+?>
+<?php
+                                                
+               
+
+                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idem' ORDER BY `time_in` ASC";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2d = mysqli_fetch_assoc($res2); 
+                                                 $started = $rows2d['time_in'];
+     ?>
+<?php 
+                $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2day = mysqli_fetch_assoc($res2);
+                                              $endays = $rows2day['days'];  ?>
+                                      
+                                              <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
+
+$interval = $date1->diff($date2);
+
+
+$days = $interval->days; 
+
+  ?><?php
+   // echo $days+1;
+   ?>
+   <?php 
+                                                 
+                                                 
+                                                 $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.time_out=''AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res226r = mysqli_num_rows($oks22);
+                                                                          ?>
+                                                                              <?php $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res2261 = mysqli_num_rows($oks22); ?>
+                                                                          <?php 
+                        
+                                                                          $absent = 0;
+                                                                          $totals =0;
+                                                                          $totals= $res2261-$res226r;
+                                                                          $absent= $days+1-$totals; ?>
+
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php $sanaoll = 0; $yay=0;
+$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll;
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+          
+
+?><?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $yay;
+           }else{
+            echo 0;
+           }?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+               
+                  <div class=" col-md-3 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+                                  
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a>Total Absent</a> </strong> </div>
+                                         <?php
+
+date_default_timezone_set("Asia/manila");
+         $timem = date('y-m-d');
+         // $timem = '2024-08-01';
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem'AND time_out=''";
+ $oks22s = mysqli_query($con, $sql22ss);
+ $restad = mysqli_num_rows($oks22s);
+
+?>
+<?php
+                                                
+               
+
+                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idem' ORDER BY `time_in` ASC";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2d = mysqli_fetch_assoc($res2); 
+                                                 $started = $rows2d['time_in'];
+     ?>
+<?php 
+                $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2day = mysqli_fetch_assoc($res2);
+                                              $endays = $rows2day['days'];  ?>
+                                      
+                                              <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
+
+$interval = $date1->diff($date2);
+
+
+$days = $interval->days; 
+
+  ?><?php
+   // echo $days+1;
+   ?>
+   <?php 
+                                                 
+                                                 
+                                                 $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.time_out=''AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res226r = mysqli_num_rows($oks22);
+                                                                          ?>
+                                                                              <?php $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res2261 = mysqli_num_rows($oks22); ?>
+                                                                          <?php 
+                        
+                                                                          $absent = 0;
+                                                                          $totals =0;
+                                                                          $totals= $res2261-$res226r;
+                                                                          $absent= $days+1-$totals; ?>
+                                                                        
+
+                             
+                      
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<?php 
+$sanaoll = 0;
+$sanaoll2 = 0;
+
+$sanaoll = $absent-$restad;
+
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+?>
+          
+
+<?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $sanaoll;
+           }else{
+            echo 0;
+           }?>
+
+  </strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+  <div class="col-md-3  mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a > Total Late</a> </strong> </div>
+                                              <?php   
+               $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";
+
+                                                    $oks22s = mysqli_query($con, $sql22s);
+
+                                                    $resd = mysqli_num_rows($oks22s); ?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo  $resd; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+  </div>
 
 <div class="row">
 <div class="col-md-2"></div>
@@ -197,66 +489,199 @@ if(!empty($_SESSION['idstaff'])){
          name: 'Count',
          data: [
             
-<?php error_reporting(0);
 
-$sql22 = "SELECT * FROM `staff`";
-
-$oks22 = mysqli_query($con, $sql22);
-
-$res22 = mysqli_num_rows($oks22);
-echo $res22;
+ <?php
+error_reporting(0);
 
 
+                                               
 
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE emp_id = '$idem'";
 
+                                                    $oks22 = mysqli_query($con, $sql22);
 
-
-
-
-
-?>,
-<?php error_reporting(0);
-
-$sql22 = "SELECT * FROM `employee_info`";
-
-$oks22 = mysqli_query($con, $sql22);
-
-$res22 = mysqli_num_rows($oks22);
-echo $res22;
+                                                    $res226gg = mysqli_num_rows($oks22);
+                                                   
 
 
 
+                                                 ?>
+                              <?php
+
+date_default_timezone_set("Asia/manila");
+         $timem = date('y-m-d');
+         // $timem = '2024-08-01';
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem'AND time_out=''";
+ $oks22s = mysqli_query($con, $sql22ss);
+ $resta = mysqli_num_rows($oks22s);
+
+?>
+<?php
+                                                
+               
+
+                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idem' ORDER BY `time_in` ASC";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2d = mysqli_fetch_assoc($res2); 
+                                                 $started = $rows2d['time_in'];
+     ?>
+<?php 
+                $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2day = mysqli_fetch_assoc($res2);
+                                              $endays = $rows2day['days'];  ?>
+                                      
+                                              <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
+
+$interval = $date1->diff($date2);
 
 
+$days = $interval->days; 
+
+  ?><?php
+   // echo $days+1;
+   ?>
+   <?php 
+                                                 
+                                                 
+                                                 $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.time_out=''AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res226r = mysqli_num_rows($oks22);
+                                                                          ?>
+                                                                              <?php $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res2261 = mysqli_num_rows($oks22); ?>
+                                                                          <?php 
+                        
+                                                                          $absent = 0;
+                                                                          $totals =0;
+                                                                          $totals= $res2261-$res226r;
+                                                                          $absent= $days+1-$totals;?><?php $sanaoll = 0; $yay=0;
+$sanaoll = $absent-$resta;  $yay=$res226gg-$sanaoll;
+                                
+
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
+
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+          
+
+?><?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $yay;
+           }else{
+            echo 0;
+           }?>,
+        <?php
+
+date_default_timezone_set("Asia/manila");
+         $timem = date('y-m-d');
+         // $timem = '2024-08-01';
+$sql22ss = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND time_in='$timem'AND time_out=''";
+ $oks22s = mysqli_query($con, $sql22ss);
+ $restad = mysqli_num_rows($oks22s);
+
+?>
+<?php
+                                                
+               
+
+                                                 $sql2 = "SELECT * FROM `attendance` WHERE emp_id ='$idem' ORDER BY `time_in` ASC";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2d = mysqli_fetch_assoc($res2); 
+                                                 $started = $rows2d['time_in'];
+     ?>
+<?php 
+                $sql2 = "SELECT * FROM `countofdays` ORDER BY `days` Desc";
+         $res2 = mysqli_query($con,$sql2);
+         $rows2day = mysqli_fetch_assoc($res2);
+                                              $endays = $rows2day['days'];  ?>
+                                      
+                                              <?php $date1 = new DateTime($started);
+$date2 = new DateTime($endays);
+
+$interval = $date1->diff($date2);
 
 
+$days = $interval->days; 
 
+  ?><?php
+   // echo $days+1;
+   ?>
+   <?php 
+                                                 
+                                                 
+                                                 $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.time_out=''AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res226r = mysqli_num_rows($oks22);
+                                                                          ?>
+                                                                              <?php $sql22 = "SELECT * FROM `attendance`, employee_info WHERE attendance.emp_id = employee_info.emp_id AND attendance.emp_id = '$idem'";
+                        
+                                                                            $oks22 = mysqli_query($con, $sql22);
+                        
+                                                                            $res2261 = mysqli_num_rows($oks22); ?>
+                                                                          <?php 
+                        
+                                                                          $absent = 0;
+                                                                          $totals =0;
+                                                                          $totals= $res2261-$res226r;
+                                                                          $absent= $days+1-$totals;  ?><?php 
+$sanaoll = 0;
+$sanaoll2 = 0;
 
-?>,
-<?php error_reporting(0);
-                     date_default_timezone_set("Asia/manila");  
-                    
-                     $datein = date('y-m-d');
+$sanaoll = $absent-$restad;
 
-                      $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+                                
 
-                         $oks22 = mysqli_query($con, $sql22);
+       
+           $result = mysqli_query($con, "SELECT * FROM staff WHERE id = '$id'");
+           $row = mysqli_fetch_assoc($result);
+         $names= $row['fname'];
+         $mid= $row['mname'];
+         $laslas= $row['lname'];
+        
 
-                         $res226 = mysqli_num_rows($oks22);
-                         echo $res226;
+$resulta = mysqli_query($con, "SELECT * FROM `employee_info` WHERE fname = '$names' AND mname = '$mid' AND lname = '$laslas'");
+          $rows = mysqli_fetch_assoc($resulta);
+           $idem = $rows['emp_id'];
+?>
+          
 
+<?php
+$resultas = mysqli_query($con, "SELECT * FROM `attendance` WHERE emp_id ='$idem'");
+if(mysqli_num_rows($resultas) > 0){
+            echo $sanaoll;
+           }else{
+            echo 0;
+           }?>,
+          <?php   
+               $sql22s = "SELECT * FROM `attendance` WHERE emp_id = '$idem' AND status = 'Late Time In'";
 
+                                                    $oks22s = mysqli_query($con, $sql22s);
 
-                      ?>,
-                      <?php $total =0;
-                 $total = $res22 - $res226;
-                 echo $total; ?>                                      
-             
+                                                    $resd = mysqli_num_rows($oks22s);
+echo $resd;
+?>
               
                ]
      }],
      xaxis: {
-         categories: ['Staff','Total Empoyee', 'Total Time In', 'Total Absent']
+         categories: ['Total Present', 'Total Absent', 'Total Late']
      }
  }
  var chart = new ApexCharts(document.querySelector("#chart"), options);

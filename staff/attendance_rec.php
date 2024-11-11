@@ -185,6 +185,7 @@ if(!empty($_SESSION['idstaff'])){
                                             <th class="fw-bold bg-primary">Middle Name</th>
                                             <th class="fw-bold bg-primary">Last Name</th>
                                             <th class="fw-bold bg-primary ">Status</th>
+                                            <th class="fw-bold bg-primary ">Action</th>
 
                                                     
                                                                                   
@@ -221,6 +222,7 @@ if(!empty($_SESSION['idstaff'])){
                                                 echo "<p class = 'text-success fw-bold'>".$row1['status']."</p>";
                                                  
                                             };?></td>
+                                            <td><a href="emp_info.php?employee_id=<?php echo $row1['emp_id']; ?>">More</a></td>
                                             
                                             
                                         </tr>

@@ -196,7 +196,7 @@ require_once'../db.php';
                                             <th class="fw-bold bg-primary" >Contact no.</th>
                                             <th class="fw-bold bg-primary" >Username</th>
                                             <th class="fw-bold bg-primary" >Profile Picture</th>         
-                                                                                  
+                                                                                  <th class="fw-bold bg-primary" >Action</th>  
 
                                         </tr>
                                     </thead>
@@ -212,12 +212,13 @@ require_once'../db.php';
                                          ?>
                                         <tr>
 
-                                            <td><?php echo $row1['fname'];?><a  class="ms-2 float-end" data-toggle ="modal" data-target ="#deleteq-<?php echo $row1['id']; ?>"><i class="fa fa-trash text-danger fs-6"></i></a>
+                                            <td><?php echo $row1['fname'];?>
 
 
-                                                <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a></td>
-                                            <td><?php echo $row1['lname']; ?></td>
+                                               </td>
+                                            
                                             <td><?php echo $row1['mname']; ?></td>
+                                             <td><?php echo $row1['lname']; ?></td>
                                             <td><?php echo $row1['age']; ?></td>
                                             <td><?php echo $row1['gender']; ?></td>
                                             <td><?php echo $row1['c_number']; ?></td>
@@ -230,6 +231,10 @@ require_once'../db.php';
                                                     
                                                 </td>
                                             
+                                            <td><a  class="ms-2 float-end" data-toggle ="modal" data-target ="#deleteq-<?php echo $row1['id']; ?>"><i class="fa fa-trash text-danger fs-6"></i></a>
+
+
+                                                <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a></td>
                                         </tr>
 
                                          <div class="modal fade " id="deleteq-<?php echo $row1['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"

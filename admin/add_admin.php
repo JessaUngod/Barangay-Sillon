@@ -50,7 +50,7 @@ require_once'../db.php';
                 <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
                 <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
                 <li class="active"><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
+                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li> //not functioning
              
 
             </ul>
@@ -71,7 +71,7 @@ require_once'../db.php';
                         <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
                        <strong style="font-size:22px;"><strong style="font-size: 28px;">a</strong>dmin</strong></a>
                         
-
+s
                     </div>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -115,7 +115,7 @@ require_once'../db.php';
                                  
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 fw-bold" style="color: #000;"></i>
-                                    <strong class="fw-bold">Logout</strong>
+                                    <strong class="fw-bold">Logouts/strong>
                                 </a>
                                <div class="dropdown-divider"></div>
                             </div>
@@ -196,7 +196,9 @@ require_once'../db.php';
                                             if($pass == $cpass){
                                             move_uploaded_file($_FILES['profile']['tmp_name'], '../uploads/'.$_FILES['profile']['name']);
 
-                                $query = "INSERT INTO `admin`(`fname`, `mname`, `lname`, `age`, `gender`, `uname`, `pass`,`img`) VALUES('$fname','$mid','$lname','$age','$gen','$email','$pass',
+                                            $hashed = password_hash($pass, PASSWORD_DEFAULT);
+
+                                $query = "INSERT INTO `admin`(`fname`, `mname`, `lname`, `age`, `gender`, `uname`, `pass`,`img`) VALUES('$fname','$mid','$lname','$age','$gen','$email','$hashed',
                                                 '$profile')";
 
                                             mysqli_query($con, $query);
@@ -272,7 +274,7 @@ require_once'../db.php';
                                         <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re - Password" style="font-size :15px;" required><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 4%; color: lightgray;"  onclick="myfunction2()" id="icon"></i>
                                     </div>
                                         <center> <div class="col-md-8" >
-                                        <label>Product Image</label>
+                                        <label>Profile Image</label>
                                         <input class="form-control mb-1" type="file" name="profile" placeholder="Enter Student name" style="font-size :15px;" required>
                                     </div></center>                         
                                    
@@ -405,25 +407,23 @@ require_once'../db.php';
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
- <script>
-    let table = new DataTable('#myTable', {
-    // options
-});
+<!-- <script src="../assets/js/jquery.min.js"></script> -->
+<!-- <script src="../assets/js/bootstrap.bundle.js"></script> -->
+<!-- <script src="../assets/js/mdb.js"></script> -->
 
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-
-
+     <!--SIDEBAR TOGGLE FUNCTIONALITY -->
+     
+<script>
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active'); 
+        $('.content').addClass('shift');    
     });
 
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active'); 
+        $('.content').removeClass('shift');    
     });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
-    });
-   </script> 
+</script>
 
 
 </body>

@@ -38,7 +38,7 @@ require_once'../db.php';
 
            <ul class="list-unstyled px-3">
                 <li class=""><a href="../staff/staff_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="active"><a href="../staff/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
+                <li class="active"><a href="../staff/emp_info.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
                 <li class=""><a href="../staff/attendance_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book"></i> Attendance</a></li>
                
              
@@ -129,186 +129,147 @@ require_once'../db.php';
             <div class="col-md-12">
             
                 <div class="row">
-        <div class="col-md-2"></div>
-        <div class="col-md-8 mb-3">
-            <div class="card py-1 px-1 cb1 " style="color: #000;">
-                <div class="card-header bg-primary">
-                     <a href="employee.php" class="btn-close float-end py-1" ></a>
-                        <span aria-hidden="true"></span>
-                     <h5 style=" color: #fff;"> <i class="fas fa-user" style="color: #000;"> </i>&nbsp;<strong >      Employee</strong></h5>
-                    
-                </div>
-                              <?php 
-             if (isset($_GET['employee_id'])) {
-            $getemployee_id = $_GET['employee_id'];
-
-           $sql = "SELECT * FROM employee_info WHERE emp_id ='$getemployee_id'";
-           $res = mysqli_query($con,$sql);
-           $rower = mysqli_fetch_assoc($res);
-       }
-
-
-                       
-
-
-                                 ?>
-                            <div class="card-body" >
-                                    <?php 
-                                if(isset($_POST['update'])){
-                                    $lname = $_POST['last'];
-                                    $empid = $_POST['empid'];
-                                    $fname = $_POST['first'];
-                                    $mid = $_POST['mid'];
-                                    $age = $_POST['age'];
-                                    $gen = $_POST['gender'];
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8 mb-3">
+                            <div class="card py-1 px-1 cb1 " style="color: #000;">
+                                <div class="card-header bg-primary">
+                                    <a href="attendance_rec.php" class="btn-close float-end py-1" ></a>
+                                        <span aria-hidden="true"></span>
+                                    <h5 style=" color: #fff;"> <i class="fas fa-user" style="color: #000;"> </i>&nbsp;<strong >      Employee</strong></h5>
                                     
-                                    $posis = $_POST['posis'];
-                                   
-                                    $profile = $_FILES['profile']['name'];
-                 
-                                      
-                                        if($profile == null){
-                                          if($age >=18){
-                                             $resulta = mysqli_query($con, "SELECT * FROM pos_and_amount WHERE posistion = '$posis'");
-                                         $rowsil = mysqli_fetch_assoc($resulta);
-                                         $perday = $rowsil['amount'];
+                                </div>
+                                            <?php 
+                            if (isset($_GET['employee_id'])) {
+                            $getemployee_id = $_GET['employee_id'];
 
-                                            
+                                $sql = "SELECT * FROM employee_info WHERE emp_id ='$getemployee_id'";
+                                $res = mysqli_query($con,$sql);
+                                $rower = mysqli_fetch_assoc($res);
+                            }
 
-                                            $query = "UPDATE `employee_info` SET `fname`='$fname',`mname`='$mid',`lname`='$lname',`age`='$age',`gender`='$gen',`posistion`='$posis',`money`='$perday' WHERE emp_id ='$empid'";
-
-                                            mysqli_query($con, $query);
-                                                   ?>
-                                       <script>
-                                           window.location = "./employee.php?msgupdate=updated";
-                                       </script>
-                                       <?php
-                                      
-                                         }else{
-                                                
-
-                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Invalid Age<a  href='' class='btn-close float-end'></a></small>";
-                                          
-                                         }
-                                       
-                                        
-                                    }else{
-                                            if($age >=18){
-                                          $resulta = mysqli_query($con, "SELECT * FROM pos_and_amount WHERE posistion = '$posis'");
-                                         $rowsil = mysqli_fetch_assoc($resulta);
-                                         $perday = $rowsil['amount'];
-
-                                            move_uploaded_file($_FILES['profile']['tmp_name'], '../uploads/'.$_FILES['profile']['name']);
-
-                                            $query = "UPDATE `employee_info` SET `fname`='$fname',`mname`='$mid',`lname`='$lname',`age`='$age',`gender`='$gen',`posistion`='$posis',`money`='$perday',`img`='$profile' WHERE emp_id ='$empid'";
-
-                                            mysqli_query($con, $query);
-                                                   ?>
-                                       <script>
-                                           window.location = "./employee.php?msgupdate=updated";
-                                       </script>
-                                       <?php
-
-                                         }else{
-                                                
-
-                                           echo "<small class='form-control bg-danger  text-center' style ='color:#fff;'>Invalid Age<a  href='' class='btn-close float-end'></a></small>";
-                                          
-                                         }
-                           
-                                        
-                                    }
+                                $e_id = $rower['emp_id'];
+                                if(!empty($e_id)){
+                                    $sql = "SELECT * FROM attendance_proof WHERE employee_id = '$getemployee_id' AND DATE(date)";
+                                    $res = mysqli_query($con,$sql);
+                                    $rows = mysqli_fetch_assoc($res);
                                 }
 
-                                    
+                                $em_id = $rows['employee_id'];
+                                if(!empty($em_id)){
+                                    $sql = "SELECT * FROM attendance WHERE emp_id = '$getemployee_id' AND DATE(time_in)";
+                                    $res = mysqli_query($con,$sql);
+                                    $rows1 = mysqli_fetch_assoc($res);
+                                }
 
-                                    
-
-                                 ?>
+                             ?>
+                            <div class="card-body" >
             
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="row">
 
+
+                                        <div class="col-md-6">
+                                        <label>Time-In Photo</label>
+                                        <a href="../uploads/<?php echo $rows['image_in']; ?>" target="_blank">
+                                        <img  class="form-control mb-1" src="<?php echo "../uploads/".$rows['image_in'] ?>" alt="" style="height: 250px; width: 100%;">       
+                                        </a>
+                                        </div>     
+                                        <div class="col-md-6">
+                                        <label>Time-Out Photo</label>
+                                        <a href="../uploads/<?php echo $rows['image_out']; ?>" target="_blank">
+                                        <img  class="form-control mb-1" src="<?php echo "../uploads/".$rows['image_out'] ?>" alt="" style="height: 250px; width: 100%;">       
+                                        </a>
+                                        </div>                            
 
                                    
                                             
                                         <div class="col-md-6">
                                              <input class="form-control mb-1 text-primary" type="hidden" value="<?php echo  $rower['emp_id']; ?>" name="empid"style="font-size :15px;">
                                              <label>First Name</label>
-                                        <input class="form-control mb-1" type="text" name="first" placeholder="Enter First Name" value="<?php echo  $rower['fname']; ?>" style="font-size :15px;"required>
+                                        <input readonly class="form-control mb-1" type="text" name="first" placeholder="Enter First Name" value="<?php echo  $rower['fname']; ?>" style="font-size :15px;"required>
                                         
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <label>Middle Name</label>
-                                        <input class="form-control mb-1" type="text" name="mid" placeholder="Enter Middle Name" value="<?php echo  $rower['mname']; ?>" style="font-size :15px;"required>
-                                    </div>
+                                        <input readonly class="form-control mb-1" type="text" name="mid" placeholder="Enter Middle Name" value="<?php echo  $rower['mname']; ?>" style="font-size :15px;"required>
+                                    </div> -->
                                     <div class="col-md-6">
                                         
                                         <label>Last Name</label>
-                                        <input class="form-control mb-1" type="text" name="last" placeholder="Enter Last Name" value="<?php echo  $rower['lname']; ?>" style="font-size :15px;" required >
-                                    </div>
-                                     <script>
-                                        function FindAge() {
-                                           var day = document.getElementById("dob").value;
-                                           var DOB = new Date(day);
-                                           var today = new Date();
-                                           var Age = today.getTime() - DOB.getTime();
-                                           Age = Math.floor(Age / (1000 * 60 * 60 * 24 * 365.25));
-                                           document.getElementById("age").value = Age;
-                                        }
-                                    </script>
-                                    <div class="col-md-4">
-                                        <label>Birthdate</label>
-                                        <input onclick="FindAge()" onmousemove="FindAge()" class="form-control mb-1" type="date" id="dob" name="dob"  style="font-size :15px;" required  value="<?php echo $rower['dob']; ?>"></div>
-                                    <div class="col-md-2">
-                                        
-                                        <label>Age</label>
-                                        <input onmousemove="FindAge()" class="form-control mb-1 text-center" id="age" type="number" name="age" value="<?php echo  $rower['age']; ?>" style="font-size :15px;" maxlength="3" required  readonly>
+                                        <input readonly class="form-control mb-1" type="text" name="last" placeholder="Enter Last Name" value="<?php echo  $rower['lname']; ?>" style="font-size :15px;" required >
                                     </div>
                                    
                                     
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <label>Select Gender</label>
-                                         <select onmousemove="FindAge()" name="gender" class="form-control mb-1" style="font-size :15px;" required>
-                            <option ><?php echo  $rower['gender']; ?></option>
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select> 
+                                     <input readonly class="form-control mb-1" type="text" name="last" placeholder="Enter Last Name" value="<?php echo  $rower['gender']; ?>" style="font-size :15px;" required >
+    
                                         
-                                    </div>
-                                      <div class="col-md-6">
-                                        <label>Select Position</label>
-                                         <select name="posis" class="form-control mb-1" style="font-size :15px;" required>
-                            <option><?php echo  $rower['posistion']; ?></option>
-                              <?php 
-
-                                            $sql_r ="SELECT * FROM `pos_and_amount`";
-                                            $run=mysqli_query($con, $sql_r);
-
-
-                                            foreach ($run as $rows) {
-                                               
-                                         
-                                             ?>
-                                            
-                            <option><tr><?php echo $rows['posistion'] ?></tr><?php    } ?></option>
-
-                        </select> 
-                                        
-                                    </div>
-                                
+                                    </div> -->
                                     
-                                    
-                                        <center> <div class="col-md-8" >
-                                        <label>Profile Picture</label>
-                                        <input class="form-control mb-1" type="file" name="profile" placeholder="Enter Student name" style="font-size :15px;" >
-                                    </div></center>                         
+
+                                    <?php
+                                    if(!empty($rows['location'])){
+                                        list($latitude, $longitude) = explode(',', $rows['location']);
+                                        function convertToDMS($decimal, $isLatitude) {
+
+                                            $degrees = intval($decimal);
+                                            $tempMinutes = ($decimal - $degrees) * 60;
+                                            $minutes = intval($tempMinutes);
+                                            $seconds = ($tempMinutes - $minutes) * 60;
+
+                                            // Determine the direction
+                                            if ($isLatitude) {
+                                                $direction = ($decimal >= 0) ? 'N' : 'S';
+                                            } else {
+                                                $direction = ($decimal >= 0) ? 'E' : 'W';
+                                            }
+                                            return sprintf("%d°%d'%.1f\"%s", abs($degrees), abs($minutes), abs($seconds), $direction);
+
+                                            if(empty($locate)){
+                                                $locate = "no location";
+                                            }
+                                        }
+
+                                    $latitudeDMS = convertToDMS($latitude, true);
+                                    $longitudeDMS = convertToDMS($longitude, false);
+
+                                    $locate =  htmlspecialchars($latitudeDMS . "+" . $longitudeDMS, ENT_QUOTES, 'UTF-8');
+                                        $err_locate = "<b>Click to view location</b>";
+                                    }else{
+                                        $err_locate = "Geolocation not detected";
+                                    }
+                                    // Given date and time string
+                                    $dateString = ($rows1['time_in']." ".$rows1['hour_in']);
+                                    // Create a DateTime object from the given string
+                                    $dateTime = DateTime::createFromFormat("y-m-d H:i:s", $dateString);
+                                    // Format the DateTime object to the desired format
+                                    $formattedDate = $dateTime->format("F d, Y h:i A");
+                                    ?>
+                                    <div class="col-md-6">
+                                        <label>Time-In</label>
+                                         <input  readonly class="form-control mb-1" type="text" name="first" placeholder="This Employee has not Time In yet" value="<?php echo $formattedDate  ?>" style="font-size :15px;"required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Time-Out</label>
+                                         <input  readonly class="form-control mb-1" type="text" name="first" placeholder="This Employee has not Time Out yet" value="<?php echo $rows1['time_out'];  ?>" style="font-size :15px;"required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Position</label>
+                                         <input  readonly class="form-control mb-1" type="text" name="first" placeholder="Position" value="<?php echo $rower['posistion'];  ?>" style="font-size :15px;"required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Track Location</label>
+                                        <a class="form-control mb-1" href="https://www.google.com/maps/place/<?php echo $locate;?>/" target="no_target"><?php echo $err_locate; ?></a>
+                                    </div>
+                                                                                        
+                                    </div>                       
                                    
                                     
 
-                                    <div class=" modal-footer mt-3 w-100">
+                                    <!-- <div class=" modal-footer mt-3 w-100">
                                         <button onmousemove="FindAge()" class="btn bg-success ms-auto text-light" name="update" type="submit"> <label>Update</label></button>
-                                    </div>
+                                    </div> -->
                                         </div>
                                     </form>
         
@@ -408,3 +369,4 @@ require_once'../db.php';
 
 </body>
 </html>
+

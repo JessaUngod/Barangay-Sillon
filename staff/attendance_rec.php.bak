@@ -22,16 +22,7 @@ require_once'../db.php';
      <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
 </head>
 <body>
-    
     <?php 
-    if (isset($_GET['msgupdate'])=="updated") {
-    echo '<script>swal("UPDATE SUCCESSFULLY !", "Employee Updated", "success")</script>';
-}
-
-
-
-     ?>
-     <?php 
     if (isset($_GET['msginsert'])=="inserted") {
     echo '<script>swal("SAVE SUCCESSFULLY !", "Employee Save", "success")</script>';
 }
@@ -62,8 +53,8 @@ require_once'../db.php';
 
            <ul class="list-unstyled px-3">
                 <li class=""><a href="../staff/staff_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li class="active"><a href="../staff/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-                <li class=""><a href="../staff/attendance_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book"></i> Attendance</a></li>
+                <li class=""><a href="../staff/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
+                <li class="active"><a href="../staff/attendance_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book"></i> Attendance</a></li>
                 
              
 
@@ -106,6 +97,27 @@ require_once'../db.php';
 
 
 ?> 
+<?php 
+
+if(!empty($_SESSION['idstaff'])){
+
+
+         $onlyone = "SELECT * FROM `attendance`";
+                 $result = mysqli_query($con, $onlyone);
+      if(mysqli_num_rows($result) > 0){
+         
+
+          }else{
+            $all ="DELETE FROM `countofdays`";
+            mysqli_query($con, $all);
+
+
+          }
+          }
+         
+      
+
+                 ?>
  
 
                 <li class="nav-item dropdown no-arrow">
@@ -150,14 +162,14 @@ require_once'../db.php';
             </nav>
    <div class="container-fluid">
 
-                           <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Employee</strong></h1>
+                           <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Attendance Record</strong></h1>
                              
                 
                 <div class="row">
  
                        <div class="card shadow mb-3 p-1">
                         <div class="card-header">
-                            <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 28px;">Employee Info   </strong><a class="btn btn-primary" href="add_emp.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Employee   </strong></a></h6>
+                            <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 28px;">Employee Attendance</strong></h6>
                         </div>
 
                         <div class="card-body">
@@ -166,18 +178,15 @@ require_once'../db.php';
                                     <thead style="font-size: 1em; color: #fff;">
 
                                         <tr>
-                                            <th class="fw-bold bg-primary">Employee ID</th>
-                                            <th class="fw-bold bg-primary ">First Name</th>
+                                            <th class="fw-bold bg-primary ">Time In</th>
+                                            <th class="fw-bold bg-primary ">Time Out</th>
+                                             <th class="fw-bold bg-primary">Employee ID</th>
+                                            <th class="fw-bold bg-primary">First Name</th>
                                             <th class="fw-bold bg-primary">Middle Name</th>
                                             <th class="fw-bold bg-primary">Last Name</th>
-                                            <th class="fw-bold bg-primary">Birthdate</th>
-                                            <th class="fw-bold bg-primary">Age</th>
-                                            <th class="fw-bold bg-primary">Gender</th>
-                                            <th class="fw-bold bg-primary" >Position</th>
-                                            <th class="fw-bold bg-primary" >Rate per Day</th>
-                                           
-                                            <th class="fw-bold bg-primary" >Profile Picture</th>     
-                                         <th class="fw-bold bg-primary" >Action</th>   
+                                            <th class="fw-bold bg-primary ">Status</th>
+
+                                                    
                                                                                   
 
                                         </tr>
@@ -186,7 +195,7 @@ require_once'../db.php';
                                 
                                     <tbody style="color: #000;">
                                              <?php 
-                                        $qry = "SELECT * FROM employee_info";
+                                        $qry = "SELECT * FROM attendance, employee_info WHERE attendance.emp_id=employee_info.emp_id";
                                         $qry_run = mysqli_query($con, $qry);
 
                                         while($row1 = mysqli_fetch_array($qry_run)){
@@ -194,53 +203,29 @@ require_once'../db.php';
                                          ?>
                                         <tr>
 
+                                           
+                                            
+                                            <td><?php echo  date("F d, Y",strtotime($row1['time_in'])); ?> <?php echo date("h:i:A",strtotime($row1['hour_in'])); ?></td>
+                                            <td><?php if ($row1['time_out']== null) {
+                                                echo "<p class = 'text-danger fw-bold'>This Employee has not Time Out yet</p>";
+                                            }else{
+                                                echo $row1['time_out'];
+                                            } ?></td>
                                             <td><?php echo $row1['emp_id'];?></td>
-                                            <td><?php echo $row1['fname']; ?></td>
-                                            <td><?php echo $row1['mname']; ?></td>
-                                            <td><?php echo $row1['lname']; ?></td>
-                                            <td><?php echo date("F d, Y",strtotime($row1['dob']));?></td>
-                                            <td><?php echo $row1['age']; ?></td>
-                                            <td><?php echo $row1['gender']; ?></td>
-                                            <td><?php echo $row1['posistion']; ?></td>
-                                            <td class ="text-center"><?php echo $row1['money']; ?></td>
-                                            <td>
-
-                                                <center><img height="70" width="70" style="border-radius: 50px;" src="../uploads/<?php  echo $row1['img']; ?>">  </center>
-
-
-                                                    
-                                                </td>
-                                              <td>
-<a class = "ms-2"  data-toggle ="modal" data-target ="#deleteq-<?php echo $row1['emp_id']; ?>"><i class="fa fa-trash text-danger fs-6"></i></a>
-
-
-                                                <a href="update_emp.php?employee_id=<?php echo $row1['emp_id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a>
-                                                    
-                                                </td>
+                                            <td><?php echo $row1['fname'];?></td>
+                                            <td><?php echo $row1['mname'];?></td>
+                                            <td><?php echo $row1['lname'];?></td>
+                                             <td><?php if ($row1['status'] == 'Late Time In') {
+                                                echo "<p class = 'text-danger fw-bold'>".$row1['status']."</p>";
+                                            }else{
+                                                echo "<p class = 'text-success fw-bold'>".$row1['status']."</p>";
+                                                 
+                                            };?></td>
+                                            
+                                            
                                         </tr>
 
-                                         <div class="modal fade " id="deleteq-<?php echo $row1['emp_id']; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="ModalLabel"><strong>Delete Employee</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                    </button>
-                </div>
-                <div class="modal-body text-center"><strong>Are you sure you want to Delete ?</strong></div>
-                <div class="modal-footer">
-                    <form method="post" action="delete.php">
-                         <button class="btn btn-secondary" type="button" data-dismiss="modal" style="color: #000;">Cancel</button>
-                    <button class="btn btn-danger " style="color: #fff;" name="delete1" value="<?php echo $row1['emp_id'];?>">Delete</button>
-                        
-                    </form>
-                   
-                </div>
-            </div>
-        </div>
-    </div>
+                                        
 
                                 <?php } ?>
                                        

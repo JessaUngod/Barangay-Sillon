@@ -521,6 +521,17 @@ require_once'../db.php';
         $('.sidebar').removeClass('active');
     });
    </script> 
+   <script>
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active'); 
+        $('.content').addClass('shift');    
+    });
+
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active'); 
+        $('.content').removeClass('shift');    
+    });
+</script>
 
 
 </body>

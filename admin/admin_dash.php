@@ -581,6 +581,20 @@ $sql22 = "SELECT * FROM `employee_info`";
     });
 
    </script> 
+   <script>
+    $('.open-btn').on('click', function()  {
+        $('#side_nav').addClass('active');
+        $('.content').addClass('shift');
+    });
+
+    $('.close-btn').on('click', function()  {
+        $('#side_nav').removeClass('active');
+        $('.content').removeClass('shift');
+
+    });
+
+
+   </script>
 
 
 </body>

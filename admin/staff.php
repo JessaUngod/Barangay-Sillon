@@ -315,7 +315,7 @@ require_once'../db.php';
 <!-- <script src="../js/demo/datatables-demo.js"></script> -->
 <script src="../vendor/datatables/dataTable.js"></script>
 
- <script>
+ <!-- <script>
     let table = new DataTable('#myTable', {
     // options
 });
@@ -333,7 +333,7 @@ require_once'../db.php';
     $('.close-btn').on('click' , function(){
         $('.sidebar').removeClass('active');
     });
-   </script> 
+   </script>  -->
    <script>
     $('.open-btn').on('click', function()  {
         $('#side_nav').addClass('active');

@@ -335,16 +335,16 @@ require_once'../db.php';
     });
    </script>  -->
    <script>
-    $('.open-btn').on('click', function()  {
-        $('#side_nav').addClass('active');
-        $('.content').addClass('shift');
+    $('.open-btn').on('click', function() {
+        $('#side_nav').addClass('active'); 
+        $('.content').addClass('shift');    
     });
 
-    $('.close-btn').on('click', function()  {
-        $('#side_nav').removeClass('active');
-        $('.content').removeClass('shift');
-
+    $('.close-btn').on('click', function() {
+        $('#side_nav').removeClass('active'); 
+        $('.content').removeClass('shift');    
     });
+</script>
 
 
 

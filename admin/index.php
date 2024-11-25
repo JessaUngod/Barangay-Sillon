@@ -92,6 +92,7 @@ require_once("../db.php");
                                             </div>
                                             <!-- recapctcha -->
                                              <div class="g-recaptcha" data-sitekey=""></div>
+                                             <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
                                             <div class="col-md-12">
                                                 <div class="row">

@@ -1,7 +1,7 @@
 <?php
 require_once("../db.php");
 // echo password_hash("admin@@123", PASSWORD_DEFAULT);
-$secretKey = "6LetiYkqAAAAAHDWGlX8mHxTE2sY_Wif3Kmf4uw0";
+$secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
@@ -133,7 +133,7 @@ if (isset($_POST['login'])) {
                                 </div>
 
                                 <!-- reCAPTCHA -->
-                                <div class="g-recaptcha" data-sitekey="6LetiYkqAAAAAAaryIuEVV61b97LimQNp_koFCep"></div>
+                                <div class="g-recaptcha" data-sitekey="6LeljIkqAAAAANJmJqqmRipY4QJ9e8J29iIYuh9w"></div>
                                 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
                                 <div class="col-md-12">

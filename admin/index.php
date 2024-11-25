@@ -72,12 +72,44 @@ if (isset($_POST['login'])) {
             width: 100%;
         }
 
+        /* Style for the input fields */
         .input-group .form-control {
             height: 45px;
+            font-size: 1rem;
+            border-radius: 8px;
+            padding: 10px;
         }
 
         .form-control {
             font-size: 1rem;
+        }
+
+        /* Style the visibility toggle button */
+        .input-group button {
+            background-color: #f0f0f0;
+            border-radius: 8px;
+            height: 45px;
+            padding: 10px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .input-group button:focus {
+            outline: none;
+            border: none;
+        }
+
+        /* Styling the password input field */
+        .input-group .form-control {
+            font-size: 1rem;
+            border-radius: 8px;
+            padding: 10px;
+            height: 45px;
+        }
+
+        .input-group button i {
+            font-size: 1.2rem;
+            color: #09111d;
         }
     </style>
 </head>

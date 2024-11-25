@@ -145,6 +145,11 @@ if (isset($_POST['login'])) {
                                                 </div>
                                             </div>
                                         </form>
+
+                                        <!--forgot password -->
+                                        <div class="forgot-password"> 
+                                            <a href="forgot_password.php">Forgot Passwordc</a>
+                                        </div>
                                         <script type="text/javascript">
                                             function myfunction() {
                                                 var x = document.getElementById("pass");

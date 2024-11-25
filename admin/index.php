@@ -1,6 +1,57 @@
 <?php
 require_once("../db.php");
 // echo password_hash("admin@@123", PASSWORD_DEFAULT);
+$secretKey = "6LcegIkqAAAAACG1ugvjtsgmCBoNqcdDHdI9Kj1M";
+
+if (isset($_POST['login'])) {
+    $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
+    $password =htmlspecialchars(stripslashes(trim($_POST['password'])))
+    $recapchaResponse = $_POST['g-recaptcha-response'];
+
+    //Verify recaptcha
+    $recapchaVerifyUrl = "";
+    $response = file_get_contents($recapchaVerifyUrl. "?secret=" .$secretKey ."&response=" .$recapchaResponse)
+    $responseKeys  json_encode($response, true);
+
+    //if recaptcha failed
+    if(intval($responseKeys['success']) !== 1){
+        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
+    
+    } else {
+        if (empty(user)) || empty($password) {
+
+            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+
+        } else {
+            $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
+            $query->bind_param('s', $user);
+            $query->execute();
+            $result = $query->get_result();
+
+            if ($result->num_rows > 0) {
+                $row =$result->fetch_assoc();
+                if (password_verify($password, $row['pass'])) {
+                    $_SESSION['idadmins'] =$ROW['id'];
+                    header("location:./admin_dash.php?msg=login");
+
+                }else {
+                    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+
+
+                }
+                
+            }else {
+                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+
+            }
+
+
+
+        }
+
+        
+    }
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -83,7 +134,7 @@ require_once("../db.php");
                                             ?>
                                             <label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
                                             <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
-                                            <label class="mt-2"><i class="fa fa-lock me-2"></i>Passwords</label>
+                                            <label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
                                             <div class="input-group">
                                                 <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
                                                 <button type="button" class="btn btn-outline-secondary" onclick="myfunction()">

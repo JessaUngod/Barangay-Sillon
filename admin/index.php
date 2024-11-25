@@ -90,6 +90,8 @@ require_once("../db.php");
                                                     <i class="fa fa-eye-slash" id="iconic"></i>
                                                 </button>
                                             </div>
+                                            <!-- recapctcha -->
+                                             <div class="g-recaptcha" data-sitekey=""></div>
 
                                             <div class="col-md-12">
                                                 <div class="row">

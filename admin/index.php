@@ -3,7 +3,7 @@ require_once("../db.php");
 // echo password_hash("admin@@123", PASSWORD_DEFAULT);
 $secretKey = "6LetiYkqAAAAAAaryIuEVV61b97LimQNp_koFCep";
 
-if (isset($_POST[''])) {
+if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
     $recaptchaResponse = $_POST['g-recaptcha-response'];
@@ -12,6 +12,7 @@ if (isset($_POST[''])) {
     $recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
     $response = file_get_contents($recaptchaVerifyUrl . "?secret=" . $secretKey . "&response=" . $recaptchaResponse);
     $responseKeys = json_decode($response, true);
+
 
     // If reCAPTCHA failed
     if (intval($responseKeys['success']) !== 1) {
@@ -120,26 +121,26 @@ if (isset($_POST[''])) {
                                                 // }
                                             }
                                             ?>
-                                                                    <form method="post">
-                                    <label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
-                                    <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
-                                    <label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
-                                        <button type="button" class="btn btn-outline-secondary" onclick="myfunction()">
-                                            <i class="fa fa-eye-slash" id="iconic"></i>
-                                        </button>
-                                    </div>
+                                                                <form method="post">
+                                <label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
+                                <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
+                                <label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="myfunction()">
+                                        <i class="fa fa-eye-slash" id="iconic"></i>
+                                    </button>
+                                </div>
 
-                                    <!-- reCAPTCHA -->
-                                    <div class="g-recaptcha" data-sitekey="6LetiYkqAAAAAHDWGlX8mHxTE2sY_Wif3Kmf4uw0"></div>
-                                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+                                <!-- reCAPTCHA -->
+                                <div class="g-recaptcha" data-sitekey="6LetiYkqAAAAAHDWGlX8mHxTE2sY_Wif3Kmf4uw0"></div>
+                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12 mt-3">
-                                                <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light">
-                                                    <i class="fa fa-sign-in me-1"></i>LOGIN
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12 mt-3">
+                                            <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light">
+                                                <i class="fa fa-sign-in me-1"></i>LOGIN
                                                     </div>
                                                 </div>
                                             </div>

@@ -5,23 +5,21 @@ $secretKey = "6LcegIkqAAAAACG1ugvjtsgmCBoNqcdDHdI9Kj1M";
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
-    $password =htmlspecialchars(stripslashes(trim($_POST['password'])))
-    $recapchaResponse = $_POST['g-recaptcha-response'];
-c
-    //Verify recaptcha
-    $recapchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents($recapchaVerifyUrl. "?secret=" .$secretKey ."&response=" .$recapchaResponse)
-    $responseKeys  json_encode($response, true);
+    $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-    //if recaptcha failed
-    if(intval($responseKeys['success']) !== 1){
+    // Verify reCAPTCHA
+    $recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+    $response = file_get_contents($recaptchaVerifyUrl . "?secret=" . $secretKey . "&response=" . $recaptchaResponse);
+    $responseKeys = json_decode($response, true);
+
+    // If reCAPTCHA failed
+    if (intval($responseKeys['success']) !== 1) {
         echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
-    
     } else {
-        if (empty(user)) || empty($password) {
-
+        // Check if the user and password fields are empty
+        if (empty($user) || empty($password)) {
             echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
-
         } else {
             $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
             $query->bind_param('s', $user);
@@ -29,27 +27,17 @@ c
             $result = $query->get_result();
 
             if ($result->num_rows > 0) {
-                $row =$result->fetch_assoc();
+                $row = $result->fetch_assoc();
                 if (password_verify($password, $row['pass'])) {
-                    $_SESSION['idadmins'] =$ROW['id'];
+                    $_SESSION['idadmins'] = $row['id'];
                     header("location:./admin_dash.php?msg=login");
-
-                }else {
+                } else {
                     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
-
-
                 }
-                
-            }else {
+            } else {
                 echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
-
             }
-
-
-
         }
-
-        
     }
 }
 ?>

@@ -142,7 +142,7 @@ if (isset($_POST['login'])) {
                                                 </button>
                                             </div>
 
-                                            <!-- reCAPTCHA -->
+                                            <!-- resCAPTCHA -->
                                             <div class="recaptcha-container">
                                                 <div class="g-recaptcha" data-sitekey="6LeljIkqAAAAANJmJqqmRipY4QJ9e8J29iIYuh9w"></div>
                                             </div>

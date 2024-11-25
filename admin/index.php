@@ -7,9 +7,9 @@ if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password =htmlspecialchars(stripslashes(trim($_POST['password'])))
     $recapchaResponse = $_POST['g-recaptcha-response'];
-
+c
     //Verify recaptcha
-    $recapchaVerifyUrl = "";
+    $recapchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
     $response = file_get_contents($recapchaVerifyUrl. "?secret=" .$secretKey ."&response=" .$recapchaResponse)
     $responseKeys  json_encode($response, true);
 

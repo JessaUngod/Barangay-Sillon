@@ -4,7 +4,7 @@ require_once("../db.php");
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
 
 if (isset($_POST['login'])) {
-    $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
+    $user = htmlspecialchars(stripslashes(trim($_POST['email'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 

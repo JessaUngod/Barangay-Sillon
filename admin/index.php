@@ -1,7 +1,5 @@
 <?php
 // Start session
-session_start();
-
 // Set session timeout limit (in seconds)
 $timeout_duration = 15 * 60; // 15 minutes
 

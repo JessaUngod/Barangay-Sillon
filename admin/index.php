@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
         if (empty($user) || empty($password)) {
             echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
         } else {
-            $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
+            $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
             $query->bind_param('s', $user);
             $query->execute();
             $result = $query->get_result();
@@ -82,7 +82,7 @@ if (isset($_POST['login'])) {
                                             if (isset($_POST['login'])) {
                                                 $user = htmlspecialchars(stripslashes(trim($_POST['email'])));
                                                 $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
-                                                $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
+                                                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
                                                 $query->bind_param('s', $user);
                                                 $query->execute();
                                                 $result = $query->get_result();

@@ -1,7 +1,8 @@
 <?php
 require_once("../db.php");
-// echo password_hash("admin@@123", PASSWORD_DEFAULT);
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
+$maxAttempts = 3;  // Max login attempts allowed
+$blockTime = 900;  // Time to block user for 15 minutes (in seconds)
 
 if (isset($_POST['login'])) {
     $email = htmlspecialchars(stripslashes(trim($_POST['email'])));
@@ -33,19 +34,69 @@ if (isset($_POST['login'])) {
                     });
                   </script>";
         } else {
-            $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+            // Check the number of login attempts and block time
+            $query = $con->prepare("SELECT * FROM login_attempts WHERE email = ?");
             $query->bind_param('s', $email);
             $query->execute();
             $result = $query->get_result();
+            $now = time(); // Current time in seconds
+            $lockedOut = false;
 
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
-                // Verify password
-                if (password_verify($password, $row['pass'])) {
-                    $_SESSION['idadmins'] = $row['id'];
-                    header("location:./admin_dash.php?msg=login");
-                    exit; // Always exit after header redirect to prevent further code execution
+                $lastAttemptTime = strtotime($row['last_attempt_time']); // Convert to timestamp
+
+                if ($row['attempts'] >= $maxAttempts && ($now - $lastAttemptTime) < $blockTime) {
+                    // User has exceeded the maximum attempts and is still within the block time
+                    $timeRemaining = $blockTime - ($now - $lastAttemptTime); // Calculate remaining block time
+                    $lockedOut = true;
+                    $timeRemainingFormatted = gmdate("i:s", $timeRemaining); // Format remaining time
+                    echo "<script>
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Too many attempts',
+                                text: 'Please try again in $timeRemainingFormatted.'
+                            });
+                          </script>";
+                }
+            }
+
+            if (!$lockedOut) {
+                // Proceed with login verification if not locked out
+                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+                $query->bind_param('s', $email);
+                $query->execute();
+                $result = $query->get_result();
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    if (password_verify($password, $row['pass'])) {
+                        // Successful login
+                        $_SESSION['idadmins'] = $row['id'];
+
+                        // Reset the login attempts after successful login
+                        $con->query("DELETE FROM login_attempts WHERE email = '$email'");
+
+                        header("location:./admin_dash.php?msg=login");
+                        exit;
+                    } else {
+                        // Incorrect password, increment failed attempts
+                        $query = $con->prepare("INSERT INTO login_attempts (email, attempts, last_attempt_time) 
+                                                VALUES (?, 1, NOW()) 
+                                                ON DUPLICATE KEY UPDATE attempts = attempts + 1, last_attempt_time = NOW()");
+                        $query->bind_param('s', $email);
+                        $query->execute();
+
+                        echo "<script>
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Incorrect username or password',
+                                    text: 'Please try again.'
+                                });
+                              </script>";
+                    }
                 } else {
+                    // User not found
                     echo "<script>
                             Swal.fire({
                                 icon: 'error',
@@ -54,19 +105,13 @@ if (isset($_POST['login'])) {
                             });
                           </script>";
                 }
-            } else {
-                echo "<script>
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Incorrect username or password',
-                            text: 'Please try again.'
-                        });
-                      </script>";
             }
         }
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>

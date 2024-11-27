@@ -4,7 +4,7 @@ require_once("../db.php");
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
 
 if (isset($_POST['login'])) {
-    $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
+    $email = htmlspecialchars(stripslashes(trim($_POST['email'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
@@ -19,11 +19,11 @@ if (isset($_POST['login'])) {
         echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
     } else {
         // Check if the user and password fields are empty
-        if (empty($user) || empty($password)) {
+        if (empty($email) || empty($password)) {
             echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
         } else {
             $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
-            $query->bind_param('s', $user);
+            $query->bind_param('s', $email);
             $query->execute();
             $result = $query->get_result();
 
@@ -80,14 +80,14 @@ if (isset($_POST['login'])) {
                                             <?php
                                             // echo password_hash('jessaungod@@2024*123', PASSWORD_DEFAULT);
                                             if (isset($_POST['login'])) {
-                                                $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
+                                                $email = htmlspecialchars(stripslashes(trim($_POST['email'])));
                                                 $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
-                                                $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
-                                                $query->bind_param('s', $user);
+                                                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+                                                $query->bind_param('s', $email);
                                                 $query->execute();
                                                 $result = $query->get_result();
 
-                                                if (empty($user) || empty($password)) {
+                                                if (empty($email) || empty($password)) {
                                                     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
                                                 } else {
                                                     if ($result->num_rows > 0) {
@@ -122,8 +122,9 @@ if (isset($_POST['login'])) {
                                             }
                                             ?>
                                                                 <form method="post">
-                                <label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
-                                <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
+                                                                <label class="mt-2"><i class="fa fa-envelope me-2"></i>Email</label>
+                                <!-- <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off"> -->
+                                <input class="form-control" type="email" name="email" placeholder="Enter your email" autocomplete="off" required>
                                 <label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
                                 <div class="input-group">
                                     <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
@@ -148,7 +149,7 @@ if (isset($_POST['login'])) {
 
                                         <!--forgot password -->
                                         <div class="forgot-password"> 
-                                            <a href="forgot_password.php">Forgot Passwordc</a>
+                                            <a href="../admin/forgot_password.php">Forgot Password</a>
                                         </div>
                                         <script type="text/javascript">
                                             function myfunction() {

@@ -79,8 +79,16 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
     
-    <!-- Include SweetAlert CSS -->
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    
+    
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -140,6 +148,16 @@ if (isset($_POST['login'])) {
                                     }
                                 }
                             </script>
+                            <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Your SweetAlert code here
+        Swal.fire({
+            icon: 'error',
+            title: 'Incorrect username or password',
+            text: 'Please try again.'
+        });
+    });
+</script>
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 <?php
-
+// Start session
+session_start();
 
 // Set session timeout limit (in seconds)
 $timeout_duration = 15 * 60; // 15 minutes
@@ -36,11 +37,23 @@ if (isset($_POST['login'])) {
 
     // If reCAPTCHA failed
     if (intval($responseKeys['success']) !== 1) {
-        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
+        echo "<script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'reCAPTCHA verification failed',
+                    text: 'Please try again'
+                });
+              </script>";
     } else {
         // Check if the user and password fields are empty
         if (empty($email) || empty($password)) {
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+            echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'You must fill all fields'
+                    });
+                  </script>";
         } else {
             $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
             $query->bind_param('s', $email);
@@ -56,10 +69,22 @@ if (isset($_POST['login'])) {
                     header("location:./admin_dash.php?msg=login");
                     exit; // Always exit after a header redirect to prevent further code execution
                 } else {
-                    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                    echo "<script>
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Incorrect username or password',
+                                text: 'Please try again'
+                            });
+                          </script>";
                 }
             } else {
-                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                echo "<script>
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Incorrect username or password',
+                            text: 'Please try again'
+                        });
+                      </script>";
             }
         }
     }
@@ -76,6 +101,9 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
+    
+    <!-- Include SweetAlert CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -141,6 +169,9 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </main>
+
+    <!-- Include SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>

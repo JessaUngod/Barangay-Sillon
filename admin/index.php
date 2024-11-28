@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once("../db.php");
 // echo password_hash("admin@@123", PASSWORD_DEFAULT);
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";

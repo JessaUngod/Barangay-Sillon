@@ -5,30 +5,15 @@ require_once("../db.php");
 $maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
-// Start session to track failed login attempts
-
+$error_message = ''; // Initialize error message
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
 
-    // Check if the user has exceeded the maximum login attempts
-    if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= $maxAttempts) {
-        // Check if the lockout period has expired
-        if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
-            $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Too many failed attempts. Please try again in " . gmdate("H:i:s", $remainingTime) . ".</div>";
-            exit;
-        } else {
-            // Reset login attempts after lockout period
-            unset($_SESSION['login_attempts']);
-            unset($_SESSION['lockout_time']);
-        }
-    }
-
     // Check if the user and password fields are empty
     if (empty($user) || empty($password)) {
-        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+        $error_message = 'You must fill all fields';
     } else {
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
@@ -38,29 +23,13 @@ if (isset($_POST['login'])) {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['pass'])) {
-                $_SESSION['idadmins'] = $row['id'];
-                header("location:./admin_dash.php?msg=login");
+                header("Location: ./admin_dash.php?msg=login");
+                exit; // Stop further execution after successful login
             } else {
-                // Failed login attempt
-                $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
-
-                // Lock user out after exceeding max attempts
-                if ($_SESSION['login_attempts'] >= $maxAttempts) {
-                    $_SESSION['lockout_time'] = time(); // Lockout time starts
-                }
-
-                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                $error_message = 'Incorrect username or password';
             }
         } else {
-            // Failed login attempt
-            $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
-
-            // Lock user out after exceeding max attempts
-            if ($_SESSION['login_attempts'] >= $maxAttempts) {
-                $_SESSION['lockout_time'] = time(); // Lockout time starts
-            }
-
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+            $error_message = 'Incorrect username or password';
         }
     }
 }
@@ -76,6 +45,10 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
+    <!-- SweetAlert2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -137,6 +110,15 @@ if (isset($_POST['login'])) {
                 document.getElementById("iconic").classList = "fa fa-eye-slash";
             }
         }
+
+        // Show SweetAlert if there's an error message
+        <?php if ($error_message): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo $error_message; ?>',
+            });
+        <?php endif; ?>
     </script>
 </body>
 

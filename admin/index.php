@@ -1,6 +1,6 @@
 <?php
 // Start the session at the beginning of the script
-
+session_start();
 
 require_once("../db.php");
 
@@ -13,6 +13,27 @@ $error_message = ''; // Initialize error message
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
+
+    // Check if the user has exceeded the maximum login attempts
+    if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= $maxAttempts) {
+        // Check if the lockout period has expired
+        if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
+            $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
+            // Show SweetAlert for lockout
+            echo "<script>
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Too many login attempts',
+                        text: 'Please try again in " . gmdate("H:i:s", $remainingTime) . ".',
+                    });
+                  </script>";
+            exit; // Exit after showing the message to prevent further execution
+        } else {
+            // Reset login attempts after lockout period
+            unset($_SESSION['login_attempts']);
+            unset($_SESSION['lockout_time']);
+        }
+    }
 
     // Check if the user and password fields are empty
     if (empty($user) || empty($password)) {
@@ -34,11 +55,25 @@ if (isset($_POST['login'])) {
                 header("Location: ./admin_dash.php?msg=login");
                 exit; // Ensure no further code execution after redirection
             } else {
-                // Incorrect password
+                // Failed login attempt
+                $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
+
+                // Lock user out after exceeding max attempts
+                if ($_SESSION['login_attempts'] >= $maxAttempts) {
+                    $_SESSION['lockout_time'] = time(); // Lockout time starts
+                }
+
                 $error_message = 'Incorrect username or password';
             }
         } else {
-            // No matching user
+            // Failed login attempt
+            $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
+
+            // Lock user out after exceeding max attempts
+            if ($_SESSION['login_attempts'] >= $maxAttempts) {
+                $_SESSION['lockout_time'] = time(); // Lockout time starts
+            }
+
             $error_message = 'Incorrect username or password';
         }
     }

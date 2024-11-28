@@ -19,7 +19,9 @@ if (!isset($_SESSION['failed_attempts'])) {
 if ($_SESSION['failed_attempts'] >= $maxAttempts) {
     // Check if lockout period has passed
     if (time() - $_SESSION['lockout_time'] < $lockoutTime) {
-        $error_message = 'Too many login attempts. Please try again after 15 minutes.';
+        // Convert lockout time to minutes
+        $remainingTime = ceil(($lockoutTime - (time() - $_SESSION['lockout_time'])) / 60);
+        $error_message = "Too many login attempts. Please try again after $remainingTime minute(s).";
     } else {
         // Reset failed attempts after lockout time has passed
         $_SESSION['failed_attempts'] = 0;

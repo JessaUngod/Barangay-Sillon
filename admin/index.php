@@ -6,7 +6,7 @@ $maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
 // Start session to track failed login attempts
-
+// session_start();
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
         // Check if the lockout period has expired
         if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
             $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Too many failed attempts. Please try again in " . gmdate("H:i:s", $remainingTime) . ".</div>";
+            echo "<script>Swal.fire('Too many failed attempts!', 'Please try again in " . gmdate("H:i:s", $remainingTime) . ".','error');</script>";
             exit;
         } else {
             // Reset login attempts after lockout period
@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
 
     // Check if the user and password fields are empty
     if (empty($user) || empty($password)) {
-        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+        echo "<script>Swal.fire('Error', 'You must fill all fields', 'error');</script>";
     } else {
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
             $row = $result->fetch_assoc();
             if (password_verify($password, $row['pass'])) {
                 $_SESSION['idadmins'] = $row['id'];
-                header("location:./admin_dash.php?msg=login");
+                echo "<script>Swal.fire('Success', 'Login successful!', 'success').then(() => {window.location = './admin_dash.php?msg=login';});</script>";
             } else {
                 // Failed login attempt
                 $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
@@ -49,7 +49,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['lockout_time'] = time(); // Lockout time starts
                 }
 
-                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                echo "<script>Swal.fire('Incorrect Username or Password', '', 'error');</script>";
             }
         } else {
             // Failed login attempt
@@ -60,7 +60,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['lockout_time'] = time(); // Lockout time starts
             }
 
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+            echo "<script>Swal.fire('Incorrect Username or Password', '', 'error');</script>";
         }
     }
 }
@@ -76,6 +76,9 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
+
+    <!-- SweetAlert CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">

@@ -6,7 +6,7 @@ $maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
 // Start session to track failed login attempts
-
+session_start();
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
         // Check if the lockout period has expired
         if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
             $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-            $error_message = 'To many login attempts please try again later.';
+            echo "<script>Swal.fire({icon: 'error', title: 'Too many failed attempts', text: 'Please try again in " . gmdate("H:i:s", $remainingTime) . "'});</script>";
             exit;
         } else {
             // Reset login attempts after lockout period
@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
 
     // Check if the user and password fields are empty
     if (empty($user) || empty($password)) {
-        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+        echo "<script>Swal.fire({icon: 'error', title: 'Fields are required', text: 'You must fill all fields'});</script>";
     } else {
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
@@ -49,7 +49,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['lockout_time'] = time(); // Lockout time starts
                 }
 
-                $error_message = 'Incorrect username or password. Please try again.';
+                echo "<script>Swal.fire({icon: 'error', title: 'Incorrect username or password', text: 'Please try again.'});</script>";
             }
         } else {
             // Failed login attempt
@@ -60,7 +60,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['lockout_time'] = time(); // Lockout time starts
             }
 
-            $error_message = 'Incorrect username or password. Please try again.';
+            echo "<script>Swal.fire({icon: 'error', title: 'Incorrect username or password', text: 'Please try again.'});</script>";
         }
     }
 }
@@ -76,8 +76,8 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.css">
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -128,6 +128,9 @@ if (isset($_POST['login'])) {
         </div>
     </main>
 
+    <!-- SweetAlert2 JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.all.min.js"></script>
+
     <script type="text/javascript">
         function myfunction() {
             var x = document.getElementById("pass");
@@ -140,19 +143,6 @@ if (isset($_POST['login'])) {
             }
         }
     </script>
-    
-    <?php
-                            // Show SweetAlert if there's an error message
-                            if ($error_message) {
-                                echo "<script>
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Error',
-                                            text: '$error_message'
-                                        });
-                                      </script>";
-                            }
-                            ?>
 </body>
 
 </html>

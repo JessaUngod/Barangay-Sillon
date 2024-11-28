@@ -1,6 +1,6 @@
 <?php
 
-
+require_once("../db.php");
 // Set session timeout limit (in seconds)
 $timeout_duration = 15 * 60; // 15 minutes
 

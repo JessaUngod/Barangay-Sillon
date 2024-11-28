@@ -302,15 +302,6 @@ require_once'../db.php';
    <script src="../assets/js/jquery.min.js"></script>
    <script src="../assets/js/bootstrap.bundle.js"></script>
  <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
- <script src="https://www.google.com/recaptcha/api.js?render=6Lc95IwqAAAAAAqgeTiHvRIFCgIE4LsQortunSBT"></script> <!-- Replace with your Site Key -->
-    <script type="text/javascript">
-        grecaptcha.ready(function() {
-            grecaptcha.execute('6Lc95IwqAAAAADyRaUf6N7uobXWvSIC-10Ja-Qnd', { action: 'staff_management' }).then(function(token) {
-                // Set the token in a hidden field
-                document.getElementById('recaptchaToken').value = token;
-            });
-        });
-    </script>
 
     <!-- Core plugin JavaScript-->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>

@@ -24,7 +24,7 @@ if (isset($_POST['login'])) {
         } else {
             // Prepare query to fetch user from database
             $stmt = $con->prepare("SELECT * FROM admin WHERE email = ?");
-            $stmt->bindParam('email', $email);
+            $stmt->mysqli('email', $email);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);
 

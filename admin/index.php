@@ -34,8 +34,8 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
 
     if (empty($user) || empty($password)) {
         $error_message = 'You must fill all fields';
-    } else {
-       l
+    } else {c
+       
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
         $query->execute();

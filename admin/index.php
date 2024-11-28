@@ -4,43 +4,34 @@ require_once("../db.php");
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
 
 if (isset($_POST['login'])) {
-    $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
+    // Sanitize input to prevent XSS and SQL injection
+    $email = htmlspecialchars(stripslashes(trim($_POST['email'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-    // Verify reCAPTCHA
-    $recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
     $response = file_get_contents($recaptchaVerifyUrl . "?secret=" . $secretKey . "&response=" . $recaptchaResponse);
     $responseKeys = json_decode($response, true);
-
 
     // If reCAPTCHA failed
     if (intval($responseKeys['success']) !== 1) {
         echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
-    } else {
-        // Check if the user and password fields are empty
-        if (empty($user) || empty($password)) {
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
-        } else {
-            $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
-            $query->bind_param('s', $user);
-            $query->execute();
-            $result = $query->get_result();
 
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
+                // Verify password
                 if (password_verify($password, $row['pass'])) {
                     $_SESSION['idadmins'] = $row['id'];
+                    $_SESSION['last_activity'] = time(); // Set session last activity time
                     header("location:./admin_dash.php?msg=login");
+                    exit; // Always exit after a header redirect to prevent further code execution
                 } else {
                     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
                 }
-            } else {
-                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
             }
         }
+
     }
-}
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,7 +73,7 @@ if (isset($_POST['login'])) {
                                             if (isset($_POST['login'])) {
                                                 $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
                                                 $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
-                                                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+                                                $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
                                                 $query->bind_param('s', $user);
                                                 $query->execute();
                                                 $result = $query->get_result();

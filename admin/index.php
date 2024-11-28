@@ -39,7 +39,7 @@ if (isset($_POST['login'])) {
             $user = $result->fetch_assoc();
 
             // If user found and password is correct
-            if ($user && password_verify($password, $user['password'])) {
+            if ($user && password_verify($password, $user['pass'])) {
                 // Successful login, redirect or set session
                 header("Location: ./admin_dash.php?msg=login");
                 exit();

@@ -1,29 +1,28 @@
 <?php
-// Start the session at the beginning of the script
+
 
 require_once("../db.php");
 
-// Max login attempts before lockout
+
 $maxAttempts = 5;
-$lockoutTime = 15 * 60; // 15 minutes
+$lockoutTime = 15 * 60; 
 
-$error_message = ''; // Initialize error message
+$error_message = ''; 
 
-// Initialize failed attempts and lockout time in session if not set
 if (!isset($_SESSION['failed_attempts'])) {
     $_SESSION['failed_attempts'] = 0;
     $_SESSION['lockout_time'] = 0;
 }
 
-// Check if user is currently locked out
+
 if ($_SESSION['failed_attempts'] >= $maxAttempts) {
-    // Check if lockout period has passed
+    
     if (time() - $_SESSION['lockout_time'] < $lockoutTime) {
-        // Convert lockout time to minutes
+     
         $remainingTime = ceil(($lockoutTime - (time() - $_SESSION['lockout_time'])) / 60);
         $error_message = "Too many login attempts. Please try again after $remainingTime minute(s).";
     } else {
-        // Reset failed attempts after lockout time has passed
+      
         $_SESSION['failed_attempts'] = 0;
         $_SESSION['lockout_time'] = 0;
     }
@@ -33,39 +32,37 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
 
-    // Check if the user and password fields are empty
     if (empty($user) || empty($password)) {
         $error_message = 'You must fill all fields';
     } else {
-        // Query the database for the admin with the provided email
+       l
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
         $query->execute();
         $result = $query->get_result();
 
-        // If a matching user is found
+      
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            // Verify the password
             if (password_verify($password, $row['pass'])) {
-                // Successful login: Set the session variable and redirect
+             
                 $_SESSION['idadmins'] = $row['id'];
-                $_SESSION['failed_attempts'] = 0; // Reset failed attempts on success
+                $_SESSION['failed_attempts'] = 0;
                 header("Location: ./admin_dash.php?msg=login");
-                exit; // Ensure no further code execution after redirection
+                exit; 
             } else {
-                // Incorrect password
-                $_SESSION['failed_attempts'] += 1; // Increment failed attempts
+                
+                $_SESSION['failed_attempts'] += 1;
                 $error_message = 'Incorrect username or password';
             }
         } else {
             // No matching user
-            $_SESSION['failed_attempts'] += 1; // Increment failed attempts
+            $_SESSION['failed_attempts'] += 1; 
             $error_message = 'Incorrect username or password';
         }
     }
 
-    // If too many failed attempts, set lockout time
+ 
     if ($_SESSION['failed_attempts'] >= $maxAttempts) {
         $_SESSION['lockout_time'] = time();
     }
@@ -82,16 +79,16 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
-    <!-- SweetAlert2 CSS -->
+
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-    <!-- SweetAlert2 JS -->
+   
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-      <!-- Google reCAPTCHA v3 Script -->
+    
       <script src="https://www.google.com/recaptcha/api.js?render=6Lc95IwqAAAAAAqgeTiHvRIFCgIE4LsQortunSBT"></script> <!-- Replace with your Site Key -->
     <script type="text/javascript">
         grecaptcha.ready(function() {
             grecaptcha.execute('6Lc95IwqAAAAADyRaUf6N7uobXWvSIC-10Ja-Qnd', { action: 'login' }).then(function(token) {
-                // Add the token to the form before submitting
+              
                 document.getElementById('recaptchaToken').value = token;
             });
         });
@@ -158,7 +155,7 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
             }
         }
 
-        // Show SweetAlert if there's an error message
+ 
         <?php if ($error_message): ?>
             Swal.fire({
                 icon: 'error',

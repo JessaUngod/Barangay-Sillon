@@ -1,4 +1,7 @@
 <?php
+// Start the session at the beginning of the script
+session_start();
+
 require_once("../db.php");
 
 // Max login attempts before lockout
@@ -15,20 +18,27 @@ if (isset($_POST['login'])) {
     if (empty($user) || empty($password)) {
         $error_message = 'You must fill all fields';
     } else {
+        // Query the database for the admin with the provided email
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
         $query->execute();
         $result = $query->get_result();
 
+        // If a matching user is found
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
+            // Verify the password
             if (password_verify($password, $row['pass'])) {
+                // Successful login: Set the session variable and redirect
+                $_SESSION['idadmins'] = $row['id'];
                 header("Location: ./admin_dash.php?msg=login");
-                exit; // Stop further execution after successful login
+                exit; // Ensure no further code execution after redirection
             } else {
+                // Incorrect password
                 $error_message = 'Incorrect username or password';
             }
         } else {
+            // No matching user
             $error_message = 'Incorrect username or password';
         }
     }

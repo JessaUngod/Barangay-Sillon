@@ -23,7 +23,7 @@ if (isset($_POST['login'])) {
             $error_message = 'Missing Fields. You must fill all fields.';
         } else {
             // Prepare query to fetch user from database
-            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt = $con->prepare("SELECT * FROM admin WHERE email = :email");
             $stmt->bindParam(':email', $email);
             $stmt->execute();
             $user = $stmt->fetch(PDO::FETCH_ASSOC);

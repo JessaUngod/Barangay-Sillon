@@ -1,11 +1,11 @@
 <?php
 // Start the session at the beginning of the script
-session_start();
+
 
 require_once("../db.php");
 
 // Max login attempts before lockout
-$maxAttempts = 5;
+$maxAttempts = 3;
 $lockoutTime = 15 * 60; // 15 minutes
 
 $error_message = ''; // Initialize error message

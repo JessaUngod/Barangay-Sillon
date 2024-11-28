@@ -22,7 +22,7 @@ if (isset($_POST['login'])) {
         if (empty($email) || empty($password)) {
             echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
         } else {
-            $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+            $query = $con->prepare("SELECT * FROM admin WHERE uname = ?");
             $query->bind_param('s', $email);
             $query->execute();
             $result = $query->get_result();

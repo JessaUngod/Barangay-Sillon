@@ -22,25 +22,39 @@ if (isset($_POST['login'])) {
         if (empty($email) || empty($password)) {
             $error_message = 'Missing Fields. You must fill all fields.';
         } else {
-            // Prepare query to fetch user from database
+            // Prepare query to fetch user from database using mysqli
             $stmt = $con->prepare("SELECT * FROM admin WHERE email = ?");
-            $stmt->mysqli('email', $email);
+            if ($stmt === false) {
+                die('MySQL prepare error: ' . $con->error);
+            }
+
+            // Bind parameters
+            $stmt->bind_param('s', $email); // 's' stands for string type
+
+            // Execute the query
             $stmt->execute();
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Fetch the result
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
 
             // If user found and password is correct
             if ($user && password_verify($password, $user['password'])) {
                 // Successful login, redirect or set session
-                header("location:./admin_dash.php?msg=login");
+                header("Location: ./admin_dash.php?msg=login");
                 exit();
             } else {
                 // User not found or password incorrect
                 $error_message = 'Incorrect username or password. Please try again.';
             }
+
+            // Close the statement
+            $stmt->close();
         }
     }
 }
 ?>
+
 
 
 

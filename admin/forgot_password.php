@@ -20,7 +20,7 @@ session_start();
         }
 
         body {
-            background-color: #a31414;
+            background-color: #e06666;
             display: flex;
             justify-content: center;
             align-items: center;

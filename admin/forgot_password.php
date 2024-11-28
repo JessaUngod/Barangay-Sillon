@@ -76,7 +76,7 @@ session_start();
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #722b2b;
         }
 
         p {
@@ -87,7 +87,7 @@ session_start();
         }
 
         a {
-            color: #007bff;
+            color: ##722b2b;
             text-decoration: none;
         }
 

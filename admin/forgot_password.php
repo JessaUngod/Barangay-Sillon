@@ -67,7 +67,7 @@ session_start();
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #722b2b;
             color: white;
             border: none;
             border-radius: 4px;

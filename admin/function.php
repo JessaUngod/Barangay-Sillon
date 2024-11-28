@@ -18,7 +18,7 @@ if (isset($_POST["btn-forgotpass"])) {
         $mail->AddAddress($email);
         $mail->Subject = "Reset Password OTP";
         $mail->Body = "Use this OTP Code to reset your password: " . $reset_code . "<br/>" .
-                      "Click the link to reset your password: https://sillonworkers.com/admin/reset_password.php?reset&email=$email"; // Provide the reset link
+                      "Click the link to reset your password: http://localhost/Barangay-Sillon/admin/reset_password.php?reset&email=$email"; // Provide the reset link
         
         // Send the email
         if (!$mail->Send()) {

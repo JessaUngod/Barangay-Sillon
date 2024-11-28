@@ -1,10 +1,30 @@
 <?php
+
+
+// Set session timeout limit (in seconds)
+$timeout_duration = 15 * 60; // 15 minutes
+
+// Check if the session is already started and the user is logged in
+if (isset($_SESSION['idadmins'])) {
+    // Check if the session timeout has passed
+    if (isset($_SESSION['last_activity']) && (time() - $_SESSION['last_activity']) > $timeout_duration) {
+        // Session has timed out, destroy the session and redirect to login page
+        session_unset();
+        session_destroy();
+        header("Location: login.php?msg=timeout");
+        exit;
+    }
+    
+    // Update last activity timestamp
+    $_SESSION['last_activity'] = time();
+}
+
 require_once("../db.php");
+
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
 
-$error_message = '';  // Initialize an error message variable
-
 if (isset($_POST['login'])) {
+    // Sanitize input to prevent XSS and SQL injection
     $email = htmlspecialchars(stripslashes(trim($_POST['email'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
     $recaptchaResponse = $_POST['g-recaptcha-response'];
@@ -16,13 +36,12 @@ if (isset($_POST['login'])) {
 
     // If reCAPTCHA failed
     if (intval($responseKeys['success']) !== 1) {
-        $error_message = 'reCAPTCHA verification failed. Please try again.';
+        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
     } else {
         // Check if the user and password fields are empty
         if (empty($email) || empty($password)) {
-            $error_message = 'Missing Fields. You must fill all fields.';
+            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
         } else {
-            // Proceed with login verification
             $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
             $query->bind_param('s', $email);
             $query->execute();
@@ -30,19 +49,17 @@ if (isset($_POST['login'])) {
 
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
+                // Verify password
                 if (password_verify($password, $row['pass'])) {
-                    // Successful login
                     $_SESSION['idadmins'] = $row['id'];
-
+                    $_SESSION['last_activity'] = time(); // Set session last activity time
                     header("location:./admin_dash.php?msg=login");
-                    exit;
+                    exit; // Always exit after a header redirect to prevent further code execution
                 } else {
-                    // Incorrect password
-                    $error_message = 'Incorrect username or password. Please try again.';
+                    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
                 }
             } else {
-                // User not found
-                $error_message = 'Incorrect username or password. Please try again.';
+                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
             }
         }
     }
@@ -59,10 +76,6 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
-    
-    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -122,26 +135,12 @@ if (isset($_POST['login'])) {
                                     }
                                 }
                             </script>
-
-                            <?php
-                            // Show SweetAlert if there's an error message
-                            if ($error_message) {
-                                echo "<script>
-                                        Swal.fire({
-                                            icon: 'error',
-                                            title: 'Error',
-                                            text: '$error_message'
-                                        });
-                                      </script>";
-                            }
-                            ?>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-
 </body>
 
 </html>

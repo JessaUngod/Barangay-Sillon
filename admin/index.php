@@ -1,11 +1,8 @@
 <?php
 require_once("../db.php");
 
-// reCAPTCHA settings
-$secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
-
 // Max login attempts before lockout
-$maxAttempts = 3;
+$maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
 // Start session to track failed login attempts
@@ -14,55 +11,35 @@ session_start();
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
-    $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-    // reCAPTCHA verification
-    $recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
-    $response = file_get_contents($recaptchaVerifyUrl . "?secret=" . $secretKey . "&response=" . $recaptchaResponse);
-    $responseKeys = json_decode($response, true);
-
-    if (intval($responseKeys['success']) !== 1) {
-        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
-    } else {
-        // Check if the user has exceeded the maximum login attempts
-        if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= $maxAttempts) {
-            // Check if the lockout period has expired
-            if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
-                $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Too many failed attempts. Please try again in " . gmdate("H:i:s", $remainingTime) . ".</div>";
-                exit;
-            } else {
-                // Reset login attempts after lockout period
-                unset($_SESSION['login_attempts']);
-                unset($_SESSION['lockout_time']);
-            }
-        }
-
-        // Check if the user and password fields are empty
-        if (empty($user) || empty($password)) {
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+    // Check if the user has exceeded the maximum login attempts
+    if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= $maxAttempts) {
+        // Check if the lockout period has expired
+        if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
+            $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
+            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Too many failed attempts. Please try again in " . gmdate("H:i:s", $remainingTime) . ".</div>";
+            exit;
         } else {
-            $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
-            $query->bind_param('s', $user);
-            $query->execute();
-            $result = $query->get_result();
+            // Reset login attempts after lockout period
+            unset($_SESSION['login_attempts']);
+            unset($_SESSION['lockout_time']);
+        }
+    }
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                if (password_verify($password, $row['pass'])) {
-                    $_SESSION['idadmins'] = $row['id'];
-                    header("location:./admin_dash.php?msg=login");
-                } else {
-                    // Failed login attempt
-                    $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
+    // Check if the user and password fields are empty
+    if (empty($user) || empty($password)) {
+        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+    } else {
+        $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+        $query->bind_param('s', $user);
+        $query->execute();
+        $result = $query->get_result();
 
-                    // Lock user out after exceeding max attempts
-                    if ($_SESSION['login_attempts'] >= $maxAttempts) {
-                        $_SESSION['lockout_time'] = time(); // Lockout time starts
-                    }
-
-                    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
-                }
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            if (password_verify($password, $row['pass'])) {
+                $_SESSION['idadmins'] = $row['id'];
+                header("location:./admin_dash.php?msg=login");
             } else {
                 // Failed login attempt
                 $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
@@ -74,6 +51,16 @@ if (isset($_POST['login'])) {
 
                 echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
             }
+        } else {
+            // Failed login attempt
+            $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
+
+            // Lock user out after exceeding max attempts
+            if ($_SESSION['login_attempts'] >= $maxAttempts) {
+                $_SESSION['lockout_time'] = time(); // Lockout time starts
+            }
+
+            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
         }
     }
 }
@@ -116,10 +103,6 @@ if (isset($_POST['login'])) {
                                         </button>
                                     </div>
 
-                                    <!-- reCAPTCHA -->
-                                    <div class="g-recaptcha" data-sitekey="6LeljIkqAAAAANJmJqqmRipY4QJ9e8J29iIYuh9w"></div>
-                                    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-12 mt-3">
@@ -133,7 +116,7 @@ if (isset($_POST['login'])) {
 
                                 <!--forgot password -->
                                 <div class="forgot-password"> 
-                                    <a href="forgot_password.php">Forgot Password?</a>
+                                    <a href="forgot_password.php">Forgotxx Password?</a>
                                 </div>
                             </div>
                         </div>

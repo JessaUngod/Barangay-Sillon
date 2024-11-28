@@ -9,7 +9,7 @@ $maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
 // Start session to track failed login attempts
-session_start();
+// session_start();
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));

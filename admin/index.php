@@ -31,7 +31,7 @@ if (isset($_POST['login'])) {
             // If user found and password is correct
             if ($user && password_verify($password, $user['password'])) {
                 // Successful login, redirect or set session
-                header("Location: dashboard.php");
+                header("location:./admin_dash.php?msg=login");
                 exit();
             } else {
                 // User not found or password incorrect

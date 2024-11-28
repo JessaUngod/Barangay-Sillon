@@ -1,67 +1,82 @@
 <?php
-session_start();  // Start the session at the beginning
+require_once("../db.php");
+$secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
+$maxAttempts = 3;  // Max login attempts allowed
+$blockTime = 900;  // Time to block user for 15 minutes (in seconds)
 
-$secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";  
-$maxAttempts = 3;  
-$blockDuration = 900; 
-$error_message = '';  
-// Check if the form is submitted
+$error_message = '';  // Initialize an error message variable
+
 if (isset($_POST['login'])) {
     $email = htmlspecialchars(stripslashes(trim($_POST['email'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
     $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-  
+    // Verify reCAPTCHA
     $recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
     $response = file_get_contents($recaptchaVerifyUrl . "?secret=" . $secretKey . "&response=" . $recaptchaResponse);
     $responseKeys = json_decode($response, true);
 
-    
+    // If reCAPTCHA failed
     if (intval($responseKeys['success']) !== 1) {
         $error_message = 'reCAPTCHA verification failed. Please try again.';
     } else {
-       
+        // Check if the user and password fields are empty
         if (empty($email) || empty($password)) {
             $error_message = 'Missing Fields. You must fill all fields.';
         } else {
-            
-            if (isset($_SESSION['last_attempt_time']) && isset($_SESSION['login_attempts'])) {
-                $timeElapsed = time() - $_SESSION['last_attempt_time'];
+            // Check the number of login attempts and block time
+            $query = $con->prepare("SELECT * FROM login_attempts WHERE email = ?");
+            $query->bind_param('s', $email);
+            $query->execute();
+            $result = $query->get_result();
+            $now = time(); // Current time in seconds
+            $lockedOut = false;
 
-                if ($_SESSION['login_attempts'] >= $maxAttempts && $timeElapsed < $blockDuration) {
-                    
-                    $error_message = 'Your account is temporarily locked due to too many failed login attempts. Please try again later.';
-                } else {
-                 
-                    if ($timeElapsed >= $blockDuration) {
-                        $_SESSION['login_attempts'] = 0;  // Reset attempts after the block duration
-                    }
-                    
-                    // Check the email and password (hardcoded check for demonstration)
-                    if ($email == "admin@example.com" && $password == "admin123") {
-                        // Successful login
-                        $_SESSION['user_id'] = 1;  // Set a session for the user
-                        $_SESSION['email'] = $email;
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                $lastAttemptTime = strtotime($row['last_attempt_time']); // Convert to timestamp
 
-                        // Reset login attempts on successful login
-                        $_SESSION['login_attempts'] = 0;
-                        $_SESSION['last_attempt_time'] = time();  // Update last attempt time
-
-                        header("Location: dashboard.php");  // Redirect to the dashboard or admin page
-                        exit();
-                    } else {
-                        // Incorrect credentials
-                        $error_message = 'Incorrect username or password. Please try again.';
-
-                        // Increment login attempts
-                        $_SESSION['login_attempts'] += 1;
-                        $_SESSION['last_attempt_time'] = time();  // Update last attempt time
-                    }
+                if ($row['attempts'] >= $maxAttempts && ($now - $lastAttemptTime) < $blockTime) {
+                    // User has exceeded the maximum attempts and is still within the block time
+                    $timeRemaining = $blockTime - ($now - $lastAttemptTime); // Calculate remaining block time
+                    $lockedOut = true;
+                    $timeRemainingFormatted = gmdate("i:s", $timeRemaining); // Format remaining time
+                    $error_message = "Too many attempts. Please try again in $timeRemainingFormatted.";
                 }
-            } else {
-                // Initialize session variables if not already set
-                $_SESSION['login_attempts'] = 0;
-                $_SESSION['last_attempt_time'] = time();
+            }
+
+            if (!$lockedOut) {
+                // Proceed with login verification if not locked out
+                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+                $query->bind_param('s', $email);
+                $query->execute();
+                $result = $query->get_result();
+
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_assoc();
+                    if (password_verify($password, $row['pass'])) {
+                        // Successful login
+                        $_SESSION['idadmins'] = $row['id'];
+
+                        // Reset the login attempts after successful login
+                        $con->query("DELETE FROM login_attempts WHERE email = '$email'");
+
+                        header("location:./admin_dash.php?msg=login");
+                        exit;
+                    } else {
+                        // Incorrect password, increment failed attempts
+                        $query = $con->prepare("INSERT INTO login_attempts (email, attempts, last_attempt_time) 
+                                                VALUES (?, 1, NOW()) 
+                                                ON DUPLICATE KEY UPDATE attempts = attempts + 1, last_attempt_time = NOW()");
+                        $query->bind_param('s', $email);
+                        $query->execute();
+
+                        $error_message = 'Incorrect username or password. Please try again.';
+                    }
+                } else {
+                    // User not found
+                    $error_message = 'Incorrect username or password. Please try again.';
+                }
             }
         }
     }
@@ -69,7 +84,7 @@ if (isset($_POST['login'])) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="utf-8">
@@ -78,11 +93,14 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
+    
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
+
     <main class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
         <div class="row">
             <div class="col-lg-8 mx-auto">
@@ -122,7 +140,7 @@ if (isset($_POST['login'])) {
                             </form>
 
                             <!--forgot password -->
-                            <div class="forgot-password">
+                            <div class="forgot-password"> 
                                 <a href="../admin/forgot_password.php">Forgot Password</a>
                             </div>
 
@@ -157,6 +175,7 @@ if (isset($_POST['login'])) {
             </div>
         </div>
     </main>
+
 </body>
 
 </html>

@@ -1,8 +1,6 @@
 <?php
 require_once("../db.php");
 $secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
-$maxAttempts = 3;  // Max login attempts allowed
-$blockTime = 900;  // Time to block user for 15 minutes (in seconds)
 
 $error_message = '';  // Initialize an error message variable
 
@@ -24,64 +22,27 @@ if (isset($_POST['login'])) {
         if (empty($email) || empty($password)) {
             $error_message = 'Missing Fields. You must fill all fields.';
         } else {
-            // Check the number of login attempts and block time
-            $query = $con->prepare("SELECT * FROM login_attempts WHERE email = ?");
-            $query->bind_param('s', $email);
-            $query->execute();
-            $result = $query->get_result();
-            $now = time(); // Current time in seconds
-            $lockedOut = false;
+            // Prepare query to fetch user from database
+            $stmt = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+            $stmt->bindParam(':email', $email);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            if ($result->num_rows > 0) {
-                $row = $result->fetch_assoc();
-                $lastAttemptTime = strtotime($row['last_attempt_time']); // Convert to timestamp
-
-                if ($row['attempts'] >= $maxAttempts && ($now - $lastAttemptTime) < $blockTime) {
-                    // User has exceeded the maximum attempts and is still within the block time
-                    $timeRemaining = $blockTime - ($now - $lastAttemptTime); // Calculate remaining block time
-                    $lockedOut = true;
-                    $timeRemainingFormatted = gmdate("i:s", $timeRemaining); // Format remaining time
-                    $error_message = "Too many attempts. Please try again in $timeRemainingFormatted.";
-                }
-            }
-
-            if (!$lockedOut) {
-                // Proceed with login verification if not locked out
-                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
-                $query->bind_param('s', $email);
-                $query->execute();
-                $result = $query->get_result();
-
-                if ($result->num_rows > 0) {
-                    $row = $result->fetch_assoc();
-                    if (password_verify($password, $row['pass'])) {
-                        // Successful login
-                        $_SESSION['idadmins'] = $row['id'];
-
-                        // Reset the login attempts after successful login
-                        $con->query("DELETE FROM login_attempts WHERE email = '$email'");
-
-                        header("location:./admin_dash.php?msg=login");
-                        exit;
-                    } else {
-                        // Incorrect password, increment failed attempts
-                        $query = $con->prepare("INSERT INTO login_attempts (email, attempts, last_attempt_time) 
-                                                VALUES (?, 1, NOW()) 
-                                                ON DUPLICATE KEY UPDATE attempts = attempts + 1, last_attempt_time = NOW()");
-                        $query->bind_param('s', $email);
-                        $query->execute();
-
-                        $error_message = 'Incorrect username or password. Please try again.';
-                    }
-                } else {
-                    // User not found
-                    $error_message = 'Incorrect username or password. Please try again.';
-                }
+            // If user found and password is correct
+            if ($user && password_verify($password, $user['password'])) {
+                // Successful login, redirect or set session
+                header("Location: dashboard.php");
+                exit();
+            } else {
+                // User not found or password incorrect
+                $error_message = 'Incorrect username or password. Please try again.';
             }
         }
     }
 }
 ?>
+
+
 
 <!DOCTYPE html>
 <html>

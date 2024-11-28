@@ -6,7 +6,9 @@ $maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
 // Start session to track failed login attempts
+session_start();
 
+$error_message = ''; // Initialize the error message variable
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
@@ -17,8 +19,8 @@ if (isset($_POST['login'])) {
         // Check if the lockout period has expired
         if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
             $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-            echo "<script>Swal.fire({icon: 'error', title: 'Too many failed attempts', text: 'Please try again in " . gmdate("H:i:s", $remainingTime) . "'});</script>";
-            exit;
+            $error_message = 'Too many login attempts. Please try again later.';
+            exit; // Stop further execution of the script
         } else {
             // Reset login attempts after lockout period
             unset($_SESSION['login_attempts']);
@@ -28,7 +30,7 @@ if (isset($_POST['login'])) {
 
     // Check if the user and password fields are empty
     if (empty($user) || empty($password)) {
-        echo "<script>Swal.fire({icon: 'error', title: 'Fields are required', text: 'You must fill all fields'});</script>";
+        $error_message = 'You must fill all fields';
     } else {
         $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
         $query->bind_param('s', $user);
@@ -40,6 +42,7 @@ if (isset($_POST['login'])) {
             if (password_verify($password, $row['pass'])) {
                 $_SESSION['idadmins'] = $row['id'];
                 header("location:./admin_dash.php?msg=login");
+                exit; // Stop further execution to prevent SweetAlert from showing
             } else {
                 // Failed login attempt
                 $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
@@ -49,7 +52,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['lockout_time'] = time(); // Lockout time starts
                 }
 
-                echo "<script>Swal.fire({icon: 'error', title: 'Incorrect username or password', text: 'Please try again.'});</script>";
+                $error_message = 'Incorrect username or password. Please try again.';
             }
         } else {
             // Failed login attempt
@@ -60,7 +63,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['lockout_time'] = time(); // Lockout time starts
             }
 
-            echo "<script>Swal.fire({icon: 'error', title: 'Incorrect username or password', text: 'Please try again.'});</script>";
+            $error_message = 'Incorrect username or password. Please try again.';
         }
     }
 }
@@ -77,7 +80,9 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
     <!-- SweetAlert2 CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -128,9 +133,6 @@ if (isset($_POST['login'])) {
         </div>
     </main>
 
-    <!-- SweetAlert2 JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.all.min.js"></script>
-
     <script type="text/javascript">
         function myfunction() {
             var x = document.getElementById("pass");
@@ -142,6 +144,15 @@ if (isset($_POST['login'])) {
                 document.getElementById("iconic").classList = "fa fa-eye-slash";
             }
         }
+
+        // Show SweetAlert if there's an error message
+        <?php if ($error_message): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo $error_message; ?>',
+            });
+        <?php endif; ?>
     </script>
 </body>
 

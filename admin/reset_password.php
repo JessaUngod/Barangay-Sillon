@@ -11,6 +11,9 @@ if (isset($_GET["reset"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reset Password</title>
+    <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
+    <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
     <style>
         * {
             margin: 0;
@@ -20,7 +23,7 @@ if (isset($_GET["reset"])) {
         }
 
         body {
-            background-color: #b2967d;
+            background-color:  #e06666;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -67,7 +70,7 @@ if (isset($_GET["reset"])) {
         button {
             width: 100%;
             padding: 10px;
-            background-color: #007bff;
+            background-color: #722b2b;
             color: white;
             border: none;
             border-radius: 4px;
@@ -76,7 +79,7 @@ if (isset($_GET["reset"])) {
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color:#722b2b;
         }
 
         p {
@@ -87,7 +90,7 @@ if (isset($_GET["reset"])) {
         }
 
         a {
-            color: #007bff;
+            color: #722b2b
             text-decoration: none;
         }
 

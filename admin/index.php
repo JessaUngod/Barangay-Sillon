@@ -86,6 +86,16 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
     <!-- SweetAlert2 JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+      <!-- Google reCAPTCHA v3 Script -->
+      <script src="https://www.google.com/recaptcha/api.js?render=6Lc95IwqAAAAAAqgeTiHvRIFCgIE4LsQortunSBT"></script> <!-- Replace with your Site Key -->
+    <script type="text/javascript">
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6Lc95IwqAAAAADyRaUf6N7uobXWvSIC-10Ja-Qnd', { action: 'login' }).then(function(token) {
+                // Add the token to the form before submitting
+                document.getElementById('recaptchaToken').value = token;
+            });
+        });
+    </script>
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">

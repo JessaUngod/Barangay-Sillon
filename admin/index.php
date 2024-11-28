@@ -5,7 +5,7 @@
 require_once("../db.php");
 
 // Max login attempts before lockout
-$maxAttempts = 3;
+$maxAttempts = 5;
 $lockoutTime = 15 * 60; // 15 minutes
 
 $error_message = ''; // Initialize error message

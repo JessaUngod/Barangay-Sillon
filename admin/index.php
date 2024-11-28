@@ -1,6 +1,6 @@
 <?php
 // Start the session at the beginning of the script
-
+session_start();
 
 require_once("../db.php");
 
@@ -10,7 +10,25 @@ $lockoutTime = 15 * 60; // 15 minutes
 
 $error_message = ''; // Initialize error message
 
-if (isset($_POST['login'])) {
+// Initialize failed attempts and lockout time in session if not set
+if (!isset($_SESSION['failed_attempts'])) {
+    $_SESSION['failed_attempts'] = 0;
+    $_SESSION['lockout_time'] = 0;
+}
+
+// Check if user is currently locked out
+if ($_SESSION['failed_attempts'] >= $maxAttempts) {
+    // Check if lockout period has passed
+    if (time() - $_SESSION['lockout_time'] < $lockoutTime) {
+        $error_message = 'Too many login attempts. Please try again after 15 minutes.';
+    } else {
+        // Reset failed attempts after lockout time has passed
+        $_SESSION['failed_attempts'] = 0;
+        $_SESSION['lockout_time'] = 0;
+    }
+}
+
+if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
 
@@ -31,16 +49,24 @@ if (isset($_POST['login'])) {
             if (password_verify($password, $row['pass'])) {
                 // Successful login: Set the session variable and redirect
                 $_SESSION['idadmins'] = $row['id'];
+                $_SESSION['failed_attempts'] = 0; // Reset failed attempts on success
                 header("Location: ./admin_dash.php?msg=login");
                 exit; // Ensure no further code execution after redirection
             } else {
                 // Incorrect password
+                $_SESSION['failed_attempts'] += 1; // Increment failed attempts
                 $error_message = 'Incorrect username or password';
             }
         } else {
             // No matching user
+            $_SESSION['failed_attempts'] += 1; // Increment failed attempts
             $error_message = 'Incorrect username or password';
         }
+    }
+
+    // If too many failed attempts, set lockout time
+    if ($_SESSION['failed_attempts'] >= $maxAttempts) {
+        $_SESSION['lockout_time'] = time();
     }
 }
 ?>

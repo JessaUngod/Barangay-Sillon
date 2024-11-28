@@ -17,7 +17,7 @@ if (isset($_POST['login'])) {
         // Check if the lockout period has expired
         if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
             $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Too many failed attempts. Please try again in " . gmdate("H:i:s", $remainingTime) . ".</div>";
+            $error_message = 'To many login attempts please try again later.';
             exit;
         } else {
             // Reset login attempts after lockout period
@@ -49,7 +49,7 @@ if (isset($_POST['login'])) {
                     $_SESSION['lockout_time'] = time(); // Lockout time starts
                 }
 
-                echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                $error_message = 'Incorrect username or password. Please try again.';
             }
         } else {
             // Failed login attempt
@@ -60,7 +60,7 @@ if (isset($_POST['login'])) {
                 $_SESSION['lockout_time'] = time(); // Lockout time starts
             }
 
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+            $error_message = 'Incorrect username or password. Please try again.';
         }
     }
 }
@@ -76,6 +76,8 @@ if (isset($_POST['login'])) {
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -138,6 +140,19 @@ if (isset($_POST['login'])) {
             }
         }
     </script>
+    
+    <?php
+                            // Show SweetAlert if there's an error message
+                            if ($error_message) {
+                                echo "<script>
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Error',
+                                            text: '$error_message'
+                                        });
+                                      </script>";
+                            }
+                            ?>
 </body>
 
 </html>

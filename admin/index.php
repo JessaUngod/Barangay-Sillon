@@ -1,71 +1,47 @@
 <?php
 require_once("../db.php");
-
-// Max login attempts before lockout
-$maxAttempts = 5;
-$lockoutTime = 15 * 60; // 15 minutes
-
-// Start session to track failed login attempts
-session_start();
+// echo password_hash("admin@@123", PASSWORD_DEFAULT);
+$secretKey = "6LeljIkqAAAAAEmFzLysnn0Df4pRtnAQ3ocLrQSE";
 
 if (isset($_POST['login'])) {
     $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
     $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
+    $recaptchaResponse = $_POST['g-recaptcha-response'];
 
-    // Check if the user has exceeded the maximum login attempts
-    if (isset($_SESSION['login_attempts']) && $_SESSION['login_attempts'] >= $maxAttempts) {
-        // Check if the lockout period has expired
-        if (isset($_SESSION['lockout_time']) && time() - $_SESSION['lockout_time'] < $lockoutTime) {
-            $remainingTime = $lockoutTime - (time() - $_SESSION['lockout_time']);
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Too many failed attempts. Please try again in " . gmdate("H:i:s", $remainingTime) . ".</div>";
-            exit;
-        } else {
-            // Reset login attempts after lockout period
-            unset($_SESSION['login_attempts']);
-            unset($_SESSION['lockout_time']);
-        }
-    }
+    // Verify reCAPTCHA
+    $recaptchaVerifyUrl = "https://www.google.com/recaptcha/api/siteverify";
+    $response = file_get_contents($recaptchaVerifyUrl . "?secret=" . $secretKey . "&response=" . $recaptchaResponse);
+    $responseKeys = json_decode($response, true);
 
-    // Check if the user and password fields are empty
-    if (empty($user) || empty($password)) {
-        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+
+    // If reCAPTCHA failed
+    if (intval($responseKeys['success']) !== 1) {
+        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>reCAPTCHA verification failed, please try again</div>";
     } else {
-        $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
-        $query->bind_param('s', $user);
-        $query->execute();
-        $result = $query->get_result();
+        // Check if the user and password fields are empty
+        if (empty($user) || empty($password)) {
+            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+        } else {
+            $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+            $query->bind_param('s', $user);
+            $query->execute();
+            $result = $query->get_result();
 
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            if (password_verify($password, $row['pass'])) {
-                $_SESSION['idadmins'] = $row['id'];
-                header("location:./admin_dash.php?msg=login");
-            } else {
-                // Failed login attempt
-                $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
-
-                // Lock user out after exceeding max attempts
-                if ($_SESSION['login_attempts'] >= $maxAttempts) {
-                    $_SESSION['lockout_time'] = time(); // Lockout time starts
+            if ($result->num_rows > 0) {
+                $row = $result->fetch_assoc();
+                if (password_verify($password, $row['pass'])) {
+                    $_SESSION['idadmins'] = $row['id'];
+                    header("location:./admin_dash.php?msg=login");
+                } else {
+                    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
                 }
-
+            } else {
                 echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
             }
-        } else {
-            // Failed login attempt
-            $_SESSION['login_attempts'] = isset($_SESSION['login_attempts']) ? $_SESSION['login_attempts'] + 1 : 1;
-
-            // Lock user out after exceeding max attempts
-            if ($_SESSION['login_attempts'] >= $maxAttempts) {
-                $_SESSION['lockout_time'] = time(); // Lockout time starts
-            }
-
-            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
         }
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -81,10 +57,15 @@ if (isset($_POST['login'])) {
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
 
     <main class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+
         <div class="row">
             <div class="col-lg-8 mx-auto">
                 <div class="card rounded">
                     <div class="row">
+                        <!-- <div class="col-md-6">
+                            
+                        </div> -->
+
                         <div class="col-md-12 py-5 px-3 bg-light">
                             <img src="../assets/img/sillon.jpg" alt="logo" class="w-100">
                             <center>
@@ -92,31 +73,98 @@ if (isset($_POST['login'])) {
                                 <p style="font-size: 12px; color: #09111d;">Workers of Brgy.Sillon prove as the role models within the community.</p>
                             </center>
                             <div class="col-md-12">
-                                <form method="post">
-                                    <label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
-                                    <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
-                                    <label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
-                                    <div class="input-group">
-                                        <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
-                                        <button type="button" class="btn btn-outline-secondary" onclick="myfunction()">
-                                            <i class="fa fa-eye-slash" id="iconic"></i>
-                                        </button>
-                                    </div>
+                                <div class="row">
+                                    <div class="col-md-2"></div>
+                                    <div class="col-md-8">
+                                        <form method="post">
+                                            <?php
+                                            // echo password_hash('jessaungod@@2024*123', PASSWORD_DEFAULT);
+                                            if (isset($_POST['login'])) {
+                                                $user = htmlspecialchars(stripslashes(trim($_POST['user'])));
+                                                $password = htmlspecialchars(stripslashes(trim($_POST['password'])));
+                                                $query = $con->prepare("SELECT * FROM admin WHERE email = ?");
+                                                $query->bind_param('s', $user);
+                                                $query->execute();
+                                                $result = $query->get_result();
 
-                                    <div class="col-md-12">
-                                        <div class="row">
-                                            <div class="col-md-12 mt-3">
-                                                <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light">
-                                                    <i class="fa fa-sign-in me-1"></i>LOGIN
-                                                </button>
+                                                if (empty($user) || empty($password)) {
+                                                    echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+                                                } else {
+                                                    if ($result->num_rows > 0) {
+                                                       
+                                                        $row = $result->fetch_assoc();
+                                                        if (password_verify($password, $row['pass'])) {
+                                                            $_SESSION['idadmins'] = $row['id'];
+                                                            header("location:./admin_dash.php?msg=login");
+                                                        } else {
+                                                            echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                                                        }
+                                                    } else {
+                                                        echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                                                    }
+                                                }
+
+
+                                                // if(!empty($user) && !empty($password)){
+                                                //     if(mysqli_num_rows($result)>0){
+                                                //         if($user == $row['uname'] && $password == $row['pass']){
+                                                //             $_SESSION['idadmins'] = $row['id'];
+                                                //             header("location:./admin_dash.php?msg=login");
+                                                //         } else {
+                                                //             // Handle incorrect password case if needed
+                                                //         }
+                                                //     } else {
+                                                //         echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>Incorrect username or password</div>";
+                                                //     }
+                                                // } else {
+                                                //     echo "<div class='alert alert-danger py-2 px-2 text-center'><a href='' class='btn-close float-end'></a>You must fill all fields</div>";
+                                                // }
+                                            }
+                                            ?>
+                                                                <form method="post">
+                                <label class="mt-2"><i class="fa fa-envelope me-2"></i>Username</label>
+                                <input class="form-control" type="text" name="user" placeholder="Enter username" autocomplete="off">
+                                <label class="mt-2"><i class="fa fa-lock me-2"></i>Password</label>
+                                <div class="input-group">
+                                    <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
+                                    <button type="button" class="btn btn-outline-secondary" onclick="myfunction()">
+                                        <i class="fa fa-eye-slash" id="iconic"></i>
+                                    </button>
+                                </div>
+
+                                <!-- reCAPTCHA -->
+                                <div class="g-recaptcha" data-sitekey="6LeljIkqAAAAANJmJqqmRipY4QJ9e8J29iIYuh9w"></div>
+                                <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-12 mt-3">
+                                            <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light">
+                                                <i class="fa fa-sign-in me-1"></i>LOGIN
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </form>
+                                        </form>
 
-                                <!--forgot password -->
-                                <div class="forgot-password"> 
-                                    <a href="forgot_password.php">Forgotxx Password?</a>
+                                        <!--forgot password -->
+                                        <div class="forgot-password"> 
+                                            <a href="forgot_password.php">Forgot Passwordc</a>
+                                        </div>
+                                        <script type="text/javascript">
+                                            function myfunction() {
+                                                var x = document.getElementById("pass");
+
+                                                if (x.type === "password") {
+                                                    x.type = "text";
+                                                    document.getElementById("iconic").classList = "fa fa-eye";
+                                                } else {
+                                                    x.type = "password";
+                                                    document.getElementById("iconic").classList = "fa fa-eye-slash";
+                                                }
+                                            }
+                                        </script>
+                                    </div>
+                                    <div class="col-md-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -124,20 +172,9 @@ if (isset($_POST['login'])) {
                 </div>
             </div>
         </div>
+
     </main>
 
-    <script type="text/javascript">
-        function myfunction() {
-            var x = document.getElementById("pass");
-            if (x.type === "password") {
-                x.type = "text";
-                document.getElementById("iconic").classList = "fa fa-eye";
-            } else {
-                x.type = "password";
-                document.getElementById("iconic").classList = "fa fa-eye-slash";
-            }
-        }
-    </script>
 </body>
 
 </html>

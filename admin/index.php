@@ -142,10 +142,35 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                     <h5>Information We Hold About You</h5>
                     <p>* Your name (firstname,lastname and middlename).</p>
                     <p>* Your age, birthdate, gender and contact information number</p>
-                    <h5>Use of Service</h5>
-                    <p>By using this service, you agree to abide by the rules and regulations set forth.</p>
-                    <h5>Privacy Policy</h5>
-                    <p>We are committed to protecting your privacy. Please review our Privacy Policy for more details.</p>
+                    <p>Any additional data that you choose to share as information on your profile such as images. 
+                    And we collect some or all this information that depeds in the following access of our platform:</p>
+                    <p>* Your registered username and password</p>
+                    <p>* You fill out our contact form</p>
+                   
+                    <h5>How Your Personal Infromation Is Used To</h5>
+                    <p>We might use your information in the following terms:</p>
+                    <p>* To register your employee accounts, enable you to get your employee ID for your everyday attendance.</p>
+                    <p>* To let you access your information (update or delete)</p>
+                    <p>* To record your IP Address when you perform certain actions, ensuring that it's never publicly visible but privately seen on your perspective.</p>
+                    <h5>Additional</h5>
+                    <p>Administrator can reset your password in terms you forget or you want to address on getting your password new to your accountability.</p>
+                  
+                    <h5>Keeping Your Data Secured</h5>
+                    <p>We as a team are committed to ensures everyone of you that any information you provided to us is secured.
+                    We have implemented suitable measures and procedures to prevent an authorized access or disclosure to your account and personal information.</p>
+                    <h5>Users Rights</h5>
+                    <p>Administrator of this platform will access the rights of every workers to legally access their personal data that an admins hold and they can obtain to copy it especially their username and password.
+You may also as workers have the right to request or reasure of your personal data. Please contact te admin if you wish for having your data or removed it.
+</p>
+<h5>
+Acceptance of the Policy</h5>
+<p>Continue to use our platform will signifies your acceptance of this policy. If you may not like to accept our policy, please do not use our platform. 
+	Upon engaging to add your account we further request your wholeheartedly acceptance of this privacy policy.
+</p>
+<h5>Changes of Policy</h5>
+<p>As a team we may update this policy at any time of the year. It may change depending on the statements of Barangay that will take the official responsibility for the new holder of every positions.
+You may be asked to review those current and old account information and re-accept the policy if changes occur in the time ahead.</p>
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

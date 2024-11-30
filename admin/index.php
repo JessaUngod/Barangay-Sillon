@@ -190,6 +190,30 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
             });
         <?php endif; ?>
     </script>
+    <script>
+    // Function to toggle the password visibility
+    function myfunction() {
+        var passField = document.getElementById('pass');
+        var iconic = document.getElementById('iconic');
+        if (passField.type === "password") {
+            passField.type = "text";
+            iconic.classList.remove("fa-eye-slash");
+            iconic.classList.add("fa-eye");
+        } else {
+            passField.type = "password";
+            iconic.classList.remove("fa-eye");
+            iconic.classList.add("fa-eye-slash");
+        }
+    }
+
+    // Enable login button if terms checkbox is checked
+    const termsCheckbox = document.getElementById('termsCheckbox');
+    const loginButton = document.getElementById('loginButton');
+
+    termsCheckbox.addEventListener('change', function() {
+        loginButton.disabled = !termsCheckbox.checked;
+    });
+</script>
 </body>
 
 </html>

@@ -112,7 +112,13 @@ if (isset($_GET["reset"])) {
            
         </div>
         <div class="form-group">
-        <input type="password" class="form-control" placeholder="Set new password" name="password" required>
+        <input type="password" class="form-control" placeholder="Set new password" name="password" required 
+                   pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+                   title="Password must be at least 8 characters long, include at least one number and one special character.">
+        </div>
+        <small class="password-requirements">
+            Password must be at least 8 characters long, include at least one number and one special character.
+        </small>
         </div>
         <button type="submit" name="btn-new-password">Set Password</button>
     </form>

@@ -79,7 +79,7 @@ if (isset($_GET["reset"])) {
         }
 
         button:hover {
-            background-color:#722b2b;
+            background-color: #722b2b;
         }
 
         p {
@@ -98,35 +98,14 @@ if (isset($_GET["reset"])) {
             text-decoration: underline;
         }
 
-        .password-requirements {
-            font-size: 12px;
-            color: #888;
+        .timer {
+            font-size: 14px;
+            color: red;
+            text-align: center;
+            margin-top: 10px;
         }
     </style>
-</head>
-<body>
-
-<div class="container">
-    <h2>Reset Password</h2>
-    <form action="../admin/function.php" method="post">
-        <div class="form-group">
-            <input type="hidden" name="email" class="form-control" value="<?php echo $email ?>" required readonly>
-        </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
-        </div>
-        <div id="timer" class="timer">
-            <!-- Countdown Timer will be displayed here -->
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" placeholder="Set new password" name="password" required 
-                   pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
-                   title="Password must be at least 8 characters long, include at least one number and one special character.">
-        </div>
-        <button type="submit" name="btn-new-password">Set Password</button>
-    </form>
-</div>
-<script>
+    <script>
         // Add a countdown timer for OTP expiration
         var expiryTime = <?php echo isset($_SESSION['otp_expiry']) ? $_SESSION['otp_expiry'] : '0'; ?>;
         if (expiryTime) {
@@ -145,6 +124,30 @@ if (isset($_GET["reset"])) {
             }, 1000);
         }
     </script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Reset Password</h2>
+    <form action="../admin/function.php" method="post">
+        <div class="form-group">
+            <input type="hidden" name="email" class="form-control" value="<?php echo $email ?>" required readonly>
+        </div>
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
+        </div>
+        <!-- Timer will appear here if OTP expiry is set -->
+        <div id="timer" class="timer">
+            <!-- Countdown Timer will be displayed here -->
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" placeholder="Set new password" name="password" required 
+                   pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
+                   title="Password must be at least 8 characters long, include at least one number and one special character.">
+        </div>
+        <button type="submit" name="btn-new-password">Set Password</button>
+    </form>
+</div>
 
 </body>
 </html>

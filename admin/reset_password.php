@@ -115,6 +115,9 @@ if (isset($_GET["reset"])) {
         <div class="form-group">
             <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
         </div>
+        <div id="timer" class="timer">
+            <!-- Countdown Timer will be displayed here -->
+        </div>
         <div class="form-group">
             <input type="password" class="form-control" placeholder="Set new password" name="password" required 
                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 

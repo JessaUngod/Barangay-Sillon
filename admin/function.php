@@ -8,8 +8,11 @@ if (isset($_POST["btn-forgotpass"])) {
     $email = $_POST["email"];
     $reset_code = random_int(100000, 999999); // Generate a random OTP for password reset
     
-    // Update the reset code in the database for the corresponding email
-    $sql = "UPDATE `admin` SET `code`='$reset_code' WHERE email='$email'";
+    // Set OTP expiration time (10 minutes from now)
+    $expiry_time = time() + 600; // OTP expires in 10 minutes
+    
+    // Update the reset code and expiry time in the database for the corresponding email
+    $sql = "UPDATE `admin` SET `code`='$reset_code', `otp_expiry`='$expiry_time' WHERE email='$email'";
     $query = mysqli_query($con, $sql);
 
     if ($query) {
@@ -43,17 +46,27 @@ if (isset($_POST["btn-new-password"])) {
     $password = $_POST["password"];
     $otp = $_POST["otp"]; // OTP from the form
 
-    // Query the database to get the stored OTP for the email
-    $sql = "SELECT `code` FROM `admin` WHERE email='$email'";
+    // Query the database to get the stored OTP and expiration time for the email
+    $sql = "SELECT `code`, `otp_expiry` FROM `admin` WHERE email='$email'";
     $query = mysqli_query($con, $sql);
 
     if (mysqli_num_rows($query) > 0) {
         while ($res = mysqli_fetch_assoc($query)) {
             $get_code = $res["code"];
+            $otp_expiry = $res["otp_expiry"];
         }
 
         // Verify if the provided OTP matches the one stored in the database
+        // Also check if the OTP has expired
         if ($otp === $get_code) {
+            $current_time = time(); // Current timestamp
+            if ($current_time > $otp_expiry) {
+                // OTP has expired
+                $_SESSION["notify"] = "expired";
+                header("location: ../admin/forgot_password.php");
+                exit();
+            }
+
             // Hash the new password using bcrypt (password_hash automatically uses bcrypt)
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 

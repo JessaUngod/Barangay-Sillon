@@ -108,12 +108,11 @@ if (isset($_GET["reset"])) {
             <input type="hidden" name="email" class="form-control" value="<?php echo $email ?>" required readonly>
         </div>
         <div class="form-group">
+        <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
             <input type="password" class="form-control" placeholder="Set new password" name="password" required>
         </div>
-        <div class="form-group">
-            <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
+        <div class="form-group"> <input type="password" class="form-control" placeholder="Set new password" name="password" required>
         </div>
-        <button type="submit" name="btn-new-password">Set Password</button>
     </form>
 </div>
 

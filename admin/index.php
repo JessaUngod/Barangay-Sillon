@@ -204,6 +204,27 @@ You may be asked to review those current and old account information and re-acce
             loginButton.disabled = !termsCheckbox.checked;
         });
     </script>
+      <script type="text/javascript">
+        function myfunction() {
+            var x = document.getElementById("pass");
+            if (x.type === "password") {
+                x.type = "text";
+                document.getElementById("iconic").classList = "fa fa-eye";
+            } else {
+                x.type = "password";
+                document.getElementById("iconic").classList = "fa fa-eye-slash";
+            }
+        }
+
+ 
+        <?php if ($error_message): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo $error_message; ?>',
+            });
+        <?php endif; ?>
+    </script>
 
     <!-- Add Bootstrap JS and Popper.js -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>

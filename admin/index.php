@@ -139,12 +139,9 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5>This website is operated by the administrator developer of the system and teams. 
-Troughout the site ("we","our","us") are committed by protecting and respecting your privacy, that refers to Barangay Sillon Workforce Attendance System.
-We, hereby offers this website to every workers within the Barangay Sillon to you, the users wich includes your personal information and your services
-available from this site, with that condition upon your acceptance of all terms, conditions, policies and notices stated here.
-</h5>
-                    <p>Please read these Terms and Conditions carefully before using our service.</p>
+                    <h5>Information We Hold About You</h5>
+                    <p>* Your name (firstname,lastname and middlename).</p>
+                    <p>Your age, birthdate, gender and contact information number</p>
                     <h5>Use of Service</h5>
                     <p>By using this service, you agree to abide by the rules and regulations set forth.</p>
                     <h5>Privacy Policy</h5>

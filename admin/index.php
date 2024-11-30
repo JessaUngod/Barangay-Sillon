@@ -139,7 +139,7 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <h5>Introduction</h5>
+                    <h5>TERMS & CONDITIONS (Barangay Sillon Workforce Attendance System)</h5>
                     <p>Please read these Terms and Conditions carefully before using our service.</p>
                     <h5>Use of Service</h5>
                     <p>By using this service, you agree to abide by the rules and regulations set forth.</p>

@@ -148,6 +148,26 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
             </div>
         </div>
     </main>
+    <!-- Modal for Terms and Conditions -->
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h5>Introduction</h5>
+                <p>Please read these Terms and Conditions carefully before using our service.</p>
+                <h5>Use of Service</h5>
+                <p>By using this service, you agree to abide by the rules and regulations set forth.</p>
+                <h5>Privacy Policy</h5>
+                <p>We are committed to protecting your privacy. Please review our Privacy Policy for more details.</p>
+                <!-- Add more terms here as necessary -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
 
     <script type="text/javascript">
         function myfunction() {

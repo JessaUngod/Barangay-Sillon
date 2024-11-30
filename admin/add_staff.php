@@ -335,7 +335,7 @@ require_once '../db.php';
                                             <center>
                                                 <div class="col-md-8">
                                                     <label>Profile Image</label>
-                                                    <input class="form-control mb-1" type="file" name="profile" placeholder="Enter Student name" style="font-size :15px;" required>
+                                                    <input class="form-control mb-1" type="file" name="profile" accept=".png, .jpg, .jpeg" placeholder="Enter Student name" style="font-size :15px;" required>
                                                 </div>
                                             </center>
 

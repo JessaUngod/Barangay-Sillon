@@ -120,9 +120,6 @@ if (isset($_GET["reset"])) {
                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
                    title="Password must be at least 8 characters long, include at least one number and one special character.">
         </div>
-        <small class="password-requirements">
-            Password must be at least 8 characters long, include at least one number and one special character.
-        </small>
         <button type="submit" name="btn-new-password">Set Password</button>
     </form>
 </div>

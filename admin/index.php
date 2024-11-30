@@ -120,11 +120,10 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                                         </button>
                                     </div>
 
-                                    <div class="mt-2 text-center">
-                                        <a href="#" data-bs-toggle="modal data-bs-target="#termsModal">View Terms and Conditions</a>
-    </div>
-    
-
+                                    <div class="mt-3">
+                                        <input type="checkbox" id="termsCheckbox" name="terms" required>
+                                        <label for ="termsCheckbox" class="ms-3">I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditons</a>
+    </label>
 
                                     <div class="col-md-12">
                                         <div class="row">

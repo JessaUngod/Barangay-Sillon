@@ -123,6 +123,25 @@ if (isset($_GET["reset"])) {
         <button type="submit" name="btn-new-password">Set Password</button>
     </form>
 </div>
+<script>
+        // Add a countdown timer for OTP expiration
+        var expiryTime = <?php echo isset($_SESSION['otp_expiry']) ? $_SESSION['otp_expiry'] : '0'; ?>;
+        if (expiryTime) {
+            var countdown = setInterval(function() {
+                var currentTime = Math.floor(Date.now() / 1000);  // Get current time in seconds
+                var remainingTime = expiryTime - currentTime;
+
+                if (remainingTime <= 0) {
+                    clearInterval(countdown);
+                    document.getElementById("timer").innerHTML = "OTP has expired.";
+                } else {
+                    var minutes = Math.floor(remainingTime / 60);
+                    var seconds = remainingTime % 60;
+                    document.getElementById("timer").innerHTML = "Time remaining: " + minutes + "m " + seconds + "s";
+                }
+            }, 1000);
+        }
+    </script>
 
 </body>
 </html>

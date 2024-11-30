@@ -141,7 +141,7 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                 <div class="modal-body">
                     <h5>Information We Hold About You</h5>
                     <p>* Your name (firstname,lastname and middlename).</p>
-                    <p>Your age, birthdate, gender and contact information number</p>
+                    <p>* Your age, birthdate, gender and contact information number</p>
                     <h5>Use of Service</h5>
                     <p>By using this service, you agree to abide by the rules and regulations set forth.</p>
                     <h5>Privacy Policy</h5>

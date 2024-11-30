@@ -90,12 +90,17 @@ if (isset($_GET["reset"])) {
         }
 
         a {
-            color: #722b2b
+            color: #722b2b;
             text-decoration: none;
         }
 
         a:hover {
             text-decoration: underline;
+        }
+
+        .password-requirements {
+            font-size: 12px;
+            color: #888;
         }
     </style>
 </head>
@@ -108,18 +113,16 @@ if (isset($_GET["reset"])) {
             <input type="hidden" name="email" class="form-control" value="<?php echo $email ?>" required readonly>
         </div>
         <div class="form-group">
-        <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
-           
+            <input type="text" class="form-control" placeholder="OTP Code" name="otp" required>
         </div>
         <div class="form-group">
-        <input type="password" class="form-control" placeholder="Set new password" name="password" required 
+            <input type="password" class="form-control" placeholder="Set new password" name="password" required 
                    pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" 
                    title="Password must be at least 8 characters long, include at least one number and one special character.">
         </div>
         <small class="password-requirements">
             Password must be at least 8 characters long, include at least one number and one special character.
         </small>
-        </div>
         <button type="submit" name="btn-new-password">Set Password</button>
     </form>
 </div>

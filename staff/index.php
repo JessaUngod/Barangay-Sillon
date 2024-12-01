@@ -95,7 +95,11 @@ require_once("../db.php");
                                                     <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
                                                     <i class="fa fa-eye-slash" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;" onclick="togglePasswordVisibility()" id="password-toggle"></i>
                                                 </div>
-                                                <div class="col-md-12 mt-3">
+                                              
+                                                <div class="mt-3">
+                                        <input type="checkbox" id="termsCheckbox" name="terms" required>
+                                        <label for="termsCheckbox" class="ms-3">I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
+                                    </div>
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light"><i class="fa fa-sign-in me-1"></i>LOGIN</button>

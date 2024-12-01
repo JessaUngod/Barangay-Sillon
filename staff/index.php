@@ -11,6 +11,8 @@ require_once("../db.php");
     <link rel="stylesheet" type="text/css" href="../assets/css/mdb.css">
     <link rel="stylesheet" type="text/css" href="../assets/fontawesome6/css/all.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
+    <!-- Add SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body style="background-size: cover; background-repeat: no-repeat; background-position: center; background: #09111d;">
@@ -21,12 +23,11 @@ require_once("../db.php");
                 <div class="card rounded">
                     <div class="col-md-12">
                         <div class="row">
-                            <!-- <div class="col-md-6" style="background: url(../assets/img/sillon.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 500px; margin-left: 200px;"></div> -->
                             <div class="col-md-12 py-5 px-3 bg-light">
                             <img src="../assets/img/sillon.jpg" alt="logo" class="w-100">
                                 <center>
                                     <p class="fw-bold" style="color: #09111d; font-size:30px;"><strong>Welcome Staff</strong></p>
-                                    <p style="font-size:12px; color: #09111d;">Workers of Brgy.Sillon proves as the role models within the community.</p>
+                                    <p style="font-size:12px; color: #09111d;">Workers of Brgy.Sillon prove as the role models within the community.</p>
                                 </center>
                                 <div class="col-md-12">
                                     <div class="row">
@@ -59,8 +60,6 @@ require_once("../db.php");
                                                     $query->bind_param('s', $email);
                                                     $query->execute();
                                                     $result = $query->get_result();
-                                                    // $result = mysqli_query($con, $query);
-
 
                                                     if (!empty($email) && !empty($password)) {
                                                         if ($result->num_rows > 0) {
@@ -95,69 +94,47 @@ require_once("../db.php");
                                                     <input class="form-control" type="password" name="password" id="pass" placeholder="Enter password" autocomplete="off">
                                                     <i class="fa fa-eye-slash" style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;" onclick="togglePasswordVisibility()" id="password-toggle"></i>
                                                 </div>
-                                              
+
                                                 <div class="mt-3">
-                                        <input type="checkbox" id="termsCheckbox" name="terms" required>
-                                        <label for="termsCheckbox" class="ms-3">I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
-                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light"><i class="fa fa-sign-in me-1"></i>LOGIN</button>
-                                                        </div>
+                                                    <input type="checkbox" id="termsCheckbox" name="terms" required>
+                                                    <label for="termsCheckbox" class="ms-3">I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light" id="loginButton" disabled><i class="fa fa-sign-in me-1"></i>LOGIN</button>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="col-md-2"></div>
                                         <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="termsModalLabel">TERMS & CONDITIONS (Barangay Sillon Workforce Attendance System)</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <h5>Information We Hold About You</h5>
-                    <p>* Your name (firstname,lastname and middlename).</p>
-                    <p>* Your age, birthdate, gender and contact information number</p>
-                    <p>Any additional data that you choose to share as information on your profile such as images. 
-                    And we collect some or all this information that depeds in the following access of our platform:</p>
-                    <p>* Your registered username and password</p>
-                    <p>* You fill out our contact form</p>
-                   
-                    <h5>How Your Personal Infromation Is Used To</h5>
-                    <p>We might use your information in the following terms:</p>
-                    <p>* To register your employee accounts, enable you to get your employee ID for your everyday attendance.</p>
-                    <p>* To let you access your information (update or delete)</p>
-                    <p>* To record your IP Address when you perform certain actions, ensuring that it's never publicly visible but privately seen on your perspective.</p>
-                    <h5>Additional</h5>
-                    <p>Administrator can reset your password in terms you forget or you want to address on getting your password new to your accountability.</p>
-                  
-                    <h5>Keeping Your Data Secured</h5>
-                    <p>We as a team are committed to ensures everyone of you that any information you provided to us is secured.
-                    We have implemented suitable measures and procedures to prevent an authorized access or disclosure to your account and personal information.</p>
-                    <h5>Users Rights</h5>
-                    <p>Administrator of this platform will access the rights of every workers to legally access their personal data that an admins hold and they can obtain to copy it especially their username and password.
-You may also as workers have the right to request or reasure of your personal data. Please contact te admin if you wish for having your data or removed it.
-</p>
-<h5>
-Acceptance of the Policy</h5>
-<p>Continue to use our platform will signifies your acceptance of this policy. If you may not like to accept our policy, please do not use our platform. 
-	Upon engaging to add your account we further request your wholeheartedly acceptance of this privacy policy.
-</p>
-<h5>Changes of Policy</h5>
-<p>As a team we may update this policy at any time of the year. It may change depending on the statements of Barangay that will take the official responsibility for the new holder of every positions.
-You may be asked to review those current and old account information and re-accept the policy if changes occur in the time ahead.</p>
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="termsModalLabel">TERMS & CONDITIONS (Barangay Sillon Workforce Attendance System)</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h5>Information We Hold About You</h5>
+                                                        <p>* Your name (firstname, lastname, and middlename).</p>
+                                                        <p>* Your age, birthdate, gender, and contact information number.</p>
+                                                        <p>Any additional data that you choose to share, such as images.</p>
+                                                        <h5>How Your Personal Information Is Used</h5>
+                                                        <p>We use your information for registering employee accounts and enabling daily attendance tracking.</p>
+                                                        <h5>Data Security</h5>
+                                                        <p>Your data is secured with us. We implement appropriate measures to prevent unauthorized access.</p>
+                                                        <h5>Users Rights</h5>
+                                                        <p>Workers can request to access or delete their data. Please contact the admin for requests.</p>
+                                                        <h5>Acceptance of Policy</h5>
+                                                        <p>Continuing to use the platform signifies your acceptance of this policy.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-  
                                     </div>
                                 </div>
                             </div>
@@ -167,23 +144,23 @@ You may be asked to review those current and old account information and re-acce
             </div>
         </div>
     </main>
+
     <script type="text/javascript">
-        // Toggle password visibility
-        function myfunction() {
-            var passField = document.getElementById('pass');
-            var iconic = document.getElementById('iconic');
+        function togglePasswordVisibility() {
+            var passField = document.getElementById("pass");
+            var icon = document.getElementById("password-toggle");
+
             if (passField.type === "password") {
                 passField.type = "text";
-                iconic.classList.remove("fa-eye-slash");
-                iconic.classList.add("fa-eye");
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
             } else {
                 passField.type = "password";
-                iconic.classList.remove("fa-eye");
-                iconic.classList.add("fa-eye-slash");
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
             }
         }
 
-        // Enable login button when terms checkbox is checked
         const termsCheckbox = document.getElementById('termsCheckbox');
         const loginButton = document.getElementById('loginButton');
 
@@ -191,20 +168,9 @@ You may be asked to review those current and old account information and re-acce
             loginButton.disabled = !termsCheckbox.checked;
         });
     </script>
-      <script type="text/javascript">
-        function myfunction() {
-            var x = document.getElementById("pass");
-            if (x.type === "password") {
-                x.type = "text";
-                document.getElementById("iconic").classList = "fa fa-eye";
-            } else {
-                x.type = "password";
-                document.getElementById("iconic").classList = "fa fa-eye-slash";
-            }
-        }
 
- 
-        <?php if ($error_message): ?>
+    <script type="text/javascript">
+        <?php if (isset($error_message) && $error_message): ?>
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',

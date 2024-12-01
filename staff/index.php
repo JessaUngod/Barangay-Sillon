@@ -21,12 +21,11 @@ require_once("../db.php");
                 <div class="card rounded">
                     <div class="col-md-12">
                         <div class="row">
-                            <!-- <div class="col-md-6" style="background: url(../assets/img/sillon.jpg); background-size: cover; background-repeat: no-repeat; background-position: center; height: 500px; width: 500px; margin-left: 200px;"></div> -->
                             <div class="col-md-12 py-5 px-3 bg-light">
-                            <img src="../assets/img/sillon.jpg" alt="logo" class="w-100">
+                                <img src="../assets/img/sillon.jpg" alt="logo" class="w-100">
                                 <center>
                                     <p class="fw-bold" style="color: #09111d; font-size:30px;"><strong>Welcome Staff</strong></p>
-                                    <p style="font-size:12px; color: #09111d;">Workers of Brgy.Sillon proves as the role models within the community.</p>
+                                    <p style="font-size:12px; color: #09111d;">Workers of Brgy.Sillon prove as the role models within the community.</p>
                                 </center>
                                 <div class="col-md-12">
                                     <div class="row">
@@ -48,7 +47,7 @@ require_once("../db.php");
                                                         $rael = "S24" . $rael;
                                                     }
                                                 } else {
-                                                    echo "<script>alert('Server Error') </script>";
+                                                    echo "<script>alert('Server Error')</script>";
                                                 }
                                                 ?>
                                                 <?php
@@ -59,8 +58,6 @@ require_once("../db.php");
                                                     $query->bind_param('s', $email);
                                                     $query->execute();
                                                     $result = $query->get_result();
-                                                    // $result = mysqli_query($con, $query);
-
 
                                                     if (!empty($email) && !empty($password)) {
                                                         if ($result->num_rows > 0) {
@@ -97,18 +94,54 @@ require_once("../db.php");
                                                 </div>
                                               
                                                 <div class="mt-3">
-                                        <input type="checkbox" id="termsCheckbox" name="terms" required>
-                                        <label for="termsCheckbox" class="ms-3">I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
-                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <button type="submit" name="login" class="btn btn-primary mt-1 form-control text-light"><i class="fa fa-sign-in me-1"></i>LOGIN</button>
-                                                        </div>
+                                                    <input type="checkbox" id="termsCheckbox" name="terms" required>
+                                                    <label for="termsCheckbox" class="ms-3">I accept the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a></label>
+                                                </div>
+                                                
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <button type="submit" name="login" id="loginButton" class="btn btn-primary mt-1 form-control text-light" disabled><i class="fa fa-sign-in me-1"></i>LOGIN</button>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                         <div class="col-md-2"></div>
+                                        <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="termsModalLabel">TERMS & CONDITIONS (Barangay Sillon Workforce Attendance System)</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <h5>Information We Hold About You</h5>
+                                                        <p>* Your name (firstname,lastname, and middlename).</p>
+                                                        <p>* Your age, birthdate, gender, and contact information number</p>
+                                                        <p>Any additional data that you choose to share as information on your profile such as images. And we collect some or all this information depending on your use of our platform:</p>
+                                                        <p>* Your registered username and password</p>
+                                                        <p>* You fill out our contact form</p>
+                                                        <h5>How Your Personal Information Is Used</h5>
+                                                        <p>We might use your information in the following terms:</p>
+                                                        <p>* To register your employee accounts and enable you to get your employee ID for your everyday attendance.</p>
+                                                        <p>* To let you access your information (update or delete)</p>
+                                                        <p>* To record your IP Address when you perform certain actions, ensuring that it's never publicly visible but privately seen on your perspective.</p>
+                                                        <h5>Additional</h5>
+                                                        <p>Administrator can reset your password in case you forget it or if you want to change it.</p>
+                                                        <h5>Keeping Your Data Secured</h5>
+                                                        <p>We are committed to ensuring the security of your information. Suitable measures have been implemented to prevent unauthorized access or disclosure of your account and personal data.</p>
+                                                        <h5>User Rights</h5>
+                                                        <p>As a user, you have the right to request a copy of your personal data or request its deletion. Please contact the admin for further assistance.</p>
+                                                        <h5>Acceptance of the Policy</h5>
+                                                        <p>By continuing to use our platform, you signify your acceptance of this policy. If you do not accept the policy, please refrain from using the platform.</p>
+                                                        <h5>Changes to the Policy</h5>
+                                                        <p>The policy may be updated at any time. Changes will be communicated, and you may be asked to review and re-accept the policy if significant changes occur.</p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -118,6 +151,7 @@ require_once("../db.php");
             </div>
         </div>
     </main>
+
     <script type="text/javascript">
         function togglePasswordVisibility() {
             var passField = document.getElementById("pass");
@@ -133,6 +167,14 @@ require_once("../db.php");
                 icon.classList.add("fa-eye-slash");
             }
         }
+
+        // Enable login button when terms checkbox is checked
+        const termsCheckbox = document.getElementById('termsCheckbox');
+        const loginButton = document.getElementById('loginButton');
+
+        termsCheckbox.addEventListener('change', function() {
+            loginButton.disabled = !termsCheckbox.checked;
+        });
     </script>
 </body>
 

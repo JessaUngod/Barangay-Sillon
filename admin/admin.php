@@ -218,7 +218,7 @@ require_once("../db.php");
                                             <td><?php echo $row1['mname']; ?></td>
                                             <td><?php echo $row1['age']; ?></td>
                                             <td><?php echo $row1['gender']; ?></td>
-                                            <td><?php echo $row1['uname']; ?></td>
+                                            <td><?php echo $row1['email']; ?></td>
                                             <td>
 
                                                 <center><img height="70" width="70" style="border-radius: 50px;" src="../uploads/<?php  echo $row1['img']; ?>">  </center>

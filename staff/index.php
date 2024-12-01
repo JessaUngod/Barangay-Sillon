@@ -168,28 +168,54 @@ You may be asked to review those current and old account information and re-acce
         </div>
     </main>
     <script type="text/javascript">
-        function togglePasswordVisibility() {
-            var passField = document.getElementById("pass");
-            var icon = document.getElementById("password-toggle");
-
+        // Toggle password visibility
+        function myfunction() {
+            var passField = document.getElementById('pass');
+            var iconic = document.getElementById('iconic');
             if (passField.type === "password") {
                 passField.type = "text";
-                icon.classList.remove("fa-eye-slash");
-                icon.classList.add("fa-eye");
+                iconic.classList.remove("fa-eye-slash");
+                iconic.classList.add("fa-eye");
             } else {
                 passField.type = "password";
-                icon.classList.remove("fa-eye");
-                icon.classList.add("fa-eye-slash");
+                iconic.classList.remove("fa-eye");
+                iconic.classList.add("fa-eye-slash");
             }
-               // Enable login button when terms checkbox is checked
+        }
+
+        // Enable login button when terms checkbox is checked
         const termsCheckbox = document.getElementById('termsCheckbox');
         const loginButton = document.getElementById('loginButton');
 
         termsCheckbox.addEventListener('change', function() {
             loginButton.disabled = !termsCheckbox.checked;
         });
-        }
     </script>
+      <script type="text/javascript">
+        function myfunction() {
+            var x = document.getElementById("pass");
+            if (x.type === "password") {
+                x.type = "text";
+                document.getElementById("iconic").classList = "fa fa-eye";
+            } else {
+                x.type = "password";
+                document.getElementById("iconic").classList = "fa fa-eye-slash";
+            }
+        }
+
+ 
+        <?php if ($error_message): ?>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?php echo $error_message; ?>',
+            });
+        <?php endif; ?>
+    </script>
+
+    <!-- Add Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

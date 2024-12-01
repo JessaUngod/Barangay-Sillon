@@ -19,35 +19,21 @@ RewriteCond %{REQUEST_FILENAME}.php -f
 RewriteCond %{REQUEST_FILENAME}.php (.*)
 RewriteRule .* %1 [L]
 
+</IfModule>
 
-</IfModule><IfModule mod_rewrite.c>
-RewriteEngine on
+<IfModule mod_headers.c>
+  # Strict-Transport-Security: Enforces HTTPS connections
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 
-# Redirect /index.php (and /index) to /
-RewriteCond %{THE_REQUEST} ^GET\ /(.*/)?index(\.php)?(\?.*)?\ HTTP/
-RewriteRule ^ http://%{HTTP_HOST}/%1 [L,R=301]
+  # X-Frame-Options: Prevents clickjacking by disallowing the page to be framed
+  Header always set X-Frame-Options "SAMEORIGIN"
 
-# Redirect /foo.php to /foo
-RewriteCond %{THE_REQUEST} ^GET\ /(.*)\.php(\?.*)?\ HTTP/
-RewriteRule ^ http://%{HTTP_HOST}/%1 [L,R=301]
+  # X-Content-Type-Options: Stops MIME sniffing and enforces the declared content type
+  Header always set X-Content-Type-Options "nosniff"
 
-# Redirect /foo/ to /foo, or /foo/bar/ to /foo/bar
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteCond %{REQUEST_URI} ^(.+)/$
-RewriteRule .* %1 [L,R=301]
+  # Referrer-Policy: Controls what information is sent with requests
+  Header always set Referrer-Policy "no-referrer-when-downgrade"
 
-# Make /foo and /foo/bar execute /foo.php
-RewriteCond %{REQUEST_FILENAME}.php -f
-RewriteCond %{REQUEST_FILENAME}.php (.*)
-RewriteRule .* %1 [L]
-
-# Note: If /foo.php exists, and /foo/bar/ is requested, the user will be redirected 
-#       to /foo/bar and /foo.php will be executed. If this is unacceptable, replace
-#       the previous two rule blocks with these:
-#
-#  RewriteCond %{DOCUMENT_ROOT}/current/path/$1.php -f
-#  RewriteRule (.*)/$ $1.php [L,R=301]
-#
-#  RewriteCond %{DOCUMENT_ROOT}/current/path/$0.php -f
-#  RewriteRule .* $0.php [L]
+  # Permissions-Policy: Restricts the use of certain features and APIs
+ 
 </IfModule>

@@ -18,11 +18,7 @@ date_default_timezone_set('Asia/Manila');
     <link rel="stylesheet" href="./assets/css/web.css">
     <script type="text/javascript" src="sweet_alert/sweetalert.min.js"></script>
 </head>
-<style>
-    .navbar{
-        font-size: small;
-    }
-</style>
+ 
 
 <body class="overflow-hidden">
 
@@ -30,7 +26,7 @@ date_default_timezone_set('Asia/Manila');
     <nav class="navbar navbar-expand-lg  navbar-dark " style="background-color: #000;">
         <div class="container">
 
-            <h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%;"><strong> Barangay Sillon Employee Attendance</strong></h1>
+            <h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%; font-size: meduim;"><strong> Barangay Sillon Employee Attendance</strong></h1>
             <button class="navbar-toggler shadow-none border-0" type="button" data-mdb-toggle="offcanvas" data-mdb-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <i class="fas fa-bars"></i>
 

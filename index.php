@@ -37,7 +37,7 @@
 			</div>
 
 				<!-- side <bodybody> -->
-				<div class="offcanvas-body">
+				<div class="offcanvas-body" style="padding: unset">
 					<ul class="navbar-nav justify-content-center flex-grow-1 pe-3" id="navbar">
 				<!-- <li class="nav-item me-3">
 					<a href="#" class="nav-link" data-mdb-toggle="modal" data-mdb-target="#homemodal"><strong>Home</strong></a>
@@ -56,7 +56,7 @@
 				
 			</ul>
 
-			<a href="attendance.php" class="btn btn-light py-3 fw-bold" style="max-height: 47px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Attendance</strong></a>
+			<a href="attendance.php" class="btn btn-light py-3 fw-bold" style="max-height: 47px; margin-bottom: 7px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Attendance</strong></a>
 			<a href="staff/index.php" class="btn btn-light py-3 fw-bold d-lg-none d-block" style="max-height: 47px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Login</strong></a>
 			<a href="admin/index.php" class="btn btn-light py-3 fw-bold d-lg-none d-block" style="max-height: 47px;"><i class="fas fa-sign-in-alt me-1" ></i><strong> Admin Login</strong></a>
 			

@@ -18,6 +18,11 @@ date_default_timezone_set('Asia/Manila');
     <link rel="stylesheet" href="./assets/css/web.css">
     <script type="text/javascript" src="sweet_alert/sweetalert.min.js"></script>
 </head>
+<style>
+    .navbar{
+        font-size: small;
+    }
+</style>
 
 <body class="overflow-hidden">
 

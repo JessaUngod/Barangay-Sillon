@@ -114,7 +114,7 @@ require_once("../db.php");
                                                         <h5 class="modal-title" id="termsModalLabel">TERMS & CONDITIONS (Sillon Barangay Workforce Attendance System)</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div style="color: black;" class="modal-body">
                                                         <ul>
                                                         <li>Information We Hold About You</li>
                                                         <p>Your name (firstname, lastname, and middlename).</p>

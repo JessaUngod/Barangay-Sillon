@@ -30,7 +30,7 @@ date_default_timezone_set('Asia/Manila');
     <nav class="navbar navbar-expand-lg  navbar-dark " style="background-color: #000;">
         <div class="container">
 
-            <h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%; font-size: meduim;"><strong> Barangay Sillon Employee Attendance</strong></h1>
+            <h1 class="navbar-brand"><img src="./assets/img/sillon.jpg" style="width: 70px; height: 70px; border-radius: 50%; font-size: meduim;"><strong> BSEA</strong></h1>
             <button class="navbar-toggler shadow-none border-0" type="button" data-mdb-toggle="offcanvas" data-mdb-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <i class="fas fa-bars"></i>
 

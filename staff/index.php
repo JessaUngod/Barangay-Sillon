@@ -118,15 +118,15 @@ require_once("../db.php");
                                                         <ul>
                                                         <li>Information We Hold About You</li>
                                                         <p>Your name (firstname, lastname, and middlename).</p>
-                                                        <p>* Your age, birthdate, gender, and contact information number.</p>
+                                                        <p>Your age, birthdate, gender, and contact information number.</p>
                                                         <p>Any additional data that you choose to share, such as images.</p>
-                                                        <h5>How Your Personal Information Is Used</h5>
+                                                        <li>How Your Personal Information Is Used</li>
                                                         <p>We use your information for registering employee accounts and enabling daily attendance tracking.</p>
-                                                        <h5>Data Security</h5>
+                                                        <li>Data Security</li>
                                                         <p>Your data is secured with us. We implement appropriate measures to prevent unauthorized access.</p>
-                                                        <h5>Users Rights</h5>
+                                                        <li>Users Rights</li>
                                                         <p>Workers can request to access or delete their data. Please contact the admin for requests.</p>
-                                                        <h5>Acceptance of Policy</h5>
+                                                        <li>Acceptance of Policy</li>
                                                         <p>Continuing to use the platform signifies your acceptance of this policy.</p>
                                             </ul>
                                                     </div>

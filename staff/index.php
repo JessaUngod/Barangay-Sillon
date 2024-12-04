@@ -111,12 +111,13 @@ require_once("../db.php");
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="termsModalLabel">TERMS & CONDITIONS (Barangay Sillon Workforce Attendance System)</h5>
+                                                        <h5 class="modal-title" id="termsModalLabel">TERMS & CONDITIONS (Sillon Barangay Workforce Attendance System)</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h5>Information We Hold About You</h5>
-                                                        <p>* Your name (firstname, lastname, and middlename).</p>
+                                                        <ul>
+                                                        <li>Information We Hold About You</li>
+                                                        <p>Your name (firstname, lastname, and middlename).</p>
                                                         <p>* Your age, birthdate, gender, and contact information number.</p>
                                                         <p>Any additional data that you choose to share, such as images.</p>
                                                         <h5>How Your Personal Information Is Used</h5>
@@ -127,6 +128,7 @@ require_once("../db.php");
                                                         <p>Workers can request to access or delete their data. Please contact the admin for requests.</p>
                                                         <h5>Acceptance of Policy</h5>
                                                         <p>Continuing to use the platform signifies your acceptance of this policy.</p>
+                                            </ul>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

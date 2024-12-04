@@ -139,7 +139,7 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                <div style="color: black;" class="modal-body">
+                <div style="color: black; text-align: justify;" class="modal-body">
                                                         <ul>
                                                         <li>Information We Hold About You</li>
                                                         <p>Your name (firstname, lastname, and middlename).</p>

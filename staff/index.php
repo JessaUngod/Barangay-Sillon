@@ -143,8 +143,7 @@ require_once("../db.php");
                                                         <li>Changes of Policy</li>
                                                         <p>As a team we may update this policy at any time of the year. It may change depending on the statements of Barangay that will take the official responsibility for the new holder of every positions.
                                                            You may be asked to review those current and old account information and re-accept the policy if changes occur in the time ahead.</p>
-                                                        <li>Acceptance of Policy</li>
-                                                        <p>Continuing to use the platform signifies your acceptance of this policy.</p>
+                                                        
                                             </ul>
                                                     </div>
                                                     <div class="modal-footer">

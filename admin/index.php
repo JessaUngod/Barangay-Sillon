@@ -1,16 +1,8 @@
 <?php
-session_start(); // Start session
-
-// Redirect if already logged in
-if (isset($_SESSION['idadmins'])) {
-    header("Location: ./admin_dash.php?msg=already_logged_in");
-    exit();
-}
-
 require_once("../db.php");
 
 $maxAttempts = 5;
-$lockoutTime = 15 * 60;
+$lockoutTime = 15 * 60; 
 
 $error_message = ''; 
 
@@ -47,7 +39,7 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
                 $_SESSION['idadmins'] = $row['id'];
                 $_SESSION['failed_attempts'] = 0;
                 header("Location: ./admin_dash.php?msg=login");
-                exit(); 
+                exit; 
             } else {
                 $_SESSION['failed_attempts'] += 1;
                 $error_message = 'Incorrect username or password';
@@ -63,7 +55,6 @@ if (isset($_POST['login']) && $_SESSION['failed_attempts'] < $maxAttempts) {
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html>

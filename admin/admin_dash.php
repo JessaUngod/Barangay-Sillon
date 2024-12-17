@@ -223,139 +223,51 @@ $sql22 = "SELECT * FROM `employee_info`";
                                 <div  id="chart"> </div>
                             </div>
                             <script type="text/javascript">
-    var options = {
-        chart: {
-            type: 'bar',
-            height: '100vh', // Full viewport height (100% of the view height)
-            width: '100vw',  // Full viewport width (100% of the view width)
-            toolbar: {
-                show: false
-            },
-            background: '#f9f9f9', // Light background color for the chart
-        },
-        plotOptions: {
-            bar: {
-                horizontal: false,
-                columnWidth: '55%', // Adjust the column width to fit the chart nicely
-                endingShape: 'rounded' // Rounded corners for the bars
-            }
-        },
-        dataLabels: {
-            enabled: true,
-            style: {
-                fontSize: '12px',
-                fontWeight: 'bold',
-                colors: ['#000'] // Color of data labels
-            }
-        },
-        stroke: {
-            show: true,
-            width: 2,
-            colors: ['#fff'] // White stroke around bars
-        },
-        series: [{
-            name: 'Count',
-            data: [
-                <?php 
-                    error_reporting(0);
-                    $sql22 = "SELECT * FROM `admin`";
-                    $oks22 = mysqli_query($con, $sql22);
-                    $res22 = mysqli_num_rows($oks22);
-                    echo $res22;
-                ?>,
-                <?php 
-                    error_reporting(0);
-                    $sql22 = "SELECT * FROM `staff`";
-                    $oks22 = mysqli_query($con, $sql22);
-                    $res22 = mysqli_num_rows($oks22);
-                    echo $res22;
-                ?>,
-                <?php 
-                    error_reporting(0);
-                    $sql22 = "SELECT * FROM `employee_info`";
-                    $oks22 = mysqli_query($con, $sql22);
-                    $res22 = mysqli_num_rows($oks22);
-                    echo $res22;
-                ?>,
-                <?php 
-                    error_reporting(0);
-                    date_default_timezone_set("Asia/manila");  
-                    $datein = date('y-m-d');
-                    $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
-                    $oks22 = mysqli_query($con, $sql22);
-                    $res226 = mysqli_num_rows($oks22);
-                    echo $res226;
-                ?>,
-                <?php 
-                    $total = $res22 - $res226;
-                    echo $total;
-                ?>
-            ]
-        }],
-        xaxis: {
-            categories: ['Admin', 'Staff', 'Total Employee', 'Total Time In', 'Total Absent'],
-            labels: {
-                style: {
-                    fontSize: '14px',
-                    fontWeight: '600',
-                    colors: ['#000'] // Label color
-                }
-            },
-            axisBorder: {
-                show: true,
-                color: '#ddd' // Border color for x-axis
-            }
-        },
-        yaxis: {
-            labels: {
-                style: {
-                    fontSize: '12px',
-                    fontWeight: '500',
-                    colors: ['#000'] // Y-axis label color
-                }
-            }
-        },
-        grid: {
-            show: true,
-            borderColor: '#f1f1f1', // Light grid lines
-            strokeDashArray: 3
-        },
-        fill: {
-            opacity: 0.9,
-            colors: ['#4caf50', '#2196f3', '#ff9800', '#9c27b0', '#ff5722'] // Customize bar colors
-        },
-        tooltip: {
-            enabled: true,
-            theme: 'dark', // Tooltip background color
-            style: {
-                fontSize: '12px',
-                fontWeight: 'bold'
-            },
-            y: {
-                formatter: function(val) {
-                    return val + " People"; // Add "People" in tooltip value
-                }
-            }
-        },
-        responsive: [{
-            breakpoint: 600,
-            options: {
-                chart: {
-                    width: '100%', // Responsive width for small screens
-                },
-                xaxis: {
-                    labels: {
-                        rotate: -45 // Rotate x-axis labels for small screens
-                    }
-                }
-            }
-        }]
-    };
-
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-    chart.render();
-</script>
-
+                                 var options = {
+                                chart: {
+                                    type: 'bar'
+                                },
+                                series:[{
+                                    name: 'Count',
+                                    data: [
+                                        <?php error_reporting(0);
+$sql22 = "SELECT * FROM `admin`";
+   $oks22 = mysqli_query($con, $sql22);
+   $res22 = mysqli_num_rows($oks22);
+   echo $res22;
+?>,
+           <?php error_reporting(0);
+$sql22 = "SELECT * FROM `staff`";
+   $oks22 = mysqli_query($con, $sql22);
+   $res22 = mysqli_num_rows($oks22);
+   echo $res22;
+?>,
+<?php error_reporting(0);
+$sql22 = "SELECT * FROM `employee_info`";
+   $oks22 = mysqli_query($con, $sql22);
+   $res22 = mysqli_num_rows($oks22);
+   echo $res22;
+?>,
+<?php error_reporting(0);
+                                                date_default_timezone_set("Asia/manila");  
+                                                $datein = date('y-m-d');
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+                                                    $oks22 = mysqli_query($con, $sql22);
+                                                    $res226 = mysqli_num_rows($oks22);
+                                                    echo $res226;
+                                                 ?>,
+                                                 <?php $total =0;
+                                            $total = $res22 - $res226;
+                                            echo $total; ?>                                      
+                                          ]
+                                }],
+                                xaxis: {
+                                    categories: ['Admin','Staff','Total Empoyee', 'Total Time In', 'Total Absent']
+                                }
+                            }
+                            var chart = new ApexCharts(document.querySelector("#chart"), options);
+                            chart.render();
+                            </script>
                         </div>
                     </div>
                 <div class="col-md-2"></div>

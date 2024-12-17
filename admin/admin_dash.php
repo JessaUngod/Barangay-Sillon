@@ -153,6 +153,7 @@ require_once '../db.php';
                                         $sql22 = "SELECT * FROM `admin`";
                                         $oks22 = mysqli_query($con, $sql22);
                                         $res22 = mysqli_num_rows($oks22);
+                                        $currLoc = mysqli_fetch_assoc($oks22);
                                         ?>
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>

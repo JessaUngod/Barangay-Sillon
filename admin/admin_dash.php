@@ -16,53 +16,71 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
+        /* Base Card Styling */
         .card {
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease-in-out;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 20px;
         }
+
         .card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-15px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
         }
+
         .card-body {
-            padding: 20px;
+            padding: 30px;
+            color: #fff;
         }
+
         .card-title {
-            font-size: 1.2em;
+            font-size: 1.5em;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
         }
-        .card-footer {
-            background-color: #f8f9fa;
-        }
+
         .card-icon {
-            font-size: 3em;
-            color: #ffffff;
-            padding: 10px;
+            font-size: 4em;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 50%;
+            padding: 15px;
+            margin-right: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-        .text-primary {
-            color: #007bff !important;
-        }
-        .text-warning {
-            color: #ffc107 !important;
-        }
-        .text-danger {
-            color: #dc3545 !important;
-        }
-        .text-success {
-            color: #28a745 !important;
-        }
+
+        /* Card Specific Background Colors */
         .bg-primary {
-            background-color: #007bff !important;
+            background: linear-gradient(45deg, #007bff, #00c6ff);
         }
+
         .bg-warning {
-            background-color: #ffc107 !important;
+            background: linear-gradient(45deg, #ffc107, #ff9f00);
         }
-        .bg-danger {
-            background-color: #dc3545 !important;
-        }
+
         .bg-success {
-            background-color: #28a745 !important;
+            background: linear-gradient(45deg, #28a745, #2bba72);
+        }
+
+        .bg-danger {
+            background: linear-gradient(45deg, #dc3545, #ff4c6a);
+        }
+
+        .bg-info {
+            background: linear-gradient(45deg, #17a2b8, #65c0d3);
+        }
+
+        /* Text Color Styling */
+        .text-white {
+            color: #fff;
+        }
+
+        .h5 {
+            font-size: 2em;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -109,7 +127,6 @@ require_once '../db.php';
                             $id = $_SESSION['idadmins'];
                             $result = mysqli_query($con, "SELECT * FROM admin WHERE id = $id");
                             $row = mysqli_fetch_assoc($result);
-                            
                         }else{
                             header("Location: ./index.php");
                         }
@@ -140,7 +157,7 @@ require_once '../db.php';
 
             <div class="container-fluid">
                 <h1 class="fw-bold mb-4 text-gray-800 fs-3" style="color: #000;"><strong>Dashboard</strong></h1>
-                
+
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <div class="col-xl-2 col-md-6 mb-4">
@@ -153,7 +170,6 @@ require_once '../db.php';
                                         $sql22 = "SELECT * FROM `admin`";
                                         $oks22 = mysqli_query($con, $sql22);
                                         $res22 = mysqli_num_rows($oks22);
-                                        $currLoc = mysqli_fetch_assoc($oks22);
                                         ?>
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
@@ -249,125 +265,8 @@ require_once '../db.php';
                         </div>
                     </div>
                 </div>
-                <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel"><strong>Logout</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                  </button>
-                </div>
-                <div class="modal-body text-center"><strong>Are you sure you want to Logout ?</strong></div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" style="color: #000;">Cancel</button>
-                    <a class="btn " style="color: #000; background: skyblue;" href="logout.php" name="logout">Logout</a>
-                </div>
             </div>
         </div>
     </div>
-    <script>
-        if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            document.getElementById('status').textContent = `Latitude: ${position.coords.latitude} Longitude: ${position.coords.longitude}`;
-            document.getElementById('latitude').value = position.coords.latitude;
-            document.getElementById('longitude').value = position.coords.longitude;
-        }, function() {
-            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
-        });
-        } else {
-            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
-        }
-    </script>
-    <div class="modal fade " id="setModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel"><strong>Set Location</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                  </button>
-                </div>
-                <form action="admin_dash.php" method="POST">
-                <div class="modal-body text-center">
-                    <?php
-                    $lon;
-                    $lan;
-                    list($lon, $lan) = explode(',', $currLoc["location"]);
-                    ?>
-                    <strong>
-                        <label>Default location</label>
-                    </strong>
-                    <p><?php echo "Latitude: ".$lon." Longitude: ".$lan ; ?></p>
-                    <strong>
-                        <label>Current location</label>
-                    </strong>
-                    <p id="status">na</p></div>
-                <div class="modal-footer">
-                    <input type="text" name="latitude" id="latitude"  hidden>
-                    <input type="text" name="longitude" id="longitude"  hidden>
-                     <input class="btn btn-information" type="submit"  value="Update Default Location To Current Location">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $latitude = $_POST['latitude'];
-        $longitude = $_POST['longitude'];
-        $location = $latitude.",".$longitude;
-        $update = $con->prepare("UPDATE `admin` SET `location` = ? WHERE `admin`.`id` = 1;");
-        $update->bind_param("s", $location);
-        if ($update->execute()) { 
-            echo "<script>alert('Location updated successfully.')</script>"; 
-        } 
-        else { 
-            echo "<script>alert('Error updating location: " . $update->error."')</script>";
-        }
-    }
-    ?>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <script src="../assets/js/mdb.js"></script>
-    <script src="../vendor/datatables/dataTable.js"></script>
- <script>
-    let table = new DataTable('#myTable', {
-});
-
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-    });
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
-    });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
-    });
-
-   </script> 
-   <script>
-    $('.open-btn').on('click', function()  {
-        $('#side_nav').addClass('active');
-        $('.content').addClass('shift');
-    });
-
-    $('.close-btn').on('click', function()  {
-        $('#side_nav').removeClass('active');
-        $('.content').removeClass('shift');
-
-    });
-
-
-   </script>
-
-
 </body>
 </html>
-

@@ -226,8 +226,8 @@ $sql22 = "SELECT * FROM `employee_info`";
     var options = {
         chart: {
             type: 'bar',
-            height: 400, // Set a specific height in pixels (e.g., 400px)
-            width: 600, // Set a specific width in pixels (e.g., 600px)
+            height: '100vh', // Full viewport height (100% of the view height)
+            width: '100vw',  // Full viewport width (100% of the view width)
             toolbar: {
                 show: false
             },

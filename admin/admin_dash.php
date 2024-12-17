@@ -340,7 +340,7 @@ $sql22 = "SELECT * FROM `employee_info`";
             breakpoint: 600,
             options: {
                 chart: {
-                    width: '200%',
+                    width: '500%',
                 },
                 xaxis: {
                     labels: {

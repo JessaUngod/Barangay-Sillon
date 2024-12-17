@@ -16,59 +16,69 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-      body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fc;
-        }
-
+        /* Enhanced Card Styles */
         .card {
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background: linear-gradient(145deg, #8e44ad, #6f42c1); /* Purple gradient */
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card-body {
-            padding: 30px;
+            padding: 25px;
+            background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            border-radius: 15px;
             color: white;
             position: relative;
         }
 
+        .card-body:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            z-index: -1;
+        }
+
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1.4em;
             font-weight: bold;
             text-transform: uppercase;
-            color: white;
+            letter-spacing: 1px;
             margin-bottom: 15px;
         }
 
         .card-footer {
-            background-color: #5e3370; /* Darker shade for footer */
-            padding: 10px;
-            border-top: 1px solid #4b1d5f;
-            border-radius: 0 0 12px 12px;
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 15px 15px;
         }
 
         .card-icon {
-            font-size: 2.5em;
-            color: white;
+            font-size: 3.5em;
+            color: #ffffff;
             padding: 15px;
             border-radius: 50%;
-            background-color: #9b59b6;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
-        /* Custom Color Specific Icons */
-        .bg-primary { background-color: #8e44ad; }
-        .bg-warning { background-color: #e67e22; }
-        .bg-danger { background-color: #e74c3c; }
-        .bg-success { background-color: #2ecc71; }
-        .bg-info { background-color: #1abc9c; }
+        .card-icon.bg-primary { background-color: #3498db; }
+        .card-icon.bg-warning { background-color: #f39c12; }
+        .card-icon.bg-danger { background-color: #e74c3c; }
+        .card-icon.bg-success { background-color: #2ecc71; }
 
         .text-white {
             color: white !important;
@@ -83,34 +93,13 @@ require_once '../db.php';
         }
 
         .row {
-            margin-top: 20px;
+            margin-top: 25px;
         }
 
-        /* Column Spacing */
         .col-md-3, .col-md-2 {
-            padding: 15px;
-        }
-        
-        .col-md-6 {
-            padding: 20px;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .card-body {
-                padding: 20px;
-            }
-
-            .card-title {
-                font-size: 1rem;
-            }
-
-            .card-icon {
-                font-size: 2em;
-            }
+            padding: 10px;
         }
     </style>
- 
 </head>
 <body>
     <?php 

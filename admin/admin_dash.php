@@ -16,12 +16,13 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-  
-        /* Card Styles */
+       
+        /* Card Styles with Gradient Purple */
         .card {
             border-radius: 10px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(145deg, #8e44ad, #6f42c1); /* Purple gradient */
         }
 
         .card:hover {
@@ -31,7 +32,7 @@ require_once '../db.php';
 
         .card-body {
             padding: 30px;
-            background: #ffffff;
+            color: white;
             border-radius: 10px;
             position: relative;
         }
@@ -40,14 +41,14 @@ require_once '../db.php';
             font-size: 1.2rem;
             font-weight: bold;
             text-transform: uppercase;
-            color: #333;
+            color: white;
             margin-bottom: 20px;
         }
 
         .card-footer {
-            background-color: #f7f7f7;
+            background-color: #5e3370; /* Darker shade for footer */
             padding: 12px;
-            border-top: 1px solid #ddd;
+            border-top: 1px solid #4b1d5f;
             border-radius: 0 0 10px 10px;
         }
 
@@ -56,13 +57,13 @@ require_once '../db.php';
             color: white;
             padding: 15px;
             border-radius: 50%;
-            background-color: #333;
+            background-color: #9b59b6;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         /* Color specific icons */
-        .bg-primary { background-color: #3498db; }
-        .bg-warning { background-color: #f39c12; }
+        .bg-primary { background-color: #8e44ad; }
+        .bg-warning { background-color: #e67e22; }
         .bg-danger { background-color: #e74c3c; }
         .bg-success { background-color: #2ecc71; }
         .bg-info { background-color: #1abc9c; }
@@ -107,7 +108,7 @@ require_once '../db.php';
             }
         }
     </style>
-    
+ 
 </head>
 <body>
     <?php 

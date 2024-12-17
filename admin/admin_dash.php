@@ -19,50 +19,6 @@ require_once '../db.php';
      <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 
 </head>
-<style> .card-body {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-  }
-
-  .card-body:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
-    transform: translateY(-5px);
-  }
-
-  .fw-bold {
-    font-weight: 700;
-  }
-
-  .fs-4 {
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-
-  .text-primary {
-    color:rgb(233, 235, 236);
-  }
-
-  .text-dark {
-    color: #343a40;
-  }
-
-  .text-muted {
-    color: #6c757d;
-  }
-
-  /* Responsive settings */
-  @media (max-width: 768px) {
-    .col-auto {
-      text-align: center;
-      margin-top: 10px;
-    }
-    .card-body {
-      padding: 15px;
-    }
-  }</style>
 <body>
     <?php 
     if (isset($_GET['msg'])=="login") {
@@ -212,7 +168,7 @@ if(!empty($_SESSION['idadmins'])){
 
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 1em; font-weight: 600;">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Admin</a> </strong> </div>
                                                
                                                <?php error_reporting(0);

@@ -16,15 +16,15 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-     /* Enhanced Card Styles */
+     /* General Card Styles */
 .card {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 0;
-    padding-bottom: 100%; /* 1:1 Aspect Ratio (Square) */
     position: relative;
+    height: 0;
+    padding-bottom: 100%; /* Ensures square aspect ratio */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
@@ -33,7 +33,7 @@ require_once '../db.php';
 }
 
 .card-body {
-    padding: 25px;
+    padding: 15px;
     background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
     background-size: 200% 200%;
     background-position: 0% 50%;
@@ -44,6 +44,11 @@ require_once '../db.php';
     left: 0;
     right: 0;
     bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .card-title {
@@ -51,7 +56,7 @@ require_once '../db.php';
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 
 .card-footer {
@@ -59,6 +64,7 @@ require_once '../db.php';
     padding: 15px;
     border-top: 1px solid #ddd;
     border-radius: 0 0 15px 15px;
+    text-align: center;
 }
 
 .card-icon {
@@ -68,9 +74,7 @@ require_once '../db.php';
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
+    margin-top: 10px;
 }
 
 .card-icon.bg-primary { background-color: #3498db; }
@@ -96,6 +100,20 @@ require_once '../db.php';
 
 .col-md-3, .col-md-2 {
     padding: 10px;
+}
+
+/* Media Query for Responsive Layout */
+@media (max-width: 768px) {
+    .col-md-3, .col-md-2 {
+        flex: 0 0 48%; /* Two cards per row on smaller screens */
+        max-width: 48%;
+    }
+}
+@media (max-width: 480px) {
+    .col-md-3, .col-md-2 {
+        flex: 0 0 100%; /* One card per row on very small screens */
+        max-width: 100%;
+    }
 }
 
     </style>

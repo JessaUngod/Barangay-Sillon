@@ -48,7 +48,7 @@ require_once '../db.php';
                             <div class="card-body">
                                 <div id="chart"></div>
                             </div>
-                            <script type="text/javascript">
+                            <!-- <script type="text/javascript">
                                 var options = {
                                     chart: {
                                         type: 'bar'
@@ -101,7 +101,7 @@ require_once '../db.php';
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- Location Modal Code -->
     <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

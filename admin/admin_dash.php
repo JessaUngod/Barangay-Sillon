@@ -16,92 +16,90 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-    /* Enhanced Card Styles */
-    .card {
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        /* Enhanced Card Styles */
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-    }
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+        }
 
-    .card-body {
-        padding: 25px;
-        background: linear-gradient(to bottom right, #e74c3c, #c0392b); /* Red Gradient */
-        background-size: 200% 200%;
-        background-position: 0% 50%;
-        border-radius: 15px;
-        color: white;
-        position: relative;
-    }
+        .card-body {
+            padding: 25px;
+            background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            border-radius: 15px;
+            color: white;
+            position: relative;
+        }
 
-    .card-body:before {
-        content: '';
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        background: rgba(0, 0, 0, 0.1);
-        border-radius: 15px;
-        z-index: -1;
-    }
+        .card-body:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            z-index: -1;
+        }
 
-    .card-title {
-        font-size: 1.4em;
-        font-weight: bold;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 15px;
-    }
+        .card-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
 
-    .card-footer {
-        background-color: #f8f9fa;
-        padding: 15px;
-        border-top: 1px solid #ddd;
-        border-radius: 0 0 15px 15px;
-    }
+        .card-footer {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-top: 1px solid #ddd;
+            border-radius: 0 0 15px 15px;
+        }
 
-    .card-icon {
-        font-size: 3.5em;
-        color: #ffffff;
-        padding: 15px;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.2);
-        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    }
+        .card-icon {
+            font-size: 3.5em;
+            color: #ffffff;
+            padding: 15px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
 
-    /* Card Color Customizations */
-    .card-icon.bg-primary { background-color: #e74c3c; }
-    .card-icon.bg-warning { background-color: #f39c12; }
-    .card-icon.bg-danger { background-color: #c0392b; } 
-    .card-icon.bg-success { background-color: #2ecc71; }
+        .card-icon.bg-primary { background-color: #3498db; }
+        .card-icon.bg-warning { background-color: #f39c12; }
+        .card-icon.bg-danger { background-color: #e74c3c; }
+        .card-icon.bg-success { background-color: #2ecc71; }
 
-    .text-white {
-        color: white !important;
-    }
+        .text-white {
+            color: white !important;
+        }
 
-    .fw-bold {
-        font-weight: 600 !important;
-    }
+        .fw-bold {
+            font-weight: 600 !important;
+        }
 
-    .h5 {
-        font-size: 1.4rem;
-    }
+        .h5 {
+            font-size: 1.4rem;
+        }
 
-    .row {
-        margin-top: 25px;
-    }
+        .row {
+            margin-top: 25px;
+        }
 
-    .col-md-3, .col-md-2 {
-        padding: 10px;
-    }
-</style>
-
+        .col-md-3, .col-md-2 {
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
     <?php 

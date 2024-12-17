@@ -16,90 +16,204 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-        /* Enhanced Card Styles */
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    /* General Layout Enhancements */
+    body {
+        background-color: #f4f6f9;
+        font-family: 'Arial', sans-serif;
+    }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
+    .main-container-fluid {
+        display: flex;
+        height: 100vh;
+        overflow: hidden;
+    }
 
-        .card-body {
-            padding: 25px;
-            background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
-            background-size: 200% 200%;
-            background-position: 0% 50%;
-            border-radius: 15px;
-            color: white;
-            position: relative;
-        }
+    /* Sidebar Styling */
+    .sidebar {
+        background-color: #2c3e50;
+        color: #fff;
+        width: 250px;
+        transition: all 0.3s ease-in-out;
+        position: fixed;
+        height: 100%;
+        padding-top: 20px;
+    }
 
-        .card-body:before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            z-index: -1;
-        }
+    .sidebar.active {
+        transform: translateX(0);
+    }
 
-        .card-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
+    .sidebar ul li {
+        list-style: none;
+        margin: 10px 0;
+    }
 
-        .card-footer {
-           
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            border-radius: 0 0 15px 15px;
-        }
+    .sidebar ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 20px;
+        display: block;
+        transition: background-color 0.3s;
+        border-radius: 5px;
+    }
 
-        .card-icon {
-    font-size: 3.5em;
-    color: #ffffff;
-    background-color: transparent; /* Remove the background color */
-    box-shadow: none; /* Remove the shadow */
-    padding: 0; /* Remove padding */
-    border-radius: 0;
-        }
+    .sidebar ul li a:hover, .sidebar ul li.active a {
+        background-color: #1abc9c;
+    }
 
-        .card-icon.bg-primary { background-color: #3498db; }
-        .card-icon.bg-warning { background-color: #f39c12; }
-        .card-icon.bg-danger { background-color: #e74c3c; }
-        .card-icon.bg-success { background-color: #2ecc71; }
+    .sidebar ul li a i {
+        margin-right: 10px;
+    }
 
-        .text-white {
-            color: white !important;
-        }
+    .sidebar .header-box h1 {
+        color: #fff;
+        font-size: 20px;
+        font-weight: bold;
+    }
 
-        .fw-bold {
-            font-weight: 600 !important;
-        }
+    .sidebar .header-box button {
+        background-color: transparent;
+        color: #fff;
+    }
 
-        .h5 {
-            font-size: 1.4rem;
-        }
+    /* Content Area Styling */
+    .content {
+        margin-left: 250px;
+        transition: all 0.3s;
+        padding: 30px;
+        flex: 1;
+    }
 
-        .row {
-            margin-top: 25px;
-        }
+    .content.shift {
+        margin-left: 0;
+    }
 
-        .col-md-3, .col-md-2 {
-            padding: 10px;
-        }
-    </style>
+    /* Navbar Enhancements */
+    .navbar {
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav .nav-item .nav-link {
+        color: #2c3e50;
+        padding: 10px;
+    }
+
+    .navbar-nav .nav-item .nav-link:hover {
+        background-color: #ecf0f1;
+        border-radius: 5px;
+    }
+
+    .navbar-toggler {
+        background-color: #2c3e50;
+    }
+
+    .navbar-toggler-icon {
+        background-color: #fff;
+    }
+
+    .dropdown-menu {
+        min-width: 180px;
+    }
+
+    /* Card Styling */
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-body {
+        padding: 25px;
+        background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+        background-size: 200% 200%;
+        background-position: 0% 50%;
+        border-radius: 15px;
+        color: white;
+    }
+
+    .card-title {
+        font-size: 1.4em;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+    }
+
+    .card-footer {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-top: 1px solid #ddd;
+        border-radius: 0 0 15px 15px;
+    }
+
+    .card-icon {
+        font-size: 3.5em;
+        color: #ffffff;
+        padding: 15px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.2);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-icon.bg-primary { background-color: #3498db; }
+    .card-icon.bg-warning { background-color: #f39c12; }
+    .card-icon.bg-danger { background-color: #e74c3c; }
+    .card-icon.bg-success { background-color: #2ecc71; }
+
+    .text-white {
+        color: white !important;
+    }
+
+    .fw-bold {
+        font-weight: 600 !important;
+    }
+
+    .h5 {
+        font-size: 1.4rem;
+    }
+
+    /* Button Styling */
+    .btn {
+        border-radius: 5px;
+        padding: 10px 20px;
+        text-align: center;
+    }
+
+    .btn:hover {
+        opacity: 0.8;
+    }
+
+    .btn-secondary {
+        background-color: #bdc3c7;
+        color: #2c3e50;
+    }
+
+    .btn-information {
+        background-color: #3498db;
+        color: white;
+    }
+
+    /* Modal Styling */
+    .modal-content {
+        border-radius: 10px;
+    }
+
+    .modal-header {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .modal-footer button {
+        border-radius: 5px;
+    }
+</style>
+
 </head>
 <body>
     <?php 

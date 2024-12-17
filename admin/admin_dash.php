@@ -19,6 +19,69 @@ require_once '../db.php';
      <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 
 </head>
+<style>
+     .container-fluid {
+    background-color: #f8f9fc;
+    padding-top: 20px;
+  }
+
+  /* Card settings */
+  .card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover effect */
+  .hover-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+
+  /* Card icon settings */
+  .card-body i {
+    color: #007bff;
+  }
+
+  /* Header settings */
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #343a40;
+  }
+
+  /* Text and typography improvements */
+  .fw-bold {
+    font-weight: 700 !important;
+  }
+
+  .fs-5 {
+    font-size: 1.2rem;
+  }
+
+  .text-primary {
+    color: #007bff !important;
+  }
+
+  /* Spacing settings */
+  .row {
+    margin-top: 20px;
+  }
+
+  .col-auto {
+    text-align: center;
+  }
+
+  .h5, .fs-5 {
+    margin-top: 10px;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .col-md-3, .col-md-2 {
+      margin-bottom: 10px;
+    }
+  }
+</style>
 <body>
     <?php 
     if (isset($_GET['msg'])=="login") {

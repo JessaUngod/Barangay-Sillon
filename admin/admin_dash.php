@@ -15,6 +15,56 @@ require_once '../db.php';
     <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
+    <style>
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-body {
+            padding: 20px;
+        }
+        .card-title {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .card-footer {
+            background-color: #f8f9fa;
+        }
+        .card-icon {
+            font-size: 3em;
+            color: #ffffff;
+            padding: 10px;
+            border-radius: 50%;
+        }
+        .text-primary {
+            color: #007bff !important;
+        }
+        .text-warning {
+            color: #ffc107 !important;
+        }
+        .text-danger {
+            color: #dc3545 !important;
+        }
+        .text-success {
+            color: #28a745 !important;
+        }
+        .bg-primary {
+            background-color: #007bff !important;
+        }
+        .bg-warning {
+            background-color: #ffc107 !important;
+        }
+        .bg-danger {
+            background-color: #dc3545 !important;
+        }
+        .bg-success {
+            background-color: #28a745 !important;
+        }
+    </style>
 </head>
 <body>
     <?php 
@@ -93,11 +143,11 @@ require_once '../db.php';
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card shadow h-60 py-1">
+                        <div class="card bg-primary text-white">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">Admin</div>
+                                        <div class="fw-bold text-white mb-1" style="font-size: 0.8em;">Admin</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `admin`";
                                         $oks22 = mysqli_query($con, $sql22);
@@ -106,7 +156,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        <i class="fas fa-user card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -114,11 +164,11 @@ require_once '../db.php';
                     </div>
 
                     <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card shadow h-60 py-1">
+                        <div class="card bg-warning text-dark">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">Staff</div>
+                                        <div class="fw-bold text-dark mb-1" style="font-size: 0.8em;">Staff</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `staff`";
                                         $oks22 = mysqli_query($con, $sql22);
@@ -127,7 +177,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        <i class="fas fa-user card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -135,11 +185,11 @@ require_once '../db.php';
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <div class="card shadow h-60 py-1">
+                        <div class="card bg-success text-white">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">Total Employee</div>
+                                        <div class="fw-bold text-white mb-1" style="font-size: 0.8em;">Total Employee</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `employee_info`";
                                         $oks22 = mysqli_query($con, $sql22);
@@ -148,7 +198,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        <i class="fas fa-users card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -156,11 +206,11 @@ require_once '../db.php';
                     </div>
 
                     <div class="col-md-2 mb-4">
-                        <div class="card shadow h-60 py-1">
+                        <div class="card bg-danger text-white">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">Time In</div>
+                                        <div class="fw-bold text-white mb-1" style="font-size: 0.8em;">Time In</div>
                                         <?php
                                         date_default_timezone_set("Asia/manila");
                                         $datein = date('y-m-d');
@@ -171,7 +221,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                        <i class="fas fa-clock card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -179,18 +229,18 @@ require_once '../db.php';
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <div class="card shadow h-60 py-1">
+                        <div class="card bg-info text-white">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">Total Absent</div>
+                                        <div class="fw-bold text-white mb-1" style="font-size: 0.8em;">Total Absent</div>
                                         <?php 
                                         $total = $res22 - $res226;
                                         ?>
                                         <div class="h5 mb-0"> <strong><?php echo $total; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        <i class="fas fa-users card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>

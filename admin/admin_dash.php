@@ -117,7 +117,7 @@ if(!empty($_SESSION['idadmins'])){
                     <div class="h5 mb-0 fs-5"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-user fa-2x" style="color: #4e73df;"></i> <!-- Updated Icon Color -->
+                    <i class="fas fa-user fa-2x" style="color:rgb(223, 78, 122);"></i> <!-- Updated Icon Color -->
                 </div>
             </div>
         </div>

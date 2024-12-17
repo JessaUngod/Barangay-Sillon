@@ -19,37 +19,6 @@ require_once '../db.php';
      <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 
 </head>
-<style> 
-    .nav-item{
-        margin: 10px 0;
-    }
-    .nav-link {
-        display: block;
-        padding: 12px 20px;
-        font-size: 16px;
-        color: #333;
-        text-decoration: none;
-        border-radius: 5px;
-        transition: background-color 0.3s, padding-left 0.3s;
-    }
-    nav-link i {
-        margin-right: 10px;
-    }
-    .nav-link:hover {
-        background-color: #007bff;
-        color: #fff;
-        padding-left: 30px;
-    }
-    .nav-item .nav-link.active {
-        background-color: #28a745;
-        color: #fff;
-    }
-    ul li {
-        display: block;
-    }
-
-   
-</style>
 <body>
     <?php 
     if (isset($_GET['msg'])=="login") {
@@ -79,7 +48,7 @@ require_once '../db.php';
                 <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
                 <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
 
-                <li class=""><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accountssssss</a></li>
+                <li class=""><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
                 <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
              
 
@@ -204,13 +173,13 @@ if(!empty($_SESSION['idadmins'])){
                                                
                                                <?php error_reporting(0);
 
-                                                    $sql22 = "SELECT * FROM `admin`";
+$sql22 = "SELECT * FROM `admin`";
 
-                                                    $oks22 = mysqli_query($con, $sql22);
-                                                    $res22 = mysqli_num_rows($oks22);
-                                                    $currLoc = mysqli_fetch_assoc($oks22);
-                                                    ?>
-                                   <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
+   $oks22 = mysqli_query($con, $sql22);
+   $res22 = mysqli_num_rows($oks22);
+   $currLoc = mysqli_fetch_assoc($oks22);
+?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>

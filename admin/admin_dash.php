@@ -226,7 +226,8 @@ $sql22 = "SELECT * FROM `employee_info`";
     var options = {
         chart: {
             type: 'bar',
-            height: 350,
+            height: 400, // Fixed height of 400px
+            width: '100%', // Responsive width, will take up full width of its container
             toolbar: {
                 show: false
             },
@@ -235,7 +236,7 @@ $sql22 = "SELECT * FROM `employee_info`";
         plotOptions: {
             bar: {
                 horizontal: false,
-                columnWidth: '55%',
+                columnWidth: '55%', // Adjust the column width to fit the chart nicely
                 endingShape: 'rounded' // Rounded corners for the bars
             }
         },
@@ -340,7 +341,7 @@ $sql22 = "SELECT * FROM `employee_info`";
             breakpoint: 600,
             options: {
                 chart: {
-                    width: '1000px',
+                    width: '100%', // Responsive width for small screens
                 },
                 xaxis: {
                     labels: {

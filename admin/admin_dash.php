@@ -249,7 +249,7 @@ $sql22 = "SELECT * FROM `employee_info`";
         },
         stroke: {
             show: true,
-            width: 50,
+            width: 2,
             colors: ['#fff'] // White stroke around bars
         },
         series: [{
@@ -308,7 +308,7 @@ $sql22 = "SELECT * FROM `employee_info`";
         yaxis: {
             labels: {
                 style: {
-                    fontSize: '12px',
+                    fontSize: '50px',
                     fontWeight: '500',
                     colors: ['#000'] // Y-axis label color
                 }

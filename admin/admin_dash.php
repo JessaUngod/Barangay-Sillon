@@ -72,18 +72,44 @@ require_once '../db.php';
    
 
 
-           <ul class="list-unstyled px-3">
-                <li class="active"><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li class=""><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-                <li class=""><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
-                <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
-                <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
+            <ul class="list-unstyled px-3">
+    <li class="nav-item">
+        <a href="../admin/admin_dash.php" class="nav-link">
+            <i class="fas fa-home"></i> Dashboard
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../admin/employee.php" class="nav-link">
+            <i class="fas fa-users"></i> Employees
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../admin/employee_payroll.php" class="nav-link">
+            <i class="fas fa-pencil"></i> Payroll
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../admin/payroll_rec.php" class="nav-link">
+            <i class="fas fa-book-open"></i> Reports
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../admin/posistion.php" class="nav-link">
+            <i class="fas fa-bar-chart"></i> Positions
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../admin/accounts.php" class="nav-link">
+            <i class="fas fa-user"></i> Accounts
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="../admin/log_rec.php" class="nav-link">
+            <i class="fas fa-clock"></i> Login / Logout
+        </a>
+    </li>
+</ul>
 
-                <li class=""><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
-             
-
-            </ul>
             <hr class="h-color mx-2">
 
          

@@ -17,16 +17,17 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
      /* General Styles */
+/* General Styles */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #e9ecef;
+    background-color: #f4f4f9; /* Light grayish background */
 }
 
 .card {
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background: #ffffff; /* White background for cards */
+    background: linear-gradient(45deg, #8a2be2, #6a1b9a); /* Purple gradient */
 }
 
 .card:hover {
@@ -36,7 +37,7 @@ body {
 
 .card-body {
     padding: 25px;
-    color: #333;
+    color: #fff; /* White text for better contrast */
     position: relative;
 }
 
@@ -44,12 +45,12 @@ body {
     font-size: 1.2rem;
     font-weight: bold;
     text-transform: uppercase;
-    color: #333;
+    color: #fff; /* White text for card titles */
     margin-bottom: 10px;
 }
 
 .card-footer {
-    background-color: #f1f1f1; /* Light gray for footer */
+    background-color: rgba(255, 255, 255, 0.3); /* Light transparent footer */
     padding: 10px;
     border-top: 1px solid #ddd;
     border-radius: 0 0 15px 15px;
@@ -57,17 +58,50 @@ body {
 
 .card-icon {
     font-size: 3em;
-    color: #fff;
+    color: #fff; /* White icon */
     padding: 20px;
     border-radius: 50%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-.bg-primary { background-color: #007bff; }
-.bg-warning { background-color: #ffc107; }
-.bg-danger { background-color: #dc3545; }
-.bg-success { background-color: #28a745; }
-.bg-info { background-color: #17a2b8; }
+/* Navbar and Sidebar */
+.navbar {
+    background-color: #6a1b9a; /* Purple navbar */
+    color: #fff;
+}
+
+.navbar .navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.sidebar {
+    background-color: #4a148c; /* Dark purple sidebar */
+    color: #fff;
+}
+
+.sidebar ul li a {
+    color: #fff;
+    font-weight: bold;
+}
+
+.sidebar ul li.active a {
+    background-color: #8e24aa; /* Lighter purple for active menu item */
+}
+
+.sidebar .close-btn {
+    color: #fff;
+}
+
+/* Buttons */
+.btn {
+    background-color: #8a2be2; /* Purple buttons */
+    color: #fff;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background-color: #6a1b9a; /* Darker purple on hover */
+}
 
 .text-white {
     color: white !important;
@@ -81,20 +115,7 @@ body {
     font-size: 1.5rem;
 }
 
-.row {
-    margin-top: 20px;
-}
-
-/* Column Spacing */
-.col-md-3, .col-md-2 {
-    padding: 15px;
-}
-
-.col-md-6 {
-    padding: 20px;
-}
-
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
     .card-body {
         padding: 15px;
@@ -108,6 +129,19 @@ body {
         font-size: 2.5em;
     }
 }
+
+/* Content Area */
+.content {
+    margin-left: 250px; /* Adjusted for the sidebar */
+    padding: 30px;
+    background-color: #f4f4f9; /* Light background for content */
+}
+
+.content .fw-bold {
+    color: #6a1b9a; /* Purple text for titles */
+}
+
+
     </style>
 </head>
 <body>

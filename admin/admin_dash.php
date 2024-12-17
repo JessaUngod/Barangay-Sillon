@@ -123,8 +123,8 @@ require_once '../db.php';
                             </a>
                             <div class="dropdown-menu shadow animated-grow-in px-4" aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#setModal">
-                                    <i class="fas fa-location-dot fa-sm fa-fw mr-2 fw-bold" style="color: #000;"></i>
+                                <a class="dropdown-item" href="#"  data-target="#setModal" data-toggle="modal">
+                                    <i class="fas fa-solid fa-location-dot fa-sm fa-fw mr-2 fw-bold" style="color: #000;"></i>
                                     <strong class="fw-bold">Set Location</strong>
                                 </a>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

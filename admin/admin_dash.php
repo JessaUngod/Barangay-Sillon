@@ -238,7 +238,7 @@ $sql22 = "SELECT * FROM `staff`";
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a>Total Employee</a> </strong> </div>
+                                                <strong><a>Total Employeesss</a> </strong> </div>
                                                <?php error_reporting(0);
 
 $sql22 = "SELECT * FROM `employee_info`";

@@ -242,14 +242,14 @@ $sql22 = "SELECT * FROM `employee_info`";
         dataLabels: {
             enabled: true,
             style: {
-                fontSize: '100px',
+                fontSize: '12px',
                 fontWeight: 'bold',
                 colors: ['#000'] // Color of data labels
             }
         },
         stroke: {
             show: true,
-            width: 2,
+            width: 50,
             colors: ['#fff'] // White stroke around bars
         },
         series: [{

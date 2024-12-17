@@ -101,29 +101,25 @@ if(!empty($_SESSION['idadmins'])){
             </nav>
    <div class="container-fluid">
                            <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Dashboard</strong></h1>
-<div class="row">
-                           <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
-                            <div class="card  shadow h-60 py-1">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a >Admin</a> </strong> </div>
-                                               <?php error_reporting(0);
-$sql22 = "SELECT * FROM `admin`";
-   $oks22 = mysqli_query($con, $sql22);
-   $res22 = mysqli_num_rows($oks22);
-   $currLoc = mysqli_fetch_assoc($oks22);
-?>
-                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                           <div class="col-xl-2 col-md-6 mb-4" style="color: #fff;">
+    <div class="card shadow h-60 py-1" style="background: linear-gradient(45deg, #4e73df, #1cc88a);">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="fw-bold text-white text-uppercase mb-1" style="font-size: 0.8em;">
+                        <strong>Admin</strong>
+                    </div>
+                    <div class="h5 mb-0 fs-5">
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-user fa-2x text-gray-300"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                           <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                                 <div class="card-body">

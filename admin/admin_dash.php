@@ -211,63 +211,6 @@ $sql22 = "SELECT * FROM `employee_info`";
   </div>
                 <div class="row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header fw-bold" style="font-size: 30px;">  
-                                  <form method="post" >
-                                 <div class="row">
-                                 </div>
-                                </form>
-                            </div>
-                            <div class="card-body">
-                                <div  id="chart"> </div>
-                            </div>
-                            <script type="text/javascript">
-                                 var options = {
-                                chart: {
-                                    type: 'bar'
-                                },
-                                series:[{
-                                    name: 'Count',
-                                    data: [
-                                        <?php error_reporting(0);
-$sql22 = "SELECT * FROM `admin`";
-   $oks22 = mysqli_query($con, $sql22);
-   $res22 = mysqli_num_rows($oks22);
-   echo $res22;
-?>,
-           <?php error_reporting(0);
-$sql22 = "SELECT * FROM `staff`";
-   $oks22 = mysqli_query($con, $sql22);
-   $res22 = mysqli_num_rows($oks22);
-   echo $res22;
-?>,
-<?php error_reporting(0);
-$sql22 = "SELECT * FROM `employee_info`";
-   $oks22 = mysqli_query($con, $sql22);
-   $res22 = mysqli_num_rows($oks22);
-   echo $res22;
-?>,
-<?php error_reporting(0);
-                                                date_default_timezone_set("Asia/manila");  
-                                                $datein = date('y-m-d');
-                                                 $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
-                                                    $oks22 = mysqli_query($con, $sql22);
-                                                    $res226 = mysqli_num_rows($oks22);
-                                                    echo $res226;
-                                                 ?>,
-                                                 <?php $total =0;
-                                            $total = $res22 - $res226;
-                                            echo $total; ?>                                      
-                                          ]
-                                }],
-                                xaxis: {
-                                    categories: ['Admin','Staff','Total Empoyee', 'Total Time In', 'Total Absent']
-                                }
-                            }
-                            var chart = new ApexCharts(document.querySelector("#chart"), options);
-                            chart.render();
-                            </script>
                         </div>
                     </div>
                 <div class="col-md-2"></div>

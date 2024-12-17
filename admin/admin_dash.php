@@ -164,12 +164,72 @@ if(!empty($_SESSION['idadmins'])){
                            <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
                             <div class="card  shadow h-60 py-1">
                           
-                                <div class="card-body">
+                            <div class="card-body">
+  <div class="row no-gutters align-items-center">
+    <div class="col mr-2">
+      <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 1em; font-weight: 600;">
+        <strong>Admin</strong>
+      </div>
+      <!-- Displaying dynamic data (e.g., number of Admins) -->
+      <div class="h5 mb-0 text-dark fs-4">
+        <strong>&nbsp;&nbsp;<?php echo $res22; ?></strong>
+      </div>
+    </div>
+    <div class="col-auto">
+      <!-- Admin Icon -->
+      <i class="fas fa-user fa-3x text-muted"></i>
+    </div>
+  </div>
+</div>
 
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
-                                                <strong><a >Admin</a> </strong> </div>
+<!-- Add the following CSS in your stylesheet or in the <style> block -->
+<style>
+  .card-body {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .card-body:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+  }
+
+  .fw-bold {
+    font-weight: 700;
+  }
+
+  .fs-4 {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .text-primary {
+    color: #007bff;
+  }
+
+  .text-dark {
+    color: #343a40;
+  }
+
+  .text-muted {
+    color: #6c757d;
+  }
+
+  /* Responsive settings */
+  @media (max-width: 768px) {
+    .col-auto {
+      text-align: center;
+      margin-top: 10px;
+    }
+    .card-body {
+      padding: 15px;
+    }
+  }
+</style>
+
                                                
                                                <?php error_reporting(0);
 

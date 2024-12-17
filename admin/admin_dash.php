@@ -288,7 +288,7 @@ require_once '../db.php';
                     </div>
                 </div>
             </div>
-            <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+             <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -407,5 +407,11 @@ require_once '../db.php';
    </script>
 
 
+</body>
+</html>
+
+        </div>
+    </div>
+    <!-- Add your scripts here -->
 </body>
 </html>

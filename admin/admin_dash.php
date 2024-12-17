@@ -60,7 +60,7 @@ require_once '../db.php';
         }
 
         .card-footer {
-            background-color: #f8f9fa;
+           
             padding: 15px;
             border-top: 1px solid #ddd;
             border-radius: 0 0 15px 15px;

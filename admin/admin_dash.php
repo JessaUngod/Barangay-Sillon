@@ -226,7 +226,7 @@ $sql22 = "SELECT * FROM `employee_info`";
     var options = {
         chart: {
             type: 'bar',
-            height: 500,
+            height: 350,
             toolbar: {
                 show: false
             },

@@ -16,75 +16,75 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-        /* Card Container */
+        /* Modern Card Style */
         .card {
-            border-radius: 12px; /* Rounded corners */
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-            transition: all 0.3s ease-in-out; /* Smooth hover transition */
-            background: #ffffff;
+            border-radius: 16px; /* More rounded corners */
             overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #f5f5f5, #e2e2e2);
+            color: #333;
         }
 
         /* Hover Effect */
         .card:hover {
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow on hover */
-            transform: translateY(-5px); /* Slight lift effect */
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-10px);
         }
 
-        /* Card Body */
+        /* Card Content */
         .card-body {
-            padding: 20px;
+            padding: 25px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            text-align: center;
         }
 
         /* Card Title */
         .card-title {
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            color: #333;
+            margin-bottom: 10px;
+            color: #444;
         }
 
         /* Card Icon */
         .card-icon {
             font-size: 3rem;
-            color: #fff;
-            padding: 15px;
+            color: white;
+            padding: 20px;
             border-radius: 50%;
-            background-color: #3b5998; /* Default icon background color */
-            transition: background-color 0.3s ease-in-out;
+            background: #6c63ff; /* Modern color */
+            transition: background 0.3s ease;
         }
 
-        /* Icon Hover Color */
+        /* Card Icon Hover Effect */
         .card:hover .card-icon {
-            background-color: #2d4373; /* Darker shade on hover */
+            background: #5a53e3; /* Darker shade */
         }
 
-        /* Color Schemes */
-        .bg-primary { background-color: #007bff; color: white; }
-        .bg-warning { background-color: #ffc107; color: black; }
-        .bg-success { background-color: #28a745; color: white; }
-        .bg-danger { background-color: #dc3545; color: white; }
-        .bg-info { background-color: #17a2b8; color: white; }
+        /* Card Value */
+        .card-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #222;
+        }
+
+        /* Color Variants */
+        .bg-primary { background: linear-gradient(135deg, #ff758c, #ff7eb3); color: white; }
+        .bg-warning { background: linear-gradient(135deg, #fca311, #ffdd67); color: black; }
+        .bg-success { background: linear-gradient(135deg, #28a745, #34d058); color: white; }
+        .bg-danger { background: linear-gradient(135deg, #dc3545, #e57373); color: white; }
+        .bg-info { background: linear-gradient(135deg, #17a2b8, #66c2ff); color: white; }
 
         /* Responsive Design */
-        .card-body {
-            flex-direction: column;
-            text-align: center;
+        @media screen and (max-width: 768px) {
+            .card-body {
+                padding: 15px;
+            }
         }
-
-        .card-body .h5 {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-top: 10px;
-        }
-
-        /* Hover Transition for Icons */
-        .card-icon {
-            transition: all 0.3s ease-in-out;
-        }
-
     </style>
 </head>
 <body>
@@ -164,74 +164,74 @@ require_once '../db.php';
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card bg-primary text-white">
+                        <div class="card bg-primary">
                             <div class="card-body">
-                                <div class="fw-bold card-title">Admin</div>
+                                <div class="card-title">Admin</div>
                                 <?php
                                 $sql22 = "SELECT * FROM `admin`";
                                 $oks22 = mysqli_query($con, $sql22);
                                 $res22 = mysqli_num_rows($oks22);
                                 ?>
-                                <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
+                                <div class="card-value"><strong><?php echo $res22; ?></strong></div>
                                 <i class="fas fa-user card-icon"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card bg-warning text-dark">
+                        <div class="card bg-warning">
                             <div class="card-body">
-                                <div class="fw-bold card-title">Staff</div>
+                                <div class="card-title">Staff</div>
                                 <?php
                                 $sql22 = "SELECT * FROM `staff`";
                                 $oks22 = mysqli_query($con, $sql22);
                                 $res22 = mysqli_num_rows($oks22);
                                 ?>
-                                <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
+                                <div class="card-value"><strong><?php echo $res22; ?></strong></div>
                                 <i class="fas fa-users card-icon"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <div class="card bg-success text-white">
+                        <div class="card bg-success">
                             <div class="card-body">
-                                <div class="fw-bold card-title">Total Employee</div>
+                                <div class="card-title">Total Employee</div>
                                 <?php
                                 $sql22 = "SELECT * FROM `employee_info`";
                                 $oks22 = mysqli_query($con, $sql22);
                                 $res22 = mysqli_num_rows($oks22);
                                 ?>
-                                <div class="h5 mb-0"><strong><?php echo $res22; ?></strong></div>
+                                <div class="card-value"><strong><?php echo $res22; ?></strong></div>
                                 <i class="fas fa-users card-icon"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-2 mb-4">
-                        <div class="card bg-danger text-white">
+                        <div class="card bg-danger">
                             <div class="card-body">
-                                <div class="fw-bold card-title">Time In</div>
+                                <div class="card-title">Time In</div>
                                 <?php
                                 date_default_timezone_set("Asia/manila");
                                 $datein = date('h:i:s');
                                 ?>
-                                <div class="h5 mb-0"><strong><?php echo $datein; ?></strong></div>
+                                <div class="card-value"><strong><?php echo $datein; ?></strong></div>
                                 <i class="fas fa-clock card-icon"></i>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-md-3 mb-4">
-                        <div class="card bg-info text-white">
+                        <div class="card bg-info">
                             <div class="card-body">
-                                <div class="fw-bold card-title">Total Salary</div>
+                                <div class="card-title">Total Salary</div>
                                 <?php
                                 $sql22 = "SELECT * FROM `employee_info`";
                                 $oks22 = mysqli_query($con, $sql22);
                                 $res22 = mysqli_num_rows($oks22);
                                 ?>
-                                <div class="h5 mb-0 fs-5"><strong>₱<?php echo $res22; ?></strong></div>
+                                <div class="card-value"><strong>₱<?php echo $res22; ?></strong></div>
                                 <i class="fas fa-wallet card-icon"></i>
                             </div>
                         </div>

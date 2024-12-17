@@ -226,7 +226,7 @@ $sql22 = "SELECT * FROM `employee_info`";
     var options = {
         chart: {
             type: 'bar',
-            height: 350,
+            height: 500,
             toolbar: {
                 show: false
             },
@@ -235,7 +235,7 @@ $sql22 = "SELECT * FROM `employee_info`";
         plotOptions: {
             bar: {
                 horizontal: false,
-                columnWidth: '100%',
+                columnWidth: '55%',
                 endingShape: 'rounded' // Rounded corners for the bars
             }
         },

@@ -16,44 +16,46 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-       
-        /* Card Styles with Gradient Purple */
+      body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fc;
+        }
+
         .card {
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             background: linear-gradient(145deg, #8e44ad, #6f42c1); /* Purple gradient */
         }
 
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
         }
 
         .card-body {
             padding: 30px;
             color: white;
-            border-radius: 10px;
             position: relative;
         }
 
         .card-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: bold;
             text-transform: uppercase;
             color: white;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .card-footer {
             background-color: #5e3370; /* Darker shade for footer */
-            padding: 12px;
+            padding: 10px;
             border-top: 1px solid #4b1d5f;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 12px 12px;
         }
 
         .card-icon {
-            font-size: 3em;
+            font-size: 2.5em;
             color: white;
             padding: 15px;
             border-radius: 50%;
@@ -61,14 +63,13 @@ require_once '../db.php';
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        /* Color specific icons */
+        /* Custom Color Specific Icons */
         .bg-primary { background-color: #8e44ad; }
         .bg-warning { background-color: #e67e22; }
         .bg-danger { background-color: #e74c3c; }
         .bg-success { background-color: #2ecc71; }
         .bg-info { background-color: #1abc9c; }
 
-        /* Text Style */
         .text-white {
             color: white !important;
         }
@@ -85,6 +86,7 @@ require_once '../db.php';
             margin-top: 20px;
         }
 
+        /* Column Spacing */
         .col-md-3, .col-md-2 {
             padding: 15px;
         }
@@ -93,7 +95,7 @@ require_once '../db.php';
             padding: 20px;
         }
 
-        /* Responsive design for smaller screens */
+        /* Responsive design */
         @media (max-width: 768px) {
             .card-body {
                 padding: 20px;
@@ -104,7 +106,7 @@ require_once '../db.php';
             }
 
             .card-icon {
-                font-size: 2.5em;
+                font-size: 2em;
             }
         }
     </style>

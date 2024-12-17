@@ -187,20 +187,19 @@ require_once '../db.php';
         }
 
     </style>
+
 </head>
 <body>
-
     <?php 
     if (isset($_GET['msg'])=="login") {
         echo '<script>swal("LOGIN SUCCESSFULLY!", "Welcome Back Admin", "success")</script>';
     }
     ?>
-
     <div class="main-container-fluid d-flex">
         <!-- Sidebar -->
         <div class="sidebar" id="side_nav">
             <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-                <h1><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong>Barangay Sillon</strong></h1>
+                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon</strong></h1>
                 <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
             </div>
             <ul class="list-unstyled px-3">
@@ -216,14 +215,17 @@ require_once '../db.php';
         </div>
 
         <!-- Content -->
-        <div class="content" style="margin-left: 240px;">
+        <div class="content">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand navbar-light topbar shadow">
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
                         <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
                         <strong style="font-size:22px;">Admin</strong>
                     </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <?php 
                         if(!empty($_SESSION['idadmins'])){
@@ -235,7 +237,7 @@ require_once '../db.php';
                         }
                         ?>
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-mdb-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-lg-inline small" style="color: #000;">Hello,</span>
                                 <span class="mr-2 d-lg-inline small">
                                     <img src="../uploads/<?php echo $row['img']; ?>" style="height: 40px; width:40px; border-radius:50%;" >
@@ -259,7 +261,7 @@ require_once '../db.php';
             </nav>
 
             <div class="container-fluid">
-                <h1 class="fw-bold mb-4 text-gray-800 fs-3" style="color: #000;">Dashboard</h1>
+                <h1 class="fw-bold mb-4 text-gray-800 fs-3" style="color: #000;"><strong>Dashboard</strong></h1>
                 
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
@@ -293,11 +295,33 @@ require_once '../db.php';
                                     <div class="col mr-2">
                                         <div class="fw-bold mb-1" style="font-size: 0.9em;">Staff</div>
                                         <?php
-                                        $sql33 = "SELECT * FROM `staff`";
-                                        $oks33 = mysqli_query($con, $sql33);
-                                        $res33 = mysqli_num_rows($oks33);
+                                        $sql22 = "SELECT * FROM `staff`";
+                                        $oks22 = mysqli_query($con, $sql22);
+                                        $res22 = mysqli_num_rows($oks22);
                                         ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res33; ?></strong> </div>
+                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-user card-icon bg-light"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Total Employees Card -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body bg-success">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Employee</div>
+                                        <?php
+                                        $sql22 = "SELECT * FROM `employee_info`";
+                                        $oks22 = mysqli_query($con, $sql22);
+                                        $res22 = mysqli_num_rows($oks22);
+                                        ?>
+                                        <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-users card-icon bg-light"></i>
@@ -307,13 +331,169 @@ require_once '../db.php';
                         </div>
                     </div>
 
-                </div> <!-- End row -->
-            </div> <!-- End container-fluid -->
+                    <!-- Time In Card -->
+                    <div class="col-md-2 mb-4">
+                        <div class="card">
+                            <div class="card-body bg-danger">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Time In</div>
+                                        <?php
+                                        date_default_timezone_set("Asia/manila");
+                                        $datein = date('y-m-d');
+                                        $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+                                        $oks22 = mysqli_query($con, $sql22);
+                                        $res226 = mysqli_num_rows($oks22);
+                                        ?>
+                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-clock card-icon bg-light"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-        </div> <!-- End content -->
-    </div> <!-- End main-container-fluid -->
+                    <!-- Total Absent Card -->
+                    <div class="col-md-3 mb-4">
+                        <div class="card">
+                            <div class="card-body bg-info">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Absent</div>
+                                        <?php 
+                                        $total = $res22 - $res226;
+                                        ?>
+                                        <div class="h5 mb-0"> <strong><?php echo $total; ?></strong> </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-users card-icon bg-light"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel"><strong>Logout</strong></h5>
+                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <div class="modal-body text-center"><strong>Are you sure you want to Logout ?</strong></div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal" style="color: #000;">Cancel</button>
+                    <a class="btn " style="color: #000; background: skyblue;" href="logout.php" name="logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            document.getElementById('status').textContent = `Latitude: ${position.coords.latitude} Longitude: ${position.coords.longitude}`;
+            document.getElementById('latitude').value = position.coords.latitude;
+            document.getElementById('longitude').value = position.coords.longitude;
+        }, function() {
+            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
+        });
+        } else {
+            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
+        }
+    </script>
+    <div class="modal fade " id="setModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="ModalLabel"><strong>Set Location</strong></h5>
+                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                  </button>
+                </div>
+                <form action="admin_dash.php" method="POST">
+                <div class="modal-body text-center">
+                    <?php
+                    $lon;
+                    $lan;
+                    list($lon, $lan) = explode(',', $currLoc["location"]);
+                    ?>
+                    <strong>
+                        <label>Default location</label>
+                    </strong>
+                    <p><?php echo "Latitude: ".$lon." Longitude: ".$lan ; ?></p>
+                    <strong>
+                        <label>Current location</label>
+                    </strong>
+                    <p id="status">na</p></div>
+                <div class="modal-footer">
+                    <input type="text" name="latitude" id="latitude"  hidden>
+                    <input type="text" name="longitude" id="longitude"  hidden>
+                     <input class="btn btn-information" type="submit"  value="Update Default Location To Current Location">
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <?php
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $latitude = $_POST['latitude'];
+        $longitude = $_POST['longitude'];
+        $location = $latitude.",".$longitude;
+        $update = $con->prepare("UPDATE `admin` SET `location` = ? WHERE `admin`.`id` = 1;");
+        $update->bind_param("s", $location);
+        if ($update->execute()) { 
+            echo "<script>alert('Location updated successfully.')</script>"; 
+        } 
+        else { 
+            echo "<script>alert('Error updating location: " . $update->error."')</script>";
+        }
+    }
+    ?>
+    <script src="../assets/js/jquery.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../assets/js/bootstrap.bundle.js"></script>
+    <script src="../assets/js/mdb.js"></script>
+    <script src="../vendor/datatables/dataTable.js"></script>
+ <script>
+    let table = new DataTable('#myTable', {
+});
 
-    <script src="../assets/js/bootstrap.bundle.min.js"></script>
-    <script src="../assets/js/datatables.js"></script>
+    $(".sidebar ul li").on('click' , function(){
+        $(".sidebar ul li.active").removeClass('active');
+        $(this).addClass('active');
+    });
+    $('.open-btn').on('click' , function(){
+        $('.sidebar').addClass('active');
+    });
+    $('.close-btn').on('click' , function(){
+        $('.sidebar').removeClass('active');
+    });
+
+   </script> 
+   <script>
+    $('.open-btn').on('click', function()  {
+        $('#side_nav').addClass('active');
+        $('.content').addClass('shift');
+    });
+
+    $('.close-btn').on('click', function()  {
+        $('#side_nav').removeClass('active');
+        $('.content').removeClass('shift');
+
+    });
+
+
+   </script>
+
+
 </body>
 </html>

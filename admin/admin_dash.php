@@ -242,7 +242,7 @@ $sql22 = "SELECT * FROM `employee_info`";
         dataLabels: {
             enabled: true,
             style: {
-                fontSize: '12px',
+                fontSize: '100px',
                 fontWeight: 'bold',
                 colors: ['#000'] // Color of data labels
             }

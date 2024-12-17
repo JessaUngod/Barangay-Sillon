@@ -235,7 +235,7 @@ $sql22 = "SELECT * FROM `employee_info`";
         plotOptions: {
             bar: {
                 horizontal: false,
-                columnWidth: '55%',
+                columnWidth: '100%',
                 endingShape: 'rounded' // Rounded corners for the bars
             }
         },

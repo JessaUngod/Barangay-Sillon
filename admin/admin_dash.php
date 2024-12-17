@@ -22,9 +22,9 @@ require_once '../db.php';
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    height: 200px; /* Set a fixed height for the cards */
-    display: flex;
-    flex-direction: column;
+    height: 0;
+    padding-bottom: 100%; /* 1:1 Aspect Ratio (Square) */
+    position: relative;
 }
 
 .card:hover {
@@ -39,20 +39,11 @@ require_once '../db.php';
     background-position: 0% 50%;
     border-radius: 15px;
     color: white;
-    position: relative;
-    flex: 1; /* Allow the body to stretch and fill the available space */
-}
-
-.card-body:before {
-    content: '';
     position: absolute;
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 10px;
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .card-title {
@@ -77,9 +68,11 @@ require_once '../db.php';
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
-/* Customize individual card icon colors */
 .card-icon.bg-primary { background-color: #3498db; }
 .card-icon.bg-warning { background-color: #f39c12; }
 .card-icon.bg-danger { background-color: #e74c3c; }
@@ -103,12 +96,6 @@ require_once '../db.php';
 
 .col-md-3, .col-md-2 {
     padding: 10px;
-}
-
-@media (max-width: 767px) {
-    .card {
-        height: 180px; /* Adjust height for smaller screens */
-    }
 }
 
     </style>

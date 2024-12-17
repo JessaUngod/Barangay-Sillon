@@ -226,8 +226,8 @@ $sql22 = "SELECT * FROM `employee_info`";
     var options = {
         chart: {
             type: 'bar',
-            height: 400, // Fixed height of 400px
-            width: '100%', // Responsive width, will take up full width of its container
+            height: 400, // Set a specific height in pixels (e.g., 400px)
+            width: 600, // Set a specific width in pixels (e.g., 600px)
             toolbar: {
                 show: false
             },

@@ -186,27 +186,27 @@ body {
                 
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
-                    <!-- Admin Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-primary">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `admin`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user card-icon bg-light"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Admin Card -->
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card bg-primary">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="card-title">Admin</div>
+                        <?php
+                        $sql22 = "SELECT * FROM `admin`";
+                        $oks22 = mysqli_query($con, $sql22);
+                        $res22 = mysqli_num_rows($oks22);
+                        ?>
+                        <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user card-icon"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
                     <!-- Staff Card -->
                     <div class="col-xl-2 col-md-6 mb-4">

@@ -109,7 +109,7 @@ require_once '../db.php';
                             $id = $_SESSION['idadmins'];
                             $result = mysqli_query($con, "SELECT * FROM admin WHERE id = $id");
                             $row = mysqli_fetch_assoc($result);
-                            $currLoc = $row['location'];
+                               $currLoc = $row['location'];
                         }else{
                             header("Location: ./index.php");
                         }

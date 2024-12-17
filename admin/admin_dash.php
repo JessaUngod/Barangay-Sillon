@@ -187,7 +187,6 @@ require_once '../db.php';
         }
 
     </style>
-</head>
 <body>
     <?php 
     if (isset($_GET['msg'])=="login") {

@@ -1,6 +1,3 @@
-<?php  
-require_once '../db.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +13,6 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-       
         /* Card Styles with Gradient Purple */
         .card {
             border-radius: 10px;
@@ -108,7 +104,6 @@ require_once '../db.php';
             }
         }
     </style>
- 
 </head>
 <body>
     <?php 
@@ -187,21 +182,21 @@ require_once '../db.php';
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <!-- Admin Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card">
-                            <div class="card-body bg-primary">
+                            <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
+                                        <div class="card-title">Admins</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `admin`";
                                         $oks22 = mysqli_query($con, $sql22);
                                         $res22 = mysqli_num_rows($oks22);
                                         ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
+                                        <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-user card-icon bg-light"></i>
+                                        <i class="fas fa-user card-icon bg-primary"></i>
                                     </div>
                                 </div>
                             </div>
@@ -209,21 +204,21 @@ require_once '../db.php';
                     </div>
 
                     <!-- Staff Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card">
-                            <div class="card-body bg-warning">
+                            <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Staff</div>
+                                        <div class="card-title">Staff</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `staff`";
                                         $oks22 = mysqli_query($con, $sql22);
                                         $res22 = mysqli_num_rows($oks22);
                                         ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
+                                        <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-user card-icon bg-light"></i>
+                                        <i class="fas fa-users card-icon bg-warning"></i>
                                     </div>
                                 </div>
                             </div>
@@ -231,12 +226,12 @@ require_once '../db.php';
                     </div>
 
                     <!-- Total Employees Card -->
-                    <div class="col-md-3 mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card">
-                            <div class="card-body bg-success">
+                            <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Employee</div>
+                                        <div class="card-title">Total Employees</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `employee_info`";
                                         $oks22 = mysqli_query($con, $sql22);
@@ -245,7 +240,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-users card-icon bg-light"></i>
+                                        <i class="fas fa-users card-icon bg-success"></i>
                                     </div>
                                 </div>
                             </div>
@@ -253,12 +248,12 @@ require_once '../db.php';
                     </div>
 
                     <!-- Time In Card -->
-                    <div class="col-md-2 mb-4">
+                    <div class="col-xl-3 col-md-6 mb-4">
                         <div class="card">
-                            <div class="card-body bg-danger">
+                            <div class="card-body">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Time In</div>
+                                        <div class="card-title">Time In</div>
                                         <?php
                                         date_default_timezone_set("Asia/manila");
                                         $datein = date('y-m-d');
@@ -266,30 +261,10 @@ require_once '../db.php';
                                         $oks22 = mysqli_query($con, $sql22);
                                         $res226 = mysqli_num_rows($oks22);
                                         ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
+                                        <div class="h5 mb-0"> <strong><?php echo $res226; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-clock card-icon bg-light"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Total Absent Card -->
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-info">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Absent</div>
-                                        <?php 
-                                        $total = $res22 - $res226;
-                                        ?>
-                                        <div class="h5 mb-0"> <strong><?php echo $total; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users card-icon bg-light"></i>
+                                        <i class="fas fa-clock card-icon bg-info"></i>
                                     </div>
                                 </div>
                             </div>
@@ -297,124 +272,10 @@ require_once '../db.php';
                     </div>
                 </div>
             </div>
-            <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel"><strong>Logout</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                  </button>
-                </div>
-                <div class="modal-body text-center"><strong>Are you sure you want to Logout ?</strong></div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" style="color: #000;">Cancel</button>
-                    <a class="btn " style="color: #000; background: skyblue;" href="logout.php" name="logout">Logout</a>
-                </div>
-            </div>
         </div>
     </div>
-    <script>
-        if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            document.getElementById('status').textContent = `Latitude: ${position.coords.latitude} Longitude: ${position.coords.longitude}`;
-            document.getElementById('latitude').value = position.coords.latitude;
-            document.getElementById('longitude').value = position.coords.longitude;
-        }, function() {
-            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
-        });
-        } else {
-            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
-        }
-    </script>
-    <div class="modal fade " id="setModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel"><strong>Set Location</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                  </button>
-                </div>
-                <form action="admin_dash.php" method="POST">
-                <div class="modal-body text-center">
-                    <?php
-                    $lon;
-                    $lan;
-                    list($lon, $lan) = explode(',', $currLoc["location"]);
-                    ?>
-                    <strong>
-                        <label>Default location</label>
-                    </strong>
-                    <p><?php echo "Latitude: ".$lon." Longitude: ".$lan ; ?></p>
-                    <strong>
-                        <label>Current location</label>
-                    </strong>
-                    <p id="status">na</p></div>
-                <div class="modal-footer">
-                    <input type="text" name="latitude" id="latitude"  hidden>
-                    <input type="text" name="longitude" id="longitude"  hidden>
-                     <input class="btn btn-information" type="submit"  value="Update Default Location To Current Location">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $latitude = $_POST['latitude'];
-        $longitude = $_POST['longitude'];
-        $location = $latitude.",".$longitude;
-        $update = $con->prepare("UPDATE `admin` SET `location` = ? WHERE `admin`.`id` = 1;");
-        $update->bind_param("s", $location);
-        if ($update->execute()) { 
-            echo "<script>alert('Location updated successfully.')</script>"; 
-        } 
-        else { 
-            echo "<script>alert('Error updating location: " . $update->error."')</script>";
-        }
-    }
-    ?>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <script src="../assets/js/mdb.js"></script>
-    <script src="../vendor/datatables/dataTable.js"></script>
- <script>
-    let table = new DataTable('#myTable', {
-});
 
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-    });
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
-    });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
-    });
-
-   </script> 
-   <script>
-    $('.open-btn').on('click', function()  {
-        $('#side_nav').addClass('active');
-        $('.content').addClass('shift');
-    });
-
-    $('.close-btn').on('click', function()  {
-        $('#side_nav').removeClass('active');
-        $('.content').removeClass('shift');
-
-    });
-
-
-   </script>
-
-
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/datatables.js"></script>
 </body>
 </html>

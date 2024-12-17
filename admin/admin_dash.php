@@ -42,7 +42,7 @@ require_once '../db.php';
   }
 
   .text-primary {
-    color: #007bff;
+    color:rgb(233, 235, 236);
   }
 
   .text-dark {

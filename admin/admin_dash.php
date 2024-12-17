@@ -168,8 +168,7 @@ if(!empty($_SESSION['idadmins'])){
 
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                        <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.9em; letter-spacing: 1px; text-transform: uppercase; color: #007bff; transition: all 0.3s ease;">
-
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
                                                 <strong><a >Admin</a> </strong> </div>
                                                
                                                <?php error_reporting(0);

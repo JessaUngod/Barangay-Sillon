@@ -111,7 +111,7 @@ if(!empty($_SESSION['idadmins'])){
                         <strong>Admin</strong>
                     </div>
                     <div class="h5 mb-0 fs-5">
-                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong>
+                        <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</strong>
                     </div>
                 </div>
                 <div class="col-auto">

@@ -48,60 +48,7 @@ require_once '../db.php';
                             <div class="card-body">
                                 <div id="chart"></div>
                             </div>
-                            <!-- <script type="text/javascript">
-                                var options = {
-                                    chart: {
-                                        type: 'bar'
-                                    },
-                                    series: [{
-                                        name: 'Count',
-                                        data: [
-                                            <?php 
-                                            $sql22 = "SELECT * FROM `admin`";
-                                            $oks22 = mysqli_query($con, $sql22);
-                                            $res22 = mysqli_num_rows($oks22);
-                                            echo $res22;
-                                            ?>,
-                                            <?php 
-                                            $sql22 = "SELECT * FROM `staff`";
-                                            $oks22 = mysqli_query($con, $sql22);
-                                            $res22 = mysqli_num_rows($oks22);
-                                            echo $res22;
-                                            ?>,
-                                            <?php 
-                                            $sql22 = "SELECT * FROM `employee_info`";
-                                            $oks22 = mysqli_query($con, $sql22);
-                                            $res22 = mysqli_num_rows($oks22);
-                                            echo $res22;
-                                            ?>,
-                                            <?php 
-                                            date_default_timezone_set("Asia/manila");  
-                                            $datein = date('y-m-d');
-                                            $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
-                                            $oks22 = mysqli_query($con, $sql22);
-                                            $res226 = mysqli_num_rows($oks22);
-                                            echo $res226;
-                                            ?>,
-                                            <?php 
-                                            $total = $res22 - $res226;
-                                            echo $total;
-                                            ?>
-                                        ]
-                                    }],
-                                    xaxis: {
-                                        categories: ['Admin','Staff','Total Empoyee', 'Total Time In', 'Total Absent']
-                                    }
-                                }
-                                var chart = new ApexCharts(document.querySelector("#chart"), options);
-                                chart.render();
-                            </script>
-                        </div>
-                    </div>
-                    <div class="col-md-2"></div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+                  
 
     <!-- Location Modal Code -->
     <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">

@@ -67,12 +67,12 @@ require_once '../db.php';
         }
 
         .card-icon {
-            font-size: 3.5em;
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    font-size: 3.5em;
+    color: #ffffff;
+    background-color: transparent; /* Remove the background color */
+    box-shadow: none; /* Remove the shadow */
+    padding: 0; /* Remove padding */
+    border-radius: 0;
         }
 
         .card-icon.bg-primary { background-color: #3498db; }

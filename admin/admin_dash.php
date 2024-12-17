@@ -16,86 +16,46 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-        /* Global Styles */
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-        }
-
-        .container-fluid {
-            max-width: 98%;
-            margin-top: 20px;
-        }
-
-        h1 {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #333;
-            text-transform: uppercase;
-        }
-
-        /* Sidebar Styles */
-        .sidebar {
-            background-color: #343a40;
-            color: white;
-            height: 100vh;
-            width: 240px;
-            position: fixed;
-            transition: all 0.3s ease-in-out;
-            padding-top: 40px;
-        }
-
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .sidebar ul li {
-            padding: 15px 20px;
-            border-bottom: 1px solid #494e54;
-        }
-
-        .sidebar ul li a {
-            color: white;
-            text-decoration: none;
-            font-size: 1.1em;
-            display: block;
-            transition: background 0.3s ease;
-        }
-
-        .sidebar ul li a:hover {
-            background-color: #007bff;
-            padding-left: 30px;
-        }
-
-        .sidebar ul li.active a {
-            background-color: #007bff;
-            padding-left: 30px;
-        }
-
-        /* Card Styles */
+        /* Enhanced Card Styles */
         .card {
-            border-radius: 10px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease-in-out;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
 
         .card-body {
             padding: 25px;
-            background: linear-gradient(to bottom right, #007bff, #6c757d);
-            border-radius: 10px;
+            background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+            background-size: 200% 200%;
+            background-position: 0% 50%;
+            border-radius: 15px;
             color: white;
+            position: relative;
+        }
+
+        .card-body:before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+            z-index: -1;
         }
 
         .card-title {
-            font-size: 1.5rem;
+            font-size: 1.4em;
             font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 15px;
         }
 
@@ -103,16 +63,16 @@ require_once '../db.php';
             background-color: #f8f9fa;
             padding: 15px;
             border-top: 1px solid #ddd;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 15px 15px;
         }
 
         .card-icon {
-            font-size: 2.5em;
+            font-size: 3.5em;
             color: #ffffff;
             padding: 15px;
             border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.1);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
 
         .card-icon.bg-primary { background-color: #3498db; }
@@ -120,72 +80,25 @@ require_once '../db.php';
         .card-icon.bg-danger { background-color: #e74c3c; }
         .card-icon.bg-success { background-color: #2ecc71; }
 
-        /* Navbar Styles */
-        .navbar {
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .navbar .nav-item {
-            margin-right: 20px;
-        }
-
-        .navbar .nav-item a {
-            color: #007bff;
-            font-weight: bold;
-        }
-
-        .navbar .nav-item a:hover {
-            color: #0056b3;
-        }
-
-        /* Hover Effects on Cards */
-        .card-body:hover {
-            background: linear-gradient(to bottom right, #2980b9, #8e44ad);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
-
-        .row {
-            margin-top: 30px;
-        }
-
-        .col-md-3, .col-md-2 {
-            padding: 10px;
+        .text-white {
+            color: white !important;
         }
 
         .fw-bold {
             font-weight: 600 !important;
         }
 
-        /* Modal Styles */
-        .modal-header {
-            background-color: #007bff;
-            color: white;
+        .h5 {
+            font-size: 1.4rem;
         }
 
-        .modal-footer .btn {
-            background-color: #6c757d;
-            color: white;
+        .row {
+            margin-top: 25px;
         }
 
-        .modal-footer .btn:hover {
-            background-color: #5a6268;
+        .col-md-3, .col-md-2 {
+            padding: 10px;
         }
-
-        .modal-body {
-            text-align: center;
-        }
-
-        /* DataTable Styles */
-        .dataTable {
-            width: 100% !important;
-        }
-
-        .dataTable td {
-            text-align: center;
-        }
-
     </style>
 </head>
 <body>

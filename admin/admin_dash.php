@@ -295,7 +295,7 @@ $sql22 = "SELECT * FROM `employee_info`";
             categories: ['Admin', 'Staff', 'Total Employee', 'Total Time In', 'Total Absent'],
             labels: {
                 style: {
-                    fontSize: '100px',
+                    fontSize: '14px',
                     fontWeight: '600',
                     colors: ['#000'] // Label color
                 }

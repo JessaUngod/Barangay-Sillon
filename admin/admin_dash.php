@@ -16,89 +16,107 @@ require_once '../db.php';
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
-        /* Enhanced Card Styles */
-        .card {
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+     /* Enhanced Card Styles */
+.card {
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15), 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, filter 0.3s ease;
+}
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-        }
+.card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    filter: brightness(1.1);
+}
 
-        .card-body {
-            padding: 25px;
-            background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
-            background-size: 200% 200%;
-            background-position: 0% 50%;
-            border-radius: 15px;
-            color: white;
-            position: relative;
-        }
+.card-body {
+    padding: 25px;
+    background: linear-gradient(to bottom right, #3498db, #9b59b6, #f39c12);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    border-radius: 15px;
+    color: white;
+    position: relative;
+}
 
-        .card-body:before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            z-index: -1;
-        }
+.card-body:before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    z-index: -1;
+}
 
-        .card-title {
-            font-size: 1.4em;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
+.card-title {
+    font-size: 1.4em;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
 
-        .card-footer {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-top: 1px solid #ddd;
-            border-radius: 0 0 15px 15px;
-        }
+.card-footer {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-top: 1px solid #ddd;
+    border-radius: 0 0 15px 15px;
+}
 
-        .card-icon {
-            font-size: 3.5em;
-            color: #ffffff;
-            padding: 15px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-        }
+.card-icon {
+    font-size: 3.5em;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
 
-        .card-icon.bg-primary { background-color: #3498db; }
-        .card-icon.bg-warning { background-color: #f39c12; }
-        .card-icon.bg-danger { background-color: #e74c3c; }
-        .card-icon.bg-success { background-color: #2ecc71; }
+.card-icon.bg-primary { background-color: #3498db; }
+.card-icon.bg-warning { background-color: #f39c12; }
+.card-icon.bg-danger { background-color: #e74c3c; }
+.card-icon.bg-success { background-color: #2ecc71; }
 
-        .text-white {
-            color: white !important;
-        }
+.card-icon:hover {
+    transform: scale(1.1);
+}
 
-        .fw-bold {
-            font-weight: 600 !important;
-        }
+.text-white {
+    color: white !important;
+}
 
-        .h5 {
-            font-size: 1.4rem;
-        }
+.fw-bold {
+    font-weight: 600 !important;
+}
 
-        .row {
-            margin-top: 25px;
-        }
+.h5 {
+    font-size: 1.4rem;
+    color: #ffffff;
+}
 
-        .col-md-3, .col-md-2 {
-            padding: 10px;
-        }
+.row {
+    margin-top: 25px;
+}
+
+.col-md-3, .col-md-2 {
+    padding: 10px;
+}
+
+.card-body .h5 {
+    font-size: 1.5rem;
+}
+
+.card-body .fw-bold {
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
     </style>
 </head>
 <body>

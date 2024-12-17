@@ -19,6 +19,69 @@ require_once '../db.php';
      <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 
 </head>
+<style>
+     .container-fluid {
+    background-color: #f8f9fc;
+    padding-top: 20px;
+  }
+
+  /* Card settings */
+  .card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+
+  /* Hover effect */
+  .hover-card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+  }
+
+  /* Card icon settings */
+  .card-body i {
+    color: #007bff;
+  }
+
+  /* Header settings */
+  h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #343a40;
+  }
+
+  /* Text and typography improvements */
+  .fw-bold {
+    font-weight: 700 !important;
+  }
+
+  .fs-5 {
+    font-size: 1.2rem;
+  }
+
+  .text-primary {
+    color: #007bff !important;
+  }
+
+  /* Spacing settings */
+  .row {
+    margin-top: 20px;
+  }
+
+  .col-auto {
+    text-align: center;
+  }
+
+  .h5, .fs-5 {
+    margin-top: 10px;
+  }
+
+  /* Mobile responsive adjustments */
+  @media (max-width: 768px) {
+    .col-md-3, .col-md-2 {
+      margin-bottom: 10px;
+    }
+  }
+</style>
 <body>
     <?php 
     if (isset($_GET['msg'])=="login") {
@@ -152,175 +215,182 @@ if(!empty($_SESSION['idadmins'])){
                 </div>
                 
             </nav>
-            <div class="container-fluid">
-  <h1 class="fw-bold mb-0 text-dark fs-3 mb-4"><strong>Dashboard</strong></h1>
+   <div class="container-fluid">
+
+                           <h1 class=" fw-bold mb-0 text-gray-800 fs-3 mb-4" style="color: #000;"><strong>Dashboard</strong></h1>
+<div class="row">
+    
+
+                 
+
+
+                           <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                          
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a >Admin</a> </strong> </div>
+                                               
+                                               <?php error_reporting(0);
+
+$sql22 = "SELECT * FROM `admin`";
+
+   $oks22 = mysqli_query($con, $sql22);
+   $res22 = mysqli_num_rows($oks22);
+   $currLoc = mysqli_fetch_assoc($oks22);
+?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-xl-2 col-md-6 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a >Staff</a> </strong> </div>
+                                                 <?php error_reporting(0);
+
+$sql22 = "SELECT * FROM `staff`";
+
+   $oks22 = mysqli_query($con, $sql22);
+
+   $res22 = mysqli_num_rows($oks22);
+
+
   
-  <div class="row">
-    <!-- Admin Card -->
-    <div class="col-xl-2 col-md-6 mb-4">
-      <div class="card shadow h-100 py-2 hover-card">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.9em;">
-                <strong>Admin</strong>
-              </div>
-              <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-user fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- Staff Card -->
-    <div class="col-xl-2 col-md-6 mb-4">
-      <div class="card shadow h-100 py-2 hover-card">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.9em;">
-                <strong>Staff</strong>
-              </div>
-              <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-users fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Total Employees Card -->
-    <div class="col-md-3 mb-4">
-      <div class="card shadow h-100 py-2 hover-card">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.9em;">
-                <strong>Total Employees</strong>
-              </div>
-              <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-users fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Time In Card -->
-    <div class="col-md-2 mb-4">
-      <div class="card shadow h-100 py-2 hover-card">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.9em;">
-                <strong>Time In</strong>
-              </div>
-              <div class="h5 mb-0 fs-5"><strong><?php echo $res226; ?></strong></div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-clock fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Total Absent Card -->
-    <div class="col-md-3 mb-4">
-      <div class="card shadow h-100 py-2 hover-card">
-        <div class="card-body">
-          <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
-              <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.9em;">
-                <strong>Total Absent</strong>
-              </div>
-              <div class="h5 mb-0 fs-5"><strong><?php echo $total; ?></strong></div>
-            </div>
-            <div class="col-auto">
-              <i class="fas fa-user-slash fa-2x text-gray-300"></i>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Add the following CSS in your stylesheet or in the <style> block -->
-
-<style>
-  /* Container settings */
-  .container-fluid {
-    background-color: #f8f9fc;
-    padding-top: 20px;
-  }
-
-  /* Card settings */
-  .card {
-    border-radius: 15px;
-    transition: all 0.3s ease;
-  }
-
-  /* Hover effect */
-  .hover-card:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-  }
-
-  /* Card icon settings */
-  .card-body i {
-    color: #007bff;
-  }
-
-  /* Header settings */
-  h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: #343a40;
-  }
-
-  /* Text and typography improvements */
-  .fw-bold {
-    font-weight: 700 !important;
-  }
-
-  .fs-5 {
-    font-size: 1.2rem;
-  }
-
-  .text-primary {
-    color: #007bff !important;
-  }
-
-  /* Spacing settings */
-  .row {
-    margin-top: 20px;
-  }
-
-  .col-auto {
-    text-align: center;
-  }
-
-  .h5, .fs-5 {
-    margin-top: 10px;
-  }
-
-  /* Mobile responsive adjustments */
-  @media (max-width: 768px) {
-    .col-md-3, .col-md-2 {
-      margin-bottom: 10px;
-    }
-  }
-</style>
+   
+ 
 
 
+
+
+?>
+                                               
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                          <div class="col-md-3 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+                                  
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a>Total Employee</a> </strong> </div>
+                                               <?php error_reporting(0);
+
+$sql22 = "SELECT * FROM `employee_info`";
+
+   $oks22 = mysqli_query($con, $sql22);
+
+   $res22 = mysqli_num_rows($oks22);
+
+  
+
+   
+ 
+
+
+
+
+?>
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res22; ?> </strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2  mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a >Time In</a> </strong> </div>
+                                              <?php error_reporting(0);
+                                                date_default_timezone_set("Asia/manila");  
+                                               
+                                                $datein = date('y-m-d');
+
+                                                 $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+
+                                                    $oks22 = mysqli_query($con, $sql22);
+
+                                                    $res226 = mysqli_num_rows($oks22);
+                                                   
+
+
+
+                                                 ?>
+                                            <div class="h5 mb-0 fs-5  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $res226; ?></strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+               
+                  <div class=" col-md-3 mb-4" style="color: #000;">
+                            <div class="card  shadow h-60 py-1">
+                                
+                                <div class="card-body">
+                                  
+
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="fw-bold text-primary text-uppercase mb-1" style="font-size: 0.8em;">
+                                                <strong><a>Total Absent</a> </strong> </div>
+                                         <?php $total =0;
+                                            $total = $res22 - $res226;
+                                             ?> 
+                                               
+                                            <div class="h5 mb-0  "> <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $total; ?> </strong> </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-users fa-2x text-gray-300"></i>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
   </div>
                 <div class="row">
                     <div class="col-md-2"></div>

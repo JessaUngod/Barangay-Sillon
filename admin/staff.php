@@ -262,7 +262,6 @@ require_once'../db.php';
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-    /* Apply solid color for the table headers */
     .table th {
         text-align: center;
         font-weight: bold;
@@ -279,14 +278,6 @@ require_once'../db.php';
         padding: 12px 15px;
         background-color: #fff;
     }
-
-    /* Hover effect for individual cells */
-    .table td:hover {
-        background-color: #240750;  
-        color: #fff; 
-       
-    }
-
    
     .table-hover tbody tr:hover {
         background-color: #ecf0f1;  /* Light grey for row hover */

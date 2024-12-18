@@ -239,7 +239,7 @@ require_once '../db.php';
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <!-- Admin Card -->
-                    <div class="col-xs-6">
+                    <div class="col-sm-3">
                         <div class="card">
                             <div class="card-body bg-primary">
                                 <div class="row no-gutters align-items-center">

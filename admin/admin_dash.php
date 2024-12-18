@@ -18,7 +18,8 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 </head>
 <style>
-    .card {
+ /* General Card Styles */
+.card {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
@@ -120,10 +121,29 @@ require_once '../db.php';
 @media (max-width: 768px) {
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
+        margin-bottom: 20px;
     }
-    
-    
+
+    /* Adjusting the card body padding for smaller screens */
+    .card-body {
+        padding: 15px;
+    }
+
+    /* Making the text inside the card smaller for better readability */
+    .card-title {
+        font-size: 1.2em;
+    }
+
+    .fw-bold {
+        font-size: 1em;
+    }
+
+    /* Adjusting the icon size for smaller screens */
+    .card-icon {
+        font-size: 2.5em;
+    }
 }
+
 </style>
 <body>
     <?php 

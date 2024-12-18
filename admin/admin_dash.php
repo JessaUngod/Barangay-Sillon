@@ -98,7 +98,7 @@ require_once '../db.php';
 
         /* Responsive adjustments */
         .col-xl-2, .col-md-3 {
-            padding: 10px;
+            padding: 5px;
         }
 
         @media (max-width: 1200px) {

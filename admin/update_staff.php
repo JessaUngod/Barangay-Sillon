@@ -334,6 +334,13 @@ require_once '../db.php';
     <button onclick="FindAge()" onmousemove="FindAge()" class="btn w-100" name="update" type="submit" style="background: linear-gradient(to right, #4caf50, #81c784); color: white;">
         <label>Update</label>
     </button>
+    <style>
+        <style>
+    .btn:hover {
+        background: linear-gradient(to right, #81c784, #4caf50); /* Reverse the gradient on hover */
+    }
+</style>
+    </style>
 </div>
 
             </div>

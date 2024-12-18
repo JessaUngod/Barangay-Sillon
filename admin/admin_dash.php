@@ -243,7 +243,7 @@ require_once '../db.php';
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <!-- Admin Card -->
-                    <div class="col-sm-3">
+                    <div class="col-xl-2 col-md-6 mb-43">
                         <div class="card">
                             <div class="card-body bg-primary">
                                 <div class="row no-gutters align-items-center">
@@ -283,10 +283,6 @@ require_once '../db.php';
                                     <div class="col-auto">
                                         <i class="fas fa-user card-icon"></i>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <!-- Total Employees Card -->
                     <div class="col-sm-3">

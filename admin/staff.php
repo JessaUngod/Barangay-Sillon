@@ -257,18 +257,17 @@ require_once'../db.php';
     });
 </script>
 <style>
-    /* General table styles */
     .table th, .table td {
         vertical-align: middle;
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-    /* Apply gradient background to the table headers */
+    /* Apply solid color for the table headers */
     .table th {
         text-align: center;
         font-weight: bold;
         padding: 12px 15px;
-        background: linear-gradient(to bottom right, #6a11cb, #2575fc, #ff6a00);  /* Latest vibrant gradient */
+        background-color: #4e73df; /* Solid blue color */
         color: #fff;  /* White text for better contrast */
     }
 

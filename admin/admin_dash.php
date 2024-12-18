@@ -117,7 +117,7 @@ require_once '../db.php';
         }
 
         @media (max-width: 768px) {
-            .col-xl-2, .col-md-3, .col-md-3 {
+            .col-xl-2, .col-md-2, .col-md-3 {
                 width: 100%;
             }
         }

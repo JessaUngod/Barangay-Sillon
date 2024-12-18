@@ -121,94 +121,6 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
-    /* Sidebar Styles */
-.sidebar {
-    background-color: #2c3e50;  /* Dark blue-gray color */
-    color: #ecf0f1;              /* Light gray text color */
-    width: 250px;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    padding-top: 30px;
-    font-family: Arial, sans-serif;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.header-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px;
-    color: #ecf0f1;
-}
-
-.header-box img {
-    border-radius: 50%;
-    border: 2px solid #fff;
-}
-
-.header-box h1 {
-    font-size: 18px;
-    color: #fff;
-}
-
-.list-unstyled {
-    padding-left: 0;
-    margin-top: 20px;
-}
-
-.list-unstyled li {
-    margin: 10px 0;
-}
-
-.list-unstyled li a {
-    display: block;
-    padding: 12px 20px;
-    text-decoration: none;
-    color: #ecf0f1;
-    font-size: 16px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.list-unstyled li a:hover {
-    background-color: #3498db;  /* Blue color for hover effect */
-    color: #fff;
-}
-
-.list-unstyled li.active a {
-    background-color: #2980b9;  /* Darker blue for the active link */
-    color: #fff;
-}
-
-hr.h-color {
-    border-color: #ecf0f1; /* Light color for the horizontal line */
-    margin-top: 20px;
-    margin-left: 15px;
-    margin-right: 15px;
-}
-
-.close-btn {
-    background-color: transparent;
-    border: none;
-    color: #fff;
-    font-size: 24px;
-}
-
-.close-btn:hover {
-    color: #3498db;
-}
-
-/* Optional: Mobile Responsive Design */
-@media (max-width: 767px) {
-    .sidebar {
-        width: 100%;
-        height: auto;
-    }
-}
-
     
     
 }
@@ -221,42 +133,54 @@ hr.h-color {
     ?>
     <div class="main-container-fluid d-flex">
         <!-- Sidebar -->
-        <div class="sidebar" id="side_nav">
+        <div class="sidebar" id="side_nav" style="background-color: #343a40;"> <!-- Set the sidebar background color -->
     <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
         <h1 class="fs-5">
-            <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%; border: 2px solid #fff;">
-            <strong>Barangay Sillon</strong>
+            <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
+            <strong style="color: #fff;">Barangay Sillon</strong>
         </h1>
         <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white">
             <i class="fas fa-bars"></i>
         </button>
     </div>
-
-    <ul class="list-unstyled">
+    <ul class="list-unstyled px-3">
         <li class="active">
-            <a href="../admin/admin_dash.php"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;"> 
+                <i class="fas fa-home"></i> Dashboard
+            </a>
         </li>
         <li>
-            <a href="../admin/employee.php"><i class="fas fa-users"></i> Employees</a>
+            <a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-users"></i> Employees
+            </a>
         </li>
         <li>
-            <a href="../admin/employee_payroll.php"><i class="fas fa-pencil"></i> Payroll</a>
+            <a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-pencil"></i> Payroll
+            </a>
         </li>
         <li>
-            <a href="../admin/payroll_rec.php"><i class="fas fa-book-open"></i> Reports</a>
+            <a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-book-open"></i> Reports
+            </a>
         </li>
         <li>
-            <a href="../admin/posistion.php"><i class="fas fa-bar-chart"></i> Positions</a>
+            <a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-bar-chart"></i> Positions
+            </a>
         </li>
         <li>
-            <a href="../admin/accounts.php"><i class="fas fa-user"></i> Accounts</a>
+            <a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-user"></i> Accounts
+            </a>
         </li>
         <li>
-            <a href="../admin/log_rec.php"><i class="fas fa-clock"></i> Login / Logout</a>
+            <a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-clock"></i> Login / Logout
+            </a>
         </li>
     </ul>
-
-    <hr class="h-color">
+    <hr class="h-color mx-2" style="border-color: #fff;"> <!-- Change the color of the horizontal line -->
 </div>
 
 

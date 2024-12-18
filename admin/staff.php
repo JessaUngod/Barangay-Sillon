@@ -20,7 +20,8 @@ require_once'../db.php';
      <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
      <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
      <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
-     <link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css">
+     <link href="https://fonts.googleapis.com/css2?family=Circular+Std:wght@400;600&display=swap" rel="stylesheet">
+
 
 
 </head>
@@ -223,8 +224,16 @@ require_once'../db.php';
                             </thead>
                             <style>
     
-    #myTable {
-    font-family: 'Avenir Next', sans-serif;
+    @font-face {
+    font-family: 'Circular Std';
+    src: url('fonts/CircularStd-Regular.woff2') format('woff2'),
+         url('fonts/CircularStd-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#myTable {
+    font-family: 'Circular Std', sans-serif;  /* Apply Circular Std font */
     font-size: 1rem;
     border-collapse: collapse;
 }
@@ -260,6 +269,7 @@ require_once'../db.php';
         padding: 8px;
     }
 }
+
 
 </style>
 

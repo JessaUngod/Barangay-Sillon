@@ -239,6 +239,7 @@ require_once '../db.php';
                 <div class="row">
     <!-- Admin Card -->
     <div class="col-xl-2 col-md-6 mb-4">
+    <a href="admin/admin.php" style="text-decoration: none;">
         <div class="card">
             <div class="card-body bg-primary">
                 <div class="row no-gutters align-items-center">

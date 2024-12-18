@@ -308,7 +308,7 @@ require_once '../db.php';
                             </div>
                         </div>
                     </div>
-   <!-- Chart Container (Below the cards) -->
+ <!-- Chart Container (Below the cards) -->
 <div class="row">
     <div class="col-md-12 mb-4">
         <div class="card">
@@ -325,22 +325,26 @@ require_once '../db.php';
     // Prepare the chart data and options
     var options = {
         series: [{
-            name: 'Employees Present',
+            name: 'Employees',
             data: [
-                <?php 
-                    // Get the attendance data for each day (replace with actual logic for each day of the week)
-                    // Example: Assume data for employees is present all 7 days
-                    echo $res226 . "," . $res226 . "," . $res226 . "," . $res226 . "," . $res226 . "," . $res226 . "," . $res226;
-                ?>
+                <?php echo $res22; ?>, // Example data for employees attending each day of the week
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?> // Example for each day of the week
             ]
         }, {
-            name: 'Absent Employees',
+            name: 'Absent',
             data: [
-                <?php 
-                    // Calculate absentees for each day (replace with actual logic for each day)
-                    $absentees = $total_absent . "," . $total_absent . "," . $total_absent . "," . $total_absent . "," . $total_absent . "," . $total_absent . "," . $total_absent;
-                    echo $absentees;
-                ?>
+                <?php echo $total; ?>, // Example data for absent employees
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?> // Example for each day of the week
             ]
         }],
         chart: {

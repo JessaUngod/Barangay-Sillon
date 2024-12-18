@@ -254,7 +254,10 @@ require_once'../db.php';
                                             <td><a  class="ms-2 float-end" data-toggle ="modal" data-target ="#deleteq-<?php echo $row1['id']; ?>"><i class="fa fa-trash text-danger fs-6"></i></a>
 
 
-                                                <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>"><i class="fa fa-edit text-primary fs-6"></i></a></td>
+                                            <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>">
+    <i class="fa fa-edit text-primary fs-6"></i>
+    <i class="fa fa-star text-warning fs-6 ms-1" title="Latest"></i> <!-- Latest icon -->
+</a>
                                         </tr>
 
                                          <div class="modal fade " id="deleteq-<?php echo $row1['id']; ?>" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"

@@ -121,6 +121,94 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
+    /* Sidebar Styles */
+.sidebar {
+    background-color: #2c3e50;  /* Dark blue-gray color */
+    color: #ecf0f1;              /* Light gray text color */
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    padding-top: 30px;
+    font-family: Arial, sans-serif;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.header-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    color: #ecf0f1;
+}
+
+.header-box img {
+    border-radius: 50%;
+    border: 2px solid #fff;
+}
+
+.header-box h1 {
+    font-size: 18px;
+    color: #fff;
+}
+
+.list-unstyled {
+    padding-left: 0;
+    margin-top: 20px;
+}
+
+.list-unstyled li {
+    margin: 10px 0;
+}
+
+.list-unstyled li a {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 16px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.list-unstyled li a:hover {
+    background-color: #3498db;  /* Blue color for hover effect */
+    color: #fff;
+}
+
+.list-unstyled li.active a {
+    background-color: #2980b9;  /* Darker blue for the active link */
+    color: #fff;
+}
+
+hr.h-color {
+    border-color: #ecf0f1; /* Light color for the horizontal line */
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.close-btn {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+}
+
+.close-btn:hover {
+    color: #3498db;
+}
+
+/* Optional: Mobile Responsive Design */
+@media (max-width: 767px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+}
+
     
     
 }

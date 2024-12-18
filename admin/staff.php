@@ -81,7 +81,6 @@ require_once'../db.php';
         </li>
     </ul>
     
-</div>
         </div>
         <div class="content">
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">

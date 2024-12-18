@@ -282,7 +282,7 @@ require_once'../db.php';
 
     /* Hover effect for individual cells */
     .table td:hover {
-        background-color: #f39c12;  
+        background-color: #240750;  
         color: #fff; 
        
     }

@@ -268,7 +268,7 @@ require_once'../db.php';
         font-weight: bold;
         padding: 12px 15px;
         background-color: #720e9e; /* Dark Blue color for the header */
-        color: #fff;  /* White text for better contrast */
+        color: #fff; 
     }
 
     /* Table data cells */

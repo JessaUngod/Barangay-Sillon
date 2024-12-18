@@ -101,9 +101,7 @@ require_once '../db.php';
 .col-xl-2, .col-md-3 {
     padding: 10px;
 }
-.col-xl-2 .col-md-6 mb-4 {
-    padding: 10px;
-}
+
 
 @media (max-width: 1200px) {
     .col-xl-2 {

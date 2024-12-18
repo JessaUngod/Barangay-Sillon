@@ -117,7 +117,7 @@ require_once '../db.php';
         }
 
         @media (max-width: 768px) {
-            .col-xl-2, .col-md-2, .col-md-3 {
+            .col-xl-2, .col-md-3, .col-md-3 {
                 width: 100%;
             }
         }
@@ -222,7 +222,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Staff Card -->
-                    <div class="col-md-3 mb-4">
+                    <div class="col-xl-2 col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body bg-warning">
                                 <div class="row no-gutters align-items-center">
@@ -282,7 +282,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-clock card-icon bg-primary"></i>
+                                        <i class="fas fa-clock card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>

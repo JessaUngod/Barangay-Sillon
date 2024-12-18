@@ -156,7 +156,7 @@ require_once'../db.php';
                                 <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
                                     <thead style="font-size: 1em; color: #fff;">
                                          <tr>
-                                            <th class="fw-bold bg-primary">First Name</th>
+                                            <th>First Name</th>
                                             <th class="fw-bold bg-primary ">Middle Name</th>
                                             <th class="fw-bold bg-primary">Last Name</th>
                                             <th class="fw-bold bg-primary">Age</th>

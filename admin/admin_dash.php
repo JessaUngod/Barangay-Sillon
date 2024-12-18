@@ -243,7 +243,7 @@ require_once '../db.php';
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
                     <!-- Admin Card -->
-                    <div class="col-xl-2 col-md-6 mb-43">
+                    <div class="col-xl-2 col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body bg-primary">
                                 <div class="row no-gutters align-items-center">
@@ -266,7 +266,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Staff Card -->
-                    <div class="col-sm-3">
+                    <div class="col-xl-2 col-md-6 mb-4">
                     <a href="employee.php" style="text-decoration: none;">
                         <div class="card">
                             <div class="card-body bg-warning">
@@ -285,10 +285,11 @@ require_once '../db.php';
                                     </div>
                                 </div>
                             </div>
-                      
+                        </div>
+                    </div>
 
                     <!-- Total Employees Card -->
-                    <div class="col-sm-3">
+                    <div class="col-xl-2 col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body bg-success">
                                 <div class="row no-gutters align-items-center">
@@ -310,7 +311,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Time In Card -->
-                    <div class="col-sm-3">
+                    <div class="col-xl-2 col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body bg-danger">
                                 <div class="row no-gutters align-items-center">
@@ -334,7 +335,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Total Absent Card -->
-                    <div class="col-sm-3">
+                    <div class="col-xl-2 col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body bg-info">
                                 <div class="row no-gutters align-items-center">

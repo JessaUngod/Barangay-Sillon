@@ -180,8 +180,8 @@ require_once '../db.php';
             </a>
         </li>
     </ul>
-   
-
+    
+</div>
 
 
         <!-- Content -->

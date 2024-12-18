@@ -191,7 +191,7 @@ require_once '../db.php';
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
                         <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
-                        <strong style="font-size:22px;">AdminSS</strong>
+                        <strong style="font-size:22px;">Admin</strong>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -213,7 +213,7 @@ require_once '../db.php';
                                 <span class="mr-2 d-lg-inline small">
                                     <img src="../uploads/<?php echo $row['img']; ?>" style="height: 40px; width:40px; border-radius:50%;" >
                                 </span>
-                                <span class="mr-2 d-lg-inline small fw-bold" style="color: #000;"><?php echo $row['fname']; ?></span>
+                                <span class="mr-2 d-lg-inline small fw-bold" style="color: #fff; font-family: 'Poppins', sans-serif; font-size: 30px;;"><?php echo $row['fname']; ?></span>
                             </a>
                             <div class="dropdown-menu shadow animated-grow-in px-4" aria-labelledby="userDropdown">
                                 <div class="dropdown-divider"></div>

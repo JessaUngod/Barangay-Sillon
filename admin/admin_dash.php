@@ -282,7 +282,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-clock card-icon bg-light"></i>
+                                        <i class="fas fa-clock card-icon bg-primary"></i>
                                     </div>
                                 </div>
                             </div>

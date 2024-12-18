@@ -219,199 +219,158 @@ require_once '../db.php';
                                         }
                                     }
                                     ?>
-                                  <form method="post" enctype="multipart/form-data">
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Hidden ID -->
-            <div class="col-md-12">
-                <input type="hidden" name="idstaff" value="<?php echo $rower['id']; ?>">
-            </div>
-
-            <!-- First Name -->
-            <div class="col-md-6 mb-3">
-                <label for="first" class="form-label">First Name</label>
-                <input class="form-control" type="text" name="first" id="first" placeholder="Enter First Name" value="<?php echo $rower['fname']; ?>" required>
-            </div>
-
-            <!-- Last Name -->
-            <div class="col-md-6 mb-3">
-                <label for="last" class="form-label">Last Name</label>
-                <input class="form-control" type="text" name="last" id="last" placeholder="Enter Last Name" value="<?php echo $rower['lname']; ?>" required>
-            </div>
-
-            <!-- Middle Name -->
-            <div class="col-md-3 mb-3">
-                <label for="mid" class="form-label">Middle Name</label>
-                <input class="form-control" type="text" name="mid" id="mid" placeholder="Enter Middle Name" value="<?php echo $rower['mname']; ?>" required>
-            </div>
-
-            <!-- Date of Birth -->
-            <div class="col-md-3 mb-3">
-                <label for="dob" class="form-label">Birthdate</label>
-                <input onclick="FindAge()" onmousemove="FindAge()" class="form-control" type="date" name="dob" id="dob" value="<?php echo $rower['dob']; ?>" required>
-            </div>
-
-            <!-- Age -->
-            <div class="col-md-3 mb-3">
-                <label for="age" class="form-label">Age</label>
-                <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" value="<?php echo $rower['age']; ?>" readonly required>
-            </div>
-
-            <!-- Gender -->
-            <div class="col-md-3 mb-3">
-                <label for="gender" class="form-label">Gender</label>
-                <select class="form-control" name="gender" id="gender" required>
-                    <option><?php echo $rower['gender']; ?></option>
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-            </div>
-
-            <!-- Contact Number -->
-            <div class="col-md-6 mb-3">
-                <label for="cnum" class="form-label">Contact No.</label>
-                <input class="form-control" type="text" name="cnum" id="cnum" placeholder="Enter Contact No." value="<?php echo $rower['c_number']; ?>" maxlength="11" required>
-            </div>
-
-            <!-- Username -->
-            <div class="col-md-6 mb-3">
-                <label for="mail" class="form-label">Username</label>
-                <input class="form-control" type="text" name="mail" id="mail" placeholder="Enter Username" value="<?php echo $rower['uname']; ?>" required>
-            </div>
-
-            <!-- Password -->
-            <div class="col-md-6 mb-3 position-relative">
-                <label for="pass" class="form-label">Password</label>
-                <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" value="<?php echo $rower['pass']; ?>" required>
-                <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('pass', 'iconic')" id="iconic"></i>
-            </div>
-
-            <!-- Re-Password -->
-            <div class="col-md-6 mb-3 position-relative">
-                <label for="cpass" class="form-label">Re-Password</label>
-                <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" value="<?php echo $rower['pass']; ?>" required>
-                <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('cpass', 'icon')" id="icon"></i>
-            </div>
-
-            <!-- Profile Image -->
-            <div class="col-md-8 mb-3 text-center">
-                <label for="profile" class="form-label">Profile Image</label>
-                <input class="form-control" type="file" name="profile" id="profile" accept="image/*">
-            </div>
-
-            <!-- Submit Button -->
-            <div class="col-md-12 mb-3 text-center">
-                <button class="btn btn-success" type="submit" name="update">Update</button>
-            </div>
-        </div>
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class="row">
+                                    <div class="col-md-6">
+                                        <label>First Name</label>
+                                         <input class="form-control mb-1" type="hidden" name="idstaff" style="font-size :15px;"required value="<?php echo $rower['id']; ?>">
+                                        <input class="form-control mb-1" type="text" name="first" placeholder="Enter First Name" style="font-size :15px;"required value="<?php echo $rower['fname']; ?>">
+                                    </div>
+                                     <div class="col-md-6">
+                                        <label>Last Name</label>
+                                        <input class="form-control mb-1" type="text" name="last" placeholder="Enter Last Name" style="font-size :15px;" required  value="<?php echo $rower['lname']; ?>">
+                                    </div>
+                                         <div class="col-md-3">
+                                        <label>Middle Name</label>
+                                        <input class="form-control mb-1" type="text" name="mid" placeholder="Enter Middle Name" style="font-size :15px;"required value="<?php echo $rower['mname']; ?>">
+                                    </div>
+                                         <script>
+                                        function FindAge() {
+                                           var day = document.getElementById("dob").value;
+                                           var DOB = new Date(day);
+                                           var today = new Date();
+                                           var Age = today.getTime() - DOB.getTime();
+                                           Age = Math.floor(Age / (1000 * 60 * 60 * 24 * 365.25));
+                                           document.getElementById("age").value = Age;
+                                        }
+                                    </script>
+                                    <div class="col-md-3">
+                                        <label>Birthdate</label>
+                                        <input onclick="FindAge()" onmousemove="FindAge()" class="form-control mb-1" type="date" id="dob" name="dob"  style="font-size :15px;" required value="<?php echo $rower['dob']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Age</label>
+                                        <input onclick="FindAge()" onmousemove="FindAge()" class="form-control mb-1" type="number" name="age" placeholder="Enter your Age" style="font-size :15px;"required value="<?php echo $rower['age']; ?>">
+                                    </div>
+                                    <div class="col-md-3">
+                                        <label>Select Gender</label>
+                                         <select onclick="FindAge()" onmousemove="FindAge()" name="gender" class="form-control mb-1" style="font-size :15px;" required>
+                            <option><?php echo $rower['gender']; ?></option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Contact no.</label>
+                                        <input class="form-control mb-1" type="number" name="cnum" placeholder="Enter Contact no." style="font-size :15px;"required value="<?php echo $rower['c_number']; ?>">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label>Username</label>
+                                        <input class="form-control mb-1" type="text" name="mail" placeholder="Enter Email or Username" style="font-size :15px;" required value="<?php echo $rower['uname']; ?>">
     </div>
-
-    <!-- Scripts -->
-    <script type="text/javascript">
-        // Toggle password visibility function
-        function togglePasswordVisibility(inputId, iconId) {
-            var input = document.getElementById(inputId);
-            var icon = document.getElementById(iconId);
-            if (input.type === "password") {
-                input.type = "text";
-                icon.classList = "fa fa-eye";
-            } else {
-                input.type = "password";
-                icon.classList = "fa fa-eye-slash";
-            }
-        }
-
-        // Calculate Age based on DOB
-        function FindAge() {
-            var dob = document.getElementById("dob").value;
-            var dobDate = new Date(dob);
-            var today = new Date();
-            var age = today.getFullYear() - dobDate.getFullYear();
-            var m = today.getMonth() - dobDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
-                age--;
-            }
-            document.getElementById("age").value = age;
-        }
-
-        // Contact number input validation (numeric only, max 11 digits)
-        document.getElementById('cnum').addEventListener('input', function(event) {
-            const input = event.target;
-            let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-            if (value.length > 11) {
-                value = value.slice(0, 11); // Limit to 11 digits
-            }
-            input.value = value;
-        });
-    </script>
-
-    <!-- Styles -->
-    <style>
-        /* Basic styling for the form labels and inputs */
-        .form-label {
-            font-weight: bold;
-            font-size: 14px;
-        }
-
-        .form-control {
-            font-size: 15px;
-            border-radius: 8px;
-            padding: 12px;
-            transition: all 0.3s ease;
-        }
-
-        /* Focus on form controls */
-        .form-control:focus {
-            border-color: #28a745;
-            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
-        }
-
-        /* Button Styles */
-        .btn-success {
-            background-color: #28a745;
-            color: white;
-            font-size: 16px;
-            padding: 10px 20px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-        }
-
-        .btn-success:hover {
-            background-color: #218838;
-        }
-
-        /* Profile Image input styling */
-        input[type="file"] {
-            font-size: 15px;
-            border-radius: 8px;
-        }
-
-        /* Password Icons */
-        .fa-eye-slash, .fa-eye {
-            cursor: pointer;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
-            }
-
-            .form-control {
-                padding: 10px;
-            }
-
-            .btn-success {
-                width: 100%;
-            }
-
-            .col-md-6, .col-md-3, .col-md-8 {
-                margin-bottom: 15px;
-            }
-        }
-    </style>
-</form>
-
+                                      <div class="col-md-6">
+                                        <label>Password</label>
+                                        <input class="form-control mb-1" type="password" id="pass" name="pass" placeholder="Enter Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>"><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 52%; color: lightgray;"  onclick="myfunction()" id="iconic"></i>
+                                    </div>
+                                       <div class="col-md-6">
+                                        <label>Re - Password</label>
+                                        <input class="form-control mb-1" value="<?php echo $rower['pass']; ?>"  type="password" id="rpass" name="cpass" placeholder="Enter Re - Password" style="font-size :15px;" required><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 4%; color: lightgray;"  onclick="myfunction2()" id="icon"></i>
+                                    </div>
+                                        <center> <div class="col-md-8" >
+                                        <label>Product Image</label>
+                                        <input class="form-control mb-1" type="file" name="profile" placeholder="Enter Student name" style="font-size :15px;" >
+                                    </div></center>                         
+                                    <div class=" modal-footer mt-3 w-100">
+                                        <button onclick="FindAge()" onmousemove="FindAge()" class="btn bg-success ms-auto text-light" name="update" type="submit"> <label>Update</label></button>
+                                    </div>
+                                            <div class="col-md-6">
+                                                <label>First Name</label>
+                                                <input class="form-control mb-1" type="hidden" name="idstaff" style="font-size :15px;" required value="<?php echo $rower['id']; ?>">
+                                                <input class="form-control mb-1" type="text" name="first" placeholder="Enter First Name" style="font-size :15px;" required value="<?php echo $rower['fname']; ?>">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Last Name</label>
+                                                <input class="form-control mb-1" type="text" name="last" placeholder="Enter Last Name" style="font-size :15px;" required value="<?php echo $rower['lname']; ?>">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Middle Name</label>
+                                                <input class="form-control mb-1" type="text" name="mid" placeholder="Enter Middle Name" style="font-size :15px;" required value="<?php echo $rower['mname']; ?>">
+                                            </div>
+                                            <script>
+                                                function FindAge() {
+                                                    var day = document.getElementById("dob").value;
+                                                    var DOB = new Date(day);
+                                                    var today = new Date();
+                                                    var Age = today.getTime() - DOB.getTime();
+                                                    Age = Math.floor(Age / (1000 * 60 * 60 * 24 * 365.25));
+                                                    document.getElementById("age").value = Age;
+                                                }
+                                            </script>
+                                            <div class="col-md-3">
+                                                <label>Birthdate</label>
+                                                <input onclick="FindAge()" onmousemove="FindAge()" class="form-control mb-1" type="date" id="dob" name="dob" style="font-size :15px;" required value="<?php echo $rower['dob']; ?>">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Age</label>
+                                                <input onclick="FindAge()" onmousemove="FindAge()" class="form-control mb-1" type="number" name="age" placeholder="Enter your Age" style="font-size :15px;" required value="<?php echo $rower['age']; ?>">
+                                            </div>
+                                            <div class="col-md-3">
+                                                <label>Select Gender</label>
+                                                <select onclick="FindAge()" onmousemove="FindAge()" name="gender" class="form-control mb-1" style="font-size :15px;" required>
+                                                    <option><?php echo $rower['gender']; ?></option>
+                                                    <option>Male</option>
+                                                    <option>Female</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="contactNo">Contact no.</label>
+                                                <input
+                                                    id="contactNo"
+                                                    class="form-control mb-1"
+                                                    type="text"
+                                                    name="cnum"
+                                                    placeholder="Enter Contact no."
+                                                    style="font-size: 15px;"
+                                                    maxlength="11"
+                                                    value="<?php echo $rower['c_number']; ?>"
+                                                    required>
+                                                <div id="error-message" style="color: red;"></div>
+                                            </div>
+                                            <script>
+                                                document.getElementById('contactNo').addEventListener('input', function(event) {
+                                                    const input = event.target;
+                                                    const value = input.value;
+                                                    const cleanedValue = value.replace(/\D/g, '');
+                                                    if (cleanedValue.length > 11) {
+                                                        input.value = cleanedValue.slice(0, 11);
+                                                    } else {
+                                                        input.value = cleanedValue;
+                                                    }
+                                                });
+                                            </script>
+                                            <div class="col-md-6">
+                                                <label>Username</label>
+                                                <input class="form-control mb-1" type="text" name="mail" placeholder="Enter Email or Username" style="font-size :15px;" required value="<?php echo $rower['uname']; ?>">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Password</label>
+                                                <input class="form-control mb-1" type="password" id="pass" name="pass" placeholder="Enter Password" style="font-size :15px;" ><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 52%; color: lightgray;" onclick="myfunction()" id="iconic"></i>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>Re - Password</label>
+                                                <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re - Password" style="font-size :15px;" ><i class="fa fa-eye-slash" style="position: absolute; top: 64%; right: 4%; color: lightgray;" onclick="myfunction2()" id="icon"></i>
+                                            </div>
+                                            <center>
+                                                <div class="col-md-8">
+                                                    <label>Profile Image</label>
+                                                    <input class="form-control mb-1" type="file" name="profile" placeholder="Enter Student name" style="font-size :15px;">
+                                                </div>
+                                            </center>
+                                            <div class=" modal-footer mt-3 w-100">
+                                                <button onclick="FindAge()" onmousemove="FindAge()" class="btn bg-success ms-auto text-light" name="update" type="submit"> <label>Update</label></button>
+                                            </div>
+                                        </div>
+                                    </form>
                                     <script type="text/javascript">
                                         function myfunction() {
                                             var x = document.getElementById("pass");

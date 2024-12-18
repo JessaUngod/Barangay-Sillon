@@ -219,113 +219,125 @@ require_once '../db.php';
                                         }
                                     }
                                     ?>
-                                  <form method="post" enctype="multipart/form-data" class="container mt-5">
-  <div class="row g-3">
-    <div class="col-md-6">
-      <label for="firstName" class="form-label">First Name</label>
-      <input class="form-control" type="text" name="first" id="firstName" placeholder="Enter First Name" style="font-size :15px;" required value="<?php echo $rower['fname']; ?>">
+                                  <div class="container">
+        <div class="form-container">
+            <form method="post" enctype="multipart/form-data">
+                <div class="row g-3">
+                    <!-- First Name -->
+                    <div class="col-md-6">
+                        <label for="firstName" class="form-label">First Name</label>
+                        <input class="form-control" type="text" name="first" id="firstName" placeholder="Enter First Name" required value="<?php echo $rower['fname']; ?>">
+                    </div>
+
+                    <!-- Last Name -->
+                    <div class="col-md-6">
+                        <label for="lastName" class="form-label">Last Name</label>
+                        <input class="form-control" type="text" name="last" id="lastName" placeholder="Enter Last Name" required value="<?php echo $rower['lname']; ?>">
+                    </div>
+
+                    <!-- Middle Name -->
+                    <div class="col-md-6">
+                        <label for="middleName" class="form-label">Middle Name</label>
+                        <input class="form-control" type="text" name="mid" id="middleName" placeholder="Enter Middle Name" required value="<?php echo $rower['mname']; ?>">
+                    </div>
+
+                    <!-- Birthdate -->
+                    <div class="col-md-6">
+                        <label for="dob" class="form-label">Birthdate</label>
+                        <input class="form-control" type="date" id="dob" name="dob" required value="<?php echo $rower['dob']; ?>" onchange="FindAge()">
+                    </div>
+
+                    <!-- Age -->
+                    <div class="col-md-6">
+                        <label for="age" class="form-label">Age</label>
+                        <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" required value="<?php echo $rower['age']; ?>" disabled>
+                    </div>
+
+                    <!-- Gender -->
+                    <div class="col-md-6">
+                        <label for="gender" class="form-label">Select Gender</label>
+                        <select class="form-control" id="gender" name="gender" required>
+                            <option><?php echo $rower['gender']; ?></option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <!-- Contact Number -->
+                    <div class="col-md-6">
+                        <label for="contactNo" class="form-label">Contact No.</label>
+                        <input class="form-control" type="text" name="cnum" id="contactNo" placeholder="Enter Contact No." maxlength="11" required value="<?php echo $rower['c_number']; ?>">
+                    </div>
+
+                    <!-- Username -->
+                    <div class="col-md-6">
+                        <label for="username" class="form-label">Username</label>
+                        <input class="form-control" type="text" name="mail" id="username" placeholder="Enter Email or Username" required value="<?php echo $rower['uname']; ?>">
+                    </div>
+
+                    <!-- Password -->
+                    <div class="col-md-6 password-container">
+                        <label for="pass" class="form-label">Password</label>
+                        <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" required>
+                        <i class="fa fa-eye-slash password-toggle-icon" onclick="togglePasswordVisibility('pass')"></i>
+                    </div>
+
+                    <!-- Re-password -->
+                    <div class="col-md-6 password-container">
+                        <label for="rpass" class="form-label">Re-password</label>
+                        <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" required>
+                        <i class="fa fa-eye-slash password-toggle-icon" onclick="togglePasswordVisibility('rpass')"></i>
+                    </div>
+
+                    <!-- Profile Image -->
+                    <div class="col-md-6 file-upload-container">
+                        <label for="profile" class="form-label">Profile Image</label>
+                        <input class="form-control" type="file" name="profile" id="profile">
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="col-12 form-footer">
+                        <button type="submit" class="submit-btn" name="update">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <div class="col-md-6">
-      <label for="lastName" class="form-label">Last Name</label>
-      <input class="form-control" type="text" name="last" id="lastName" placeholder="Enter Last Name" style="font-size :15px;" required value="<?php echo $rower['lname']; ?>">
-    </div>
+    <script>
+        // Calculate age based on birthdate
+        function FindAge() {
+            const dob = document.getElementById("dob").value;
+            const birthDate = new Date(dob);
+            const today = new Date();
+            let age = today.getFullYear() - birthDate.getFullYear();
+            const month = today.getMonth() - birthDate.getMonth();
+            if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+                age--;
+            }
+            document.getElementById("age").value = age;
+        }
 
-    <div class="col-md-6">
-      <label for="middleName" class="form-label">Middle Name</label>
-      <input class="form-control" type="text" name="mid" id="middleName" placeholder="Enter Middle Name" style="font-size :15px;" required value="<?php echo $rower['mname']; ?>">
-    </div>
+        // Toggle password visibility
+        function togglePasswordVisibility(id) {
+            const passwordField = document.getElementById(id);
+            const icon = document.querySelector(`#${id} + .password-toggle-icon`);
+            if (passwordField.type === "password") {
+                passwordField.type = "text";
+                icon.classList.replace("fa-eye-slash", "fa-eye");
+            } else {
+                passwordField.type = "password";
+                icon.classList.replace("fa-eye", "fa-eye-slash");
+            }
+        }
 
-    <div class="col-md-3">
-      <label for="dob" class="form-label">Birthdate</label>
-      <input class="form-control" type="date" name="dob" id="dob" style="font-size :15px;" required value="<?php echo $rower['dob']; ?>" onchange="FindAge()" onmousemove="FindAge()">
-    </div>
-
-    <div class="col-md-3">
-      <label for="age" class="form-label">Age</label>
-      <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" style="font-size :15px;" required value="<?php echo $rower['age']; ?>">
-    </div>
-
-    <div class="col-md-3">
-      <label for="gender" class="form-label">Select Gender</label>
-      <select name="gender" id="gender" class="form-select" style="font-size :15px;" required>
-        <option><?php echo $rower['gender']; ?></option>
-        <option>Male</option>
-        <option>Female</option>
-      </select>
-    </div>
-
-    <div class="col-md-6">
-      <label for="contactNo" class="form-label">Contact No.</label>
-      <input class="form-control" type="text" name="cnum" id="contactNo" placeholder="Enter Contact No." style="font-size :15px;" maxlength="11" required value="<?php echo $rower['c_number']; ?>">
-    </div>
-
-    <div class="col-md-6">
-      <label for="username" class="form-label">Username</label>
-      <input class="form-control" type="text" name="mail" id="username" placeholder="Enter Email or Username" style="font-size :15px;" required value="<?php echo $rower['uname']; ?>">
-    </div>
-
-    <div class="col-md-6 position-relative">
-      <label for="pass" class="form-label">Password</label>
-      <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
-      <i class="fa fa-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePasswordVisibility('pass')" id="iconPassword"></i>
-    </div>
-
-    <div class="col-md-6 position-relative">
-      <label for="rpass" class="form-label">Re-password</label>
-      <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" style="font-size :15px;" required>
-      <i class="fa fa-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePasswordVisibility('rpass')" id="iconRePassword"></i>
-    </div>
-
-    <div class="col-md-8 text-center">
-      <label for="profile" class="form-label">Profile Image</label>
-      <input class="form-control" type="file" name="profile" id="profile" placeholder="Select Profile Image" style="font-size :15px;">
-    </div>
-
-    <div class="col-12 text-center mt-3">
-      <button type="submit" class="btn btn-success text-light" name="update">Update</button>
-    </div>
-  </div>
-</form>
-
-<script>
-  // Function to calculate age based on DOB
-  function FindAge() {
-    const day = document.getElementById("dob").value;
-    const DOB = new Date(day);
-    const today = new Date();
-    let age = today.getTime() - DOB.getTime();
-    age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25));
-    document.getElementById("age").value = age;
-  }
-
-  // Function to toggle password visibility
-  function togglePasswordVisibility(id) {
-    const passwordField = document.getElementById(id);
-    const icon = id === 'pass' ? document.getElementById('iconPassword') : document.getElementById('iconRePassword');
-    if (passwordField.type === "password") {
-      passwordField.type = "text";
-      icon.classList.remove("fa-eye-slash");
-      icon.classList.add("fa-eye");
-    } else {
-      passwordField.type = "password";
-      icon.classList.remove("fa-eye");
-      icon.classList.add("fa-eye-slash");
-    }
-  }
-
-  // Ensures the phone number is correctly formatted (max 11 digits)
-  document.getElementById('contactNo').addEventListener('input', function(event) {
-    let input = event.target;
-    let value = input.value.replace(/\D/g, '');  // Removes non-numeric characters
-    if (value.length > 11) {
-      input.value = value.slice(0, 11);  // Limits to 11 characters
-    } else {
-      input.value = value;
-    }
-  });
-</script>
-
+        // Ensure only numeric input for phone number with max length of 11
+        document.getElementById('contactNo').addEventListener('input', function (event) {
+            let value = event.target.value.replace(/\D/g, ''); // Remove non-digits
+            event.target.value = value.slice(0, 11); // Allow up to 11 digits
+        });
+    </script>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -372,4 +384,97 @@ require_once '../db.php';
                 });
             </script>
 </body>
+<style> body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            padding-top: 50px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .form-label {
+            font-weight: bold;
+        }
+
+        .form-control {
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .form-control[type="date"]:disabled {
+            cursor: not-allowed;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .password-container {
+            position: relative;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            top: 50%;
+            right: 10px;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
+        .form-footer {
+            text-align: center;
+        }
+
+        .submit-btn {
+            background-color: #28a745;
+            border-color: #28a745;
+            color: white;
+            font-size: 16px;
+            padding: 12px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #218838;
+        }
+
+        .file-upload-container {
+            text-align: center;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 767px) {
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-group {
+                margin-bottom: 1rem;
+            }
+
+            .submit-btn {
+                width: 100%;
+            }
+
+            .file-upload-container {
+                width: 100%;
+            }
+        }</style>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
 </html>

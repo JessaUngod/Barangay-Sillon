@@ -151,23 +151,23 @@ require_once'../db.php';
                         <div class="card-header">
                             <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
                         </div>
-                       <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px;">
+                        <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
-            <thead style="font-size: 1em; color: #8e44ad;">
+            <thead style="font-size: 1.1em; color: #fff; background-color: #8e44ad;">
                 <tr>
-                    <th class="fw-bold bg-primary text-center" style="border-radius: 8px 0 0 0;">First Name</th>
-                    <th class="fw-bold bg-primary text-center">Middle Name</th>
-                    <th class="fw-bold bg-primary text-center">Last Name</th>
-                    <th class="fw-bold bg-primary text-center">Age</th>
-                    <th class="fw-bold bg-primary text-center">Gender</th>
-                    <th class="fw-bold bg-primary text-center">Contact no.</th>
-                    <th class="fw-bold bg-primary text-center">Username</th>
-                    <th class="fw-bold bg-primary text-center">Profile Picture</th>
-                    <th class="fw-bold bg-primary text-center" style="border-radius: 0 8px 0 0;">Action</th>
+                    <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
+                    <th class="fw-bold text-center">Middle Name</th>
+                    <th class="fw-bold text-center">Last Name</th>
+                    <th class="fw-bold text-center">Age</th>
+                    <th class="fw-bold text-center">Gender</th>
+                    <th class="fw-bold text-center">Contact No.</th>
+                    <th class="fw-bold text-center">Username</th>
+                    <th class="fw-bold text-center">Profile Picture</th>
+                    <th class="fw-bold text-center" style="border-radius: 0 8px 0 0;">Action</th>
                 </tr>
             </thead>
-                                    <tbody style="color: #8e44ad;">
+            <tbody style="color: #555;">
                                              <?php 
                                         $qry = "SELECT * FROM staff";
                                         $qry_run = mysqli_query($con, $qry);
@@ -255,5 +255,63 @@ require_once'../db.php';
         $('.content').removeClass('shift');    
     });
 </script>
+<style>
+       .table th, .table td {
+        vertical-align: middle;
+    }
+
+    .table th {
+        text-align: center;
+        font-weight: bold;
+        background-color: #8e44ad;
+    }
+
+    .table td {
+        text-align: center;
+        font-size: 0.95em;
+        color: #333;
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    .btn-sm {
+        font-size: 0.85rem;
+    }
+
+    .btn-warning {
+        background-color: #f39c12;
+        border-color: #e67e22;
+    }
+
+    .btn-danger {
+        background-color: #e74c3c;
+        border-color: #c0392b;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+
+    .table th, .table td {
+        border: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #8e44ad;
+        color: white;
+    }
+
+    .table td {
+        color: #333;
+    }
+
+    .card-body {
+        padding: 15px;
+    }
+</style>
 </body>
 </html>

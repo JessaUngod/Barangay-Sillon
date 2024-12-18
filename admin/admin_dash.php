@@ -15,7 +15,7 @@ require_once '../db.php';
     <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+   
 
     <style>
         /* Enhanced Card Styles */

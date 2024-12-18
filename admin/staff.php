@@ -103,7 +103,7 @@ require_once'../db.php';
 
 
         <!-- <div class="content"> -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light" style="background-color: #240750;" topbar mb-4 static-top shadow>
             
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">

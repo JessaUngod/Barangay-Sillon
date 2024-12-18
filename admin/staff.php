@@ -33,21 +33,55 @@ require_once'../db.php';
 }
      ?>
     <div class="main-container-fluid d-flex">
-        <div class="sidebar" id="side_nav">
-            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon </strong></h1>
-                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
-            </div>
-           <ul class="list-unstyled px-3">
-                <li class=""><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li class=""><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-                <li class=""><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
-                <li class=""><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
-                <li class=""><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
-                <li class="active"><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-                <li class=""><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
-            </ul>
-            <hr class="h-color mx-2">
+    <div class="sidebar" id="side_nav" style="background-color: #240750;"> 
+    <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
+        <h1 class="fs-5">
+            <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
+            <strong style="color: #fff;">Barangay Sillon</strong>
+        </h1>
+        <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white">
+            <i class="fas fa-bars"></i>
+        </button>
+    </div>
+    <ul class="list-unstyled px-3">
+        <li class="active">
+            <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block" style="color: black;"> 
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+        </li>
+        <li>
+            <a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-users"></i> Employees
+            </a>
+        </li>
+        <li>
+            <a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-pencil"></i> Payroll
+            </a>
+        </li>
+        <li>
+            <a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-book-open"></i> Reports
+            </a>
+        </li>
+        <li>
+            <a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-bar-chart"></i> Positions
+            </a>
+        </li>
+        <li>
+            <a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-user"></i> Accounts
+            </a>
+        </li>
+        <li>
+            <a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;">
+                <i class="fas fa-clock"></i> Login / Logout
+            </a>
+        </li>
+    </ul>
+    
+</div>
         </div>
         <div class="content">
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">

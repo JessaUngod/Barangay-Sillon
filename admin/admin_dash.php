@@ -325,26 +325,22 @@ require_once '../db.php';
     // Prepare the chart data and options
     var options = {
         series: [{
-            name: 'Employees',
+            name: 'Stats',c
             data: [
-                <?php echo $res22; ?>, // Example data for employees attending each day of the week
-                <?php echo $res22; ?>,
-                <?php echo $res22; ?>,
-                <?php echo $res22; ?>,
-                <?php echo $res22; ?>,
-                <?php echo $res22; ?>,
-                <?php echo $res22; ?> // Example for each day of the week
+                <?php echo $res22; ?>, // Admin count
+                <?php echo $res22; ?>, // Staff count
+                <?php echo $res22; ?>, // Total Employee count
+                <?php echo $res226; ?>, // Time In count
+                <?php echo $total; ?>  // Total Absent count// Example for each day of the week
             ]
         }, {
             name: 'Absent',
             data: [
-                <?php echo $total; ?>, // Example data for absent employees
-                <?php echo $total; ?>,
-                <?php echo $total; ?>,
-                <?php echo $total; ?>,
-                <?php echo $total; ?>,
-                <?php echo $total; ?>,
-                <?php echo $total; ?> // Example for each day of the week
+                <?php echo $res22; ?>, // Admin count
+                <?php echo $res22; ?>, // Staff count
+                <?php echo $res22; ?>, // Total Employee count
+                <?php echo $res226; ?>, // Time In count
+                <?php echo $total; ?>  // Total Absent count
             ]
         }],
         chart: {

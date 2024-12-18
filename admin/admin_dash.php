@@ -121,6 +121,120 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
+    /* Sidebar container */
+.sidebar {
+    background-color: #2c3e50; /* Dark background color */
+    color: white;
+    height: 100vh;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 40px;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.sidebar-logo {
+    width: 61px;
+    height: 61px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.header-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar h1 {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.sidebar .close-btn {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin: 20px 0;
+}
+
+.sidebar-link {
+    color: #ecf0f1;
+    font-size: 16px;
+    display: block;
+    padding: 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.sidebar-link i {
+    margin-right: 12px;
+}
+
+.sidebar-link:hover {
+    background-color: #34495e; /* Darker hover background */
+    padding-left: 20px;
+}
+
+.sidebar .active .sidebar-link {
+    background-color: #3498db; /* Active link color */
+    color: white;
+}
+
+.sidebar-hr {
+    border-color: #7f8c8d;
+    margin-top: 30px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 220px; /* Adjust the sidebar width */
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 200px;
+    }
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+    .sidebar-link {
+        font-size: 14px;
+    }
+}
+
+/* Toggle Sidebar */
+.sidebar.collapsed {
+    width: 0;
+    padding-top: 0;
+    padding-left: 0;
+}
+
+.sidebar.collapsed .header-box {
+    display: none;
+}
+
+.sidebar.collapsed .sidebar-link {
+    display: none;
+}
+
 }
 </style>
 <body>
@@ -130,23 +244,58 @@ require_once '../db.php';
     }
     ?>
     <div class="main-container-fluid d-flex">
-        <!-- Sidebar -->
-        <div class="sidebar" id="side_nav">
-            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon</strong></h1>
-                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
-            </div>
-            <ul class="list-unstyled px-3">
-                <li class="active"><a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-home"></i> Dashboard</a></li>
-                <li><a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-users"></i> Employees</a></li>
-                <li><a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-pencil"></i> Payroll</a></li>
-                <li><a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-book-open"></i> Reports</a></li>
-                <li><a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-bar-chart"></i> Positions</a></li>
-                <li><a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block"> <i class="fas fa-user"></i> Accounts</a></li>
-                <li><a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block"><i class="fas fa-clock"></i> Login / Logout</a></li>
-            </ul>
-            <hr class="h-color mx-2">
+    <!-- Sidebar -->
+    <div class="sidebar" id="side_nav">
+        <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between align-items-center">
+            <h1 class="fs-5">
+                <img src="../assets/img/sillon.jpg" class="sidebar-logo" alt="Barangay Sillon">
+                <strong>Barangay Sillon</strong>
+            </h1>
+            <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white" aria-label="Close Sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
+        
+        <ul class="list-unstyled px-3">
+            <li class="active">
+                <a href="../admin/admin_dash.php" class="sidebar-link">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="../admin/employee.php" class="sidebar-link">
+                    <i class="fas fa-users"></i> Employees
+                </a>
+            </li>
+            <li>
+                <a href="../admin/employee_payroll.php" class="sidebar-link">
+                    <i class="fas fa-pencil"></i> Payroll
+                </a>
+            </li>
+            <li>
+                <a href="../admin/payroll_rec.php" class="sidebar-link">
+                    <i class="fas fa-book-open"></i> Reports
+                </a>
+            </li>
+            <li>
+                <a href="../admin/posistion.php" class="sidebar-link">
+                    <i class="fas fa-bar-chart"></i> Positions
+                </a>
+            </li>
+            <li>
+                <a href="../admin/accounts.php" class="sidebar-link">
+                    <i class="fas fa-user"></i> Accounts
+                </a>
+            </li>
+            <li>
+                <a href="../admin/log_rec.php" class="sidebar-link">
+                    <i class="fas fa-clock"></i> Login / Logout
+                </a>
+            </li>
+        </ul>
+        <hr class="sidebar-hr">
+    </div>
+
 
         <!-- Content -->
         <div class="content">

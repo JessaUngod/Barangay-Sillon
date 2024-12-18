@@ -134,7 +134,7 @@ require_once '../db.php';
         <!-- Sidebar -->
         <div class="sidebar" id="side_nav">
             <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: #fff;">Barangay Sillon</strong></h1>
+                <h1 class="fs-5"><img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> <strong style="color: violet;">Barangay Sillon</strong></h1>
                 <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white"><i class="fas fa-bars"></i></button>
             </div>
             <ul class="list-unstyled px-3">

@@ -9,6 +9,7 @@ require_once '../db.php';
     <title>Admin Dashboard</title>
     <link rel="stylesheet" href="../assets/css/mdb.css">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style1.css">
     <link rel="stylesheet" href="../assets/fontawesome6/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/de.css">
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">

@@ -308,6 +308,64 @@ require_once '../db.php';
                             </div>
                         </div>
                     </div>
+                     <!-- Chart Container (Below the cards) -->
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card">
+                <div class="card-body bg-light">
+                    <h5 class="card-title text-center">Employee Attendance Overview</h5>
+                    <!-- ApexChart div container -->
+                    <div id="attendance-chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Prepare the chart data and options
+    var options = {
+        series: [{
+            name: 'Employees',
+            data: [45, 78, 82, 90, 60, 110, 100] // Example data for employees attending each day of the week
+        }, {
+            name: 'Absent',
+            data: [5, 10, 8, 12, 4, 20, 15] // Example data for absent employees each day of the week
+        }],
+        chart: {
+            height: 350,
+            type: 'line',
+        },
+        xaxis: {
+            categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        title: {
+            text: 'Employee Attendance by Day',
+            align: 'center',
+            style: {
+                fontSize: '18px',
+                fontWeight: 'bold',
+                color: '#333'
+            }
+        },
+        stroke: {
+            width: 2,
+        },
+        markers: {
+            size: 6,
+            colors: ["#ffffff"],
+            strokeColor: "#ff4560",
+            strokeWidth: 3
+        },
+        colors: ["#00E396", "#FF4560"], // Colors for the two series
+        grid: {
+            borderColor: '#f1f1f1',
+        }
+    };
+
+    var chart = new ApexCharts(document.querySelector("#attendance-chart"), options);
+    chart.render();
+</script>
                 </div>
             </div>
              <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"

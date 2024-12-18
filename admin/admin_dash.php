@@ -96,8 +96,30 @@ require_once '../db.php';
             margin-top: 25px;
         }
 
-        .col-md-3, .col-md-2 {
+        /* Responsive adjustments */
+        .col-xl-2, .col-md-6 {
             padding: 10px;
+        }
+
+        @media (max-width: 1200px) {
+            .col-xl-2 {
+                width: 25%;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .col-xl-2 {
+                width: 33.33%;
+            }
+            .col-md-2 {
+                width: 50%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .col-xl-2, .col-md-2, .col-md-3 {
+                width: 100%;
+            }
         }
     </style>
 </head>

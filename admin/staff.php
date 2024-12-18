@@ -159,8 +159,8 @@ require_once'../db.php';
                 <tr>
                     <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
                     <th>Middle Name</th>
-                    <th class="fw-bold text-center">Last Name</th>
-                    <th class="fw-bold text-center">Age</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
                     <th class="fw-bold text-center">Gender</th>
                     <th class="fw-bold text-center">Contact No.</th>
                     <th class="fw-bold text-center">Username</th>

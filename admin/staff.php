@@ -198,10 +198,10 @@ require_once'../db.php';
                    
                     
                        <div class="card shadow mb-3 p-1">
-                       <div class="card-header" style="background-color: #007bff;">
+                       <div class="card-header" style="background-color: #343a40;">
     <h6 class="m-0 fw-bold" style="color: #fff;">
-        <strong style="font-size: 30px;">Staff</strong>
-        <a class="btn" href="add_staff.php" style="background-color: #0056b3; color: #fff;">
+        <strong style="font-size: 30px; color: #ffc107;">Staff</strong>
+        <a class="btn" href="add_staff.php" style="background-color: #28a745; color: #fff;">
             <i class="fas fa-plus fs-7" style="color: #fff;"></i>
             <strong class="fs-7"> Add Staff</strong>
         </a>

@@ -283,6 +283,9 @@ require_once '../db.php';
                                     <div class="col-auto">
                                         <i class="fas fa-user card-icon"></i>
                                     </div>
+                                </div>
+                            </div>
+                      
 
                     <!-- Total Employees Card -->
                     <div class="col-sm-3">

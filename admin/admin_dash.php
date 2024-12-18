@@ -133,7 +133,7 @@ require_once '../db.php';
     ?>
     <div class="main-container-fluid d-flex">
         <!-- Sidebar -->
-        <div class="sidebar" id="side_nav" style="background-color: #474E93;"> <!-- Set the sidebar background color -->
+        <div class="sidebar" id="side_nav" style="background-color: #A19AD3;"> 
     <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
         <h1 class="fs-5">
             <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 

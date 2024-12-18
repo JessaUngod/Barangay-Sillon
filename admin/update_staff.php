@@ -220,92 +220,89 @@ require_once '../db.php';
                                     }
                                     ?>
                                   <form method="post" enctype="multipart/form-data">
-    <div class="container-fluid d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f7f7f7;">
-        <div class="row justify-content-center w-100">
-            <div class="col-lg-8 col-md-10 col-sm-12 p-4 bg-white rounded shadow-lg">
-                <!-- Form Title -->
-                <h3 class="text-center mb-4 text-primary">Update Your Profile</h3>
-                
-                <!-- Hidden ID -->
-                <input type="hidden" name="idstaff" value="<?php echo $rower['id']; ?>">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f2f2f2;">
+        <div class="col-md-8 col-lg-6 col-xl-5 p-4 bg-white rounded shadow-sm">
+            <h3 class="text-center mb-4 text-primary">Update Your Profile</h3>
 
-                <div class="row">
-                    <!-- First Name -->
-                    <div class="col-md-6 mb-3">
-                        <label for="first" class="form-label">First Name</label>
-                        <input class="form-control" type="text" name="first" id="first" placeholder="Enter First Name" value="<?php echo $rower['fname']; ?>" required>
-                    </div>
+            <!-- Hidden ID -->
+            <input type="hidden" name="idstaff" value="<?php echo $rower['id']; ?>">
 
-                    <!-- Last Name -->
-                    <div class="col-md-6 mb-3">
-                        <label for="last" class="form-label">Last Name</label>
-                        <input class="form-control" type="text" name="last" id="last" placeholder="Enter Last Name" value="<?php echo $rower['lname']; ?>" required>
-                    </div>
+            <div class="row">
+                <!-- First Name -->
+                <div class="col-md-6 mb-3">
+                    <label for="first" class="form-label">First Name</label>
+                    <input class="form-control" type="text" name="first" id="first" placeholder="Enter First Name" value="<?php echo $rower['fname']; ?>" required>
+                </div>
 
-                    <!-- Middle Name -->
-                    <div class="col-md-4 mb-3">
-                        <label for="mid" class="form-label">Middle Name</label>
-                        <input class="form-control" type="text" name="mid" id="mid" placeholder="Enter Middle Name" value="<?php echo $rower['mname']; ?>" required>
-                    </div>
+                <!-- Last Name -->
+                <div class="col-md-6 mb-3">
+                    <label for="last" class="form-label">Last Name</label>
+                    <input class="form-control" type="text" name="last" id="last" placeholder="Enter Last Name" value="<?php echo $rower['lname']; ?>" required>
+                </div>
 
-                    <!-- Birthdate -->
-                    <div class="col-md-4 mb-3">
-                        <label for="dob" class="form-label">Birthdate</label>
-                        <input onclick="FindAge()" onmousemove="FindAge()" class="form-control" type="date" name="dob" id="dob" value="<?php echo $rower['dob']; ?>" required>
-                    </div>
+                <!-- Middle Name -->
+                <div class="col-md-6 mb-3">
+                    <label for="mid" class="form-label">Middle Name</label>
+                    <input class="form-control" type="text" name="mid" id="mid" placeholder="Enter Middle Name" value="<?php echo $rower['mname']; ?>" required>
+                </div>
 
-                    <!-- Age -->
-                    <div class="col-md-4 mb-3">
-                        <label for="age" class="form-label">Age</label>
-                        <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" value="<?php echo $rower['age']; ?>" readonly required>
-                    </div>
+                <!-- Birthdate -->
+                <div class="col-md-6 mb-3">
+                    <label for="dob" class="form-label">Birthdate</label>
+                    <input onclick="FindAge()" onmousemove="FindAge()" class="form-control" type="date" name="dob" id="dob" value="<?php echo $rower['dob']; ?>" required>
+                </div>
 
-                    <!-- Gender -->
-                    <div class="col-md-6 mb-3">
-                        <label for="gender" class="form-label">Gender</label>
-                        <select class="form-control" name="gender" id="gender" required>
-                            <option><?php echo $rower['gender']; ?></option>
-                            <option>Male</option>
-                            <option>Female</option>
-                        </select>
-                    </div>
+                <!-- Age -->
+                <div class="col-md-6 mb-3">
+                    <label for="age" class="form-label">Age</label>
+                    <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" value="<?php echo $rower['age']; ?>" readonly required>
+                </div>
 
-                    <!-- Contact Number -->
-                    <div class="col-md-6 mb-3">
-                        <label for="cnum" class="form-label">Contact No.</label>
-                        <input class="form-control" type="text" name="cnum" id="cnum" placeholder="Enter Contact No." value="<?php echo $rower['c_number']; ?>" maxlength="11" required>
-                    </div>
+                <!-- Gender -->
+                <div class="col-md-6 mb-3">
+                    <label for="gender" class="form-label">Gender</label>
+                    <select class="form-control" name="gender" id="gender" required>
+                        <option><?php echo $rower['gender']; ?></option>
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
 
-                    <!-- Username -->
-                    <div class="col-md-6 mb-3">
-                        <label for="mail" class="form-label">Username</label>
-                        <input class="form-control" type="text" name="mail" id="mail" placeholder="Enter Username" value="<?php echo $rower['uname']; ?>" required>
-                    </div>
+                <!-- Contact Number -->
+                <div class="col-md-6 mb-3">
+                    <label for="cnum" class="form-label">Contact No.</label>
+                    <input class="form-control" type="text" name="cnum" id="cnum" placeholder="Enter Contact No." value="<?php echo $rower['c_number']; ?>" maxlength="11" required>
+                </div>
 
-                    <!-- Password -->
-                    <div class="col-md-6 mb-3 position-relative">
-                        <label for="pass" class="form-label">Password</label>
-                        <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" value="<?php echo $rower['pass']; ?>" required>
-                        <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('pass', 'iconic')" id="iconic"></i>
-                    </div>
+                <!-- Username -->
+                <div class="col-md-6 mb-3">
+                    <label for="mail" class="form-label">Username</label>
+                    <input class="form-control" type="text" name="mail" id="mail" placeholder="Enter Username" value="<?php echo $rower['uname']; ?>" required>
+                </div>
 
-                    <!-- Re-Password -->
-                    <div class="col-md-6 mb-3 position-relative">
-                        <label for="cpass" class="form-label">Re-Password</label>
-                        <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" value="<?php echo $rower['pass']; ?>" required>
-                        <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('cpass', 'icon')" id="icon"></i>
-                    </div>
+                <!-- Password -->
+                <div class="col-md-6 mb-3 position-relative">
+                    <label for="pass" class="form-label">Password</label>
+                    <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" value="<?php echo $rower['pass']; ?>" required>
+                    <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('pass', 'iconic')" id="iconic"></i>
+                </div>
 
-                    <!-- Profile Image -->
-                    <div class="col-md-12 mb-3 text-center">
-                        <label for="profile" class="form-label">Profile Image</label>
-                        <input class="form-control" type="file" name="profile" id="profile" accept="image/*">
-                    </div>
+                <!-- Re-Password -->
+                <div class="col-md-6 mb-3 position-relative">
+                    <label for="cpass" class="form-label">Re-Password</label>
+                    <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" value="<?php echo $rower['pass']; ?>" required>
+                    <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('cpass', 'icon')" id="icon"></i>
+                </div>
 
-                    <!-- Submit Button -->
-                    <div class="col-md-12 mb-3 text-center">
-                        <button class="btn btn-success w-100" type="submit" name="update">Update Profile</button>
-                    </div>
+                <!-- Profile Image -->
+                <div class="col-md-12 mb-3 text-center">
+                    <label for="profile" class="form-label">Profile Image</label>
+                    <input class="form-control" type="file" name="profile" id="profile" accept="image/*">
+                </div>
+
+                <!-- Submit Button -->
+                <div class="col-md-12 mb-3 text-center">
+                    <button class="btn btn-primary w-100" type="submit" name="update">Update Profile</button>
                 </div>
             </div>
         </div>
@@ -352,64 +349,50 @@ require_once '../db.php';
 
     <!-- Styles -->
     <style>
-        /* Basic styling for the form labels and inputs */
         .form-label {
-            font-weight: bold;
-            font-size: 16px;
+            font-weight: 500;
+            font-size: 14px;
         }
 
         .form-control {
-            font-size: 15px;
-            border-radius: 8px;
-            padding: 12px;
-            transition: all 0.3s ease;
+            font-size: 14px;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: none;
         }
 
-        /* Focus on form controls */
         .form-control:focus {
-            border-color: #28a745;
-            box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
 
-        /* Button Styles */
-        .btn-success {
-            background-color: #28a745;
+        .btn-primary {
+            background-color: #007bff;
             color: white;
             font-size: 16px;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 10px;
+            border-radius: 4px;
             transition: all 0.3s ease;
         }
 
-        .btn-success:hover {
-            background-color: #218838;
+        .btn-primary:hover {
+            background-color: #0056b3;
         }
 
-        /* Profile Image input styling */
-        input[type="file"] {
-            font-size: 15px;
-            border-radius: 8px;
-        }
-
-        /* Password Icons */
         .fa-eye-slash, .fa-eye {
             cursor: pointer;
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .form-control {
-                font-size: 14px;
-            }
+        .position-relative {
+            position: relative;
+        }
 
-            .col-md-6, .col-md-4, .col-md-12 {
-                margin-bottom: 15px;
-            }
+        .col-md-6, .col-md-12 {
+            margin-bottom: 15px;
+        }
 
-            .btn-success {
-                font-size: 15px;
-                padding: 10px;
-            }
+        .text-center {
+            text-align: center;
         }
     </style>
 </form>

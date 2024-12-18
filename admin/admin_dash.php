@@ -594,6 +594,18 @@ require_once '../db.php';
 
         </div>
     </div>
+    <script>
+    // Get the elements
+    const toggleBtn = document.getElementById('toggleSidebarBtn');
+    const sidebar = document.getElementById('side_nav');
+
+    // Add a click event listener to the toggle button
+    toggleBtn.addEventListener('click', () => {
+        // Toggle the "open" class to show or hide the sidebar
+        sidebar.classList.toggle('open');
+    });
+</script>
+
     <!-- Add your scripts here -->
 </body>
 </html>

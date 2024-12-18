@@ -201,11 +201,13 @@ require_once'../db.php';
                         <div class="card-header">
                             <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="background: linear-gradient(to right, #6a11cb, #2575fc);"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
                         </div>
+       
                         <div class="card-body">
-    <div class="table-responsive">
-        <table class="table" id="myTable" width="100%" cellspacing="0" style="border: none;">
-            <thead style="background: linear-gradient(to right, #007bff, #0056b3);">
-                <tr>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
+                                    <thead style="font-size: 1em; color: #fff;">
+
+                                         <tr>
                     <th>First Name</th>
                     <th>Middle Name</th>
                     <th>Last Name</th>

@@ -158,7 +158,7 @@ require_once'../db.php';
             <thead style="font-size: 1.1em; color: #fff; background-color: #8e44ad;">
                 <tr>
                     <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
-                    <th class="fw-bold text-center">Middle Name</th>
+                    <th>Middle Name</th>
                     <th class="fw-bold text-center">Last Name</th>
                     <th class="fw-bold text-center">Age</th>
                     <th class="fw-bold text-center">Gender</th>

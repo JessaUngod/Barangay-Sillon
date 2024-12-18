@@ -121,6 +121,48 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
+    /* Sidebar styling */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;  /* Initially hide the sidebar off-screen */
+    width: 250px;
+    height: 100%;
+    background-color: #240750;
+    transition: all 0.3s ease;  /* Smooth transition */
+    z-index: 1000;
+}
+
+/* Style for the sidebar when it is open */
+.sidebar.open {
+    left: 0;  /* Move the sidebar into view */
+}
+
+/* Button for the toggle (hamburger) */
+#toggleSidebarBtn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Styling for the links inside the sidebar */
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #442579;
+}
+
+/* For small screen (mobile) */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 80%;  /* Make the sidebar take up more space on mobile */
+    }
+}
+
     
     
 }

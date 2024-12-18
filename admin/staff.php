@@ -20,6 +20,9 @@ require_once'../db.php';
      <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
      <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
      <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
       <?php 
@@ -221,45 +224,45 @@ require_once'../db.php';
                             <style>
     
     #myTable {
-        font-size: 1rem;
-        border-collapse: collapse; 
-    }
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif; /* Apply Nunito font */
+    border-collapse: collapse;
+}
 
+#myTable th, #myTable td {
+    padding: 12px;
+    text-align: center;
+}
+
+#myTable th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#myTable tbody tr:hover {
+    background-color: rgb(247, 247, 247);
+    cursor: pointer;
+}
+
+#myTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#myTable tbody tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    #myTable {
+        font-size: 0.9rem;
+    }
     #myTable th, #myTable td {
-        padding: 12px;
-        text-align: center; 
+        padding: 8px;
     }
+}
 
-    #myTable th {
-        font-weight: bold;
-        text-transform: uppercase;
-    }
-
-    
-    #myTable tbody tr:hover {
-        background-color:rgb(247, 247, 247);
-        cursor: pointer;
-    }
-
-    
-    #myTable tbody tr:nth-child(even) {
-        background-color: #f9f9f9; 
-    }
-
-    #myTable tbody tr:nth-child(odd) {
-        background-color: #ffffff; 
-    }
-
-   
-    @media (max-width: 768px) {
-        #myTable {
-            font-size: 0.9rem; 
-        }
-        #myTable th, #myTable td {
-            padding: 8px; 
-        }
-    }
 </style>
+
                                    
                                 
                                     <tbody style="color: #000;">

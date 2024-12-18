@@ -237,7 +237,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-user card-icon bg-light"></i>
+                                        <i class="fas fa-user card-icon"></i>
                                     </div>
                                 </div>
                             </div>

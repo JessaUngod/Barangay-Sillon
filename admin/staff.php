@@ -302,7 +302,7 @@ require_once'../db.php';
     }
 
     .table th {
-        background-color: #8e44ad;
+        background-color: #fff;
         color: white;
     }
 

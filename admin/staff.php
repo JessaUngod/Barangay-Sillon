@@ -218,6 +218,23 @@ require_once'../db.php';
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            <style>
+    /* Styling for the 'Latest' font */
+    .latest-font {
+        font-family: 'Poppins', sans-serif; /* Stylish font */
+        font-weight: 700; /* Bold */
+        font-size: 1.1em; /* Slightly bigger size */
+        letter-spacing: 0.5px; /* Adds space between letters */
+        text-transform: uppercase; /* Uppercase for emphasis */
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    }
+
+    /* Optional: Hover effect for the 'Latest' font */
+    .latest-font:hover {
+        color: #ffd700; /* Change text color on hover */
+        cursor: pointer; /* Change cursor to pointer */
+    }
+</style>
                         
                                    
                                 

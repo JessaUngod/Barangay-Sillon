@@ -187,11 +187,14 @@ require_once '../db.php';
         <!-- Content -->
         <div class="content">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                <div class="container-fluid">
-                    <div class="d-flex justify-content-between d-md-none d-block">
-                        <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
-                        <strong style="font-size:22px;">Admin</strong>
+            <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow"> <!-- Changed bg-white to bg-dark -->
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between d-md-none d-block">
+            <button class="btn px-1 py-0 open-btn me-2" style="background-color: #007bff;"> <!-- Changed background-color to blue -->
+                <i class="fas fa-bars" style="width: 30px; color: #fff;"></i> <!-- Icon color remains white -->
+            </button>
+            <strong style="font-size: 22px; color: #fff;">Admin</strong> <!-- Text color changed to white -->
+
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

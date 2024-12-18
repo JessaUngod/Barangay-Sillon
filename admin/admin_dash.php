@@ -18,8 +18,7 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 </head>
 <style>
- /* General Card Styles */
-.card {
+    .card {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
@@ -121,29 +120,10 @@ require_once '../db.php';
 @media (max-width: 768px) {
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
-        margin-bottom: 20px;
     }
-
-    /* Adjusting the card body padding for smaller screens */
-    .card-body {
-        padding: 15px;
-    }
-
-    /* Making the text inside the card smaller for better readability */
-    .card-title {
-        font-size: 1.2em;
-    }
-
-    .fw-bold {
-        font-size: 1em;
-    }
-
-    /* Adjusting the icon size for smaller screens */
-    .card-icon {
-        font-size: 2.5em;
-    }
+    
+    
 }
-
 </style>
 <body>
     <?php 
@@ -257,117 +237,119 @@ require_once '../db.php';
                 
                 <!-- Dashboard Stats Cards -->
                 <div class="row">
-                    <!-- Admin Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-primary">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `admin`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        $currLoc = mysqli_fetch_assoc($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Admin Card -->
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body bg-primary">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
+                        <?php
+                        $sql22 = "SELECT * FROM `admin`";
+                        $oks22 = mysqli_query($con, $sql22);
+                        $res22 = mysqli_num_rows($oks22);
+                        ?>
+                        <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user card-icon bg-primary"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- Staff Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                    <a href="employee.php" style="text-decoration: none;">
-                        <div class="card">
-                            <div class="card-body bg-warning">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Staff</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `staff`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Staff Card -->
+    <div class="col-xl-2 col-md-6 mb-4">
+        <a href="employee.php" style="text-decoration: none;">
+            <div class="card">
+                <div class="card-body bg-warning">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="fw-bold mb-1" style="font-size: 0.9em;">Staff</div>
+                            <?php
+                            $sql22 = "SELECT * FROM `staff`";
+                            $oks22 = mysqli_query($con, $sql22);
+                            $res22 = mysqli_num_rows($oks22);
+                            ?>
+                            <div class="h5 mb-0 fs-5"><strong><?php echo $res22; ?></strong></div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-user card-icon bg-warning"></i>
                         </div>
                     </div>
+                </div>
+            </div>
+        </a>
+    </div>
 
-                    <!-- Total Employees Card -->
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-success">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Employee</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `employee_info`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Total Employees Card -->
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <div class="card-body bg-success">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Employee</div>
+                        <?php
+                        $sql22 = "SELECT * FROM `employee_info`";
+                        $oks22 = mysqli_query($con, $sql22);
+                        $res22 = mysqli_num_rows($oks22);
+                        ?>
+                        <div class="h5 mb-0"><strong><?php echo $res22; ?></strong></div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users card-icon bg-success"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- Time In Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-danger">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Time In</div>
-                                        <?php
-                                        date_default_timezone_set("Asia/manila");
-                                        $datein = date('y-m-d');
-                                        $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res226 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clock card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Time In Card -->
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body bg-danger">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Time In</div>
+                        <?php
+                        date_default_timezone_set("Asia/manila");
+                        $datein = date('y-m-d');
+                        $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
+                        $oks22 = mysqli_query($con, $sql22);
+                        $res226 = mysqli_num_rows($oks22);
+                        ?>
+                        <div class="h5 mb-0 fs-5"><strong><?php echo $res226; ?></strong></div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clock card-icon bg-danger"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                    <!-- Total Absent Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-info">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Absent</div>
-                                        <?php 
-                                        $total = $res22 - $res226;
-                                        ?>
-                                        <div class="h5 mb-0"> <strong><?php echo $total; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Total Absent Card -->
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card">
+            <div class="card-body bg-info">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Absent</div>
+                        <?php 
+                        $total = $res22 - $res226;
+                        ?>
+                        <div class="h5 mb-0"><strong><?php echo $total; ?></strong></div>
                     </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users card-icon bg-info"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
  <!-- Chart Container (Below the cards) -->
 <div class="row">
     <div class="col-md-12 mb-4">

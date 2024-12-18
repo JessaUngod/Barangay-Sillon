@@ -279,9 +279,10 @@ require_once '../db.php';
 
             <!-- Password -->
             <div class="col-md-6 col-12 position-relative">
-    <label>Password</label>
-    <input class="form-control mb-1" type="password" id="pass" name="pass" placeholder="Enter Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
-    
+                <label>Password</label>
+                <input class="form-control mb-1" type="password" id="pass" name="pass" placeholder="Enter Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
+            </div>
+
             <!-- Re-Password -->
             <div class="col-md-6 col-12 position-relative">
                 <label>Re-Password</label>

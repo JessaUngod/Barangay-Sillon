@@ -204,21 +204,21 @@ require_once'../db.php';
        
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
+                                <table  id="myTable" width="100%" cellspacing="0">
                                     <thead style="font-size: 1em; color: #fff;">
 
                                          <tr>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Contact No.</th>
-                    <th>Username</th>
-                    <th>Profile Picture</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+                                    <th>First Name</th>
+                                    <th>Middle Name</th>
+                                    <th>Last Name</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Contact No.</th>
+                                    <th>Username</th>
+                                    <th>Profile Picture</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
                                    
                                 
                                     <tbody style="color: #000;">

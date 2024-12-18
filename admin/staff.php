@@ -151,6 +151,7 @@ require_once'../db.php';
                         <div class="card-header">
                             <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
                         </div>
+                        </div>
                         <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
     <div class="table-responsive">
         <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
@@ -273,7 +274,7 @@ require_once'../db.php';
     }
 
     .table-hover tbody tr:hover {
-        background-color: #f1f1f1;
+        background-color:  #8e44ad;
     }
 
     .btn-sm {

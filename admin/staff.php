@@ -20,7 +20,7 @@ require_once'../db.php';
      <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
      <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
      <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://use.typekit.net/xxxxxxx.css">
 
 
 </head>
@@ -224,8 +224,8 @@ require_once'../db.php';
                             <style>
     
     #myTable {
+    font-family: 'Avenir Next', sans-serif;
     font-size: 1rem;
-    font-family: 'Nunito', sans-serif; /* Apply Nunito font */
     border-collapse: collapse;
 }
 

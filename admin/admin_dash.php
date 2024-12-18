@@ -18,11 +18,12 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 </head>
 <style>
-    .card {
+ .card {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 15px; /* Add some spacing between cards */
 }
 
 .card:hover {
@@ -97,17 +98,19 @@ require_once '../db.php';
     margin-top: 25px;
 }
 
-/* Responsive adjustments */
+/* Responsive adjustments for grid layout */
 .col-xl-2, .col-md-3 {
     padding: 10px;
 }
 
+/* Large screens */
 @media (max-width: 1200px) {
     .col-xl-2 {
         width: 25%;
     }
 }
 
+/* Medium screens */
 @media (max-width: 992px) {
     .col-xl-2 {
         width: 33.33%;
@@ -117,13 +120,28 @@ require_once '../db.php';
     }
 }
 
+/* Small screens */
 @media (max-width: 768px) {
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
-    
-    
 }
+
+/* Extra Small Screens - For mobile view */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    .card-title {
+        font-size: 1.2em; /* Reduce title size on small screens */
+    }
+
+    .card-icon {
+        font-size: 2.5em; /* Smaller icon size on small screens */
+    }
+}
+
 </style>
 <body>
     <?php 

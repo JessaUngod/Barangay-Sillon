@@ -151,23 +151,23 @@ require_once'../db.php';
                         <div class="card-header">
                             <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
                         </div>
-                                        <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
-                            <thead style="font-size: 1.1em; color: #fff; background-color: #8e44ad;">
-                                <tr>
-                                    <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
-                                    <th class="fw-bold text-center">Middle Name</th>
-                                    <th class="fw-bold text-center">Last Name</th>
-                                    <th class="fw-bold text-center">Age</th>
-                                    <th class="fw-bold text-center">Gender</th>
-                                    <th class="fw-bold text-center">Contact No.</th>
-                                    <th class="fw-bold text-center">Username</th>
-                                    <th class="fw-bold text-center">Profile Picture</th>
-                                    <th class="fw-bold text-center" style="border-radius: 0 8px 0 0;">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody style="color: #555;">
+                        <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
+            <thead style="font-size: 1.1em; color: #fff; background-color: #8e44ad;">
+                <tr>
+                    <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
+                    <th class="fw-bold text-center">Middle Name</th>
+                    <th class="fw-bold text-center">Last Name</th>
+                    <th class="fw-bold text-center">Age</th>
+                    <th class="fw-bold text-center">Gender</th>
+                    <th class="fw-bold text-center">Contact No.</th>
+                    <th class="fw-bold text-center">Username</th>
+                    <th class="fw-bold text-center">Profile Picture</th>
+                    <th class="fw-bold text-center" style="border-radius: 0 8px 0 0;">Action</th>
+                </tr>
+            </thead>
+            <tbody style="color: #555;">
                                              <?php 
                                         $qry = "SELECT * FROM staff";
                                         $qry_run = mysqli_query($con, $qry);
@@ -256,45 +256,28 @@ require_once'../db.php';
     });
 </script>
 <style>
-    .table th, .table td {
+       .table th, .table td {
         vertical-align: middle;
-        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
-    /* Table header style */
     .table th {
         text-align: center;
         font-weight: bold;
         background-color: #8e44ad;
-        padding: 12px 15px;
     }
 
-    /* Table data cells */
     .table td {
         text-align: center;
         font-size: 0.95em;
         color: #333;
-        padding: 12px 15px;
-        background-color: #fff;
     }
 
-    /* Hover effect for individual cells */
-    .table td:hover {
-        background-color: #f1c40f;  /* Light yellow on hover */
-        color: #fff;  /* White text for better contrast */
-        cursor: pointer;  /* Show a pointer cursor to indicate interactivity */
-    }
-
-    /* Hover effect for table rows (optional, if needed) */
     .table-hover tbody tr:hover {
-        background-color: #f1f1f1;  /* Soft grey for row hover */
-        transform: scale(1.02);  /* Slightly enlarge on hover */
+        background-color: #f1f1f1;
     }
 
-    /* Hover effect on action buttons */
     .btn-sm {
         font-size: 0.85rem;
-        transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
     .btn-warning {
@@ -307,41 +290,27 @@ require_once'../db.php';
         border-color: #c0392b;
     }
 
-    /* Change background color and shadow on hover */
-    .btn-warning:hover {
-        background-color: #f1c40f;
-        transform: translateY(-2px);  /* Lift the button up */
-    }
-
-    .btn-danger:hover {
-        background-color: #c0392b;
-        transform: translateY(-2px);  /* Lift the button up */
-    }
-
-    /* Cursor pointer for buttons */
     .btn {
         border-radius: 5px;
         padding: 5px 10px;
         cursor: pointer;
     }
 
-    /* Smooth transition for hover effect on table */
     .table th, .table td {
         border: 1px solid #ddd;
     }
 
-    /* Hover effect for the entire table row */
-    .table tr:hover {
-        background-color: #f8f9fa;  /* Slight light grey for row hover */
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Drop shadow effect */
+    .table th {
+        background-color: #8e44ad;
+        color: white;
     }
 
-    /* Profile picture styles */
-    .table img {
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        object-fit: cover;
+    .table td {
+        color: #333;
+    }
+
+    .card-body {
+        padding: 15px;
     }
 </style>
 </body>

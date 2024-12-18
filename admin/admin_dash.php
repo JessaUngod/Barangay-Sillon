@@ -325,7 +325,7 @@ require_once '../db.php';
     // Prepare the chart data and options
     var options = {
         series: [{
-            name: 'admin',
+            name: 'Employees',
             data: [
                 <?php echo $res22; ?>, // Admin count
                 <?php echo $res22; ?>, // Staff count

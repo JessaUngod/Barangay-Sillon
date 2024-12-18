@@ -122,6 +122,74 @@ require_once '../db.php';
                 width: 100%;
             }
         }
+
+        /* Sidebar Styles */
+        .sidebar {
+            background-color: #2c3e50;
+            color: white;
+            height: 100vh;
+            width: 250px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 40px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .sidebar h1 {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar-link {
+            color: #ecf0f1;
+            font-size: 16px;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, padding-left 0.3s ease-in-out;
+        }
+
+        .sidebar-link:hover {
+            background-color: #34495e;
+            padding-left: 20px;
+        }
+
+        .sidebar .active a {
+            background-color: #3498db; /* Active link color */
+            color: white;
+            padding-left: 20px;
+        }
+
+        .sidebar .sidebar-link i {
+            margin-right: 10px;
+        }
+
+        .sidebar hr {
+            border-color: #7f8c8d;
+        }
+
+        /* Responsive Sidebar Toggle */
+        .close-btn {
+            border: none;
+            background-color: transparent;
+            font-size: 20px;
+        }
+
+        /* Toggle Sidebar for Mobile */
+        .sidebar.active {
+            transform: translateX(-250px);
+        }
     </style>
 </head>
 <body>
@@ -132,125 +200,55 @@ require_once '../db.php';
     ?>
     <div class="main-container-fluid d-flex">
         <!-- Sidebar -->
-        <div class="sidebar" id="side_nav" style="background-color: #2c3e50; color: #fff; height: 100vh; width: 250px; position: fixed; transition: all 0.3s ease-in-out;">
-    <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
-        <h1 class="fs-5">
-            <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
-            <strong style="color: #fff;">Barangay Sillon</strong>
-        </h1>
-        <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white">
-            <i class="fas fa-bars"></i>
-        </button>
-    </div>
-    <ul class="list-unstyled px-3">
-        <li class="active">
-            <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-home"></i> Dashboard
-            </a>
-        </li>
-        <li>
-            <a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-users"></i> Employees
-            </a>
-        </li>
-        <li>
-            <a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-pencil"></i> Payroll
-            </a>
-        </li>
-        <li>
-            <a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-book-open"></i> Reports
-            </a>
-        </li>
-        <li>
-            <a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-bar-chart"></i> Positions
-            </a>
-        </li>
-        <li>
-            <a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-user"></i> Accounts
-            </a>
-        </li>
-        <li>
-            <a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
-                <i class="fas fa-clock"></i> Login / Logout
-            </a>
-        </li>
-    </ul>
-    <hr class="h-color mx-2" style="border-color: #7f8c8d;">
-</div>
-
-<style>
-    /* Sidebar Styling */
-    .sidebar {
-        background-color: #2c3e50; /* Dark background color */
-        color: white;
-        height: 100vh;
-        width: 250px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        padding-top: 40px;
-        transition: all 0.3s ease-in-out;
-    }
-
-    .header-box {
-        margin-bottom: 20px;
-    }
-
-    .sidebar h1 {
-        font-size: 18px;
-        font-weight: bold;
-        color: #fff;
-    }
-
-    .sidebar ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .sidebar ul li {
-        margin: 10px 0;
-    }
-
-    .sidebar-link {
-        color: #ecf0f1;
-        font-size: 16px;
-        display: block;
-        padding: 10px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease-in-out, padding-left 0.3s ease-in-out;
-    }
-
-    .sidebar-link:hover {
-        background-color: #34495e;
-        padding-left: 20px;
-    }
-
-    .sidebar .active a {
-        background-color: #3498db; /* Active link color */
-        color: white;
-        padding-left: 20px;
-    }
-
-    .sidebar .sidebar-link i {
-        margin-right: 10px;
-    }
-
-    .sidebar hr {
-        border-color: #7f8c8d;
-    }
-
-    /* Responsive sidebar toggle */
-    .close-btn {
-        border: none;
-        background-color: transparent;
-        font-size: 20px;
-    }
-</style>
-
+        <div class="sidebar" id="side_nav">
+            <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
+                <h1 class="fs-5">
+                    <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
+                    <strong style="color: #fff;">Barangay Sillon</strong>
+                </h1>
+                <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white" id="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <ul class="list-unstyled px-3">
+                <li class="active">
+                    <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/employee.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-users"></i> Employees
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/employee_payroll.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-pencil"></i> Payroll
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/payroll_rec.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-book-open"></i> Reports
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/posistion.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-bar-chart"></i> Positions
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/accounts.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-user"></i> Accounts
+                    </a>
+                </li>
+                <li>
+                    <a href="../admin/log_rec.php" class="text-decoration-none px-3 py-2 d-block sidebar-link">
+                        <i class="fas fa-clock"></i> Login / Logout
+                    </a>
+                </li>
+            </ul>
+            <hr class="h-color mx-2" style="border-color: #7f8c8d;">
+        </div>
 
         <!-- Content -->
         <div class="content">
@@ -258,7 +256,9 @@ require_once '../db.php';
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
-                        <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
+                        <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;">
+                            <i class="fas fa-bars" style="width: 30px; color: #fff;"></i>
+                        </button>
                         <strong style="font-size:22px;">Admin</strong>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -298,315 +298,15 @@ require_once '../db.php';
                 </div>
             </nav>
 
-            <div class="container-fluid">
-                <h1 class="fw-bold mb-4 text-gray-800 fs-3" style="color: #000;"><strong>Dashboard</strong></h1>
-                
-                <!-- Dashboard Stats Cards -->
-                <div class="row">
-                    <!-- Admin Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-primary">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `admin`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Staff Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-warning">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Staff</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `staff`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-user card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Total Employees Card -->
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-success">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Employee</div>
-                                        <?php
-                                        $sql22 = "SELECT * FROM `employee_info`";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res22 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Time In Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-danger">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Time In</div>
-                                        <?php
-                                        date_default_timezone_set("Asia/manila");
-                                        $datein = date('y-m-d');
-                                        $sql22 = "SELECT * FROM `attendance` WHERE time_in ='$datein'";
-                                        $oks22 = mysqli_query($con, $sql22);
-                                        $res226 = mysqli_num_rows($oks22);
-                                        ?>
-                                        <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-clock card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Total Absent Card -->
-                    <div class="col-md-3 mb-4">
-                        <div class="card">
-                            <div class="card-body bg-info">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Total Absent</div>
-                                        <?php 
-                                        $total = $res22 - $res226;
-                                        ?>
-                                        <div class="h5 mb-0"> <strong><?php echo $total; ?></strong> </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        <i class="fas fa-users card-icon"></i>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
- <!-- Chart Container (Below the cards) -->
-<div class="row">
-    <div class="col-md-12 mb-4">
-        <div class="card">
-            <div class="card-body bg-light">
-                <h5 class="card-title text-center">Employee Attendance Overview</h5>
-                <!-- ApexChart div container -->
-                <div id="attendance-chart"></div>
-            </div>
+            <!-- Content goes here -->
         </div>
     </div>
-</div>
 
-<script>
-    // Prepare the chart data and options
-    var options = {
-        series: [{
-            name: 'Employees',
-            data: [
-                <?php echo $res22; ?>, // Admin count
-                <?php echo $res22; ?>, // Staff count
-                <?php echo $res22; ?>, // Total Employee count
-                <?php echo $res226; ?>, // Time In count
-                <?php echo $total; ?>  // Total Absent count// Example for each day of the week
-            ]
-        }, {
-            name: 'Absent',
-            data: [
-               <?php echo $res22; ?>, // Admin count
-                <?php echo $res22; ?>, // Staff count
-                <?php echo $res22; ?>, // Total Employee count
-                <?php echo $res226; ?>, // Time In count
-                <?php echo $total; ?>  // Total Absent count
-            ]
-        }],
-        chart: {
-            height: 350,
-            type: 'line',
-        },
-        xaxis: {
-            categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-        },
-        title: {
-            text: 'Employee Attendance by Day',
-            align: 'center',
-            style: {
-                fontSize: '18px',
-                fontWeight: 'bold',
-                color: '#333'
-            }
-        },
-        stroke: {
-            width: 2,
-        },
-        markers: {
-            size: 6,
-            colors: ["#ffffff"],
-            strokeColor: "#ff4560",
-            strokeWidth: 3
-        },
-        colors: ["#00E396", "#FF4560"], // Colors for the two series
-        grid: {
-            borderColor: '#f1f1f1',
-        }
-    };
-
-    var chart = new ApexCharts(document.querySelector("#attendance-chart"), options);
-    chart.render();
-</script>
-                </div>
-            </div>
-             <div class="modal fade " id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel"><strong>Logout</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                  </button>
-                </div>
-                <div class="modal-body text-center"><strong>Are you sure you want to Logout ?</strong></div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal" style="color: #000;">Cancel</button>
-                    <a class="btn " style="color: #000; background: skyblue;" href="logout.php" name="logout">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Scripts for Sidebar Toggle -->
     <script>
-        if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-            document.getElementById('status').textContent = `Latitude: ${position.coords.latitude} Longitude: ${position.coords.longitude}`;
-            document.getElementById('latitude').value = position.coords.latitude;
-            document.getElementById('longitude').value = position.coords.longitude;
-        }, function() {
-            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
+        document.getElementById("sidebar-toggle").addEventListener("click", function() {
+            document.getElementById("side_nav").classList.toggle("active");
         });
-        } else {
-            document.getElementById('status').textContent = 'Geolocation is not supported by this browser.';
-        }
     </script>
-    <div class="modal fade " id="setModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h5 class="modal-title" id="ModalLabel"><strong>Set Location</strong></h5>
-                  <button class="close btn-close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true"></span>
-                  </button>
-                </div>
-                <form action="admin_dash.php" method="POST">
-                <div class="modal-body text-center">
-                    <?php
-                    $lon;
-                    $lan;
-                    list($lon, $lan) = explode(',', $currLoc["location"]);
-                    ?>
-                    <strong>
-                        <label>Default location</label>
-                    </strong>
-                    <p><?php echo "Latitude: ".$lon." Longitude: ".$lan ; ?></p>
-                    <strong>
-                        <label>Current location</label>
-                    </strong>
-                    <p id="status">na</p></div>
-                <div class="modal-footer">
-                    <input type="text" name="latitude" id="latitude"  hidden>
-                    <input type="text" name="longitude" id="longitude"  hidden>
-                     <input class="btn btn-information" type="submit"  value="Update Default Location To Current Location">
-                </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $latitude = $_POST['latitude'];
-        $longitude = $_POST['longitude'];
-        $location = $latitude.",".$longitude;
-        $update = $con->prepare("UPDATE `admin` SET `location` = ? WHERE `admin`.`id` = 1;");
-        $update->bind_param("s", $location);
-        if ($update->execute()) { 
-            echo "<script>alert('Location updated successfully.')</script>"; 
-        } 
-        else { 
-            echo "<script>alert('Error updating location: " . $update->error."')</script>";
-        }
-    }
-    ?>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="../assets/js/bootstrap.bundle.js"></script>
-    <script src="../assets/js/mdb.js"></script>
-    <script src="../vendor/datatables/dataTable.js"></script>
- <script>
-    let table = new DataTable('#myTable', {
-});
-
-    $(".sidebar ul li").on('click' , function(){
-        $(".sidebar ul li.active").removeClass('active');
-        $(this).addClass('active');
-    });
-    $('.open-btn').on('click' , function(){
-        $('.sidebar').addClass('active');
-    });
-    $('.close-btn').on('click' , function(){
-        $('.sidebar').removeClass('active');
-    });
-
-   </script> 
-   <script>
-    $('.open-btn').on('click', function()  {
-        $('#side_nav').addClass('active');
-        $('.content').addClass('shift');
-    });
-
-    $('.close-btn').on('click', function()  {
-        $('#side_nav').removeClass('active');
-        $('.content').removeClass('shift');
-
-    });
-
-
-   </script>
-
-
-</body>
-</html>
-
-        </div>
-    </div>
-    <!-- Add your scripts here -->
 </body>
 </html>

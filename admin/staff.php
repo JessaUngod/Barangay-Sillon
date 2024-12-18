@@ -161,11 +161,11 @@ require_once'../db.php';
                     <th>Middle Name</th>
                     <th>Last Name</th>
                     <th>Age</th>
-                    <th class="fw-bold text-center">Gender</th>
-                    <th class="fw-bold text-center">Contact No.</th>
-                    <th class="fw-bold text-center">Username</th>
-                    <th class="fw-bold text-center">Profile Picture</th>
-                    <th class="fw-bold text-center" style="border-radius: 0 8px 0 0;">Action</th>
+                    <th>Gender</th>
+                    <th>Contact No.</th>
+                    <th>Username</th>
+                    <th>Profile Picture</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody style="color: #555;">

@@ -88,7 +88,7 @@ require_once '../db.php';
 }
 
 /* Default for extra large screens */
-.col-xl-2 {
+.col-sm-3c {
     width: 25%;
 }
 

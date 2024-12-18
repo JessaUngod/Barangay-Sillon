@@ -121,48 +121,6 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
-    /* Sidebar styling */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: -250px;  /* Initially hide the sidebar off-screen */
-    width: 250px;
-    height: 100%;
-    background-color: #240750;
-    transition: all 0.3s ease;  /* Smooth transition */
-    z-index: 1000;
-}
-
-/* Style for the sidebar when it is open */
-.sidebar.open {
-    left: 0;  /* Move the sidebar into view */
-}
-
-/* Button for the toggle (hamburger) */
-#toggleSidebarBtn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: #fff;
-}
-
-/* Styling for the links inside the sidebar */
-.sidebar a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.sidebar a:hover {
-    background-color: #442579;
-}
-
-/* For small screen (mobile) */
-@media (max-width: 768px) {
-    .sidebar {
-        width: 80%;  /* Make the sidebar take up more space on mobile */
-    }
-}
-
     
     
 }
@@ -175,20 +133,17 @@ require_once '../db.php';
     ?>
     <div class="main-container-fluid d-flex">
         <!-- Sidebar -->
-        <div class="sidebar" id="side_nav" style="background-color: #240750;">
-    <!-- Sidebar Header with toggle button -->
+        <div class="sidebar" id="side_nav" style="background-color: #240750;"> 
     <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
         <h1 class="fs-5">
             <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
             <strong style="color: #fff;">Barangay Sillon</strong>
         </h1>
-        <!-- Toggle Button for Sidebar (Hamburger) -->
-        <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white" id="toggleSidebarBtn">
+        <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white">
             <i class="fas fa-bars"></i>
         </button>
     </div>
-    <!-- Sidebar Menu -->
-    <ul class="list-unstyled px-3" id="sidebarMenu">
+    <ul class="list-unstyled px-3">
         <li class="active">
             <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block" style="color: black;"> 
                 <i class="fas fa-home"></i> Dashboard
@@ -225,8 +180,8 @@ require_once '../db.php';
             </a>
         </li>
     </ul>
+    
 </div>
-
 
 
         <!-- Content -->
@@ -594,18 +549,6 @@ require_once '../db.php';
 
         </div>
     </div>
-    <script>
-    // Get the elements
-    const toggleBtn = document.getElementById('toggleSidebarBtn');
-    const sidebar = document.getElementById('side_nav');
-
-    // Add a click event listener to the toggle button
-    toggleBtn.addEventListener('click', () => {
-        // Toggle the "open" class to show or hide the sidebar
-        sidebar.classList.toggle('open');
-    });
-</script>
-
     <!-- Add your scripts here -->
 </body>
 </html>

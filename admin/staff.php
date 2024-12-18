@@ -306,8 +306,7 @@ require_once'../db.php';
         font-weight: bold;
         color: white;
         padding: 12px 15px;
-        background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
-        color: #fff;  /* White text for better contrast */
+        background-color:  #8e44ad;
     }
 
     .table td {

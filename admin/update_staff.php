@@ -286,7 +286,7 @@ require_once '../db.php';
             <div class="col-md-6 col-12 position-relative">
                 <label>Re-Password</label>
                 <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re-Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
-                <i class="fa fa-eye-slash position-absolute" style="top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;" onclick="togglePasswordVisibility('rpass')" id="icon-rpass"></i>
+               
             </div>
 
             <!-- Profile Image -->

@@ -267,7 +267,7 @@ require_once'../db.php';
         text-align: center;
         font-weight: bold;
         padding: 12px 15px;
-        background-color: #2C3E50; /* Dark Blue color for the header */
+        background-color: #720e9e; /* Dark Blue color for the header */
         color: #fff;  /* White text for better contrast */
     }
 
@@ -282,12 +282,12 @@ require_once'../db.php';
 
     /* Hover effect for individual cells */
     .table td:hover {
-        background-color: #f39c12;  /* Light yellow on hover */
-        color: #fff;  /* White text for better contrast */
-        cursor: pointer;  /* Show a pointer cursor to indicate interactivity */
+        background-color: #f39c12;  
+        color: #fff; 
+       
     }
 
-    /* Hover effect for table rows (optional, if needed) */
+   
     .table-hover tbody tr:hover {
         background-color: #ecf0f1;  /* Light grey for row hover */
         transform: scale(1.02);  /* Slightly enlarge on hover */

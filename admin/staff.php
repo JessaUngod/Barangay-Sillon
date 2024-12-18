@@ -198,16 +198,9 @@ require_once'../db.php';
                    
                     
                        <div class="card shadow mb-3 p-1">
-                       <div class="card-header" style="background-color: #343a40;">
-    <h6 class="m-0 fw-bold" style="color: #fff;">
-        <strong style="font-size: 30px; color: #ffc107;">Staff</strong>
-        <a class="btn" href="add_staff.php" style="background-color: #28a745; color: #fff;">
-            <i class="fas fa-plus fs-7" style="color: #fff;"></i>
-            <strong class="fs-7"> Add Staff</strong>
-        </a>
-    </h6>
-</div>
-
+                        <div class="card-header">
+                            <h6 class="m-0  fw-bold" style="background: linear-gradient(to right, #6a11cb, #2575fc);"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
+                        </div>
 
                         <div class="card-body">
                             <div class="table-responsive">

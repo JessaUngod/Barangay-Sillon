@@ -242,7 +242,7 @@ require_once '../db.php';
                             <div class="card-body bg-primary">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
+                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Adminss</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `admin`";
                                         $oks22 = mysqli_query($con, $sql22);

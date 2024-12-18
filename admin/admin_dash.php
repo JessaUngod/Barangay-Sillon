@@ -15,8 +15,7 @@ require_once '../db.php';
     <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
-   
-
+    
     <style>
         /* Enhanced Card Styles */
         .card {
@@ -238,7 +237,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-user card-icon bg-primary"></i>
+                                        <i class="fas fa-user card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -260,7 +259,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0"> <strong><?php echo $res22; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-users card-icon bg-primary"></i>
+                                        <i class="fas fa-users card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -284,7 +283,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0 fs-5"> <strong><?php echo $res226; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-clock card-icon bg-primary"></i>
+                                        <i class="fas fa-clock card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -304,7 +303,7 @@ require_once '../db.php';
                                         <div class="h5 mb-0"> <strong><?php echo $total; ?></strong> </div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fas fa-users card-icon bg-primary"></i>
+                                        <i class="fas fa-users card-icon bg-light"></i>
                                     </div>
                                 </div>
                             </div>
@@ -314,7 +313,7 @@ require_once '../db.php';
 <div class="row">
     <div class="col-md-12 mb-4">
         <div class="card">
-            <div class="card-body bg-primary">
+            <div class="card-body bg-light">
                 <h5 class="card-title text-center">Employee Attendance Overview</h5>
                 <!-- ApexChart div container -->
                 <div id="attendance-chart"></div>

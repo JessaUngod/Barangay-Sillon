@@ -154,8 +154,14 @@ require_once'../db.php';
                  <div class="row">
                        <div class="card shadow mb-3 p-1">
                         <div class="card-header">
-                            <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color:  #8e44ad;"><i class="fas fa-add fs-7" style="color: #8e44ad;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
-                        </div>
+                        <h6 class="m-0 fw-bold" style="color: #000; font-size: 30px; display: flex; align-items: center;">
+    <strong style="font-size: 30px;">Staff</strong>
+    <a href="add_staff.php" class="btn btn-primary" 
+       style="color: #fff; background-color: #8e44ad; border-radius: 5px; padding: 8px 15px; margin-left: 10px; text-decoration: none; display: flex; align-items: center;">
+        <i class="fas fa-add fs-7" style="color: #fff; margin-right: 5px;"></i>
+        <strong class="fs-7" style="color: #fff;">Add Staff</strong>
+    </a>
+</h6>                        </div>
                         </div>
                         <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
     <div class="table-responsive">

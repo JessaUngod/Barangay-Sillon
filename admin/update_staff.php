@@ -222,7 +222,7 @@ require_once '../db.php';
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="row">
                                     <div class="col-md-6">
-                                        <label>Firstss Name</label>
+                                        <label>First Name</label>
                                          <input class="form-control mb-1" type="hidden" name="idstaff" style="font-size :15px;"required value="<?php echo $rower['id']; ?>">
                                         <input class="form-control mb-1" type="text" name="first" placeholder="Enter First Name" style="font-size :15px;"required value="<?php echo $rower['fname']; ?>">
                                     </div>
@@ -284,7 +284,7 @@ require_once '../db.php';
                                         <button onclick="FindAge()" onmousemove="FindAge()" class="btn bg-success ms-auto text-light" name="update" type="submit"> <label>Update</label></button>
                                     </div>
                                             <div class="col-md-6">
-                                                <label>First Name</label>
+                                                <label>Firssst Name</label>
                                                 <input class="form-control mb-1" type="hidden" name="idstaff" style="font-size :15px;" required value="<?php echo $rower['id']; ?>">
                                                 <input class="form-control mb-1" type="text" name="first" placeholder="Enter First Name" style="font-size :15px;" required value="<?php echo $rower['fname']; ?>">
                                             </div>

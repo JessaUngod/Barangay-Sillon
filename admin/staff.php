@@ -203,8 +203,8 @@ require_once'../db.php';
                         </div>
                         <div class="card-body">
     <div class="table-responsive">
-        <table class="table table-bordered" id="myTable" width="100%" cellspacing="0">
-            <thead>
+        <table class="table" id="myTable" width="100%" cellspacing="0">
+            <thead class="table-light">
                 <tr>
                     <th>First Name</th>
                     <th>Middle Name</th>

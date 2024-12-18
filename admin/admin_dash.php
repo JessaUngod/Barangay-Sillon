@@ -18,7 +18,25 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 </head>
 <style>
-  c: white;
+    .card {
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 25px;
+    background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+    background-size: 200% 200%;
+    background-position: 0% 50%;
+    border-radius: 15px;
+    color: white;
     position: relative;
 }
 
@@ -221,6 +239,7 @@ require_once '../db.php';
                 <div class="row">
     <!-- Admin Card -->
     <div class="col-xl-2 col-md-6 mb-4">
+    <a href="admin/admin.php" style="text-decoration: none;">
         <div class="card">
             <div class="card-body bg-primary">
                 <div class="row no-gutters align-items-center">

@@ -8,6 +8,7 @@ require_once'../db.php';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Staff Accounts</title>
     <link rel="stylesheet" href="../assets/css/mdb.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <link rel="stylesheet" href="../assets/fontawesome6/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/de.css">
     <link rel="shortcut icon" href="../assets/img/sillon.jpg">

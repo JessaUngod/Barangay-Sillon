@@ -274,7 +274,7 @@ require_once'../db.php';
     }
 
     .table-hover tbody tr:hover {
-        background-color:  #8e44ad;
+        background-color:  #240750;
     }
 
     .btn-sm {

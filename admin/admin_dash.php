@@ -215,7 +215,8 @@ require_once '../db.php';
                                 </span>
                                 <span class="mr-2 d-lg-inline small" style="color: #fff; font-family: 'Poppins', sans-serif; font-size: 20px;;"><?php echo $row['fname']; ?></span>
                             </a>
-                            <div class="dropdown-menu shadow animated-grow-in px-4" aria-labelledby="userDropdown">
+                            <div class="dropdown-menu shadow animated-grow-in px-4 custom-dropdown" aria-labelledby="userDropdown">
+
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#"  data-target="#setModal" data-toggle="modal">
                                     <i class="fas fa-solid fa-location-dot fa-sm fa-fw mr-2 fw-bold" style="color: #000;"></i>

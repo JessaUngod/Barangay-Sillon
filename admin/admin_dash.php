@@ -187,7 +187,7 @@ require_once '../db.php';
         <!-- Content -->
         <div class="content">
             <!-- Navbar -->
-            <nav class="navbar navbar-expand navbar-light bg-dark topbar mb-4 static-top shadow"> <!-- Changed bg-white to bg-dark -->
+            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"> <!-- Changed bg-white to bg-dark -->
     <div class="container-fluid">
         <div class="d-flex justify-content-between d-md-none d-block">
             <button class="btn px-1 py-0 open-btn me-2" style="background-color: #007bff;"> <!-- Changed background-color to blue -->

@@ -180,8 +180,8 @@ require_once '../db.php';
             </a>
         </li>
     </ul>
-    <hr class="h-color mx-2" style="border-color: #fff;"> <!-- Change the color of the horizontal line -->
-</div>
+   
+
 
 
         <!-- Content -->

@@ -284,7 +284,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Total Employees Card -->
-                    <div class="col-xl-2 col-md-6 mb-4">
+                    <div class="col-md-3 mb-4">
                         <div class="card">
                             <div class="card-body bg-success">
                                 <div class="row no-gutters align-items-center">

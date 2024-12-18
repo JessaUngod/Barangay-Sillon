@@ -136,11 +136,14 @@ require_once'../db.php';
                         <div class="row">
                             <div class="col-md-2">
                             <a href="staff.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light" 
-   style="background-color: #3498db; color: #fff; font-weight: bold; text-align: center; padding: 10px 15px; border-radius: 5px; display: inline-block; width: auto; text-decoration: none; transition: background-color 0.3s ease;">
+   style="background-color: #8e44ad; color: #fff; font-weight: bold; text-align: center; padding: 10px 15px; border-radius: 5px; display: inline-block; width: auto; text-decoration: none; transition: background-color 0.3s ease;">
    Staff
 </a>                            </div>
                             <div class="col-md-2">
-                                <a href="admin.php" class="btn form-control fw-bold btn-secondary mb-1 mt-1 text-dark">Admin</a>
+                            <a href="admin.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light" 
+   style="background-color:  #8e44ad; color: #fff; font-weight: bold; text-align: center; padding: 10px 15px; border-radius: 5px; display: inline-block; width: auto; text-decoration: none; transition: background-color 0.3s ease;">
+  Admin
+</a>             
                             </div>
                         </div>
                     </div>

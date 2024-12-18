@@ -17,13 +17,11 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
     <style>
      /* General Card Styles */
+/* Updated Card Styles */
 .card {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
-    position: relative;
-    height: 0;
-    padding-bottom: 100%; /* Ensures square aspect ratio */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -33,30 +31,33 @@ require_once '../db.php';
 }
 
 .card-body {
-    padding: 15px;
-    background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+    padding: 25px;
+    background: linear-gradient(to bottom right, #3498db, #f39c12, #8e44ad);
     background-size: 200% 200%;
     background-position: 0% 50%;
     border-radius: 15px;
     color: white;
+    position: relative;
+}
+
+.card-body:before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    z-index: -1;
 }
 
 .card-title {
-    font-size: 1.4em;
+    font-size: 1.5em;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .card-footer {
@@ -64,7 +65,6 @@ require_once '../db.php';
     padding: 15px;
     border-top: 1px solid #ddd;
     border-radius: 0 0 15px 15px;
-    text-align: center;
 }
 
 .card-icon {
@@ -74,7 +74,6 @@ require_once '../db.php';
     border-radius: 50%;
     background-color: rgba(255, 255, 255, 0.2);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
-    margin-top: 10px;
 }
 
 .card-icon.bg-primary { background-color: #3498db; }
@@ -102,19 +101,16 @@ require_once '../db.php';
     padding: 10px;
 }
 
-/* Media Query for Responsive Layout */
-@media (max-width: 768px) {
-    .col-md-3, .col-md-2 {
-        flex: 0 0 48%; /* Two cards per row on smaller screens */
-        max-width: 48%;
-    }
+/* Additional card-specific customizations */
+.card-body .fw-bold {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
 }
-@media (max-width: 480px) {
-    .col-md-3, .col-md-2 {
-        flex: 0 0 100%; /* One card per row on very small screens */
-        max-width: 100%;
-    }
+
+.card-body .h5 {
+    font-size: 1.3rem;
 }
+
 
     </style>
 </head>

@@ -325,7 +325,7 @@ require_once '../db.php';
     // Prepare the chart data and options
     var options = {
         series: [{
-            name: 'Employees',
+            name: 'admin',
             data: [
                 <?php echo $res22; ?>, // Admin count
                 <?php echo $res22; ?>, // Staff count
@@ -336,7 +336,7 @@ require_once '../db.php';
         }, {
             name: 'Absent',
             data: [
-                <?php echo $res22; ?>, // Admin count
+               <?php echo $res22; ?>, // Admin count
                 <?php echo $res22; ?>, // Staff count
                 <?php echo $res22; ?>, // Total Employee count
                 <?php echo $res226; ?>, // Time In count

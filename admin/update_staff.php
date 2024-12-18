@@ -219,211 +219,113 @@ require_once '../db.php';
                                         }
                                     }
                                     ?>
-                                  <form method="post" enctype="multipart/form-data">
-    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh; background-color: #f2f2f2;">
-        <div class="col-md-8 col-lg-6 col-xl-5 p-4 bg-white rounded shadow-sm">
-            <h3 class="text-center mb-4 text-primary">Update Your Profile</h3>
-
-            <!-- Hidden ID -->
-            <input type="hidden" name="idstaff" value="<?php echo $rower['id']; ?>">
-
-            <div class="row">
-                <!-- First Name -->
-                <div class="col-md-6 mb-3">
-                    <label for="first" class="form-label">First Name</label>
-                    <input class="form-control" type="text" name="first" id="first" placeholder="Enter First Name" value="<?php echo $rower['fname']; ?>" required>
-                </div>
-
-                <!-- Last Name -->
-                <div class="col-md-6 mb-3">
-                    <label for="last" class="form-label">Last Name</label>
-                    <input class="form-control" type="text" name="last" id="last" placeholder="Enter Last Name" value="<?php echo $rower['lname']; ?>" required>
-                </div>
-
-                <!-- Middle Name -->
-                <div class="col-md-6 mb-3">
-                    <label for="mid" class="form-label">Middle Name</label>
-                    <input class="form-control" type="text" name="mid" id="mid" placeholder="Enter Middle Name" value="<?php echo $rower['mname']; ?>" required>
-                </div>
-
-                <!-- Birthdate -->
-                <div class="col-md-6 mb-3">
-                    <label for="dob" class="form-label">Birthdate</label>
-                    <input onclick="FindAge()" onmousemove="FindAge()" class="form-control" type="date" name="dob" id="dob" value="<?php echo $rower['dob']; ?>" required>
-                </div>
-
-                <!-- Age -->
-                <div class="col-md-6 mb-3">
-                    <label for="age" class="form-label">Age</label>
-                    <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" value="<?php echo $rower['age']; ?>" readonly required>
-                </div>
-
-                <!-- Gender -->
-                <div class="col-md-6 mb-3">
-                    <label for="gender" class="form-label">Gender</label>
-                    <select class="form-control" name="gender" id="gender" required>
-                        <option><?php echo $rower['gender']; ?></option>
-                        <option>Male</option>
-                        <option>Female</option>
-                    </select>
-                </div>
-
-                <!-- Contact Number -->
-                <div class="col-md-6 mb-3">
-                    <label for="cnum" class="form-label">Contact No.</label>
-                    <input class="form-control" type="text" name="cnum" id="cnum" placeholder="Enter Contact No." value="<?php echo $rower['c_number']; ?>" maxlength="11" required>
-                </div>
-
-                <!-- Username -->
-                <div class="col-md-6 mb-3">
-                    <label for="mail" class="form-label">Username</label>
-                    <input class="form-control" type="text" name="mail" id="mail" placeholder="Enter Username" value="<?php echo $rower['uname']; ?>" required>
-                </div>
-
-                <!-- Password -->
-                <div class="col-md-6 mb-3 position-relative">
-                    <label for="pass" class="form-label">Password</label>
-                    <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" value="<?php echo $rower['pass']; ?>" required>
-                    <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('pass', 'iconic')" id="iconic"></i>
-                </div>
-
-                <!-- Re-Password -->
-                <div class="col-md-6 mb-3 position-relative">
-                    <label for="cpass" class="form-label">Re-Password</label>
-                    <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" value="<?php echo $rower['pass']; ?>" required>
-                    <i class="fa fa-eye-slash position-absolute" style="top: 65%; right: 5%; color: lightgray;" onclick="togglePasswordVisibility('cpass', 'icon')" id="icon"></i>
-                </div>
-
-                <!-- Profile Image -->
-                <div class="col-md-12 mb-3 text-center">
-                    <label for="profile" class="form-label">Profile Image</label>
-                    <input class="form-control" type="file" name="profile" id="profile" accept="image/*">
-                </div>
-
-                <!-- Submit Button -->
-                <div class="col-md-12 mb-3 text-center">
-                    <button class="btn btn-primary w-100" type="submit" name="update">Update Profile</button>
-                </div>
-            </div>
-        </div>
+                                  <form method="post" enctype="multipart/form-data" class="container mt-5">
+  <div class="row g-3">
+    <div class="col-md-6">
+      <label for="firstName" class="form-label">First Name</label>
+      <input class="form-control" type="text" name="first" id="firstName" placeholder="Enter First Name" style="font-size :15px;" required value="<?php echo $rower['fname']; ?>">
     </div>
 
-    <!-- Scripts -->
-    <script type="text/javascript">
-        // Toggle password visibility function
-        function togglePasswordVisibility(inputId, iconId) {
-            var input = document.getElementById(inputId);
-            var icon = document.getElementById(iconId);
-            if (input.type === "password") {
-                input.type = "text";
-                icon.classList = "fa fa-eye";
-            } else {
-                input.type = "password";
-                icon.classList = "fa fa-eye-slash";
-            }
-        }
+    <div class="col-md-6">
+      <label for="lastName" class="form-label">Last Name</label>
+      <input class="form-control" type="text" name="last" id="lastName" placeholder="Enter Last Name" style="font-size :15px;" required value="<?php echo $rower['lname']; ?>">
+    </div>
 
-        // Calculate Age based on DOB
-        function FindAge() {
-            var dob = document.getElementById("dob").value;
-            var dobDate = new Date(dob);
-            var today = new Date();
-            var age = today.getFullYear() - dobDate.getFullYear();
-            var m = today.getMonth() - dobDate.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) {
-                age--;
-            }
-            document.getElementById("age").value = age;
-        }
+    <div class="col-md-6">
+      <label for="middleName" class="form-label">Middle Name</label>
+      <input class="form-control" type="text" name="mid" id="middleName" placeholder="Enter Middle Name" style="font-size :15px;" required value="<?php echo $rower['mname']; ?>">
+    </div>
 
-        // Contact number input validation (numeric only, max 11 digits)
-        document.getElementById('cnum').addEventListener('input', function(event) {
-            const input = event.target;
-            let value = input.value.replace(/\D/g, ''); // Remove non-numeric characters
-            if (value.length > 11) {
-                value = value.slice(0, 11); // Limit to 11 digits
-            }
-            input.value = value;
-        });
-    </script>
+    <div class="col-md-3">
+      <label for="dob" class="form-label">Birthdate</label>
+      <input class="form-control" type="date" name="dob" id="dob" style="font-size :15px;" required value="<?php echo $rower['dob']; ?>" onchange="FindAge()" onmousemove="FindAge()">
+    </div>
 
-    <!-- Styles -->
-    <style>
-        .form-label {
-            font-weight: 500;
-            font-size: 14px;
-        }
+    <div class="col-md-3">
+      <label for="age" class="form-label">Age</label>
+      <input class="form-control" type="number" name="age" id="age" placeholder="Enter Age" style="font-size :15px;" required value="<?php echo $rower['age']; ?>">
+    </div>
 
-        .form-control {
-            font-size: 14px;
-            padding: 10px;
-            border-radius: 4px;
-            box-shadow: none;
-        }
+    <div class="col-md-3">
+      <label for="gender" class="form-label">Select Gender</label>
+      <select name="gender" id="gender" class="form-select" style="font-size :15px;" required>
+        <option><?php echo $rower['gender']; ?></option>
+        <option>Male</option>
+        <option>Female</option>
+      </select>
+    </div>
 
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-        }
+    <div class="col-md-6">
+      <label for="contactNo" class="form-label">Contact No.</label>
+      <input class="form-control" type="text" name="cnum" id="contactNo" placeholder="Enter Contact No." style="font-size :15px;" maxlength="11" required value="<?php echo $rower['c_number']; ?>">
+    </div>
 
-        .btn-primary {
-            background-color: #007bff;
-            color: white;
-            font-size: 16px;
-            padding: 10px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
+    <div class="col-md-6">
+      <label for="username" class="form-label">Username</label>
+      <input class="form-control" type="text" name="mail" id="username" placeholder="Enter Email or Username" style="font-size :15px;" required value="<?php echo $rower['uname']; ?>">
+    </div>
 
-        .btn-primary:hover {
-            background-color: #0056b3;
-        }
+    <div class="col-md-6 position-relative">
+      <label for="pass" class="form-label">Password</label>
+      <input class="form-control" type="password" name="pass" id="pass" placeholder="Enter Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
+      <i class="fa fa-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePasswordVisibility('pass')" id="iconPassword"></i>
+    </div>
 
-        .fa-eye-slash, .fa-eye {
-            cursor: pointer;
-        }
+    <div class="col-md-6 position-relative">
+      <label for="rpass" class="form-label">Re-password</label>
+      <input class="form-control" type="password" name="cpass" id="rpass" placeholder="Re-enter Password" style="font-size :15px;" required>
+      <i class="fa fa-eye-slash position-absolute top-50 end-0 translate-middle-y me-3" onclick="togglePasswordVisibility('rpass')" id="iconRePassword"></i>
+    </div>
 
-        .position-relative {
-            position: relative;
-        }
+    <div class="col-md-8 text-center">
+      <label for="profile" class="form-label">Profile Image</label>
+      <input class="form-control" type="file" name="profile" id="profile" placeholder="Select Profile Image" style="font-size :15px;">
+    </div>
 
-        .col-md-6, .col-md-12 {
-            margin-bottom: 15px;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-    </style>
+    <div class="col-12 text-center mt-3">
+      <button type="submit" class="btn btn-success text-light" name="update">Update</button>
+    </div>
+  </div>
 </form>
 
-                                    <script type="text/javascript">
-                                        function myfunction() {
-                                            var x = document.getElementById("pass");
-                                            var y = document.getElementById("iconic");
-                                            if (x.type === "password") {
-                                                x.type = "text";
-                                                y.classList = "fa fa-eye"
+<script>
+  // Function to calculate age based on DOB
+  function FindAge() {
+    const day = document.getElementById("dob").value;
+    const DOB = new Date(day);
+    const today = new Date();
+    let age = today.getTime() - DOB.getTime();
+    age = Math.floor(age / (1000 * 60 * 60 * 24 * 365.25));
+    document.getElementById("age").value = age;
+  }
 
-                                            } else {
-                                                x.type = "password";
-                                                y.classList = "fa fa-eye-slash"
-                                            }
-                                        }
-                                    </script>
-                                    <script type="text/javascript">
-                                        function myfunction2() {
-                                            var x = document.getElementById("rpass");
-                                            var y = document.getElementById("icon");
-                                            if (x.type === "password") {
-                                                x.type = "text";
-                                                y.classList = "fa fa-eye"
-                                            } else {
-                                                x.type = "password";
-                                                y.classList = "fa fa-eye-slash"
-                                            }
-                                        }
-                                    </script>
+  // Function to toggle password visibility
+  function togglePasswordVisibility(id) {
+    const passwordField = document.getElementById(id);
+    const icon = id === 'pass' ? document.getElementById('iconPassword') : document.getElementById('iconRePassword');
+    if (passwordField.type === "password") {
+      passwordField.type = "text";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    } else {
+      passwordField.type = "password";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    }
+  }
+
+  // Ensures the phone number is correctly formatted (max 11 digits)
+  document.getElementById('contactNo').addEventListener('input', function(event) {
+    let input = event.target;
+    let value = input.value.replace(/\D/g, '');  // Removes non-numeric characters
+    if (value.length > 11) {
+      input.value = value.slice(0, 11);  // Limits to 11 characters
+    } else {
+      input.value = value;
+    }
+  });
+</script>
+
                                 </div>
                             </div>
                         </div>

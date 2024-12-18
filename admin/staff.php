@@ -257,28 +257,47 @@ require_once'../db.php';
     });
 </script>
 <style>
-       .table th, .table td {
+    /* General table styles */
+    .table th, .table td {
         vertical-align: middle;
+        transition: background-color 0.3s ease, transform 0.2s ease;
     }
 
+    /* Apply gradient background to the table headers */
     .table th {
         text-align: center;
         font-weight: bold;
-        background-color: #8e44ad;
+        padding: 12px 15px;
+        background: linear-gradient(to bottom right, #6a11cb, #2575fc, #ff6a00);  /* Latest vibrant gradient */
+        color: #fff;  /* White text for better contrast */
     }
 
+    /* Table data cells */
     .table td {
         text-align: center;
         font-size: 0.95em;
         color: #333;
+        padding: 12px 15px;
+        background-color: #fff;
     }
 
+    /* Hover effect for individual cells */
+    .table td:hover {
+        background-color: #f1c40f;  /* Light yellow on hover */
+        color: #fff;  /* White text for better contrast */
+        cursor: pointer;  /* Show a pointer cursor to indicate interactivity */
+    }
+
+    /* Hover effect for table rows (optional, if needed) */
     .table-hover tbody tr:hover {
-        background-color: gray;
+        background-color: #f1f1f1;  /* Soft grey for row hover */
+        transform: scale(1.02);  /* Slightly enlarge on hover */
     }
 
+    /* Hover effect on action buttons */
     .btn-sm {
         font-size: 0.85rem;
+        transition: transform 0.2s ease, background-color 0.3s ease;
     }
 
     .btn-warning {
@@ -291,30 +310,41 @@ require_once'../db.php';
         border-color: #c0392b;
     }
 
+    /* Change background color and shadow on hover */
+    .btn-warning:hover {
+        background-color: #f1c40f;
+        transform: translateY(-2px);  /* Lift the button up */
+    }
+
+    .btn-danger:hover {
+        background-color: #c0392b;
+        transform: translateY(-2px);  /* Lift the button up */
+    }
+
+    /* Cursor pointer for buttons */
     .btn {
         border-radius: 5px;
         padding: 5px 10px;
         cursor: pointer;
     }
 
+    /* Smooth transition for hover effect on table */
     .table th, .table td {
         border: 1px solid #ddd;
     }
 
-    .table th {
-        text-align: center;
-        font-weight: bold;
-        color: white;
-        padding: 12px 15px;
-        background-color:  #8e44ad;
+    /* Hover effect for the entire table row */
+    .table tr:hover {
+        background-color: #f8f9fa;  /* Slight light grey for row hover */
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);  /* Drop shadow effect */
     }
 
-    .table td {
-        color: #333;
-    }
-
-    .card-body {
-        padding: 15px;
+    /* Profile picture styles */
+    .table img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
     }
 </style>
 </body>

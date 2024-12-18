@@ -237,7 +237,7 @@ require_once'../db.php';
 
     
     #myTable tbody tr:hover {
-        background-color: #f7f7f7;
+        background-color:rgb(247, 247, 247);
         cursor: pointer;
     }
 

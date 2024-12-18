@@ -203,8 +203,8 @@ require_once'../db.php';
                         </div>
                         <div class="card-body">
     <div class="table-responsive">
-        <table class="table" id="myTable" width="100%" cellspacing="0">
-            <thead class="table-light">
+        <table class="table" id="myTable" width="100%" cellspacing="0" style="border: none;">
+            <thead style="background: linear-gradient(to right, #007bff, #0056b3);">
                 <tr>
                     <th>First Name</th>
                     <th>Middle Name</th>

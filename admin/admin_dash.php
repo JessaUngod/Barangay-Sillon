@@ -145,7 +145,7 @@ require_once '../db.php';
     </div>
     <ul class="list-unstyled px-3">
         <li class="active">
-            <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block" style="color: #fff;"> 
+            <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block" style="color: black;"> 
                 <i class="fas fa-home"></i> Dashboard
             </a>
         </li>

@@ -94,9 +94,8 @@ require_once '../db.php';
                                 <span class="mr-2 d-lg-inline  small ">
                                     <img src="../uploads/<?php echo $row['img']; ?>" style="height: 40px; width:40px; border-radius:50%;">
                                 </span>
-                                <span class="mr-2 d-lg-inline  small fw-bold" style="color: #000;">
-                                    <?php echo $row['fname']; ?>
-                                </span>
+                                <span class="mr-2 d-lg-inline small" style="color: #fff; font-family: 'Poppins', sans-serif; font-size: 20px;;"><?php echo $row['fname']; ?></span>
+
                             </a>
                             <div class="dropdown-menu  shadow animated-grow-in px-4"
                                 aria-labelledby="userDropdown">

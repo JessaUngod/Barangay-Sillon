@@ -15,6 +15,8 @@ require_once '../db.php';
     <link rel="shortcut icon" type="image/x-icon" href="../assets/img/sillon.jpg">
     <link rel="stylesheet" type="text/css" href="../assets/css/datatables.css">
     <script type="text/javascript" src="../sweet_alert/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
     <div class="main-container-fluid d-flex">
@@ -277,11 +279,12 @@ require_once '../db.php';
 
             <!-- Password -->
             <div class="col-md-6 col-12 position-relative">
-                <label>Password</label>
-                <input class="form-control" type="password" id="pass" name="pass" placeholder="Enter Password" style="font-size: 15px;" required value="<?php echo $rower['pass']; ?>">
-    <div class="input-group-append">
-        <button type="button" class="btn btn-outline-secondary" id="toggle-password">
-            <i class="fa fa-eye"></i>            </div>
+    <label>Password</label>
+    <input class="form-control mb-1" type="password" id="pass" name="pass" placeholder="Enter Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
+    
+    <!-- Eye icon toggle button -->
+    <i id="togglePassword" class="fas fa-eye" style="position: absolute; right: 10px; top: 30px; cursor: pointer;"></i>
+</div>
 
             <!-- Re-Password -->
             <div class="col-md-6 col-12 position-relative">
@@ -307,20 +310,20 @@ require_once '../db.php';
 </form>
 
 <script>
-    // Toggle password visibility function
-    function togglePasswordVisibility(fieldId) {
-        var passwordField = document.getElementById(fieldId);
-        var icon = document.getElementById('icon-' + fieldId);
-        if (passwordField.type === "password") {
-            passwordField.type = "text";
-            icon.classList.remove("fa-eye-slash");
-            icon.classList.add("fa-eye");
+       document.getElementById('togglePassword').addEventListener('click', function () {
+        var passwordField = document.getElementById('pass');
+        var icon = this;
+
+        if (passwordField.type === 'password') {
+            passwordField.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
         } else {
-            passwordField.type = "password";
-            icon.classList.remove("fa-eye");
-            icon.classList.add("fa-eye-slash");
+            passwordField.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
         }
-    }
+    });
 
     // Age calculation based on DOB
     function FindAge() {

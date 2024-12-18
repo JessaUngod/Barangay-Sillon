@@ -151,23 +151,23 @@ require_once'../db.php';
                         <div class="card-header">
                             <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
                         </div>
-                        <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
-            <thead style="font-size: 1.1em; color: #fff; background-color: #8e44ad;">
-                <tr>
-                    <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
-                    <th class="fw-bold text-center">Middle Name</th>
-                    <th class="fw-bold text-center">Last Name</th>
-                    <th class="fw-bold text-center">Age</th>
-                    <th class="fw-bold text-center">Gender</th>
-                    <th class="fw-bold text-center">Contact No.</th>
-                    <th class="fw-bold text-center">Username</th>
-                    <th class="fw-bold text-center">Profile Picture</th>
-                    <th class="fw-bold text-center" style="border-radius: 0 8px 0 0;">Action</th>
-                </tr>
-            </thead>
-            <tbody style="color: #555;">
+                                        <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px; padding: 20px;">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
+                            <thead style="font-size: 1.1em; color: #fff; background-color: #8e44ad;">
+                                <tr>
+                                    <th class="fw-bold text-center" style="border-radius: 8px 0 0 0;">First Name</th>
+                                    <th class="fw-bold text-center">Middle Name</th>
+                                    <th class="fw-bold text-center">Last Name</th>
+                                    <th class="fw-bold text-center">Age</th>
+                                    <th class="fw-bold text-center">Gender</th>
+                                    <th class="fw-bold text-center">Contact No.</th>
+                                    <th class="fw-bold text-center">Username</th>
+                                    <th class="fw-bold text-center">Profile Picture</th>
+                                    <th class="fw-bold text-center" style="border-radius: 0 8px 0 0;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody style="color: #555;">
                                              <?php 
                                         $qry = "SELECT * FROM staff";
                                         $qry_run = mysqli_query($con, $qry);
@@ -256,7 +256,7 @@ require_once'../db.php';
     });
 </script>
 <style>
-     .table th, .table td {
+    .table th, .table td {
         vertical-align: middle;
         transition: background-color 0.3s ease, transform 0.2s ease;
     }
@@ -278,9 +278,16 @@ require_once'../db.php';
         background-color: #fff;
     }
 
-    /* Hover effect on table rows */
+    /* Hover effect for individual cells */
+    .table td:hover {
+        background-color: #f1c40f;  /* Light yellow on hover */
+        color: #fff;  /* White text for better contrast */
+        cursor: pointer;  /* Show a pointer cursor to indicate interactivity */
+    }
+
+    /* Hover effect for table rows (optional, if needed) */
     .table-hover tbody tr:hover {
-        background-color: #f1f1f1;  /* Soft grey for hover */
+        background-color: #f1f1f1;  /* Soft grey for row hover */
         transform: scale(1.02);  /* Slightly enlarge on hover */
     }
 

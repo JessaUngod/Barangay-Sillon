@@ -202,6 +202,7 @@ require_once '../db.php';
                             $id = $_SESSION['idadmins'];
                             $result = mysqli_query($con, "SELECT * FROM admin WHERE id = $id");
                             $row = mysqli_fetch_assoc($result);
+                            $currLoc = mysqli_fetch_assoc($oks22);
                         }else{
                             header("Location: ./index.php");
                         }

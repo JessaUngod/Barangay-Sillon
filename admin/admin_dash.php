@@ -314,7 +314,7 @@ require_once '../db.php';
 <div class="row">
     <div class="col-md-12 mb-4">
         <div class="card">
-            <div class="card-body bg-light">
+            <div class="card-body bg-primary">
                 <h5 class="card-title text-center">Employee Attendance Overview</h5>
                 <!-- ApexChart div container -->
                 <div id="attendance-chart"></div>

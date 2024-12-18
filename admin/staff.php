@@ -174,12 +174,14 @@ require_once'../db.php';
                 <div class="col-md-12">
                     <div class="card mb-2 py-2 px-2">
                         <div class="row">
-                            <div class="col-md-2">
-                                <a href="staff.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light">Staff</a>
+                        <div class="col-md-2">
+    <a href="staff.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light" style="background: linear-gradient(to right, #6a11cb, #2575fc);">Staff</a>
+</div>
                                 
                             </div>
                             <div class="col-md-2">
-                                <a href="admin.php" class="btn form-control fw-bold btn-secondary mb-1 mt-1 text-dark">Admin</a>
+    <a href="admin.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light" style="background: linear-gradient(to right, #6a11cb, #2575fc);">Admin</a>
+</div>
                                 
                             </div>
                             

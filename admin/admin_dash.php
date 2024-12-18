@@ -121,9 +121,9 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
-    /* Sidebar container */
+    
 .sidebar {
-    background-color: #2c3e50; /* Dark background color */
+    background-color: #2c3e50;
     color: white;
     height: 100vh;
     width: 250px;

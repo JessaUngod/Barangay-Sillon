@@ -69,7 +69,7 @@ require_once '../db.php';
     
 </div>
         <div class="content">
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <nav class="navbar navbar-expand navbar-light" style="background-color: #240750;" topbar mb-4 static-top shadow>
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
                         <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>

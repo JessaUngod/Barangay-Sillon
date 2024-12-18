@@ -97,7 +97,7 @@ require_once '../db.php';
         }
 
         /* Responsive adjustments */
-        .col-xl-2, .col-md-6 {
+        .col-xl-2, .col-md-3 {
             padding: 10px;
         }
 

@@ -293,22 +293,22 @@ require_once'../db.php';
                         <div class="card-header">
                             <h6 class="m-0  fw-bold" style="color: #000;"><strong style="font-size: 30px;"> Staff  </strong><a class="btn btn-primary" href="add_staff.php" style="color: #fff;"><i class="fas fa-add fs-7" style="color: #fff;"></i><strong class="fs-7">  Add Staff</strong></a></h6>
                         </div>
-                             <div class="card-body" style="background: linear-gradient(to bottom, #ffffff, #f1f1f1); padding: 2rem; border-radius: 15px; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
-                            <thead class="text-white" style="background-color: #007bff; border-radius: 12px 12px 0 0;">
-                                <tr>
-                                    <th class="fw-bold text-center">First Name</th>
-                                    <th class="fw-bold text-center">Middle Name</th>
-                                    <th class="fw-bold text-center">Last Name</th>
-                                    <th class="fw-bold text-center">Age</th>
-                                    <th class="fw-bold text-center">Gender</th>
-                                    <th class="fw-bold text-center">Contact No.</th>
-                                    <th class="fw-bold text-center">Username</th>
-                                    <th class="fw-bold text-center">Profile Picture</th>
-                                    <th class="fw-bold text-center">Actions</th>
-                                </tr>
-                            </thead>
+                       <div class="card-body" style="background-color: #f8f9fa; border-radius: 8px;">
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped table-hover" id="myTable" width="100%" cellspacing="0">
+            <thead style="font-size: 1em; color: #8e44ad;">
+                <tr>
+                    <th class="fw-bold bg-primary text-center" style="border-radius: 8px 0 0 0;">First Name</th>
+                    <th class="fw-bold bg-primary text-center">Middle Name</th>
+                    <th class="fw-bold bg-primary text-center">Last Name</th>
+                    <th class="fw-bold bg-primary text-center">Age</th>
+                    <th class="fw-bold bg-primary text-center">Gender</th>
+                    <th class="fw-bold bg-primary text-center">Contact no.</th>
+                    <th class="fw-bold bg-primary text-center">Username</th>
+                    <th class="fw-bold bg-primary text-center">Profile Picture</th>
+                    <th class="fw-bold bg-primary text-center" style="border-radius: 0 8px 0 0;">Action</th>
+                </tr>
+            </thead>
                                     <tbody style="color: #000;">
                                              <?php 
                                         $qry = "SELECT * FROM staff";

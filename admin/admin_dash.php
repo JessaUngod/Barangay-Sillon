@@ -266,7 +266,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Time In Card -->
-                    <div class="col-md-2 mb-3">
+                    <div class="col-xl-2 col-md-6 mb-4">
                         <div class="card">
                             <div class="card-body bg-danger">
                                 <div class="row no-gutters align-items-center">

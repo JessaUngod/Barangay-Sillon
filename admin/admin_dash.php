@@ -262,6 +262,7 @@ require_once '../db.php';
 
                     <!-- Staff Card -->
                     <div class="col-md-3 mb-4">
+                    <a href="employee.php" style="text-decoration: none;">
                         <div class="card">
                             <div class="card-body bg-warning">
                                 <div class="row no-gutters align-items-center">

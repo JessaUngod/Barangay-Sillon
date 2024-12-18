@@ -302,8 +302,11 @@ require_once'../db.php';
     }
 
     .table th {
-        background-color: #fff;
-        color: white;
+        text-align: center;
+        font-weight: bold;
+        padding: 12px 15px;
+        background: linear-gradient(to bottom right, #3498db, #8e44ad, #f39c12);
+        color: #fff;  /* White text for better contrast */
     }
 
     .table td {

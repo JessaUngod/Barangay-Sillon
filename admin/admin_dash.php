@@ -18,7 +18,8 @@ require_once '../db.php';
     <script type="text/javascript" src="../assets/js/apexchart.js"></script>
 </head>
 <style>
-    .card {
+  /* Card Style */
+.card {
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.08);
     overflow: hidden;
@@ -81,50 +82,53 @@ require_once '../db.php';
 .card-icon.bg-danger { background-color: #e74c3c; }
 .card-icon.bg-success { background-color: #2ecc71; }
 
-.text-white {
-    color: white !important;
-}
-
-.fw-bold {
-    font-weight: 600 !important;
-}
-
-.h5 {
-    font-size: 1.4rem;
-}
-
+/* Responsive Layout */
 .row {
     margin-top: 25px;
 }
 
-/* Responsive adjustments */
-.col-xl-2, .col-md-3 {
-    padding: 10px;
+/* Default for extra large screens */
+.col-xl-2 {
+    width: 25%;
 }
 
-
+/* Medium and Large screens */
 @media (max-width: 1200px) {
     .col-xl-2 {
         width: 25%;
     }
 }
 
+/* Tablet and smaller screens */
 @media (max-width: 992px) {
     .col-xl-2 {
         width: 33.33%;
+    }
+    .col-md-3 {
+        width: 50%;
     }
     .col-md-2 {
         width: 50%;
     }
 }
 
+/* Mobile screens */
 @media (max-width: 768px) {
-    .col-xl-2, .col-md-2, .col-md-3 {
-        width: 100%;
+    .col-xl-2, .col-md-3, .col-md-2 {
+        width: 100%; /* Stack cards vertically on mobile */
     }
-    
-    
+    .card-body {
+        padding: 15px; /* Less padding on small screens */
+    }
 }
+
+/* Extra Small screens (phones in portrait) */
+@media (max-width: 576px) {
+    .card-body {
+        padding: 10px; /* Reduce padding further for very small screens */
+    }
+}
+
 </style>
 <body>
     <?php 

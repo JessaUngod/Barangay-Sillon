@@ -280,12 +280,12 @@ require_once '../db.php';
                     </div>
                 </div>
             </div>
-        </a>
+            </a>
     </div>
 
     <!-- Total Employees Card -->
     <div class="col-xl-2 col-md-6 mb-4">
-        
+    <a href="employee_payroll.php" style="text-decoration: none;">
         <div class="card">
             <div class="card-body bg-success">
                 <div class="row no-gutters align-items-center">
@@ -304,10 +304,12 @@ require_once '../db.php';
                 </div>
             </div>
         </div>
+        </a>
     </div>
 
     <!-- Time In Card -->
     <div class="col-xl-2 col-md-6 mb-4">
+    <a href="log_rec.php" style="text-decoration: none;">
         <div class="card">
             <div class="card-body bg-danger">
                 <div class="row no-gutters align-items-center">
@@ -328,6 +330,7 @@ require_once '../db.php';
                 </div>
             </div>
         </div>
+        </a>
     </div>
 
     <!-- Total Absent Card -->

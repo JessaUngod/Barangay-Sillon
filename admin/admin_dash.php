@@ -133,17 +133,20 @@ require_once '../db.php';
     ?>
     <div class="main-container-fluid d-flex">
         <!-- Sidebar -->
-        <div class="sidebar" id="side_nav" style="background-color: #240750;"> 
+        <div class="sidebar" id="side_nav" style="background-color: #240750;">
+    <!-- Sidebar Header with toggle button -->
     <div class="header-box px-3 pt-3 pb-2 d-flex justify-content-between">
         <h1 class="fs-5">
             <img src="../assets/img/sillon.jpg" style="width: 61px; height: 61px; border-radius: 50%;"> 
             <strong style="color: #fff;">Barangay Sillon</strong>
         </h1>
-        <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white">
+        <!-- Toggle Button for Sidebar (Hamburger) -->
+        <button class="btn d-md-none d-block close-btn px-1 py-0 pb-2 text-white" id="toggleSidebarBtn">
             <i class="fas fa-bars"></i>
         </button>
     </div>
-    <ul class="list-unstyled px-3">
+    <!-- Sidebar Menu -->
+    <ul class="list-unstyled px-3" id="sidebarMenu">
         <li class="active">
             <a href="../admin/admin_dash.php" class="text-decoration-none px-3 py-2 d-block" style="color: black;"> 
                 <i class="fas fa-home"></i> Dashboard
@@ -180,8 +183,8 @@ require_once '../db.php';
             </a>
         </li>
     </ul>
-    
 </div>
+
 
 
         <!-- Content -->

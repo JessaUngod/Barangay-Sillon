@@ -218,48 +218,7 @@ require_once'../db.php';
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <style>
-    /* Add custom CSS for better table design */
-    #myTable {
-        font-size: 1rem; /* Set a default font size for the table */
-        border-collapse: collapse; /* Ensure borders are collapsed */
-    }
-
-    #myTable th, #myTable td {
-        padding: 12px; /* Add padding for better spacing */
-        text-align: center; /* Center the text in both th and td */
-    }
-
-    #myTable th {
-        font-weight: bold; /* Ensure headers are bold */
-        text-transform: uppercase; /* Uppercase headers for emphasis */
-    }
-
-    /* Hover effect for rows */
-    #myTable tbody tr:hover {
-        background-color: #f7f7f7; /* Light gray background on row hover */
-        cursor: pointer; /* Change cursor to pointer on hover */
-    }
-
-    /* Zebra striping for table rows */
-    #myTable tbody tr:nth-child(even) {
-        background-color: #f9f9f9; /* Light gray alternating rows */
-    }
-
-    #myTable tbody tr:nth-child(odd) {
-        background-color: #ffffff; /* White alternating rows */
-    }
-
-    /* Responsive table styling */
-    @media (max-width: 768px) {
-        #myTable {
-            font-size: 0.9rem; /* Adjust font size for smaller screens */
-        }
-        #myTable th, #myTable td {
-            padding: 8px; /* Adjust padding for smaller screens */
-        }
-    }
-</style>
+                        
                                    
                                 
                                     <tbody style="color: #000;">

@@ -217,6 +217,14 @@ require_once'../db.php';
                     <th>Action</th>
                 </tr>
             </thead>
+            <style>
+                <style>
+    #myTable th, #myTable td {
+        border: none !important; /* Ensures no borders */
+    }
+</style>
+
+            </style>
                                    
                                 
                                     <tbody style="color: #000;">

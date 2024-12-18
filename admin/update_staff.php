@@ -336,13 +336,7 @@ require_once '../db.php';
     </button>
 </div>
 
-    <style>
-        <style>
-    .btn:hover {
-        background: linear-gradient(to right, #81c784, #4caf50); /* Reverse the gradient on hover */
-    }
-</style>
-    </style>
+
 </div>
 
             </div>

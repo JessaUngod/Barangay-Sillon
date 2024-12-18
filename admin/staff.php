@@ -219,23 +219,47 @@ require_once'../db.php';
                                 </tr>
                             </thead>
                             <style>
-    /* Styling for the 'Latest' font */
-    .latest-font {
-        font-family: 'Poppins', sans-serif; /* Stylish font */
-        font-weight: 700; /* Bold */
-        font-size: 1.1em; /* Slightly bigger size */
-        letter-spacing: 0.5px; /* Adds space between letters */
-        text-transform: uppercase; /* Uppercase for emphasis */
-        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
+    /* Add custom CSS for better table design */
+    #myTable {
+        font-size: 1rem; /* Set a default font size for the table */
+        border-collapse: collapse; /* Ensure borders are collapsed */
     }
 
-    /* Optional: Hover effect for the 'Latest' font */
-    .latest-font:hover {
-        color: #ffd700; /* Change text color on hover */
-        cursor: pointer; /* Change cursor to pointer */
+    #myTable th, #myTable td {
+        padding: 12px; /* Add padding for better spacing */
+        text-align: center; /* Center the text in both th and td */
+    }
+
+    #myTable th {
+        font-weight: bold; /* Ensure headers are bold */
+        text-transform: uppercase; /* Uppercase headers for emphasis */
+    }
+
+    /* Hover effect for rows */
+    #myTable tbody tr:hover {
+        background-color: #f7f7f7; /* Light gray background on row hover */
+        cursor: pointer; /* Change cursor to pointer on hover */
+    }
+
+    /* Zebra striping for table rows */
+    #myTable tbody tr:nth-child(even) {
+        background-color: #f9f9f9; /* Light gray alternating rows */
+    }
+
+    #myTable tbody tr:nth-child(odd) {
+        background-color: #ffffff; /* White alternating rows */
+    }
+
+    /* Responsive table styling */
+    @media (max-width: 768px) {
+        #myTable {
+            font-size: 0.9rem; /* Adjust font size for smaller screens */
+        }
+        #myTable th, #myTable td {
+            padding: 8px; /* Adjust padding for smaller screens */
+        }
     }
 </style>
-                        
                                    
                                 
                                     <tbody style="color: #000;">

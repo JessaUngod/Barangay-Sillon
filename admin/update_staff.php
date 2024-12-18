@@ -331,9 +331,11 @@ require_once '../db.php';
 
             <!-- Submit Button -->
             <div class="col-12 mt-3">
-    <button onclick="FindAge()" onmousemove="FindAge()" class="btn w-100" name="update" type="submit" style="background: linear-gradient(to right, #4caf50, #81c784); color: white;">
+    <button onclick="FindAge()" onmousemove="FindAge()" class="btn w-100" name="update" type="submit" style="background: linear-gradient(to right, #0062cc, #00b0ff); color: white;">
         <label>Update</label>
     </button>
+</div>
+
     <style>
         <style>
     .btn:hover {

@@ -255,8 +255,7 @@ require_once'../db.php';
 
 
                                             <a class="ms-2 float-end" href="update_staff.php?staff_id=<?php echo $row1['id'];?>">
-    <i class="fa fa-edit text-primary fs-6"></i>
-    <i class="fa fa-star text-warning fs-6 ms-1" title="Latest"></i> <!-- Latest icon -->
+    <i class="fa fa-edit text-primary fs-6 ms-1" style="transition: color 0.3s;" title="Edit Staff"></i>
 </a>
                                         </tr>
 

@@ -205,7 +205,7 @@ require_once'../db.php';
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table  id="myTable" width="100%" cellspacing="0">
-                                    <thead style="font-size: 1em; color: #fff;">
+                                    <thead style="font-size: 1em; color: #240750;">
 
                                          <tr>
                                     <th>First Name</th>

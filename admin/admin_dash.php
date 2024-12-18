@@ -191,7 +191,7 @@ require_once '../db.php';
                 <div class="container-fluid">
                     <div class="d-flex justify-content-between d-md-none d-block">
                         <button class="btn px-1 py-0 open-btn me-2" style="background-color: #000;"><i class="fas fa-bars" style="width: 30px; color: #fff;"></i></button>
-                        <strong style="font-size:22px;">Admin</strong>
+                        <strong style="font-size:22px;">AdminSS</strong>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -242,7 +242,7 @@ require_once '../db.php';
                             <div class="card-body bg-primary">
                                 <div class="row no-gutters align-items-center">
                                     <div class="col mr-2">
-                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Adminss</div>
+                                        <div class="fw-bold mb-1" style="font-size: 0.9em;">Admin</div>
                                         <?php
                                         $sql22 = "SELECT * FROM `admin`";
                                         $oks22 = mysqli_query($con, $sql22);

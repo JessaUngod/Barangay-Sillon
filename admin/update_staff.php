@@ -289,7 +289,7 @@ require_once '../db.php';
             <!-- Re-Password -->
             <div class="col-md-6 col-12 position-relative">
                 <label>Re-Password</label>
-                <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re-Password" required value="<?php echo $rower['pass']; ?>">
+                <input class="form-control mb-1" type="password" id="rpass" name="cpass" placeholder="Enter Re-Password" style="font-size :15px;" required value="<?php echo $rower['pass']; ?>">
                
             </div>
 
@@ -310,20 +310,20 @@ require_once '../db.php';
 </form>
 
 <script>
-       document.getElementById('togglePassword').addEventListener('click', function () {
-        var passwordField = document.getElementById('pass');
-        var icon = this;
-
-        if (passwordField.type === 'password') {
-            passwordField.type = 'text';
-            icon.classList.remove('fa-eye');
-            icon.classList.add('fa-eye-slash');
+    // Toggle password visibility function
+    function togglePasswordVisibility(fieldId) {
+        var passwordField = document.getElementById(fieldId);
+        var icon = document.getElementById('icon-' + fieldId);
+        if (passwordField.type === "password") {
+            passwordField.type = "text";
+            icon.classList.remove("fa-eye-slash");
+            icon.classList.add("fa-eye");
         } else {
-            passwordField.type = 'password';
-            icon.classList.remove('fa-eye-slash');
-            icon.classList.add('fa-eye');
+            passwordField.type = "password";
+            icon.classList.remove("fa-eye");
+            icon.classList.add("fa-eye-slash");
         }
-    });
+    }
 
     // Age calculation based on DOB
     function FindAge() {

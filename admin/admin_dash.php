@@ -117,7 +117,7 @@ require_once '../db.php';
         }
 
         @media (max-width: 768px) {
-            .col-xl-2, .col-md-3, .col-md-3 {
+            .col-xl-2, .col-md-2, .col-md-3 {
                 width: 100%;
             }
         }
@@ -266,7 +266,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Time In Card -->
-                    <div class="col-md-3 mb-4">
+                    <div class="col-md-2 mb-4">
                         <div class="card">
                             <div class="card-body bg-danger">
                                 <div class="row no-gutters align-items-center">

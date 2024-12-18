@@ -384,4 +384,79 @@ require_once '../db.php';
                 });
             </script>
 </body>
+<style>
+    /* General Form Styles */
+    .form-label {
+        font-weight: 600;
+        font-size: 1rem;
+    }
+
+    .form-control.custom-input {
+        font-size: 15px;
+        border-radius: 8px;
+        padding: 12px 16px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .form-control.custom-input:focus {
+        border-color: #28a745;
+        box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+    }
+
+    .btn.custom-btn {
+        font-size: 16px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 6px;
+        width: 200px;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn.custom-btn:hover {
+        background-color: #218838;
+    }
+
+    .container {
+        background-color: #f8f9fa;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .col-md-6 {
+        padding: 10px;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .container {
+            padding: 15px;
+        }
+
+        .form-control.custom-input {
+            padding: 10px 14px;
+        }
+
+        .btn.custom-btn {
+            width: 100%;
+        }
+    }
+
+    /* Custom Focus Effect */
+    .form-control.custom-input:focus {
+        outline: none;
+        border-color: #6c757d;
+    }
+
+    /* Input field borders */
+    .form-control {
+        border: 1px solid #ced4da;
+    }
+
+    .form-control::placeholder {
+        color: #6c757d;
+        font-style: italic;
+    }
+</style>
 </html>

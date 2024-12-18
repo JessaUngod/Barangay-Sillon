@@ -222,7 +222,7 @@ require_once '../db.php';
                     </div>
 
                     <!-- Staff Card -->
-                    <div class="col-xs-6">
+                    <div class="col-xs-2">
                         <div class="card">
                             <div class="card-body bg-warning">
                                 <div class="row no-gutters align-items-center">

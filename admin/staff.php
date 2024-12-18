@@ -203,28 +203,20 @@ require_once'../db.php';
                         </div>
                         <div class="card-body">
     <div class="table-responsive">
-        <table class="table" id="myTable" width="100%" cellspacing="0">
+        <table class="table" id="myTable" width="100%" cellspacing="0" style="border: none;">
             <thead class="table-light">
                 <tr>
-                    <th>First Name</th>
-                    <th>Middle Name</th>
-                    <th>Last Name</th>
-                    <th>Age</th>
-                    <th>Gender</th>
-                    <th>Contact No.</th>
-                    <th>Username</th>
-                    <th>Profile Picture</th>
-                    <th>Action</th>
+                    <th class="text-center">First Name</th>
+                    <th class="text-center">Middle Name</th>
+                    <th class="text-center">Last Name</th>
+                    <th class="text-center">Age</th>
+                    <th class="text-center">Gender</th>
+                    <th class="text-center">Contact No.</th>
+                    <th class="text-center">Username</th>
+                    <th class="text-center">Profile Picture</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
-            <style>
-                <style>
-    #myTable th, #myTable td {
-        border: none !important; /* Ensures no borders */
-    }
-</style>
-
-            </style>
                                    
                                 
                                     <tbody style="color: #000;">

@@ -308,49 +308,77 @@ require_once '../db.php';
                             </div>
                         </div>
                     </div>
-   <!-- Chart below the stats cards -->
-<div class="row mt-5">
-    <div class="col-12">
-        <div id="chart"></div>
+   <!-- Chart Container (Below the cards) -->
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <div class="card">
+            <div class="card-body bg-light">
+                <h5 class="card-title text-center">Employee Attendance Overview</h5>
+                <!-- ApexChart div container -->
+                <div id="attendance-chart"></div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-    // Prepare the data for the chart
-    var chartData = {
+    // Prepare the chart data and options
+    var options = {
         series: [{
-            name: 'Stats',
+            name: 'Employees',
             data: [
-                <?php echo $res22; ?>, // Admin count
-                <?php echo $res22; ?>, // Staff count
-                <?php echo $res22; ?>, // Total Employee count
-                <?php echo $res226; ?>, // Time In count
-                <?php echo $total; ?>  // Total Absent count
+                <?php echo $res22; ?>, // Example data for employees attending each day of the week
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?>,
+                <?php echo $res22; ?> // Example for each day of the week
+            ]
+        }, {
+            name: 'Absent',
+            data: [
+                <?php echo $total; ?>, // Example data for absent employees
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?>,
+                <?php echo $total; ?> // Example for each day of the week
             ]
         }],
         chart: {
-            type: 'bar',
-            height: 350
-        },
-        title: {
-            text: 'Employee Dashboard Stats',
-            align: 'center'
+            height: 350,
+            type: 'line',
         },
         xaxis: {
-            categories: ['Admin', 'Staff', 'Total Employees', 'Time In', 'Total Absent'],
-            title: {
-                text: 'Categories'
+            categories: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        },
+        title: {
+            text: 'Employee Attendance by Day',
+            align: 'center',
+            style: {
+                fontSize: '18px',
+                fontWeight: 'bold',
+                color: '#333'
             }
         },
-        yaxis: {
-            title: {
-                text: 'Count'
-            }
+        stroke: {
+            width: 2,
+        },
+        markers: {
+            size: 6,
+            colors: ["#ffffff"],
+            strokeColor: "#ff4560",
+            strokeWidth: 3
+        },
+        colors: ["#00E396", "#FF4560"], // Colors for the two series
+        grid: {
+            borderColor: '#f1f1f1',
         }
     };
 
-    // Render the chart
-    var chart = new ApexCharts(document.querySelector("#chart"), chartData);
+    var chart = new ApexCharts(document.querySelector("#attendance-chart"), options);
     chart.render();
 </script>
                 </div>

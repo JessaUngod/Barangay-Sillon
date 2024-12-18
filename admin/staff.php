@@ -178,12 +178,11 @@ require_once'../db.php';
     <a href="staff.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light" style="background: linear-gradient(to right, #6a11cb, #2575fc);">Staff</a>
 </div>
                                 
-                            </div>
                             <div class="col-md-2">
     <a href="admin.php" class="btn form-control fw-bold btn-primary mb-1 mt-1 text-light" style="background: linear-gradient(to right, #6a11cb, #2575fc);">Admin</a>
 </div>
                                 
-                            </div>
+                        
                             
                         </div>
                         

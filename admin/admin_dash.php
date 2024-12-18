@@ -121,6 +121,20 @@ require_once '../db.php';
     .col-xl-2, .col-md-2, .col-md-3 {
         width: 100%;
     }
+    /* Custom dropdown with background and rounded corners */
+.custom-dropdown {
+    background-color: #4B0082; /* Violet background */
+    color: white; /* White text */
+    border-radius: 8px; /* Rounded corners */
+    min-width: 200px; /* Minimum width */
+}
+
+/* Hover effect for the dropdown items */
+.custom-dropdown .dropdown-item:hover {
+    background-color: #6A1D9D; /* Darker violet on hover */
+    color: white; /* Keep the text white */
+}
+
     
     
 }
